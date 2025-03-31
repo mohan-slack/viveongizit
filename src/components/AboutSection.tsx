@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from './ui/button';
+import AboutFounders from './AboutFounders';
 
 const AboutSection: React.FC = () => {
   return (
@@ -18,26 +19,26 @@ const AboutSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="text-viveon-red font-bold">VIVEON</span>
-                  <h3 className="text-white text-2xl font-bold">The Future of Wearable Technology</h3>
+                  <span className="text-viveon-red font-bold tracking-wider">VIVEON</span>
+                  <h3 className="text-white text-2xl font-bold tracking-tight">The Future of Wearable Technology</h3>
                 </div>
               </div>
             </div>
           </div>
           
           <div className="lg:w-1/2">
-            <span className="text-viveon-red font-bold">ABOUT US</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">Pioneering the Next Generation of <span className="gradient-text">Wearable Tech</span></h2>
+            <span className="text-viveon-red font-bold tracking-wider">ABOUT US</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-6 tracking-tight">Pioneering the Next Generation of <span className="gradient-text">Wearable Tech</span></h2>
             
-            <p className="text-gray-300 mb-6">
+            <p className="text-gray-300 mb-6 font-light tracking-wide">
               At VIVEON, we believe that technology should not only be powerful but also seamlessly integrated into your lifestyle. Founded in 2022, we've been pushing the boundaries of what's possible in audio and wearable technology.
             </p>
             
-            <p className="text-gray-300 mb-6">
+            <p className="text-gray-300 mb-6 font-light tracking-wide">
               Our team of engineers, designers, and audio experts work tirelessly to create products that combine cutting-edge technology with sleek, minimalist design. We're committed to developing devices that enhance your daily life without getting in the way.
             </p>
             
-            <p className="text-gray-300 mb-8">
+            <p className="text-gray-300 mb-8 font-light tracking-wide">
               From our state-of-the-art earbuds that deliver unparalleled sound quality to our smart rings that put the power of technology at your fingertips, every VIVEON product is crafted with precision, innovation, and attention to detail.
             </p>
             
@@ -74,6 +75,9 @@ const AboutSection: React.FC = () => {
             </div>
           </div>
         </div>
+        
+        {/* Adding founders section */}
+        <AboutFounders />
       </div>
     </div>
   );
