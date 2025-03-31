@@ -69,7 +69,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
       
       <div>
-        <span className={`text-sm ${colorMap[color].text}`}>{category}</span>
+        <span className={`text-sm ${colorMap[color].text} font-medium`}>{category}</span>
         <h3 className="text-white text-xl font-bold mt-1">{name}</h3>
         <div className="flex justify-between items-center mt-4">
           <span className="text-white font-bold">{price}</span>

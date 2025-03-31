@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
 
 const FeaturedProductsSection: React.FC = () => {
-  // Verified: Each product has the correct image type (earbuds or rings)
+  // Updated product names to match their image types
   const earbuds = [
     {
       id: 1,
@@ -36,7 +36,7 @@ const FeaturedProductsSection: React.FC = () => {
   const smartRings = [
     {
       id: 1,
-      name: "HUX NEXUS PRO",
+      name: "HUX NEXUS RING",
       category: "SMART RING",
       price: "$299.99",
       imagePath: "/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png", // Smart Ring image verified
@@ -44,7 +44,7 @@ const FeaturedProductsSection: React.FC = () => {
     },
     {
       id: 2,
-      name: "HUX AURA PLUS",
+      name: "HUX AURA RING",
       category: "SMART RING",
       price: "$249.99",
       imagePath: "/lovable-uploads/02af7663-ba07-41b9-b76a-29b4f90aafa9.png", // Smart Ring image verified
@@ -52,7 +52,7 @@ const FeaturedProductsSection: React.FC = () => {
     },
     {
       id: 3,
-      name: "HUX FLUX EDGE",
+      name: "HUX FLUX RING",
       category: "SMART RING",
       price: "$229.99",
       imagePath: "/lovable-uploads/ec5c9459-580a-4a9d-96ba-a98b71e0e3f4.png", // Smart Ring image verified
