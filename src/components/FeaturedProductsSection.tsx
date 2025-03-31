@@ -55,7 +55,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX FLUX RING",
       category: "SMART RING",
       price: "$229.99",
-      imagePath: "/lovable-uploads/ec5c9459-580a-4a9d-96ba-a98b71e0e3f4.png", // Smart Ring image verified
+      imagePath: "/lovable-uploads/0935fe07-f357-4ada-a951-0709d047a02f.png", // Updated to use the new HUX FLUX RING image
       color: "purple" as const,
     },
   ];
