@@ -66,17 +66,19 @@ const FuturisticCityscape: React.FC = () => {
       {/* Distant city glow */}
       <div className="absolute bottom-0 left-0 w-full h-[10vh] bg-gradient-to-t from-viveon-red/20 to-transparent"></div>
       
-      {/* Style for the flying vehicles */}
-      <style jsx>{`
-        @keyframes moveLeftToRight {
-          from { left: -5%; }
-          to { left: 105%; }
-        }
-        @keyframes moveRightToLeft {
-          from { left: 105%; }
-          to { left: -5%; }
-        }
-      `}</style>
+      {/* Instead of using <style jsx>, add keyframes using style element with proper type definition */}
+      <style>
+        {`
+          @keyframes moveLeftToRight {
+            from { left: -5%; }
+            to { left: 105%; }
+          }
+          @keyframes moveRightToLeft {
+            from { left: 105%; }
+            to { left: -5%; }
+          }
+        `}
+      </style>
     </div>
   );
 };
