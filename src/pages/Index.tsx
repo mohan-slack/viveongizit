@@ -32,7 +32,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-viveon-darker text-white">
+    <div className="min-h-screen bg-white text-gray-800">
       <Navbar />
       <EnhancedHeroSection />
       <FeaturedProductsSection />

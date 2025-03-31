@@ -1,23 +1,22 @@
-
 import React from 'react';
 import { MapPin, Phone, Mail } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
   return (
-    <div id="contact" className="bg-viveon-dark py-20">
+    <div id="contact" className="bg-gray-50 py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              <span className="text-white">Connect With </span>
+              <span className="text-gray-800">Connect With </span>
               <span className="gradient-text">Us</span>
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Have questions about our HUX™ products or interested in collaboration? Reach out to us through any of the following channels.
             </p>
           </div>
           
-          <div className="bg-black/50 backdrop-blur-lg rounded-2xl p-8 border border-viveon-red/20">
+          <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-8 border border-viveon-red/10 shadow-lg">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Location */}
               <div className="flex flex-col items-center text-center p-6 rounded-xl bg-viveon-darker/50 border border-gray-800 hover:border-viveon-red/30 transition-all group">
@@ -57,10 +56,10 @@ const ContactSection: React.FC = () => {
             {/* Company Info */}
             <div className="mt-8 text-center">
               <div className="flex items-center justify-center mb-2">
-                <h3 className="text-white text-lg font-bold">Viveon Gizit Private Limited</h3>
+                <h3 className="text-gray-800 text-lg font-bold">Viveon Gizit Private Limited</h3>
                 <span className="ml-1 text-viveon-neon-blue text-xs align-top">™</span>
               </div>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-600 text-sm">
                 HUX™ is a registered trademark of Viveon Gizit Private Limited. All rights reserved.
               </p>
             </div>

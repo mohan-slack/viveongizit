@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { motion } from 'framer-motion';
+
 const EnhancedHeroSection: React.FC = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -14,21 +15,21 @@ const EnhancedHeroSection: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  return <div className="relative min-h-screen overflow-hidden bg-viveon-darker">
+  return <div className="relative min-h-screen overflow-hidden bg-white">
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-viveon-red/10 rounded-full filter blur-3xl opacity-30 animate-float" style={{
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gray-100 rounded-full filter blur-3xl opacity-30 animate-float" style={{
         animationDelay: '0.5s'
       }}></div>
-        <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-viveon-neon-blue/10 rounded-full filter blur-3xl opacity-30 animate-float" style={{
+        <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-gray-200 rounded-full filter blur-3xl opacity-30 animate-float" style={{
         animationDelay: '1.2s'
       }}></div>
-        <div className="absolute top-1/2 right-1/3 w-80 h-80 bg-viveon-neon-purple/10 rounded-full filter blur-3xl opacity-30 animate-float" style={{
+        <div className="absolute top-1/2 right-1/3 w-80 h-80 bg-gray-100 rounded-full filter blur-3xl opacity-30 animate-float" style={{
         animationDelay: '0.8s'
       }}></div>
       </div>
       
       <div className="absolute inset-0 z-0 opacity-10" style={{
-      backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(255, 58, 47, 0.15) 25%, rgba(255, 58, 47, 0.15) 26%, transparent 27%, transparent 74%, rgba(255, 58, 47, 0.15) 75%, rgba(255, 58, 47, 0.15) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.15) 25%, rgba(0, 255, 255, 0.15) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.15) 75%, rgba(0, 255, 255, 0.15) 76%, transparent 77%, transparent)',
+      backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(200, 200, 200, 0.15) 25%, rgba(200, 200, 200, 0.15) 26%, transparent 27%, transparent 74%, rgba(200, 200, 200, 0.15) 75%, rgba(200, 200, 200, 0.15) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(200, 200, 200, 0.15) 25%, rgba(200, 200, 200, 0.15) 26%, transparent 27%, transparent 74%, rgba(200, 200, 200, 0.15) 75%, rgba(200, 200, 200, 0.15) 76%, transparent 77%, transparent)',
       backgroundSize: '50px 50px'
     }}></div>
       
@@ -144,7 +145,8 @@ const EnhancedHeroSection: React.FC = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-viveon-darker to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
     </div>;
 };
+
 export default EnhancedHeroSection;
