@@ -10,7 +10,7 @@ const FeaturedProductsSection: React.FC = () => {
     {
       id: 1,
       name: "HUX QUANTUM X",
-      category: "WIRELESS EARBUDS",
+      category: "SMART RING", // Updated from "WIRELESS EARBUDS" to "SMART RING"
       price: "$249.99",
       imagePath: "/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png", // Earbuds image verified
       color: "red" as const,
