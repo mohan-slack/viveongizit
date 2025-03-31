@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
-            <Logo className="mb-6" />
+            <Logo className="mb-6" size="large" showSoundWaves={false} />
             <p className="text-gray-400 mb-6 font-light tracking-wide">
               Experience the next generation of wearable technology with our cutting-edge earbuds and smart rings.
             </p>

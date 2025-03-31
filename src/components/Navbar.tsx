@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Logo />
+        <Logo size={isScrolled ? "small" : "medium"} showSoundWaves={!isScrolled} />
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8">
