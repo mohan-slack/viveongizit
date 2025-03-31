@@ -73,7 +73,7 @@
   }
 
   body {
-    @apply bg-viveon-darker text-foreground font-sans;
+    @apply bg-blue-50 text-foreground font-sans;
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='%23FF3A2F' stroke='white' stroke-width='1' opacity='0.8'/></svg>") 8 8, auto;
   }
 
@@ -135,7 +135,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-viveon-darker;
+    @apply bg-blue-100;
   }
 
   ::-webkit-scrollbar-thumb {
