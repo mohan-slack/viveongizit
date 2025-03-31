@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
-import HeroSection from '@/components/HeroSection';
+import EnhancedHeroSection from '@/components/EnhancedHeroSection';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
 import FeaturesList from '@/components/FeaturesList';
 import AboutSection from '@/components/AboutSection';
@@ -32,9 +32,9 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-blue-50 text-gray-800">
+    <div className="min-h-screen bg-viveon-darker text-white">
       <Navbar />
-      <HeroSection />
+      <EnhancedHeroSection />
       <FeaturedProductsSection />
       <FeaturesList />
       <AboutSection />
