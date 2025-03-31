@@ -11,20 +11,20 @@ const HeroSection: React.FC = () => {
       
       <div className="container mx-auto px-4 py-20 z-10">
         <div className="max-w-4xl mx-auto text-center mt-16">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-            <span className="block text-white">THE FUTURE IS</span>
-            <span className="gradient-text">VIVEON</span>
+          <h1 className="mb-6">
+            <span className="block text-white font-light">THE FUTURE IS</span>
+            <span className="gradient-text font-bold">VIVEON</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-light">
             Experience the next generation of wearable technology with our cutting-edge earbuds and smart rings. Designed for the future, built for today.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-viveon-red hover:bg-viveon-red/80 text-white px-8 py-6 text-lg">
+            <Button className="bg-viveon-red hover:bg-viveon-red/80 text-white px-8 py-6 text-lg font-medium">
               EXPLORE EARBUDS
             </Button>
-            <Button variant="outline" className="border-viveon-neon-blue text-viveon-neon-blue hover:bg-viveon-neon-blue/10 px-8 py-6 text-lg group">
+            <Button variant="outline" className="border-viveon-neon-blue text-viveon-neon-blue hover:bg-viveon-neon-blue/10 px-8 py-6 text-lg font-medium group">
               DISCOVER RINGS
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -38,7 +38,7 @@ const HeroSection: React.FC = () => {
             <div className="absolute -left-16 md:-left-32 top-12 w-32 md:w-48 h-32 md:h-48 bg-black/40 backdrop-blur-md rounded-full p-4 border border-viveon-neon-blue/30 animate-float" style={{ animationDelay: '0.5s' }}>
               <div className="w-full h-full rounded-full bg-gradient-to-br from-black to-gray-900 flex items-center justify-center">
                 <div className="text-center">
-                  <span className="text-viveon-neon-blue text-xs md:text-sm">QUANTUM</span>
+                  <span className="text-viveon-neon-blue text-xs md:text-sm font-medium">QUANTUM</span>
                   <p className="text-white font-bold text-sm md:text-base">EARBUDS</p>
                 </div>
               </div>
@@ -55,7 +55,7 @@ const HeroSection: React.FC = () => {
             <div className="absolute -right-16 md:-right-32 top-12 w-32 md:w-48 h-32 md:h-48 bg-black/40 backdrop-blur-md rounded-full p-4 border border-viveon-neon-purple/30 animate-float" style={{ animationDelay: '1s' }}>
               <div className="w-full h-full rounded-full bg-gradient-to-br from-black to-gray-900 flex items-center justify-center">
                 <div className="text-center">
-                  <span className="text-viveon-neon-purple text-xs md:text-sm">NEXUS</span>
+                  <span className="text-viveon-neon-purple text-xs md:text-sm font-medium">NEXUS</span>
                   <p className="text-white font-bold text-sm md:text-base">SMART RING</p>
                 </div>
               </div>

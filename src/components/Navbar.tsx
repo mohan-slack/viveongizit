@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
             <li key={link.name}>
               <a 
                 href={link.href}
-                className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
+                className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.name}
               </a>
@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
           <Button variant="ghost" size="icon" className="text-white hover:text-viveon-red">
             <ShoppingCart size={20} />
           </Button>
-          <Button className="bg-viveon-red hover:bg-viveon-red/80 text-white">
+          <Button className="bg-viveon-red hover:bg-viveon-red/80 text-white font-medium">
             SHOP NOW
           </Button>
         </div>
@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
               <li key={link.name} className="py-2 border-b border-gray-800">
                 <a 
                   href={link.href}
-                  className="text-white hover:text-viveon-red transition-colors duration-300 block"
+                  className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
               </li>
             ))}
             <li className="py-4 flex justify-center">
-              <Button className="bg-viveon-red hover:bg-viveon-red/80 text-white w-full">
+              <Button className="bg-viveon-red hover:bg-viveon-red/80 text-white w-full font-medium">
                 SHOP NOW
               </Button>
             </li>

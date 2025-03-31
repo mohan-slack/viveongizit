@@ -21,20 +21,20 @@ const CallToAction: React.FC = () => {
           }}></div>
           
           <div className="relative z-10 max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              <span className="text-white">Experience The Future </span>
-              <span className="gradient-text">Today</span>
+            <h2 className="mb-6">
+              <span className="text-white font-light">Experience The Future </span>
+              <span className="gradient-text font-bold">Today</span>
             </h2>
             
-            <p className="text-gray-300 text-lg mb-8">
+            <p className="text-gray-300 text-lg mb-8 font-light">
               Join thousands of satisfied customers who have already elevated their tech experience with VIVEON products. Grab your earbuds or smart ring now and step into the future.
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="bg-viveon-red hover:bg-viveon-red/80 text-white px-8">
+              <Button size="lg" className="bg-viveon-red hover:bg-viveon-red/80 text-white px-8 font-medium">
                 SHOP NOW
               </Button>
-              <Button size="lg" variant="outline" className="border-viveon-neon-blue text-viveon-neon-blue hover:bg-viveon-neon-blue/10 px-8 group">
+              <Button size="lg" variant="outline" className="border-viveon-neon-blue text-viveon-neon-blue hover:bg-viveon-neon-blue/10 px-8 font-medium group">
                 EXPLORE COLLECTION
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
