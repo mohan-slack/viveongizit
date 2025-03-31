@@ -13,7 +13,7 @@ const HeroSection: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center mt-16">
           <div className="mb-6 flex justify-center">
             <img 
-              src="/lovable-uploads/cdd308e7-4882-4bb2-9fd5-b1d504d99ba8.png" 
+              src="/lovable-uploads/8272919f-a475-4fc1-bc45-434453c53e5f.png" 
               alt="VIVEON Logo" 
               className="w-3/4 max-w-md mx-auto" 
             />
@@ -57,7 +57,7 @@ const HeroSection: React.FC = () => {
             <div className="w-48 md:w-64 h-48 md:h-64 bg-black/50 backdrop-blur-lg rounded-full p-6 border border-viveon-red/50 animate-pulse">
               <div className="w-full h-full rounded-full bg-gradient-to-br from-viveon-dark to-black flex items-center justify-center">
                 <img 
-                  src="/lovable-uploads/cdd308e7-4882-4bb2-9fd5-b1d504d99ba8.png" 
+                  src="/lovable-uploads/8272919f-a475-4fc1-bc45-434453c53e5f.png" 
                   alt="VIVEON Logo" 
                   className="w-3/4 h-auto"
                 />

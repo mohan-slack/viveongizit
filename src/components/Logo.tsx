@@ -33,7 +33,7 @@ const Logo: React.FC<LogoProps> = ({
         )}
         
         <img 
-          src="/lovable-uploads/cdd308e7-4882-4bb2-9fd5-b1d504d99ba8.png" 
+          src="/lovable-uploads/8272919f-a475-4fc1-bc45-434453c53e5f.png" 
           alt="VIVEON Logo" 
           className={cn(
             sizeClasses[size],
