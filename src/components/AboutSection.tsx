@@ -2,7 +2,6 @@
 import React from 'react';
 import { Button } from './ui/button';
 import AboutFounders from './AboutFounders';
-import HuxLogo from './HuxLogo';
 
 const AboutSection: React.FC = () => {
   return (
@@ -20,7 +19,7 @@ const AboutSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <HuxLogo size="md" />
+                  <span className="text-viveon-red font-bold tracking-wider">HUX™</span>
                   <h3 className="text-white text-2xl font-bold tracking-tight">By Viveon Gizit Private Limited</h3>
                 </div>
               </div>
@@ -32,15 +31,15 @@ const AboutSection: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-6 tracking-tight">Pioneering the Next Generation of <span className="gradient-text">Wearable Tech</span></h2>
             
             <p className="text-gray-300 mb-6 font-light tracking-wide">
-              At Viveon Gizit Private Limited, we believe that technology should not only be powerful but also seamlessly integrated into your lifestyle. Our flagship brand <HuxLogo size="sm" /> represents our commitment to innovation and excellence in wearable technology.
+              At Viveon Gizit Private Limited, we believe that technology should not only be powerful but also seamlessly integrated into your lifestyle. Our flagship brand HUX™ represents our commitment to innovation and excellence in wearable technology.
             </p>
             
             <p className="text-gray-300 mb-6 font-light tracking-wide">
-              Founded in 2025, our team of engineers, designers, and audio experts work tirelessly to create products that combine cutting-edge technology with sleek, minimalist design. The <HuxLogo size="sm" /> line embodies our vision of developing devices that enhance your daily life without getting in the way.
+              Founded in 2025, our team of engineers, designers, and audio experts work tirelessly to create products that combine cutting-edge technology with sleek, minimalist design. The HUX™ line embodies our vision of developing devices that enhance your daily life without getting in the way.
             </p>
             
             <p className="text-gray-300 mb-8 font-light tracking-wide">
-              From our state-of-the-art <HuxLogo size="sm" /> QUANTUM earbuds that deliver unparalleled sound quality to our <HuxLogo size="sm" /> NEXUS smart rings that put the power of technology at your fingertips, every product is crafted with precision, innovation, and attention to detail.
+              From our state-of-the-art HUX QUANTUM earbuds that deliver unparalleled sound quality to our HUX NEXUS smart rings that put the power of technology at your fingertips, every product is crafted with precision, innovation, and attention to detail.
             </p>
             
             <div className="flex flex-wrap gap-6">
@@ -77,6 +76,7 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
         
+        {/* Adding founders section */}
         <AboutFounders />
       </div>
     </div>
