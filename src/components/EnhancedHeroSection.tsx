@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -43,7 +42,7 @@ const EnhancedHeroSection: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <span className="block text-white font-light tracking-wider letter-spacing-wide text-lg md:text-xl mb-1">INTRODUCING THE FUTURE OF TECH</span>
-            <span className="bg-gradient-to-r from-viveon-red/90 via-viveon-neon-purple/80 to-viveon-neon-blue/80 bg-clip-text text-transparent font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]">HUX™</span>
+            <span className="bg-gradient-to-r from-viveon-red/90 via-viveon-neon-purple/80 to-viveon-neon-blue/80 bg-clip-text text-transparent font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)] relative">HU<span className="relative">X<span className="absolute -top-6 -right-4 text-white text-[0.3em]">™</span></span></span>
             <span className="block text-sm text-viveon-neon-blue/80 mt-2">by Viveon Gizit Private Limited</span>
           </motion.h1>
           
@@ -74,7 +73,6 @@ const EnhancedHeroSection: React.FC = () => {
         
         <div ref={parallaxRef} className="relative mt-12 flex justify-center items-center">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Smart Ring Display */}
             <motion.div 
               className="relative group"
               initial={{ opacity: 0, x: -50 }}
@@ -95,7 +93,6 @@ const EnhancedHeroSection: React.FC = () => {
               </div>
             </motion.div>
             
-            {/* Earbuds in Case */}
             <motion.div 
               className="relative group row-span-2 md:mt-[-80px]"
               initial={{ opacity: 0, y: 50 }}
@@ -116,7 +113,6 @@ const EnhancedHeroSection: React.FC = () => {
               </div>
             </motion.div>
             
-            {/* Earbuds Outside Case */}
             <motion.div 
               className="relative group"
               initial={{ opacity: 0, x: 50 }}
@@ -140,7 +136,6 @@ const EnhancedHeroSection: React.FC = () => {
         </div>
       </div>
       
-      {/* Bottom Gradient */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-viveon-darker to-transparent z-10"></div>
     </div>
   );
