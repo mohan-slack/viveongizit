@@ -29,7 +29,10 @@ const FounderCard: React.FC<FounderProps> = ({ name, role, description }) => {
       <div className="relative bg-black rounded-xl overflow-hidden">
         <div className="p-8 flex flex-col items-center">
           <Avatar className="w-24 h-24 mb-6 border-2 border-opacity-20 border-viveon-neon-blue flex items-center justify-center bg-viveon-darker">
-            {getRoleIcon()}
+            <AvatarImage src="/lovable-uploads/cdd308e7-4882-4bb2-9fd5-b1d504d99ba8.png" alt={`${name} - ${role}`} className="p-2" />
+            <AvatarFallback className="bg-viveon-darker">
+              {getRoleIcon()}
+            </AvatarFallback>
           </Avatar>
           
           <h3 className="text-white text-xl font-bold">
