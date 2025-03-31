@@ -15,7 +15,7 @@ const HeroSection: React.FC = () => {
             <img 
               src="/lovable-uploads/8272919f-a475-4fc1-bc45-434453c53e5f.png" 
               alt="VIVEON Logo" 
-              className="w-4/5 max-w-lg mx-auto" /* Increased from w-3/4 to w-4/5 and max-w-md to max-w-lg */
+              className="w-full max-w-2xl mx-auto" // Updated from w-4/5 to w-full and max-w-lg to max-w-2xl
             />
           </div>
           
