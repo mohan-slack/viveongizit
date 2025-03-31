@@ -30,7 +30,7 @@ const EnhancedHeroSection: React.FC = () => {
       
       {/* Grid lines for futuristic effect */}
       <div className="absolute inset-0 z-0 opacity-10" style={{ 
-        backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(255, 58, 47, 0.2) 25%, rgba(255, 58, 47, 0.2) 26%, transparent 27%, transparent 74%, rgba(255, 58, 47, 0.2) 75%, rgba(255, 58, 47, 0.2) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.2) 25%, rgba(0, 255, 255, 0.2) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.2) 75%, rgba(0, 255, 255, 0.2) 76%, transparent 77%, transparent)',
+        backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(255, 58, 47, 0.15) 25%, rgba(255, 58, 47, 0.15) 26%, transparent 27%, transparent 74%, rgba(255, 58, 47, 0.15) 75%, rgba(255, 58, 47, 0.15) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.15) 25%, rgba(0, 255, 255, 0.15) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.15) 75%, rgba(0, 255, 255, 0.15) 76%, transparent 77%, transparent)',
         backgroundSize: '50px 50px'
       }}></div>
       
@@ -43,8 +43,8 @@ const EnhancedHeroSection: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <span className="block text-white font-light tracking-wider letter-spacing-wide text-lg md:text-xl mb-1">INTRODUCING THE FUTURE OF TECH</span>
-            <span className="gradient-text font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_5px_20px_rgba(255,58,47,0.4)]">HUX™</span>
-            <span className="block text-sm text-viveon-neon-blue mt-2">by Viveon Gizit Private Limited</span>
+            <span className="bg-gradient-to-r from-viveon-red/90 via-viveon-neon-purple/80 to-viveon-neon-blue/80 bg-clip-text text-transparent font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]">HUX™</span>
+            <span className="block text-sm text-viveon-neon-blue/80 mt-2">by Viveon Gizit Private Limited</span>
           </motion.h1>
           
           <motion.p 
@@ -62,10 +62,10 @@ const EnhancedHeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Button className="bg-viveon-red hover:bg-viveon-red/80 text-white px-8 py-6 text-lg font-medium tracking-wide neon-border border border-viveon-red">
+            <Button className="bg-viveon-red/90 hover:bg-viveon-red/80 text-white px-8 py-6 text-lg font-medium tracking-wide border border-viveon-red/30 shadow-md">
               HUX QUANTUM EARBUDS
             </Button>
-            <Button variant="outline" className="border-viveon-neon-blue text-viveon-neon-blue hover:bg-viveon-neon-blue/10 px-8 py-6 text-lg font-medium tracking-wide group neon-border">
+            <Button variant="outline" className="border-viveon-neon-blue/70 text-viveon-neon-blue/90 hover:bg-viveon-neon-blue/10 px-8 py-6 text-lg font-medium tracking-wide group shadow-md">
               HUX NEXUS RINGS
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -81,7 +81,7 @@ const EnhancedHeroSection: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-red to-viveon-neon-purple rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-red/70 to-viveon-neon-purple/70 rounded-xl blur opacity-40 group-hover:opacity-60 transition duration-300"></div>
               <div className="relative bg-black rounded-xl overflow-hidden">
                 <img 
                   src="/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png" 
@@ -90,7 +90,7 @@ const EnhancedHeroSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
                   <h3 className="text-white text-xl font-bold">HUX NEXUS PRO</h3>
-                  <p className="text-viveon-neon-blue mt-1">Next-gen wearable technology</p>
+                  <p className="text-viveon-neon-blue/80 mt-1">Next-gen wearable technology</p>
                 </div>
               </div>
             </motion.div>
@@ -102,7 +102,7 @@ const EnhancedHeroSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-neon-blue to-viveon-neon-purple rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-neon-blue/70 to-viveon-neon-purple/70 rounded-xl blur opacity-40 group-hover:opacity-60 transition duration-300"></div>
               <div className="relative bg-black rounded-xl overflow-hidden">
                 <img 
                   src="/lovable-uploads/677085e7-aad4-423e-8673-b7c52b1080c3.png" 
@@ -111,7 +111,7 @@ const EnhancedHeroSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
                   <h3 className="text-white text-xl font-bold">HUX QUANTUM PRO</h3>
-                  <p className="text-viveon-neon-blue mt-1">Immersive audio experience</p>
+                  <p className="text-viveon-neon-blue/80 mt-1">Immersive audio experience</p>
                 </div>
               </div>
             </motion.div>
@@ -123,7 +123,7 @@ const EnhancedHeroSection: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-neon-purple to-viveon-neon-blue rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-neon-purple/70 to-viveon-neon-blue/70 rounded-xl blur opacity-40 group-hover:opacity-60 transition duration-300"></div>
               <div className="relative bg-black rounded-xl overflow-hidden">
                 <img 
                   src="/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png" 
@@ -132,7 +132,7 @@ const EnhancedHeroSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
                   <h3 className="text-white text-xl font-bold">HUX SONIC ELITE</h3>
-                  <p className="text-viveon-neon-blue mt-1">Crystal clear sound</p>
+                  <p className="text-viveon-neon-blue/80 mt-1">Crystal clear sound</p>
                 </div>
               </div>
             </motion.div>

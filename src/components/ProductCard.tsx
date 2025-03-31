@@ -21,24 +21,25 @@ const ProductCard: React.FC<ProductCardProps> = ({
   color = 'red',
   className 
 }) => {
+  // Updated color map with more harmonious and less bright colors
   const colorMap = {
     red: {
-      border: 'border-viveon-red/30',
-      glow: 'before:shadow-[0_0_15px_rgba(255,58,47,0.3)]',
-      text: 'text-viveon-red',
-      btn: 'bg-viveon-red hover:bg-viveon-red/80',
+      border: 'border-viveon-red/20',
+      glow: 'before:shadow-[0_0_15px_rgba(255,58,47,0.2)]',
+      text: 'text-viveon-red/90',
+      btn: 'bg-viveon-red/90 hover:bg-viveon-red/80',
     },
     blue: {
-      border: 'border-viveon-neon-blue/30',
-      glow: 'before:shadow-[0_0_15px_rgba(0,255,255,0.3)]',
-      text: 'text-viveon-neon-blue',
-      btn: 'bg-viveon-neon-blue hover:bg-viveon-neon-blue/80',
+      border: 'border-viveon-neon-blue/20',
+      glow: 'before:shadow-[0_0_15px_rgba(0,255,255,0.2)]',
+      text: 'text-viveon-neon-blue/90',
+      btn: 'bg-viveon-neon-blue/90 hover:bg-viveon-neon-blue/80',
     },
     purple: {
-      border: 'border-viveon-neon-purple/30',
-      glow: 'before:shadow-[0_0_15px_rgba(155,48,255,0.3)]',
-      text: 'text-viveon-neon-purple',
-      btn: 'bg-viveon-neon-purple hover:bg-viveon-neon-purple/80',
+      border: 'border-viveon-neon-purple/20',
+      glow: 'before:shadow-[0_0_15px_rgba(155,48,255,0.2)]',
+      text: 'text-viveon-neon-purple/90',
+      btn: 'bg-viveon-neon-purple/90 hover:bg-viveon-neon-purple/80',
     },
   };
 
@@ -72,7 +73,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <h3 className="text-white text-xl font-bold mt-1">{name}</h3>
         <div className="flex justify-between items-center mt-4">
           <span className="text-white font-bold">{price}</span>
-          <Button className={`${colorMap[color].btn} text-white`}>
+          <Button className={`${colorMap[color].btn} text-white shadow-sm`}>
             <ShoppingCart size={16} className="mr-2" />
             Add to Cart
           </Button>

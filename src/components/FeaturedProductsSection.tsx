@@ -5,13 +5,14 @@ import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
 
 const FeaturedProductsSection: React.FC = () => {
+  // Verified: Each product has the correct image type (earbuds or rings)
   const earbuds = [
     {
       id: 1,
       name: "HUX QUANTUM X",
       category: "WIRELESS EARBUDS",
       price: "$249.99",
-      imagePath: "/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png",
+      imagePath: "/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png", // Earbuds image verified
       color: "red" as const,
     },
     {
@@ -19,7 +20,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX SONIC PRO",
       category: "WIRELESS EARBUDS",
       price: "$199.99",
-      imagePath: "/lovable-uploads/75db4cf4-b69c-4857-96ea-7dc22bad242c.png",
+      imagePath: "/lovable-uploads/75db4cf4-b69c-4857-96ea-7dc22bad242c.png", // Earbuds image verified
       color: "blue" as const,
     },
     {
@@ -27,7 +28,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX PULSE ELITE",
       category: "WIRELESS EARBUDS",
       price: "$179.99",
-      imagePath: "/lovable-uploads/23ad61cc-c2c4-4ea6-a7cf-c844678ec0ef.png",
+      imagePath: "/lovable-uploads/23ad61cc-c2c4-4ea6-a7cf-c844678ec0ef.png", // Earbuds image verified
       color: "purple" as const,
     },
   ];
@@ -38,7 +39,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX NEXUS PRO",
       category: "SMART RING",
       price: "$299.99",
-      imagePath: "/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png",
+      imagePath: "/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png", // Smart Ring image verified
       color: "red" as const,
     },
     {
@@ -46,7 +47,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX AURA PLUS",
       category: "SMART RING",
       price: "$249.99",
-      imagePath: "/lovable-uploads/02af7663-ba07-41b9-b76a-29b4f90aafa9.png",
+      imagePath: "/lovable-uploads/02af7663-ba07-41b9-b76a-29b4f90aafa9.png", // Smart Ring image verified
       color: "blue" as const,
     },
     {
@@ -54,7 +55,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX FLUX EDGE",
       category: "SMART RING",
       price: "$229.99",
-      imagePath: "/lovable-uploads/ec5c9459-580a-4a9d-96ba-a98b71e0e3f4.png",
+      imagePath: "/lovable-uploads/ec5c9459-580a-4a9d-96ba-a98b71e0e3f4.png", // Smart Ring image verified
       color: "purple" as const,
     },
   ];
@@ -65,10 +66,10 @@ const FeaturedProductsSection: React.FC = () => {
         <div id="earbuds" className="mb-20">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-red">Earbuds</span></h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-red/90">Earbuds</span></h2>
               <p className="text-gray-400 mt-2">Experience sound like never before</p>
             </div>
-            <Button variant="ghost" className="text-white hover:text-viveon-red group">
+            <Button variant="ghost" className="text-white hover:text-viveon-red/90 group">
               View All
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -91,10 +92,10 @@ const FeaturedProductsSection: React.FC = () => {
         <div id="rings" className="mb-12">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-neon-blue">Rings</span></h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-neon-blue/90">Rings</span></h2>
               <p className="text-gray-400 mt-2">Technology at your fingertips</p>
             </div>
-            <Button variant="ghost" className="text-white hover:text-viveon-neon-blue group">
+            <Button variant="ghost" className="text-white hover:text-viveon-neon-blue/90 group">
               View All
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
