@@ -35,7 +35,7 @@ const AboutSection: React.FC = () => {
             </p>
             
             <p className="text-gray-300 mb-6 font-light tracking-wide">
-              Founded in 2022, our team of engineers, designers, and audio experts work tirelessly to create products that combine cutting-edge technology with sleek, minimalist design. The HUX™ line embodies our vision of developing devices that enhance your daily life without getting in the way.
+              Founded in 2025, our team of engineers, designers, and audio experts work tirelessly to create products that combine cutting-edge technology with sleek, minimalist design. The HUX™ line embodies our vision of developing devices that enhance your daily life without getting in the way.
             </p>
             
             <p className="text-gray-300 mb-8 font-light tracking-wide">
