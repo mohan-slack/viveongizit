@@ -11,10 +11,13 @@ const HeroSection: React.FC = () => {
       
       <div className="container mx-auto px-4 py-20 z-10">
         <div className="max-w-4xl mx-auto text-center mt-16">
-          <h1 className="mb-6">
-            <span className="block text-white font-light tracking-wider letter-spacing-wide">THE FUTURE IS</span>
-            <span className="gradient-text font-bold tracking-tighter text-7xl md:text-8xl">VIVEON</span>
-          </h1>
+          <div className="mb-6 flex justify-center">
+            <img 
+              src="/lovable-uploads/cdd308e7-4882-4bb2-9fd5-b1d504d99ba8.png" 
+              alt="VIVEON Logo" 
+              className="w-3/4 max-w-md mx-auto" 
+            />
+          </div>
           
           <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-light tracking-wide">
             Experience the next generation of wearable technology with our cutting-edge earbuds and smart rings. Designed for the future, built for today.
@@ -53,7 +56,11 @@ const HeroSection: React.FC = () => {
             {/* Main VIVEON Logo */}
             <div className="w-48 md:w-64 h-48 md:h-64 bg-black/50 backdrop-blur-lg rounded-full p-6 border border-viveon-red/50 animate-pulse">
               <div className="w-full h-full rounded-full bg-gradient-to-br from-viveon-dark to-black flex items-center justify-center">
-                <span className="text-viveon-red font-bold text-lg md:text-xl tracking-wider">VIVEON</span>
+                <img 
+                  src="/lovable-uploads/cdd308e7-4882-4bb2-9fd5-b1d504d99ba8.png" 
+                  alt="VIVEON Logo" 
+                  className="w-3/4 h-auto"
+                />
               </div>
             </div>
             
