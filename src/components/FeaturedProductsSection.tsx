@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ProductCard from './ProductCard';
 import { Button } from './ui/button';
@@ -19,7 +20,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX SONIC PRO",
       category: "WIRELESS EARBUDS",
       price: "$199.99",
-      imagePath: "/lovable-uploads/75db4cf4-b69c-4857-96ea-7dc22bad242c.png", // Earbuds image verified
+      imagePath: "/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png", // Swapped: Now using NEXUS RING image
       color: "blue" as const,
     },
     {
@@ -38,7 +39,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX NEXUS RING",
       category: "SMART RING",
       price: "$299.99",
-      imagePath: "/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png", // Smart Ring image verified
+      imagePath: "/lovable-uploads/75db4cf4-b69c-4857-96ea-7dc22bad242c.png", // Swapped: Now using SONIC PRO image
       color: "red" as const,
     },
     {
