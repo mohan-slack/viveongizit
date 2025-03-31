@@ -8,26 +8,26 @@ const FeaturedProductsSection: React.FC = () => {
   const earbuds = [
     {
       id: 1,
-      name: "QUANTUM X Pro",
+      name: "HUX QUANTUM X",
       category: "WIRELESS EARBUDS",
       price: "$249.99",
-      imagePath: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      imagePath: "/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png",
       color: "red" as const,
     },
     {
       id: 2,
-      name: "NOVA TWS",
+      name: "HUX SONIC PRO",
       category: "WIRELESS EARBUDS",
       price: "$199.99",
-      imagePath: "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      imagePath: "/lovable-uploads/75db4cf4-b69c-4857-96ea-7dc22bad242c.png",
       color: "blue" as const,
     },
     {
       id: 3,
-      name: "PULSE Elite",
+      name: "HUX PULSE ELITE",
       category: "WIRELESS EARBUDS",
       price: "$179.99",
-      imagePath: "https://images.unsplash.com/photo-1631176093617-63490a3d785a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      imagePath: "/lovable-uploads/23ad61cc-c2c4-4ea6-a7cf-c844678ec0ef.png",
       color: "purple" as const,
     },
   ];
@@ -35,26 +35,26 @@ const FeaturedProductsSection: React.FC = () => {
   const smartRings = [
     {
       id: 1,
-      name: "NEXUS RING",
+      name: "HUX NEXUS PRO",
       category: "SMART RING",
       price: "$299.99",
-      imagePath: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      imagePath: "/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png",
       color: "red" as const,
     },
     {
       id: 2,
-      name: "AURA RING",
+      name: "HUX AURA PLUS",
       category: "SMART RING",
       price: "$249.99",
-      imagePath: "https://images.unsplash.com/photo-1611652022419-8cef789efe10?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      imagePath: "/lovable-uploads/02af7663-ba07-41b9-b76a-29b4f90aafa9.png",
       color: "blue" as const,
     },
     {
       id: 3,
-      name: "FLUX RING",
+      name: "HUX FLUX EDGE",
       category: "SMART RING",
       price: "$229.99",
-      imagePath: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      imagePath: "/lovable-uploads/ec5c9459-580a-4a9d-96ba-a98b71e0e3f4.png",
       color: "purple" as const,
     },
   ];
@@ -65,7 +65,7 @@ const FeaturedProductsSection: React.FC = () => {
         <div id="earbuds" className="mb-20">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">Featured <span className="text-viveon-red">Earbuds</span></h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-red">Earbuds</span></h2>
               <p className="text-gray-400 mt-2">Experience sound like never before</p>
             </div>
             <Button variant="ghost" className="text-white hover:text-viveon-red group">
@@ -91,7 +91,7 @@ const FeaturedProductsSection: React.FC = () => {
         <div id="rings" className="mb-12">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">Smart <span className="text-viveon-neon-blue">Rings</span></h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-neon-blue">Rings</span></h2>
               <p className="text-gray-400 mt-2">Technology at your fingertips</p>
             </div>
             <Button variant="ghost" className="text-white hover:text-viveon-neon-blue group">

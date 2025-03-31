@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Trademark } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
   return (
@@ -9,11 +9,11 @@ const ContactSection: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              <span className="text-white">Get In </span>
-              <span className="gradient-text">Touch</span>
+              <span className="text-white">Connect With </span>
+              <span className="gradient-text">Us</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Have questions about our products or interested in collaboration? Reach out to us through any of the following channels.
+              Have questions about our HUX™ products or interested in collaboration? Reach out to us through any of the following channels.
             </p>
           </div>
           
@@ -52,6 +52,17 @@ const ContactSection: React.FC = () => {
                   office@viveongizit.com
                 </p>
               </div>
+            </div>
+            
+            {/* Company Info */}
+            <div className="mt-8 text-center">
+              <div className="flex items-center justify-center mb-2">
+                <h3 className="text-white text-lg font-bold">Viveon Gizit Private Limited</h3>
+                <Trademark className="ml-1 text-viveon-neon-blue" size={16} />
+              </div>
+              <p className="text-gray-400 text-sm">
+                HUX™ is a registered trademark of Viveon Gizit Private Limited. All rights reserved.
+              </p>
             </div>
           </div>
         </div>

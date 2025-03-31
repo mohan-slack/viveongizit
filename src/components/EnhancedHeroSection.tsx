@@ -42,8 +42,9 @@ const EnhancedHeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="block text-white font-light tracking-wider letter-spacing-wide text-lg md:text-xl mb-1">IMMERSE IN THE FUTURE WITH</span>
-            <span className="gradient-text font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_5px_20px_rgba(255,58,47,0.4)]">VIVEON</span>
+            <span className="block text-white font-light tracking-wider letter-spacing-wide text-lg md:text-xl mb-1">INTRODUCING THE FUTURE OF TECH</span>
+            <span className="gradient-text font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_5px_20px_rgba(255,58,47,0.4)]">HUX™</span>
+            <span className="block text-sm text-viveon-neon-blue mt-2">by Viveon Gizit Private Limited</span>
           </motion.h1>
           
           <motion.p 
@@ -52,7 +53,7 @@ const EnhancedHeroSection: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Where sound meets sensation. Experience our quantum earbuds and nexus rings - wearable tech that doesn't just connect you to the digital world, but elevates your presence within it.
+            Where sound meets sensation. Experience our HUX QUANTUM earbuds and HUX NEXUS rings - wearable tech that doesn't just connect you to the digital world, but elevates your presence within it.
           </motion.p>
           
           <motion.div 
@@ -62,10 +63,10 @@ const EnhancedHeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <Button className="bg-viveon-red hover:bg-viveon-red/80 text-white px-8 py-6 text-lg font-medium tracking-wide neon-border border border-viveon-red">
-              EXPLORE EARBUDS
+              HUX QUANTUM EARBUDS
             </Button>
             <Button variant="outline" className="border-viveon-neon-blue text-viveon-neon-blue hover:bg-viveon-neon-blue/10 px-8 py-6 text-lg font-medium tracking-wide group neon-border">
-              DISCOVER RINGS
+              HUX NEXUS RINGS
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
@@ -83,13 +84,13 @@ const EnhancedHeroSection: React.FC = () => {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-red to-viveon-neon-purple rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
               <div className="relative bg-black rounded-xl overflow-hidden">
                 <img 
-                  src="/lovable-uploads/ae7d9563-090c-483c-83fc-da6455eefaaa.png" 
-                  alt="VIVEON Smart Ring Collection" 
+                  src="/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png" 
+                  alt="HUX Smart Ring Collection" 
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-                  <h3 className="text-white text-xl font-bold">NEXUS RING</h3>
-                  <p className="text-viveon-neon-blue mt-1">Technology at your fingertips</p>
+                  <h3 className="text-white text-xl font-bold">HUX NEXUS PRO</h3>
+                  <p className="text-viveon-neon-blue mt-1">Next-gen wearable technology</p>
                 </div>
               </div>
             </motion.div>
@@ -104,12 +105,12 @@ const EnhancedHeroSection: React.FC = () => {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-neon-blue to-viveon-neon-purple rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
               <div className="relative bg-black rounded-xl overflow-hidden">
                 <img 
-                  src="/lovable-uploads/3eebc2bb-d694-4ba4-b8a5-9a4a6cb23287.png" 
-                  alt="VIVEON Quantum Earbuds" 
+                  src="/lovable-uploads/677085e7-aad4-423e-8673-b7c52b1080c3.png" 
+                  alt="HUX QUANTUM PRO Earbuds" 
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-                  <h3 className="text-white text-xl font-bold">QUANTUM EARBUDS</h3>
+                  <h3 className="text-white text-xl font-bold">HUX QUANTUM PRO</h3>
                   <p className="text-viveon-neon-blue mt-1">Immersive audio experience</p>
                 </div>
               </div>
@@ -125,12 +126,12 @@ const EnhancedHeroSection: React.FC = () => {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-neon-purple to-viveon-neon-blue rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
               <div className="relative bg-black rounded-xl overflow-hidden">
                 <img 
-                  src="/lovable-uploads/148630aa-7dc0-48ab-8e8a-206789faeea5.png" 
-                  alt="VIVEON Earbuds Premium Collection" 
+                  src="/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png" 
+                  alt="HUX Earbuds Premium Collection" 
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-                  <h3 className="text-white text-xl font-bold">ELITE AUDIO</h3>
+                  <h3 className="text-white text-xl font-bold">HUX SONIC ELITE</h3>
                   <p className="text-viveon-neon-blue mt-1">Crystal clear sound</p>
                 </div>
               </div>

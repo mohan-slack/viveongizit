@@ -13,14 +13,14 @@ const AboutSection: React.FC = () => {
               <div className="absolute -inset-1 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur-md opacity-50"></div>
               <div className="relative bg-black rounded-2xl overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1606904825846-f8a1678eee35?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-                  alt="Viveon Technology" 
+                  src="/lovable-uploads/6c2a0bec-beee-4711-8b62-ab7cdc642158.png" 
+                  alt="HUX Technology by Viveon" 
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="text-viveon-red font-bold tracking-wider">VIVEON</span>
-                  <h3 className="text-white text-2xl font-bold tracking-tight">The Future of Wearable Technology</h3>
+                  <span className="text-viveon-red font-bold tracking-wider">HUX™</span>
+                  <h3 className="text-white text-2xl font-bold tracking-tight">By Viveon Gizit Private Limited</h3>
                 </div>
               </div>
             </div>
@@ -31,15 +31,15 @@ const AboutSection: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-6 tracking-tight">Pioneering the Next Generation of <span className="gradient-text">Wearable Tech</span></h2>
             
             <p className="text-gray-300 mb-6 font-light tracking-wide">
-              At VIVEON, we believe that technology should not only be powerful but also seamlessly integrated into your lifestyle. Founded in 2022, we've been pushing the boundaries of what's possible in audio and wearable technology.
+              At Viveon Gizit Private Limited, we believe that technology should not only be powerful but also seamlessly integrated into your lifestyle. Our flagship brand HUX™ represents our commitment to innovation and excellence in wearable technology.
             </p>
             
             <p className="text-gray-300 mb-6 font-light tracking-wide">
-              Our team of engineers, designers, and audio experts work tirelessly to create products that combine cutting-edge technology with sleek, minimalist design. We're committed to developing devices that enhance your daily life without getting in the way.
+              Founded in 2022, our team of engineers, designers, and audio experts work tirelessly to create products that combine cutting-edge technology with sleek, minimalist design. The HUX™ line embodies our vision of developing devices that enhance your daily life without getting in the way.
             </p>
             
             <p className="text-gray-300 mb-8 font-light tracking-wide">
-              From our state-of-the-art earbuds that deliver unparalleled sound quality to our smart rings that put the power of technology at your fingertips, every VIVEON product is crafted with precision, innovation, and attention to detail.
+              From our state-of-the-art HUX QUANTUM earbuds that deliver unparalleled sound quality to our HUX NEXUS smart rings that put the power of technology at your fingertips, every product is crafted with precision, innovation, and attention to detail.
             </p>
             
             <div className="flex flex-wrap gap-6">
