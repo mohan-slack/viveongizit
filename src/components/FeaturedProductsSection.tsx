@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ProductCard from './ProductCard';
 import { Button } from './ui/button';
@@ -28,7 +27,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX PULSE ELITE",
       category: "WIRELESS EARBUDS",
       price: "$179.99",
-      imagePath: "/lovable-uploads/23ad61cc-c2c4-4ea6-a7cf-c844678ec0ef.png", // Earbuds image verified
+      imagePath: "/lovable-uploads/6c2a0bec-beee-4711-8b62-ab7cdc642158.png", // Changed from 23ad61cc... to different earbuds image
       color: "purple" as const,
     },
   ];
