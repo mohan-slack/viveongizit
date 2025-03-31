@@ -111,7 +111,7 @@ const EnhancedHeroSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
                   <h3 className="text-white text-xl font-bold">HUX QUANTUM PRO</h3>
-                  <p className="text-viveon-neon-blue/80 mt-1">Immersive audio experience</p>
+                  <p className="text-viveon-neon-blue/80 mt-1">Wear the Future of Wellness</p>
                 </div>
               </div>
             </motion.div>
