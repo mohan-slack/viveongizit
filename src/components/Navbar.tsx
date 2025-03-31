@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import Logo from './Logo';
@@ -38,7 +37,7 @@ const Navbar: React.FC = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Logo size={isScrolled ? "small" : "medium"} showSoundWaves={!isScrolled} />
+        <Logo size={isScrolled ? "small" : "medium"} showSoundWaves={false} />
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8">
