@@ -13,11 +13,11 @@ const Logo: React.FC<LogoProps> = ({
   size = 'medium', 
   showSoundWaves = true 
 }) => {
-  // Size mappings
+  // Size mappings - increased sizes for better visibility
   const sizeClasses = {
-    small: "h-6",
-    medium: "h-8",
-    large: "h-12",
+    small: "h-8",
+    medium: "h-10",
+    large: "h-16",
   };
 
   return (

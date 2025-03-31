@@ -15,7 +15,7 @@ const HeroSection: React.FC = () => {
             <img 
               src="/lovable-uploads/8272919f-a475-4fc1-bc45-434453c53e5f.png" 
               alt="VIVEON Logo" 
-              className="w-3/4 max-w-md mx-auto" 
+              className="w-4/5 max-w-lg mx-auto" /* Increased from w-3/4 to w-4/5 and max-w-md to max-w-lg */
             />
           </div>
           
@@ -54,12 +54,12 @@ const HeroSection: React.FC = () => {
             </div>
             
             {/* Main VIVEON Logo */}
-            <div className="w-48 md:w-64 h-48 md:h-64 bg-black/50 backdrop-blur-lg rounded-full p-6 border border-viveon-red/50 animate-pulse">
+            <div className="w-56 md:w-72 h-56 md:h-72 bg-black/50 backdrop-blur-lg rounded-full p-6 border border-viveon-red/50 animate-pulse">
               <div className="w-full h-full rounded-full bg-gradient-to-br from-viveon-dark to-black flex items-center justify-center">
                 <img 
                   src="/lovable-uploads/8272919f-a475-4fc1-bc45-434453c53e5f.png" 
                   alt="VIVEON Logo" 
-                  className="w-3/4 h-auto"
+                  className="w-4/5 h-auto" /* Increased from w-3/4 to w-4/5 */
                 />
               </div>
             </div>
