@@ -43,8 +43,8 @@ const EnhancedHeroSection: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <span className="block text-white font-light tracking-wider letter-spacing-wide text-lg md:text-xl mb-1">INTRODUCING THE FUTURE OF TECH</span>
-            <span className="bg-gradient-to-r from-viveon-red/90 via-viveon-neon-purple/80 to-viveon-neon-blue/80 bg-clip-text text-transparent font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]">HUX™</span>
-            <span className="block text-sm text-viveon-neon-blue/80 mt-2">by Viveon Gizit Private Limited</span>
+            <span className="bg-gradient-to-r from-viveon-red/90 via-viveon-neon-purple/80 to-viveon-neon-blue/80 bg-clip-text text-transparent font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]">HUX<span className="text-white text-[0.25em] align-top leading-none">™</span></span>
+            <span className="block text-sm text-viveon-neon-blue/80 mt-2">by Viveon Gizit Pvt Ltd</span>
           </motion.h1>
           
           <motion.p 
