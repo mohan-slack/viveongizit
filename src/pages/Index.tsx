@@ -1,12 +1,13 @@
 
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
-import HeroSection from '@/components/HeroSection';
+import EnhancedHeroSection from '@/components/EnhancedHeroSection';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
 import FeaturesList from '@/components/FeaturesList';
 import AboutSection from '@/components/AboutSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
+import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
   // Add smooth scrolling for anchor links
@@ -33,10 +34,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-viveon-darker text-white">
       <Navbar />
-      <HeroSection />
+      <EnhancedHeroSection />
       <FeaturedProductsSection />
       <FeaturesList />
       <AboutSection />
+      <ContactSection />
       <CallToAction />
       <Footer />
     </div>
