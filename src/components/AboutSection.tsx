@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from './ui/button';
 import AboutFounders from './AboutFounders';
@@ -20,7 +19,7 @@ const AboutSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <span className="text-viveon-red font-bold tracking-wider">HUX<span className="text-white text-[0.5em] align-top leading-none">™</span></span>
-                  <h3 className="text-white text-2xl font-bold tracking-tight">By Viveon Gizit Pvt Ltd</h3>
+                  <h3 className="text-white text-2xl font-bold tracking-tight">By Viveon Gizit Pvt. Ltd.</h3>
                 </div>
               </div>
             </div>
@@ -76,7 +75,6 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
         
-        {/* Adding founders section */}
         <AboutFounders />
       </div>
     </div>

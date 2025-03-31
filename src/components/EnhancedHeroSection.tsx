@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -21,14 +20,12 @@ const EnhancedHeroSection: React.FC = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-viveon-darker">
-      {/* Background particles effect */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-viveon-red/10 rounded-full filter blur-3xl opacity-30 animate-float" style={{ animationDelay: '0.5s' }}></div>
         <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-viveon-neon-blue/10 rounded-full filter blur-3xl opacity-30 animate-float" style={{ animationDelay: '1.2s' }}></div>
         <div className="absolute top-1/2 right-1/3 w-80 h-80 bg-viveon-neon-purple/10 rounded-full filter blur-3xl opacity-30 animate-float" style={{ animationDelay: '0.8s' }}></div>
       </div>
       
-      {/* Grid lines for futuristic effect */}
       <div className="absolute inset-0 z-0 opacity-10" style={{ 
         backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(255, 58, 47, 0.15) 25%, rgba(255, 58, 47, 0.15) 26%, transparent 27%, transparent 74%, rgba(255, 58, 47, 0.15) 75%, rgba(255, 58, 47, 0.15) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.15) 25%, rgba(0, 255, 255, 0.15) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.15) 75%, rgba(0, 255, 255, 0.15) 76%, transparent 77%, transparent)',
         backgroundSize: '50px 50px'
@@ -44,7 +41,7 @@ const EnhancedHeroSection: React.FC = () => {
           >
             <span className="block text-white font-light tracking-wider letter-spacing-wide text-lg md:text-xl mb-1">INTRODUCING THE FUTURE OF TECH</span>
             <span className="bg-gradient-to-r from-viveon-red/90 via-viveon-neon-purple/80 to-viveon-neon-blue/80 bg-clip-text text-transparent font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]">HUX<span className="text-white text-[0.25em] align-top leading-none">™</span></span>
-            <span className="block text-sm text-viveon-neon-blue/80 mt-2">by Viveon Gizit Pvt Ltd</span>
+            <span className="block text-sm text-viveon-neon-blue/80 mt-2">by Viveon Gizit Pvt. Ltd.</span>
           </motion.h1>
           
           <motion.p 
@@ -74,7 +71,6 @@ const EnhancedHeroSection: React.FC = () => {
         
         <div ref={parallaxRef} className="relative mt-12 flex justify-center items-center">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Smart Ring Display */}
             <motion.div 
               className="relative group"
               initial={{ opacity: 0, x: -50 }}
@@ -95,7 +91,6 @@ const EnhancedHeroSection: React.FC = () => {
               </div>
             </motion.div>
             
-            {/* Earbuds in Case */}
             <motion.div 
               className="relative group row-span-2 md:mt-[-80px]"
               initial={{ opacity: 0, y: 50 }}
@@ -116,7 +111,6 @@ const EnhancedHeroSection: React.FC = () => {
               </div>
             </motion.div>
             
-            {/* Earbuds Outside Case */}
             <motion.div 
               className="relative group"
               initial={{ opacity: 0, x: 50 }}
@@ -140,7 +134,6 @@ const EnhancedHeroSection: React.FC = () => {
         </div>
       </div>
       
-      {/* Bottom Gradient */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-viveon-darker to-transparent z-10"></div>
     </div>
   );
