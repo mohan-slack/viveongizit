@@ -1,25 +1,35 @@
 
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Briefcase, Cpu, Settings } from 'lucide-react';
 
 interface FounderProps {
   name: string;
   role: string;
-  image: string;
   description: string;
 }
 
-const FounderCard: React.FC<FounderProps> = ({ name, role, image, description }) => {
+const FounderCard: React.FC<FounderProps> = ({ name, role, description }) => {
+  const getRoleIcon = () => {
+    switch (role) {
+      case "CEO":
+        return <Briefcase className="h-12 w-12 text-viveon-neon-blue" />;
+      case "CTO":
+        return <Cpu className="h-12 w-12 text-viveon-red" />;
+      case "COO":
+        return <Settings className="h-12 w-12 text-viveon-neon-purple" />;
+      default:
+        return <Briefcase className="h-12 w-12 text-viveon-neon-blue" />;
+    }
+  };
+
   return (
     <div className="relative group">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
       <div className="relative bg-black rounded-xl overflow-hidden">
-        <div className="p-6 flex flex-col items-center">
-          <Avatar className="w-32 h-32 mb-4 border-2 border-opacity-20 border-viveon-neon-blue">
-            <AvatarImage src={image} alt={name} className="object-cover" />
-            <AvatarFallback className="bg-viveon-darker">
-              {name.split(' ').map(n => n[0]).join('')}
-            </AvatarFallback>
+        <div className="p-8 flex flex-col items-center">
+          <Avatar className="w-24 h-24 mb-6 border-2 border-opacity-20 border-viveon-neon-blue flex items-center justify-center bg-viveon-darker">
+            {getRoleIcon()}
           </Avatar>
           
           <h3 className="text-white text-xl font-bold">
@@ -39,19 +49,16 @@ const AboutFounders: React.FC = () => {
     {
       name: "Siva Sundar K",
       role: "CEO",
-      image: "/lovable-uploads/677085e7-aad4-423e-8673-b7c52b1080c3.png", // Abstract digital leadership visualization
       description: "Visionary leader driving VIVEON's innovation strategy and global expansion with over 15 years of experience in wearable technology."
     },
     {
       name: "G Surya Reddy",
       role: "COO",
-      image: "/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png", // Data visualization for operations
       description: "Operations expert optimizing our manufacturing processes and supply chain to deliver exceptional quality products."
     },
     {
       name: "T Mohan Reddy",
       role: "CTO",
-      image: "/lovable-uploads/ae7d9563-090c-483c-83fc-da6455eefaaa.png", // Circuit patterns representing technology
       description: "Technical genius behind HUX's proprietary technology with multiple patents in wearable audio and smart device innovation."
     }
   ];
