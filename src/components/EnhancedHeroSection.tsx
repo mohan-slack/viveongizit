@@ -1,7 +1,9 @@
+
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { motion } from 'framer-motion';
+import HuxLogo from './HuxLogo';
 
 const EnhancedHeroSection: React.FC = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
@@ -42,7 +44,9 @@ const EnhancedHeroSection: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <span className="block text-white font-light tracking-wider letter-spacing-wide text-lg md:text-xl mb-1">INTRODUCING THE FUTURE OF TECH</span>
-            <span className="bg-gradient-to-r from-viveon-red/90 via-viveon-neon-purple/80 to-viveon-neon-blue/80 bg-clip-text text-transparent font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)] relative">HU<span className="relative">X<span className="absolute -top-6 -right-4 text-white text-[0.3em]">™</span></span></span>
+            <span className="bg-gradient-to-r from-viveon-red/90 via-viveon-neon-purple/80 to-viveon-neon-blue/80 bg-clip-text text-transparent drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)] relative">
+              <HuxLogo size="xl" />
+            </span>
             <span className="block text-sm text-viveon-neon-blue/80 mt-2">by Viveon Gizit Private Limited</span>
           </motion.h1>
           
