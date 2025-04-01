@@ -4,10 +4,12 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import DynamicBackground from '@/components/DynamicBackground';
 import InteractiveFeatureShowcase from '@/components/features/InteractiveFeatureShowcase';
+import { FeatureProps } from '@/components/features/FeatureTypes';
 
 // Combine only the 6 required features from both product types
-const featuresData = [
+const featuresData: Omit<FeatureProps, 'index' | 'selected' | 'onSelect' | 'onDeselect'>[] = [
   {
+    id: 'earbuds-fast-charging',
     iconName: "Zap",
     emoji: "⚡",
     title: "Lightning-Fast Charging",
@@ -15,9 +17,10 @@ const featuresData = [
     color: "border-viveon-red/30 bg-viveon-red/5",
     glowColor: "bg-viveon-red",
     additionalInfo: "Our proprietary fast-charging technology uses advanced power delivery algorithms to safely maximize battery capacity in record time.",
-    category: "earbuds"
+    category: "earbuds" as const
   },
   {
+    id: 'earbuds-noise-cancellation',
     iconName: "Headphones",
     emoji: "🎧",
     title: "Immersive Noise Cancellation",
@@ -25,9 +28,10 @@ const featuresData = [
     color: "border-viveon-neon-blue/30 bg-viveon-neon-blue/5",
     glowColor: "bg-viveon-neon-blue",
     additionalInfo: "Utilizing 8 microphones and AI-powered sound processing to create a bubble of silence around you, with adjustable transparency levels.",
-    category: "earbuds"
+    category: "earbuds" as const
   },
   {
+    id: 'earbuds-spatial-audio',
     iconName: "Music",
     emoji: "🏟️",
     title: "3D Spatial Audio",
@@ -35,9 +39,10 @@ const featuresData = [
     color: "border-purple-500/30 bg-purple-500/5",
     glowColor: "bg-purple-500",
     additionalInfo: "Dynamic head tracking adjusts sound fields in real-time, creating an immersive audio environment that adapts to your movement.",
-    category: "earbuds"
+    category: "earbuds" as const
   },
   {
+    id: 'ring-health-monitoring',
     iconName: "Heart",
     emoji: "❤️",
     title: "Advanced Health Monitoring",
@@ -45,9 +50,10 @@ const featuresData = [
     color: "border-red-500/30 bg-red-500/5",
     glowColor: "bg-red-500",
     additionalInfo: "Clinical-grade sensors provide continuous monitoring with 99.8% accuracy compared to medical devices.",
-    category: "smartrings"
+    category: "smartrings" as const
   },
   {
+    id: 'ring-gesture-control',
     iconName: "Hand",
     emoji: "🤟",
     title: "Gesture Control",
@@ -55,9 +61,10 @@ const featuresData = [
     color: "border-amber-500/30 bg-amber-500/5",
     glowColor: "bg-amber-500",
     additionalInfo: "Advanced motion sensors recognize 28 distinct gestures that can be customized to control your entire smart home ecosystem.",
-    category: "smartrings"
+    category: "smartrings" as const
   },
   {
+    id: 'ring-nfc-payments',
     iconName: "CreditCard",
     emoji: "💳",
     title: "NFC Payments",
@@ -65,7 +72,7 @@ const featuresData = [
     color: "border-indigo-500/30 bg-indigo-500/5",
     glowColor: "bg-indigo-500",
     additionalInfo: "Secure element technology meets highest banking standards with support for Visa, Mastercard, and major digital wallet platforms.",
-    category: "smartrings"
+    category: "smartrings" as const
   }
 ];
 

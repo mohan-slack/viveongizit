@@ -3,6 +3,7 @@ import { FeatureProps } from './FeatureTypes';
 
 export const getFeaturesData = (): Omit<FeatureProps, 'index'>[] => [
   {
+    id: 'feature-1',
     iconName: "Zap",
     emoji: "⚡",
     title: "Lightning-Fast Charging",
@@ -11,6 +12,7 @@ export const getFeaturesData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-viveon-red",
   },
   {
+    id: 'feature-2',
     iconName: "Headphones",
     emoji: "🎧",
     title: "Immersive Noise Cancellation",
@@ -19,6 +21,7 @@ export const getFeaturesData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-viveon-neon-blue",
   },
   {
+    id: 'feature-3',
     iconName: "Wifi",
     emoji: "📡",
     title: "Instant Bluetooth 5.4 Connectivity",
@@ -27,6 +30,7 @@ export const getFeaturesData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-viveon-neon-purple",
   },
   {
+    id: 'feature-4',
     iconName: "Battery",
     emoji: "🔋",
     title: "Marathon Battery Life",

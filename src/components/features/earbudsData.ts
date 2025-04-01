@@ -3,6 +3,7 @@ import { FeatureProps } from './FeatureTypes';
 
 export const getEarbudsData = (): Omit<FeatureProps, 'index'>[] => [
   {
+    id: 'earbuds-1',
     iconName: "Zap",
     emoji: "⚡",
     title: "Lightning-Fast Charging",
@@ -13,6 +14,7 @@ export const getEarbudsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "earbuds"
   },
   {
+    id: 'earbuds-2',
     iconName: "Headphones",
     emoji: "🎧",
     title: "Immersive Noise Cancellation",
@@ -23,6 +25,7 @@ export const getEarbudsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "earbuds"
   },
   {
+    id: 'earbuds-3',
     iconName: "Wifi",
     emoji: "📡",
     title: "Seamless Connectivity",
@@ -33,6 +36,7 @@ export const getEarbudsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "earbuds"
   },
   {
+    id: 'earbuds-4',
     iconName: "Battery",
     emoji: "🔋",
     title: "Extended Battery",
@@ -43,6 +47,7 @@ export const getEarbudsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "earbuds"
   },
   {
+    id: 'earbuds-5',
     iconName: "Music",
     emoji: "🏟️",
     title: "3D Spatial Audio",
@@ -53,6 +58,7 @@ export const getEarbudsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "earbuds"
   },
   {
+    id: 'earbuds-6',
     iconName: "Mic",
     emoji: "🎙️",
     title: "Voice Assistant Integration",
@@ -63,6 +69,7 @@ export const getEarbudsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "earbuds"
   },
   {
+    id: 'earbuds-7',
     iconName: "Droplets",
     emoji: "💧",
     title: "Sweat & Water Resistance",

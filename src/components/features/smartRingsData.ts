@@ -3,6 +3,7 @@ import { FeatureProps } from './FeatureTypes';
 
 export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
   {
+    id: 'ring-1',
     iconName: "Heart",
     emoji: "❤️‍🔥",
     title: "Advanced Health Monitoring",
@@ -13,6 +14,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "smartrings"
   },
   {
+    id: 'ring-2',
     iconName: "Navigation",
     emoji: "📍",
     title: "GPS Tracking",
@@ -23,6 +25,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "smartrings"
   },
   {
+    id: 'ring-3',
     iconName: "Hand",
     emoji: "🤟",
     title: "Gesture Control",
@@ -33,6 +36,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "smartrings"
   },
   {
+    id: 'ring-4',
     iconName: "CreditCard",
     emoji: "💳",
     title: "NFC Payments",
@@ -43,6 +47,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "smartrings"
   },
   {
+    id: 'ring-5',
     iconName: "Bell",
     emoji: "🔔",
     title: "Haptic Notifications",
@@ -53,6 +58,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "smartrings"
   },
   {
+    id: 'ring-6',
     iconName: "Brain",
     emoji: "🧠",
     title: "AI-Based Activity Insights",
@@ -63,6 +69,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "smartrings"
   },
   {
+    id: 'ring-7',
     iconName: "Shield",
     emoji: "🔐",
     title: "Ultra-Secure Encryption",
