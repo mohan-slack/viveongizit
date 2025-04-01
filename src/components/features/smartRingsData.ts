@@ -78,5 +78,27 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-sky-400",
     additionalInfo: "256-bit AES encryption with biometric authentication ensures your data remains completely private and secure.",
     category: "smartrings"
+  },
+  {
+    id: 'ring-8',
+    iconName: "Hand",
+    emoji: "👆",
+    title: "Multifactor Authentication",
+    description: "Use your ring as a security key for password-free account access.",
+    color: "border-purple-400/30 bg-purple-400/5",
+    glowColor: "bg-purple-400",
+    additionalInfo: "Acts as a FIDO2-compliant security key, allowing you to securely log into accounts and devices with a simple tap of your finger.",
+    category: "smartrings"
+  },
+  {
+    id: 'ring-9',
+    iconName: "Battery",
+    emoji: "🔋",
+    title: "Extended Battery Life",
+    description: "Enjoy up to 7 days of continuous use on a single charge.",
+    color: "border-green-500/30 bg-green-500/5",
+    glowColor: "bg-green-500",
+    additionalInfo: "Energy-efficient components and intelligent power management optimize battery usage based on your daily patterns and activities.",
+    category: "smartrings"
   }
 ];
