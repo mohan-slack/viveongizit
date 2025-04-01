@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from './ui/button';
 import AboutFounders from './AboutFounders';
@@ -38,7 +39,7 @@ const AboutSection: React.FC = () => {
             <div className="flex flex-wrap gap-6">
               <div className="flex items-center">
                 <div className="w-16 h-16 rounded-full bg-viveon-red/10 flex items-center justify-center mr-4">
-                  <span className="text-viveon-red font-bold text-2xl">50+</span>
+                  <span className="text-viveon-red font-bold text-2xl">15+</span>
                 </div>
                 <div>
                   <p className="text-white font-bold">Engineers</p>
@@ -48,7 +49,7 @@ const AboutSection: React.FC = () => {
               
               <div className="flex items-center">
                 <div className="w-16 h-16 rounded-full bg-viveon-neon-blue/10 flex items-center justify-center mr-4">
-                  <span className="text-viveon-neon-blue font-bold text-2xl">12</span>
+                  <span className="text-viveon-neon-blue font-bold text-2xl">04</span>
                 </div>
                 <div>
                   <p className="text-white font-bold">Patents</p>
