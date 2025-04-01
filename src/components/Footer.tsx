@@ -10,28 +10,9 @@ const Footer: React.FC = () => {
     <footer className="bg-black py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* First column */}
           <div>
-            <Logo className="mb-6" size="large" showSoundWaves={false} />
-            <p className="text-gray-400 mb-6 font-light tracking-wide">
-              Experience the next generation of wearable technology with our cutting-edge earbuds and smart rings.
-            </p>
-            <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
-                <Facebook size={20} />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
-                <Twitter size={20} />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
-                <Instagram size={20} />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
-                <Youtube size={20} />
-              </Button>
-            </div>
-          </div>
-          
-          <div>
+            {/* Logo and copy moved to the bottom */}
             <h3 className="text-white text-lg font-bold mb-6 tracking-tight">Quick Links</h3>
             <ul className="space-y-3">
               <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Home</a></li>
@@ -42,6 +23,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           
+          {/* Second column */}
           <div>
             <h3 className="text-white text-lg font-bold mb-6 tracking-tight">Support</h3>
             <ul className="space-y-3">
@@ -53,6 +35,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           
+          {/* Third column */}
           <div>
             <h3 className="text-white text-lg font-bold mb-6 tracking-tight">Newsletter</h3>
             <p className="text-gray-400 mb-4 font-light">Subscribe to get special offers, free giveaways, and product launches.</p>
@@ -68,9 +51,37 @@ const Footer: React.FC = () => {
             </div>
             <p className="text-gray-500 text-sm">By subscribing, you agree to our Privacy Policy</p>
           </div>
+          
+          {/* Fourth column */}
+          <div>
+            <h3 className="text-white text-lg font-bold mb-6 tracking-tight">Social Media</h3>
+            <div className="flex flex-wrap gap-3">
+              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
+                <Facebook size={20} />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
+                <Twitter size={20} />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
+                <Instagram size={20} />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
+                <Youtube size={20} />
+              </Button>
+            </div>
+          </div>
         </div>
         
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        {/* Logo and tagline bottom section */}
+        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-center gap-6">
+          <Logo className="mb-4 md:mb-0" size="medium" showSoundWaves={false} />
+          <p className="text-gray-400 font-light tracking-wide text-center md:text-left max-w-xl">
+            Experience the next generation of wearable technology with our cutting-edge earbuds and smart rings.
+          </p>
+        </div>
+        
+        {/* Copyright notice */}
+        <div className="mt-8 text-center">
           <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} VIVEON. All rights reserved.</p>
         </div>
       </div>
