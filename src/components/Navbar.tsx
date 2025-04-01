@@ -21,12 +21,12 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'EARBUDS', href: '#earbuds' },
-    { name: 'SMART RINGS', href: '#rings' },
-    { name: 'FEATURES', href: '#features' },
-    { name: 'ABOUT', href: '#about' },
-    { name: 'CONTACT', href: '#contact' }
+  const navigationItems = [
+    { label: "Home", href: "/" },
+    { label: "Products", href: "#products" },
+    { label: "Features", href: "/features" },
+    { label: "About", href: "#about" },
+    { label: "Contact", href: "#contact" }
   ];
 
   return (
@@ -41,13 +41,13 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8">
-          {navLinks.map((link) => (
-            <li key={link.name}>
+          {navigationItems.map((item) => (
+            <li key={item.label}>
               <a 
-                href={link.href}
+                href={item.href}
                 className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
               >
-                {link.name}
+                {item.label}
               </a>
             </li>
           ))}
@@ -79,14 +79,14 @@ const Navbar: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-viveon-dark/95 backdrop-blur-lg animate-fadeIn">
           <ul className="py-4 px-4 flex flex-col">
-            {navLinks.map((link) => (
-              <li key={link.name} className="py-2 border-b border-gray-800">
+            {navigationItems.map((item) => (
+              <li key={item.label} className="py-2 border-b border-gray-800">
                 <a 
-                  href={link.href}
+                  href={item.href}
                   className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {link.name}
+                  {item.label}
                 </a>
               </li>
             ))}

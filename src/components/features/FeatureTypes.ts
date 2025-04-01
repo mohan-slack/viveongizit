@@ -11,4 +11,13 @@ export interface FeatureProps {
   glowColor: string;
   additionalInfo?: string;
   category?: 'earbuds' | 'smartrings';
+  selected?: boolean;
+  onSelect?: (id: string) => void;
+  onDeselect?: (id: string) => void;
+  id: string;
+}
+
+export interface InteractiveFeatureProps {
+  features: Omit<FeatureProps, 'index' | 'selected' | 'onSelect' | 'onDeselect' | 'id'>[];
+  maxVisible?: number;
 }
