@@ -4,9 +4,13 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { FeatureProps } from './FeatureTypes';
+import * as LucideIcons from 'lucide-react';
 
-const FeatureCard = ({ icon, emoji, title, description, index, color, glowColor }: FeatureProps) => {
+const FeatureCard = ({ iconName, emoji, title, description, index, color, glowColor }: FeatureProps) => {
   const isMobile = useIsMobile();
+  
+  // Get the icon component dynamically
+  const IconComponent = (LucideIcons as any)[iconName];
   
   // Animations for each card
   const containerVariants = {
@@ -89,7 +93,10 @@ const FeatureCard = ({ icon, emoji, title, description, index, color, glowColor 
               className={`w-14 h-14 rounded-xl flex items-center justify-center backdrop-blur-sm ${color}`}
               variants={iconVariants}
             >
-              {icon}
+              {IconComponent && <IconComponent size={24} className={iconName === "Zap" ? "text-viveon-red" : 
+                                                                   iconName === "Headphones" ? "text-viveon-neon-blue" :
+                                                                   iconName === "Wifi" ? "text-viveon-neon-purple" :
+                                                                   "text-green-500"} />}
             </motion.div>
             
             <span className="text-2xl" aria-hidden="true">{emoji}</span>

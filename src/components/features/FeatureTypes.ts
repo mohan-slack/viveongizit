@@ -1,6 +1,8 @@
 
+import React from 'react';
+
 export interface FeatureProps {
-  icon: React.ReactNode;
+  iconName: string;
   emoji: string;
   title: string;
   description: string;

@@ -1,11 +1,9 @@
 
-import React from 'react';
-import { Zap, Headphones, Wifi, Battery } from 'lucide-react';
 import { FeatureProps } from './FeatureTypes';
 
 export const getFeaturesData = (): Omit<FeatureProps, 'index'>[] => [
   {
-    icon: <Zap size={24} className="text-viveon-red" />,
+    iconName: "Zap",
     emoji: "⚡",
     title: "Lightning-Fast Charging",
     description: "Power up in a flash! Just 15 minutes of charging gives you 8 hours of uninterrupted playtime.",
@@ -13,7 +11,7 @@ export const getFeaturesData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-viveon-red",
   },
   {
-    icon: <Headphones size={24} className="text-viveon-neon-blue" />,
+    iconName: "Headphones",
     emoji: "🎧",
     title: "Immersive Noise Cancellation",
     description: "Block distractions, dive into pure audio bliss, and experience music like never before.",
@@ -21,7 +19,7 @@ export const getFeaturesData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-viveon-neon-blue",
   },
   {
-    icon: <Wifi size={24} className="text-viveon-neon-purple" />,
+    iconName: "Wifi",
     emoji: "📡",
     title: "Instant Bluetooth 5.4 Connectivity",
     description: "Seamlessly pair with any device and enjoy ultra-stable, lag-free connections.",
@@ -29,7 +27,7 @@ export const getFeaturesData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-viveon-neon-purple",
   },
   {
-    icon: <Battery size={24} className="text-green-500" />,
+    iconName: "Battery",
     emoji: "🔋",
     title: "Marathon Battery Life",
     description: "Go the distance with up to 36 hours of total playtime, including the charging case.",
