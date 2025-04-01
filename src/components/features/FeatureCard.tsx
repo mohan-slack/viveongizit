@@ -43,7 +43,7 @@ const FeatureCard = ({ iconName, emoji, title, description, index, color, glowCo
         duration: 0.5,
         ease: "easeInOut",
         repeat: Infinity,
-        repeatType: "mirror"
+        repeatType: "mirror" // Fixed: Using a valid repeatType value
       }
     }
   };
