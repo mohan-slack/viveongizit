@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Badge } from './ui/badge';
 import { 
@@ -14,6 +14,7 @@ import {
   Lightbulb, 
   Binary
 } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface FounderProps {
   name: string;
@@ -36,6 +37,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const isMobile = useIsMobile();
   
   // Determine the appropriate icon based on role
   const getRoleIcon = () => {
@@ -116,12 +118,12 @@ const FounderFlipCard: React.FC<FounderProps> = ({
   return (
     <div 
       className="h-full perspective-1000"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => !isMobile && setIsHovered(true)}
+      onMouseLeave={() => !isMobile && setIsHovered(false)}
       onClick={flipCard}
     >
       <motion.div
-        className="relative h-full w-full transform-gpu cursor-pointer rounded-2xl transition-all duration-700 preserve-3d"
+        className="relative h-full w-full transform-gpu cursor-pointer rounded-2xl transition-all duration-500 preserve-3d"
         initial={false}
         animate={{
           rotateY: isFlipped ? 180 : 0,
@@ -129,8 +131,8 @@ const FounderFlipCard: React.FC<FounderProps> = ({
         }}
         transition={{
           type: "spring",
-          stiffness: 300,
-          damping: 15,
+          stiffness: 200,
+          damping: 20,
         }}
       >
         {/* Front Side of Card */}
@@ -167,9 +169,9 @@ const FounderFlipCard: React.FC<FounderProps> = ({
             <div className="absolute inset-0 bg-grid-lines opacity-10" />
             
             {/* Front Card Content */}
-            <div className="relative flex flex-col items-center p-8 h-full">
+            <div className="relative flex flex-col items-center p-4 md:p-8 h-full">
               <motion.div
-                className="absolute top-6 right-6 bg-viveon-darker/80 backdrop-blur-md text-white font-bold py-1 px-3 rounded-full text-sm border border-white/10 shadow-lg"
+                className="absolute top-4 md:top-6 right-4 md:right-6 bg-viveon-darker/80 backdrop-blur-md text-white font-bold py-1 px-2 md:px-3 rounded-full text-xs md:text-sm border border-white/10 shadow-lg"
                 animate={{
                   y: isHovered ? [0, -5, 0] : 0,
                 }}
@@ -184,7 +186,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
               
               {/* Avatar with glowing effect */}
               <motion.div
-                className="relative mb-6"
+                className="relative mb-4 md:mb-6"
                 animate={{
                   y: isHovered ? [0, -8, 0] : 0,
                 }}
@@ -207,7 +209,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
                   }}
                 />
                 
-                <Avatar className="w-28 h-28 border-2 border-opacity-20 border-white flex items-center justify-center bg-viveon-darker shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                <Avatar className={`${isMobile ? 'w-20 h-20' : 'w-28 h-28'} border-2 border-opacity-20 border-white flex items-center justify-center bg-viveon-darker shadow-[0_0_15px_rgba(255,255,255,0.2)]`}>
                   <AvatarImage 
                     src={profileImage} 
                     alt={`${name} - ${role}`} 
@@ -220,7 +222,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
                 
                 {/* Role indicator */}
                 <motion.div 
-                  className={`absolute -bottom-3 left-1/2 transform -translate-x-1/2 py-1 px-4 rounded-full backdrop-blur-md border border-white/10 shadow-lg text-xs font-bold tracking-wide`}
+                  className={`absolute -bottom-3 left-1/2 transform -translate-x-1/2 py-1 px-3 md:px-4 rounded-full backdrop-blur-md border border-white/10 shadow-lg text-xs font-bold tracking-wide`}
                   style={{
                     backgroundColor: getRoleBadgeColor(),
                     color: getRoleTextColor()
@@ -243,7 +245,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
                 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-white text-xl font-bold tracking-tight">
+                <h3 className="text-white text-lg md:text-xl font-bold tracking-tight">
                   {name}
                 </h3>
                 
@@ -258,7 +260,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
               
               {/* Expertise badges */}
               <motion.div 
-                className="flex flex-wrap justify-center gap-2 mt-4"
+                className="flex flex-wrap justify-center gap-1 md:gap-2 mt-3 md:mt-4"
                 animate={{
                   y: isHovered ? -3 : 0,
                   opacity: isHovered ? 1 : 0.9,
@@ -269,7 +271,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
                   <Badge 
                     key={index} 
                     variant="glow" 
-                    className="py-1"
+                    className="py-0.5 md:py-1 text-xs md:text-sm"
                   >
                     {getExpertiseIcons()[index % 3]}
                     <span className="ml-1">{skill}</span>
@@ -279,7 +281,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
               
               {/* Description with fading effect */}
               <motion.p 
-                className="text-gray-300 mt-4 text-sm text-center font-light"
+                className="text-gray-300 mt-3 md:mt-4 text-xs md:text-sm text-center font-light"
                 animate={{
                   opacity: isHovered ? 1 : 0.8,
                 }}
@@ -290,7 +292,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
               
               {/* Flip instruction */}
               <motion.div 
-                className="mt-4 text-xs text-white/60"
+                className="mt-3 md:mt-4 text-xs text-white/60"
                 animate={{
                   opacity: isHovered ? [0.6, 1, 0.6] : 0.6,
                 }}
@@ -300,12 +302,12 @@ const FounderFlipCard: React.FC<FounderProps> = ({
                   ease: "easeInOut"
                 }}
               >
-                Click to see full profile
+                Tap to see full profile
               </motion.div>
               
               {/* Bottom highlight line */}
               <motion.div 
-                className={`h-1 self-center rounded-full mt-6 bg-gradient-to-r 
+                className={`h-1 self-center rounded-full mt-4 md:mt-6 bg-gradient-to-r 
                   ${role === "CEO" ? "from-viveon-red to-viveon-red/0" : 
                   role === "COO" ? "from-viveon-neon-purple to-viveon-neon-purple/0" : 
                   "from-viveon-neon-blue to-viveon-neon-blue/0"}`}
@@ -328,34 +330,34 @@ const FounderFlipCard: React.FC<FounderProps> = ({
           {/* Card container with glassmorphism effect */}
           <div className="relative h-full backdrop-blur-xl bg-black/60 border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex flex-col">
             {/* Back Card Content */}
-            <div className="relative flex flex-col p-8 h-full">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${getGlowColor()}`}>
+            <div className="relative flex flex-col p-4 md:p-8 h-full">
+              <div className="flex items-center space-x-3 md:space-x-4 mb-4 md:mb-6">
+                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center ${getGlowColor()}`}>
                   {getRoleIcon()}
                 </div>
                 
                 <div>
-                  <h3 className="text-white text-xl font-bold tracking-tight">
+                  <h3 className="text-white text-base md:text-xl font-bold tracking-tight">
                     {name}
                   </h3>
                   
-                  <div className={`text-sm font-medium`} style={{ color: getRoleTextColor() }}>
+                  <div className={`text-xs md:text-sm font-medium`} style={{ color: getRoleTextColor() }}>
                     {role}
                   </div>
                 </div>
               </div>
               
-              <div className="flex-grow overflow-auto text-white space-y-4">
-                <h4 className="font-bold text-lg">Profile</h4>
-                <p className="text-gray-300">{longDescription}</p>
+              <div className="flex-grow overflow-auto text-white space-y-3 md:space-y-4 text-sm md:text-base">
+                <h4 className="font-bold text-base md:text-lg">Profile</h4>
+                <p className="text-gray-300 text-xs md:text-sm">{longDescription}</p>
                 
-                <h4 className="font-bold text-lg">Areas of Expertise</h4>
-                <div className="flex flex-wrap gap-2">
+                <h4 className="font-bold text-base md:text-lg">Areas of Expertise</h4>
+                <div className="flex flex-wrap gap-1 md:gap-2">
                   {expertise.map((skill, index) => (
                     <Badge 
                       key={index} 
                       variant="glow" 
-                      className="py-1"
+                      className="py-0.5 md:py-1 text-xs md:text-sm"
                     >
                       {getExpertiseIcons()[index % 3]}
                       <span className="ml-1">{skill}</span>
@@ -363,16 +365,16 @@ const FounderFlipCard: React.FC<FounderProps> = ({
                   ))}
                 </div>
                 
-                <h4 className="font-bold text-lg">Experience</h4>
-                <div className="bg-white/5 rounded-lg p-4">
-                  <div className="flex justify-between text-sm mb-2">
+                <h4 className="font-bold text-base md:text-lg">Experience</h4>
+                <div className="bg-white/5 rounded-lg p-3 md:p-4">
+                  <div className="flex justify-between text-xs md:text-sm mb-2">
                     <span className="text-gray-300">Years in Industry</span>
                     <span className="text-white font-bold">{yearsExperience}+</span>
                   </div>
                   
-                  <div className="w-full bg-black/40 rounded-full h-2">
+                  <div className="w-full bg-black/40 rounded-full h-1.5 md:h-2">
                     <div 
-                      className={`h-2 rounded-full ${
+                      className={`h-1.5 md:h-2 rounded-full ${
                         role === "CEO" ? "bg-viveon-red" : 
                         role === "COO" ? "bg-viveon-neon-purple" : 
                         "bg-viveon-neon-blue"
@@ -385,7 +387,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
               
               {/* Flip back instruction */}
               <motion.div 
-                className="text-center mt-4 text-xs text-white/60"
+                className="text-center mt-3 md:mt-4 text-xs text-white/60"
                 animate={{
                   opacity: [0.6, 1, 0.6],
                 }}
@@ -395,7 +397,7 @@ const FounderFlipCard: React.FC<FounderProps> = ({
                   ease: "easeInOut"
                 }}
               >
-                Click to flip back
+                Tap to flip back
               </motion.div>
             </div>
           </div>
