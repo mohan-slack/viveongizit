@@ -221,14 +221,16 @@ const DynamicBackground: React.FC = () => {
       {/* Container for abstract geometric shapes */}
       <div ref={shapesRef} className="absolute inset-0"></div>
       
-      {/* Custom animation styles added inline */}
-      <style jsx>{`
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50% }
-          50% { background-position: 100% 50% }
-          100% { background-position: 0% 50% }
-        }
-      `}</style>
+      {/* Custom animation styles added as a style element */}
+      <style>
+        {`
+          @keyframes gradient-shift {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+          }
+        `}
+      </style>
     </div>
   );
 };
