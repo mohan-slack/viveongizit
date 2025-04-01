@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -265,7 +266,7 @@ const FeatureCard = ({
             
             {/* Bottom decorative line */}
             <motion.div 
-              className={`h-1 w-1/3 mt-6 rounded-full ${glowColor}`}\
+              className={`h-1 w-1/3 mt-6 rounded-full ${glowColor}`}
               animate={{ 
                 width: selected ? ["40%", "70%", "60%"] : ["25%", "40%", "30%"], 
                 opacity: selected ? [0.8, 1, 0.8] : [0.6, 0.8, 0.6] 
