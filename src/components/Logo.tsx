@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 interface LogoProps {
   className?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'xlarge';
   showSoundWaves?: boolean;
 }
 
@@ -13,11 +13,12 @@ const Logo: React.FC<LogoProps> = ({
   size = 'medium', 
   showSoundWaves = true 
 }) => {
-  // Size mappings - doubled from previous values
+  // Size mappings with xlarge added (4x medium size)
   const sizeClasses = {
     small: "h-24",
     medium: "h-32",
     large: "h-48",
+    xlarge: "h-128", // 4x the medium size
   };
 
   return (

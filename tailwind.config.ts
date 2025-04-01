@@ -22,6 +22,9 @@ export default {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
       },
+      height: {
+        '128': '32rem', // 512px, which is 4x of h-32 (128px)
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
