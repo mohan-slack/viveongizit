@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
   const location = useLocation();
   
   const scrollToSection = (id: string) => {
-    // If we're not on the home page, navigate there first with the hash
+    // If we're not on the home page, navigate to home first with the hash
     if (location.pathname !== '/') {
       window.location.href = `/#${id}`;
       return;
@@ -46,7 +46,12 @@ const Footer: React.FC = () => {
                 <Link to="/about" className="text-gray-400 hover:text-viveon-red transition-colors">About Us</Link>
               </li>
               <li>
-                <a onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer">Contact</a>
+                <button 
+                  onClick={() => scrollToSection('contact')} 
+                  className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer bg-transparent border-0 p-0 text-left"
+                >
+                  Contact
+                </button>
               </li>
             </ul>
           </div>
@@ -60,7 +65,12 @@ const Footer: React.FC = () => {
               <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Terms of Service</a></li>
               <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Shipping & Returns</a></li>
               <li>
-                <a onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer">Contact Support</a>
+                <button 
+                  onClick={() => scrollToSection('contact')} 
+                  className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer bg-transparent border-0 p-0 text-left"
+                >
+                  Contact Support
+                </button>
               </li>
             </ul>
           </div>

@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
   const scrollToSection = (id: string) => {
     setIsMobileMenuOpen(false);
     
-    // If we're not on the home page, navigate there first
+    // If we're not on the home page, navigate to home first and then scroll
     if (location.pathname !== '/') {
       window.location.href = `/#${id}`;
       return;
@@ -55,9 +55,10 @@ const Navbar: React.FC = () => {
     
     e.preventDefault();
     
-    if (href.startsWith('#')) {
+    if (href.includes('#')) {
       // It's an anchor link, scroll to the section
-      scrollToSection(href.substring(1));
+      const id = href.split('#')[1];
+      scrollToSection(id);
     } else {
       // It's a route, don't need to do anything special
       // as the Link component will handle it
