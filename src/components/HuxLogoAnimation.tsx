@@ -1,12 +1,35 @@
+
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ZapIcon } from 'lucide-react';
 
 const HuxLogoAnimation: React.FC = () => {
+  const [animationStage, setAnimationStage] = useState(0);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [textColor, setTextColor] = useState(0);
   const [textOpacity, setTextOpacity] = useState(1);
 
+  // Start the animation sequence
+  useEffect(() => {
+    if (animationStage === 0) {
+      const timer = setTimeout(() => setAnimationStage(1), 500);
+      return () => clearTimeout(timer);
+    } else if (animationStage === 1) {
+      const timer = setTimeout(() => setAnimationStage(2), 1200);
+      return () => clearTimeout(timer);
+    } else if (animationStage === 2) {
+      const timer = setTimeout(() => setAnimationStage(3), 1500);
+      return () => clearTimeout(timer);
+    } else if (animationStage === 3) {
+      const timer = setTimeout(() => {
+        setAnimationStage(4);
+        setAnimationComplete(true);
+      }, 1200);
+      return () => clearTimeout(timer);
+    }
+  }, [animationStage]);
+
+  // Color cycling effect for the final logo
   useEffect(() => {
     if (animationComplete) {
       const colorInterval = setInterval(() => {
@@ -53,9 +76,8 @@ const HuxLogoAnimation: React.FC = () => {
     }
   };
 
-  const gradientColors = getGradientStyle();
-  
   if (animationComplete) {
+    const gradientColors = getGradientStyle();
     return (
       <motion.span 
         className="font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]"
@@ -72,77 +94,184 @@ const HuxLogoAnimation: React.FC = () => {
     );
   }
 
+  // The animation sequence
   return (
-    <div className="relative flex justify-center items-center h-28 md:h-32">
-      <motion.div 
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-10 bg-gradient-to-r from-viveon-dark to-black rounded-lg border border-viveon-neon-blue/30"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        <motion.div 
-          className="absolute inset-0 flex justify-center items-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 0.5, 1, 0] }}
-          transition={{ duration: 1, delay: 0.5, times: [0, 0.2, 0.4, 0.6, 1] }}
-        >
-          <ZapIcon className="text-viveon-neon-blue w-8 h-8" />
-        </motion.div>
-        
-        <motion.div 
-          className="absolute top-1/2 left-1/4 transform -translate-y-1/2 w-6 h-6 bg-viveon-red rounded-full border border-viveon-neon-purple/50"
-          initial={{ y: 0 }}
-          animate={{ y: -15 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-        />
-        
-        <motion.div 
-          className="absolute top-1/2 right-1/4 transform -translate-y-1/2 w-6 h-6 bg-viveon-red rounded-full border border-viveon-neon-purple/50"
-          initial={{ y: 0 }}
-          animate={{ y: -15, opacity: 0 }}
-          transition={{ duration: 0.3, delay: 1.2 }}
-        />
-      </motion.div>
-
-      <motion.div 
-        className="absolute text-6xl md:text-7xl font-bold text-viveon-red"
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: -20, opacity: 1 }}
-        transition={{ duration: 0.7, delay: 1.5, ease: "easeOut" }}
-      >
-        H
-      </motion.div>
+    <div className="relative h-32 w-full flex justify-center items-center">
+      {/* Earbud Dock with Lightning Effect */}
+      <AnimatePresence>
+        {animationStage >= 1 && (
+          <motion.div 
+            className="absolute"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 260, 
+              damping: 20,
+              duration: 0.7
+            }}
+          >
+            {/* Earbud Dock */}
+            <div className="relative w-48 h-24 bg-gradient-to-r from-gray-900 to-black rounded-xl border border-viveon-neon-blue/30 flex justify-center items-center overflow-hidden">
+              {/* Lightning Effects */}
+              <motion.div
+                className="absolute inset-0 bg-viveon-neon-blue/5"
+                animate={{ 
+                  opacity: [0.1, 0.3, 0.1, 0.5, 0.1],
+                  scale: [1, 1.05, 1, 1.02, 1]
+                }}
+                transition={{ 
+                  duration: 1.5, 
+                  repeat: 1,
+                  repeatType: "reverse"
+                }}
+              />
+              
+              {/* Left Earbud */}
+              <motion.div 
+                className="absolute left-6 top-6 w-10 h-12 rounded-full bg-black border-2 border-viveon-neon-blue/60"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              />
+              
+              {/* Right Earbud - Transforms into U */}
+              <motion.div 
+                className="absolute right-6 top-6 w-10 h-12 rounded-full bg-black border-2 border-viveon-neon-blue/60"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ 
+                  opacity: animationStage >= 2 ? 0 : 1, 
+                  y: 0 
+                }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              />
+              
+              {/* Lightning Icon */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ 
+                  opacity: [0, 1, 0.5, 1, 0], 
+                  scale: [0.5, 1.2, 0.9, 1.1, 0.8] 
+                }}
+                transition={{ 
+                  duration: 1, 
+                  times: [0, 0.2, 0.4, 0.6, 1],
+                  delay: 0.5
+                }}
+              >
+                <ZapIcon className="text-viveon-neon-blue w-8 h-8" />
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
-      <motion.div 
-        className="absolute text-6xl md:text-7xl font-bold"
-        initial={{ y: -15, scale: 0.1, opacity: 0, color: "#FF3A2F" }}
-        animate={{ y: 0, scale: 1, opacity: 1, color: "#9B30FF" }}
-        transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
-      >
-        U
-      </motion.div>
+      {/* Letter H Animation - From Left */}
+      <AnimatePresence>
+        {animationStage >= 2 && (
+          <motion.div
+            className="absolute text-6xl md:text-7xl font-bold"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: animationStage >= 4 ? 0 : -20, opacity: 1 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 100, 
+              damping: 10,
+              duration: 0.8
+            }}
+            style={{ 
+              color: animationStage >= 4 ? "transparent" : "#FF3A2F",
+              backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
+              backgroundClip: animationStage >= 4 ? "text" : "border-box",
+              WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
+            }}
+          >
+            H
+          </motion.div>
+        )}
+      </AnimatePresence>
       
-      <motion.div 
-        className="absolute text-6xl md:text-7xl font-bold text-viveon-neon-blue"
-        initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 20, opacity: 1 }}
-        transition={{ duration: 0.7, delay: 2.1, ease: "easeOut" }}
-      >
-        X
-      </motion.div>
+      {/* Letter U Animation - Transform from Earbud */}
+      <AnimatePresence>
+        {animationStage >= 2 && (
+          <motion.div
+            className="absolute text-6xl md:text-7xl font-bold"
+            initial={{ 
+              y: 10, 
+              scale: 0.1, 
+              opacity: 0,
+              borderRadius: "50%",
+              width: "10px",
+              height: "12px",
+            }}
+            animate={{ 
+              y: 0, 
+              scale: 1, 
+              opacity: 1,
+              borderRadius: "0%",
+              width: "auto",
+              height: "auto"
+            }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 120, 
+              damping: 15,
+              duration: 0.8
+            }}
+            style={{ 
+              color: animationStage >= 4 ? "transparent" : "#9B30FF",
+              backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
+              backgroundClip: animationStage >= 4 ? "text" : "border-box",
+              WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
+            }}
+          >
+            U
+          </motion.div>
+        )}
+      </AnimatePresence>
       
-      <motion.div 
-        className="absolute inset-0 flex justify-center items-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ duration: 0.5, delay: 2.5 }}
-        onAnimationComplete={() => {
-          setTimeout(() => setAnimationComplete(true), 300);
-        }}
-      >
-        <div className="absolute inset-0 bg-viveon-neon-blue/10 rounded-lg blur-md"></div>
-        <ZapIcon className="text-viveon-neon-blue w-12 h-12" />
-      </motion.div>
+      {/* Letter X Animation - From Right */}
+      <AnimatePresence>
+        {animationStage >= 2 && (
+          <motion.div
+            className="absolute text-6xl md:text-7xl font-bold"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: animationStage >= 4 ? 0 : 20, opacity: 1 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 100, 
+              damping: 10,
+              duration: 0.8,
+              delay: 0.1
+            }}
+            style={{ 
+              color: animationStage >= 4 ? "transparent" : "#00FFFF",
+              backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
+              backgroundClip: animationStage >= 4 ? "text" : "border-box",
+              WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
+            }}
+          >
+            X
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      {/* Final Flash Effect */}
+      <AnimatePresence>
+        {animationStage >= 3 && (
+          <motion.div 
+            className="absolute inset-0 flex justify-center items-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.8, 0] }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="absolute inset-0 bg-viveon-neon-blue/20 rounded-lg blur-xl"></div>
+            <ZapIcon className="text-viveon-neon-blue w-12 h-12" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      {/* Combining into final HUX logo happens via the animationStage state */}
     </div>
   );
 };
