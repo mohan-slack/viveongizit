@@ -9,4 +9,6 @@ export interface FeatureProps {
   index: number;
   color: string;
   glowColor: string;
+  additionalInfo?: string;
+  category?: 'earbuds' | 'smartrings';
 }

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import EnhancedHeroSection from '@/components/EnhancedHeroSection';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
-import FeaturesList from '@/components/FeaturesList';
+import FuturisticFeaturesShowcase from '@/components/FuturisticFeaturesShowcase';
 import AboutSection from '@/components/AboutSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
@@ -38,7 +38,7 @@ const Index = () => {
       <Navbar />
       <EnhancedHeroSection />
       <FeaturedProductsSection />
-      <FeaturesList />
+      <FuturisticFeaturesShowcase />
       <AboutSection />
       <ContactSection />
       <CallToAction />
