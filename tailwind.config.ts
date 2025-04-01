@@ -110,32 +110,15 @@ export default {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
-        "gradient-shift": {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" },
-        },
-        "pulse-glow": {
-          "0%, 100%": { 
-            opacity: "0.15",
-            filter: "drop-shadow(0 0 2px currentColor)",
-          },
-          "50%": { 
-            opacity: "0.3",
-            filter: "drop-shadow(0 0 8px currentColor)",
-          }
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "float": "float 6s ease-in-out infinite",
-        "pulse": "pulse 3s ease-in-out infinite",
-        "glow": "glow 2s ease-in-out infinite",
-        "cityMove": "cityMove 60s linear infinite",
-        "fadeIn": "fadeIn 0.5s ease-in-out",
-        "gradient-shift": "gradient-shift 15s ease infinite",
-        "pulse-glow": "pulse-glow 8s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
+        pulse: "pulse 3s ease-in-out infinite",
+        glow: "glow 2s ease-in-out infinite",
+        cityMove: "cityMove 60s linear infinite",
+        fadeIn: "fadeIn 0.5s ease-in-out",
       },
     },
   },
