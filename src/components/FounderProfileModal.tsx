@@ -6,6 +6,7 @@ import { X } from 'lucide-react';
 import { ExpertiseTags } from './ExpertiseTags';
 import { FounderProfile } from '@/types/founder';
 import { getGlowColor, getRoleBadgeColor, getRoleIcon, getRoleTextColor } from '@/utils/founderUtils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface FounderProfileModalProps {
   founder: FounderProfile;
@@ -17,9 +18,13 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
   onClose 
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   
-  // Effect for parallax movement
+  // Effect for parallax movement - only on desktop
   useEffect(() => {
+    if (isMobile) return;
+    
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
       
@@ -43,14 +48,29 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [isMobile]);
   
-  // Close when clicking outside
+  // Close when clicking outside - improved for mobile
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
+  
+  // Handle escape key press
+  useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    
+    window.addEventListener('keydown', handleEscKey);
+    
+    return () => {
+      window.removeEventListener('keydown', handleEscKey);
+    };
+  }, [onClose]);
 
   return (
     <AnimatePresence>
@@ -60,6 +80,7 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={handleBackdropClick}
+        key="modal-backdrop"
       >
         {/* Blurred backdrop */}
         <motion.div 
@@ -67,11 +88,11 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.2 }}
         />
         
         {/* Particle effects in background */}
-        {Array.from({ length: 12 }).map((_, i) => (
+        {Array.from({ length: 8 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 rounded-full bg-white"
@@ -97,7 +118,7 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
         {/* Profile card with 3D effect */}
         <motion.div
           ref={containerRef}
-          className="relative w-11/12 max-w-xl bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-[0_10px_50px_rgba(0,0,0,0.5)] overflow-hidden"
+          className={`relative max-h-[90vh] ${isMobile ? 'w-[95%] max-w-md' : 'w-11/12 max-w-xl'} bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-[0_10px_50px_rgba(0,0,0,0.5)] overflow-hidden overflow-y-auto`}
           initial={{ scale: 0.9, y: 50, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
           exit={{ scale: 0.9, y: 50, opacity: 0 }}
@@ -106,6 +127,7 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
             damping: 25,
             stiffness: 200,
           }}
+          ref={modalRef}
         >
           {/* Background pattern */}
           <div className="absolute inset-0 bg-grid-lines opacity-10" />
@@ -113,14 +135,20 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
           {/* Glowing border effect */}
           <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur opacity-30" />
           
-          {/* Close button */}
+          {/* Close button - improved for mobile */}
           <motion.button
-            className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 border border-white/10 text-white/80 hover:text-white"
-            onClick={onClose}
+            className="absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-white/80 hover:text-white"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
           >
-            <X size={16} />
+            <X size={isMobile ? 18 : 20} />
           </motion.button>
 
           <div className="relative z-10">
@@ -150,7 +178,7 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
                   }}
                 />
                 
-                <Avatar className="w-24 h-24 md:w-32 md:h-32 border-2 border-opacity-20 border-white bg-viveon-darker shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                <Avatar className={`${isMobile ? 'w-20 h-20' : 'w-24 h-24 md:w-32 md:h-32'} border-2 border-opacity-20 border-white bg-viveon-darker shadow-[0_0_15px_rgba(255,255,255,0.2)]`}>
                   <AvatarImage 
                     src={founder.profileImage} 
                     alt={`${founder.name} - ${founder.role}`} 
@@ -163,7 +191,7 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
                 
                 {/* Role indicator */}
                 <motion.div 
-                  className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 py-1 px-4 rounded-full backdrop-blur-md border border-white/10 shadow-lg text-sm font-bold tracking-wide"
+                  className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 py-1 px-3 rounded-full backdrop-blur-md border border-white/10 shadow-lg text-xs md:text-sm font-bold tracking-wide"
                   style={{
                     backgroundColor: getRoleBadgeColor(founder.role),
                     color: getRoleTextColor(founder.role)
@@ -233,7 +261,7 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
               <ExpertiseTags 
                 expertise={founder.expertise} 
                 role={founder.role} 
-                interactive={true} 
+                interactive={!isMobile} 
               />
             </motion.div>
             
