@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import EnhancedHeroSection from '@/components/EnhancedHeroSection';
@@ -9,6 +8,7 @@ import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 import ContactSection from '@/components/ContactSection';
 import DynamicBackground from '@/components/DynamicBackground';
+import ParallaxBackground from '@/components/ParallaxBackground';
 
 const Index = () => {
   // Add smooth scrolling for anchor links
@@ -34,7 +34,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-viveon-darker text-white relative overflow-hidden">
+      {/* Enhanced background components */}
       <DynamicBackground />
+      <ParallaxBackground />
+      
+      {/* Keep existing content */}
       <Navbar />
       <EnhancedHeroSection />
       <FeaturedProductsSection />
