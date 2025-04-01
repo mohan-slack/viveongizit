@@ -2,6 +2,8 @@
 import React from 'react';
 import { Button } from './ui/button';
 import AboutFounders from './AboutFounders';
+import { Link } from 'react-router-dom';
+
 const AboutSection: React.FC = () => {
   return <div id="about" className="bg-gradient-to-b from-viveon-dark to-black py-20">
       <div className="container mx-auto px-4">

@@ -4,22 +4,48 @@ import Logo from './Logo';
 import { Button } from './ui/button';
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { Input } from './ui/input';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  const scrollToSection = (id: string) => {
+    // If we're not on the home page, navigate there first with the hash
+    if (window.location.pathname !== '/') {
+      window.location.href = `/#${id}`;
+      return;
+    }
+    
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
   return (
     <footer className="bg-black py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* First column */}
           <div>
-            {/* Logo and copy moved to the bottom */}
             <h3 className="text-white text-lg font-bold mb-6 tracking-tight">Quick Links</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Home</a></li>
-              <li><a href="#earbuds" className="text-gray-400 hover:text-viveon-red transition-colors">Earbuds</a></li>
-              <li><a href="#rings" className="text-gray-400 hover:text-viveon-red transition-colors">Smart Rings</a></li>
-              <li><a href="#features" className="text-gray-400 hover:text-viveon-red transition-colors">Features</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-viveon-red transition-colors">About Us</a></li>
+              <li>
+                <Link to="/" className="text-gray-400 hover:text-viveon-red transition-colors">Home</Link>
+              </li>
+              <li>
+                <a onClick={() => scrollToSection('products')} className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer">Earbuds</a>
+              </li>
+              <li>
+                <a onClick={() => scrollToSection('products')} className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer">Smart Rings</a>
+              </li>
+              <li>
+                <Link to="/features" className="text-gray-400 hover:text-viveon-red transition-colors">Features</Link>
+              </li>
+              <li>
+                <a onClick={() => scrollToSection('about')} className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer">About Us</a>
+              </li>
             </ul>
           </div>
           
@@ -31,7 +57,9 @@ const Footer: React.FC = () => {
               <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Privacy Policy</a></li>
               <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Terms of Service</a></li>
               <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Shipping & Returns</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Contact Support</a></li>
+              <li>
+                <a onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer">Contact Support</a>
+              </li>
             </ul>
           </div>
           

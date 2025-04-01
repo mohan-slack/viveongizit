@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 interface LogoProps {
   className?: string;
@@ -13,6 +14,9 @@ const Logo: React.FC<LogoProps> = ({
   size = 'medium', 
   showSoundWaves = true 
 }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   // Size mappings with xlarge added (4x medium size)
   const sizeClasses = {
     small: "h-24",
@@ -21,8 +25,24 @@ const Logo: React.FC<LogoProps> = ({
     xlarge: "h-128", // 4x the medium size
   };
 
+  const handleLogoClick = () => {
+    if (location.pathname !== '/') {
+      // If not on home page, navigate to home
+      navigate('/');
+    } else {
+      // If on home page, scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <div className={cn("flex items-center", className)}>
+    <div 
+      className={cn("flex items-center cursor-pointer", className)}
+      onClick={handleLogoClick}
+    >
       <div className="relative">
         {/* Sound waves have been removed */}
         

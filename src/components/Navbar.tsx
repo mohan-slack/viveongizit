@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import Logo from './Logo';
 import { Menu, X, ShoppingCart, User } from 'lucide-react';
 import { Button } from './ui/button';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,12 +24,44 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navigationItems = [
-    { label: "Home", href: "/" },
-    { label: "Products", href: "#products" },
-    { label: "Features", href: "/features" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" }
+    { label: "Home", href: "/", isExternal: false },
+    { label: "Products", href: "#products", isExternal: false },
+    { label: "Features", href: "/features", isExternal: false },
+    { label: "About", href: "#about", isExternal: false },
+    { label: "Contact", href: "#contact", isExternal: false }
   ];
+
+  const scrollToSection = (id: string) => {
+    setIsMobileMenuOpen(false);
+    
+    // If we're not on the home page, navigate there first
+    if (window.location.pathname !== '/') {
+      window.location.href = `/${id}`;
+      return;
+    }
+    
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleNavClick = (href: string, isExternal: boolean, e: React.MouseEvent) => {
+    if (isExternal) return; // Let external links work normally
+    
+    e.preventDefault();
+    
+    if (href.startsWith('#')) {
+      // It's an anchor link, scroll to the section
+      scrollToSection(href.substring(1));
+    } else {
+      // It's a route
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   return (
     <nav
@@ -37,18 +71,31 @@ const Navbar: React.FC = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Logo size={isScrolled ? "small" : "medium"} showSoundWaves={false} />
+        <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+          <Logo size={isScrolled ? "small" : "medium"} showSoundWaves={false} />
+        </Link>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8">
           {navigationItems.map((item) => (
             <li key={item.label}>
-              <a 
-                href={item.href}
-                className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {item.label}
-              </a>
+              {item.href.startsWith('#') ? (
+                <a 
+                  href={item.href}
+                  className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
+                  onClick={(e) => handleNavClick(item.href, item.isExternal, e)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link 
+                  to={item.href}
+                  className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -81,13 +128,23 @@ const Navbar: React.FC = () => {
           <ul className="py-4 px-4 flex flex-col">
             {navigationItems.map((item) => (
               <li key={item.label} className="py-2 border-b border-gray-800">
-                <a 
-                  href={item.href}
-                  className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
+                {item.href.startsWith('#') ? (
+                  <a 
+                    href={item.href}
+                    className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
+                    onClick={(e) => handleNavClick(item.href, item.isExternal, e)}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link 
+                    to={item.href}
+                    className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
             <li className="py-4 flex justify-center">
