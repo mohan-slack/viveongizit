@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
   const scrollToSection = (id: string) => {
     setIsMobileMenuOpen(false);
     
-    // If we're not on the home page, navigate to home first and then scroll
+    // If we're not on the home page, navigate to home first with the hash
     if (location.pathname !== '/') {
       window.location.href = `/#${id}`;
       return;
@@ -53,9 +53,14 @@ const Navbar: React.FC = () => {
   const handleNavClick = (href: string, isExternal: boolean, e: React.MouseEvent) => {
     if (isExternal) return; // Let external links work normally
     
-    e.preventDefault();
+    if (href === "/#contact") {
+      e.preventDefault();
+      scrollToSection('contact');
+      return;
+    }
     
     if (href.includes('#')) {
+      e.preventDefault();
       // It's an anchor link, scroll to the section
       const id = href.split('#')[1];
       scrollToSection(id);
