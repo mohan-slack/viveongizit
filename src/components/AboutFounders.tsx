@@ -26,10 +26,10 @@ const AboutFounders: React.FC = () => {
       name: "T Mohan Reddy",
       role: "CTO",
       description: "The tech architect behind innovation, pioneering R&D and IT advancements for the next-gen wearable revolution.",
-      longDescription: "The mastermind behind cutting-edge R&D and IT advancements. With 15+ years of experience, he pioneers next-gen wearable technology, driving product excellence and innovation. His technical brilliance and passion for cutting-edge technology has enabled Viveon to stay ahead of the competition with groundbreaking products that redefine industry standards.",
+      longDescription: "The mastermind behind cutting-edge R&D and IT advancements. With 10+ years of experience, he pioneers next-gen wearable technology, driving product excellence and innovation. His technical brilliance and passion for cutting-edge technology has enabled Viveon to stay ahead of the competition with groundbreaking products that redefine industry standards.",
       expertise: ["R&D Leadership", "Technical Innovation", "Product Architecture"],
       profileImage: "/lovable-uploads/cdd308e7-4882-4bb2-9fd5-b1d504d99ba8.png",
-      yearsExperience: 15
+      yearsExperience: 10
     }
   ];
 
