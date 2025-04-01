@@ -1,7 +1,6 @@
-
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Lightning, ZapIcon } from 'lucide-react';
+import { ZapIcon } from 'lucide-react';
 
 const HuxLogoAnimation: React.FC = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
@@ -9,20 +8,16 @@ const HuxLogoAnimation: React.FC = () => {
   const [textOpacity, setTextOpacity] = useState(1);
 
   useEffect(() => {
-    // After the initial animation completes, start the color cycling effect
     if (animationComplete) {
-      // Color transition effect (0 = red, 1 = purple, 2 = blue)
       const colorInterval = setInterval(() => {
         setTextColor(prev => (prev + 0.01) % 3);
       }, 150);
 
-      // Slow pulsing animation for opacity
       const opacityInterval = setInterval(() => {
         setTextOpacity(prev => {
-          // Oscillate between 0.7 and 1 for a subtle effect
           if (prev <= 0.7) return prev + 0.01;
           if (prev >= 1) return prev - 0.01;
-          return prev - 0.01; // Generally decrease opacity
+          return prev - 0.01;
         });
       }, 100);
 
@@ -33,11 +28,8 @@ const HuxLogoAnimation: React.FC = () => {
     }
   }, [animationComplete]);
 
-  // Calculate the gradient colors based on the current textColor state
   const getGradientStyle = () => {
-    // Interpolate between the three brand colors
     if (textColor < 1) {
-      // Between red and purple
       const ratio = textColor;
       return {
         from: `rgba(255, 58, 47, ${0.9 - 0.2 * ratio * textOpacity})`,
@@ -45,7 +37,6 @@ const HuxLogoAnimation: React.FC = () => {
         to: `rgba(0, 255, 255, ${0.8 - 0.3 * (1-ratio) * textOpacity})`
       };
     } else if (textColor < 2) {
-      // Between purple and blue
       const ratio = textColor - 1;
       return {
         from: `rgba(255, 58, 47, ${0.7 * textOpacity})`,
@@ -53,7 +44,6 @@ const HuxLogoAnimation: React.FC = () => {
         to: `rgba(0, 255, 255, ${0.8 * textOpacity})`
       };
     } else {
-      // Between blue and red
       const ratio = textColor - 2;
       return {
         from: `rgba(255, 58, 47, ${0.7 + 0.2 * ratio * textOpacity})`,
@@ -65,7 +55,6 @@ const HuxLogoAnimation: React.FC = () => {
 
   const gradientColors = getGradientStyle();
   
-  // Return completed animation if done
   if (animationComplete) {
     return (
       <motion.span 
@@ -85,14 +74,12 @@ const HuxLogoAnimation: React.FC = () => {
 
   return (
     <div className="relative flex justify-center items-center h-28 md:h-32">
-      {/* Earbuds Dock (Base) */}
       <motion.div 
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-10 bg-gradient-to-r from-viveon-dark to-black rounded-lg border border-viveon-neon-blue/30"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        {/* Dock Lightning Effect */}
         <motion.div 
           className="absolute inset-0 flex justify-center items-center"
           initial={{ opacity: 0 }}
@@ -102,7 +89,6 @@ const HuxLogoAnimation: React.FC = () => {
           <ZapIcon className="text-viveon-neon-blue w-8 h-8" />
         </motion.div>
         
-        {/* Left Earbud Placeholder (Will transform into U) */}
         <motion.div 
           className="absolute top-1/2 left-1/4 transform -translate-y-1/2 w-6 h-6 bg-viveon-red rounded-full border border-viveon-neon-purple/50"
           initial={{ y: 0 }}
@@ -110,7 +96,6 @@ const HuxLogoAnimation: React.FC = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
         />
         
-        {/* Right Earbud Placeholder */}
         <motion.div 
           className="absolute top-1/2 right-1/4 transform -translate-y-1/2 w-6 h-6 bg-viveon-red rounded-full border border-viveon-neon-purple/50"
           initial={{ y: 0 }}
@@ -119,7 +104,6 @@ const HuxLogoAnimation: React.FC = () => {
         />
       </motion.div>
 
-      {/* H Letter */}
       <motion.div 
         className="absolute text-6xl md:text-7xl font-bold text-viveon-red"
         initial={{ x: -100, opacity: 0 }}
@@ -129,7 +113,6 @@ const HuxLogoAnimation: React.FC = () => {
         H
       </motion.div>
       
-      {/* U Letter (Transforming from Earbud) */}
       <motion.div 
         className="absolute text-6xl md:text-7xl font-bold"
         initial={{ y: -15, scale: 0.1, opacity: 0, color: "#FF3A2F" }}
@@ -139,7 +122,6 @@ const HuxLogoAnimation: React.FC = () => {
         U
       </motion.div>
       
-      {/* X Letter */}
       <motion.div 
         className="absolute text-6xl md:text-7xl font-bold text-viveon-neon-blue"
         initial={{ x: 100, opacity: 0 }}
@@ -149,7 +131,6 @@ const HuxLogoAnimation: React.FC = () => {
         X
       </motion.div>
       
-      {/* Final Lightning Effect */}
       <motion.div 
         className="absolute inset-0 flex justify-center items-center"
         initial={{ opacity: 0 }}
