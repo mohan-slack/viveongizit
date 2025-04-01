@@ -127,7 +127,6 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
             damping: 25,
             stiffness: 200,
           }}
-          ref={modalRef}
         >
           {/* Background pattern */}
           <div className="absolute inset-0 bg-grid-lines opacity-10" />
