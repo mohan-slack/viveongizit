@@ -8,6 +8,7 @@ import AboutSection from '@/components/AboutSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 import ContactSection from '@/components/ContactSection';
+import DynamicBackground from '@/components/DynamicBackground';
 
 const Index = () => {
   // Add smooth scrolling for anchor links
@@ -32,7 +33,8 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-viveon-darker text-white">
+    <div className="min-h-screen bg-viveon-darker text-white relative overflow-hidden">
+      <DynamicBackground />
       <Navbar />
       <EnhancedHeroSection />
       <FeaturedProductsSection />
