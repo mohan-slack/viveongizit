@@ -1,9 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { motion } from 'framer-motion';
+
 const EnhancedHeroSection: React.FC = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
+  const [textOpacity, setTextOpacity] = useState(1);
+  const [textColor, setTextColor] = useState(0);
+
   useEffect(() => {
     const handleScroll = () => {
       if (parallaxRef.current) {
@@ -14,6 +19,61 @@ const EnhancedHeroSection: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Slow pulsing animation for opacity
+    const opacityInterval = setInterval(() => {
+      setTextOpacity(prev => {
+        // Oscillate between 0.7 and 1 for a subtle effect
+        if (prev <= 0.7) return prev + 0.01;
+        if (prev >= 1) return prev - 0.01;
+        return prev - 0.01; // Generally decrease opacity
+      });
+    }, 100);
+
+    // Color transition effect (0 = red, 1 = purple, 2 = blue)
+    const colorInterval = setInterval(() => {
+      setTextColor(prev => (prev + 0.01) % 3);
+    }, 150);
+
+    return () => {
+      clearInterval(opacityInterval);
+      clearInterval(colorInterval);
+    };
+  }, []);
+
+  // Calculate the gradient colors based on the current textColor state
+  const getGradientStyle = () => {
+    // Interpolate between the three brand colors
+    if (textColor < 1) {
+      // Between red and purple
+      const ratio = textColor;
+      return {
+        from: `rgba(255, 58, 47, ${0.9 - 0.2 * ratio * textOpacity})`,
+        via: `rgba(155, 48, 255, ${0.8 * textOpacity})`,
+        to: `rgba(0, 255, 255, ${0.8 - 0.3 * (1-ratio) * textOpacity})`
+      };
+    } else if (textColor < 2) {
+      // Between purple and blue
+      const ratio = textColor - 1;
+      return {
+        from: `rgba(255, 58, 47, ${0.7 * textOpacity})`,
+        via: `rgba(155, 48, 255, ${0.8 - 0.2 * ratio * textOpacity})`,
+        to: `rgba(0, 255, 255, ${0.8 * textOpacity})`
+      };
+    } else {
+      // Between blue and red
+      const ratio = textColor - 2;
+      return {
+        from: `rgba(255, 58, 47, ${0.7 + 0.2 * ratio * textOpacity})`,
+        via: `rgba(155, 48, 255, ${0.6 * textOpacity})`,
+        to: `rgba(0, 255, 255, ${0.8 - 0.3 * ratio * textOpacity})`
+      };
+    }
+  };
+
+  const gradientColors = getGradientStyle();
+
   return <div className="relative min-h-screen overflow-hidden bg-viveon-darker">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-viveon-red/10 rounded-full filter blur-3xl opacity-30 animate-float" style={{
@@ -45,7 +105,18 @@ const EnhancedHeroSection: React.FC = () => {
           ease: "easeOut"
         }}>
             <span className="block text-white font-light tracking-wider letter-spacing-wide text-lg md:text-xl mb-1">INTRODUCING THE FUTURE OF TECH</span>
-            <span className="bg-gradient-to-r from-viveon-red/90 via-viveon-neon-purple/80 to-viveon-neon-blue/80 bg-clip-text text-transparent font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]">HUX<span className="text-white text-[0.25em] align-top leading-none">™</span></span>
+            <span 
+              className="font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]"
+              style={{ 
+                backgroundImage: `linear-gradient(to right, ${gradientColors.from}, ${gradientColors.via}, ${gradientColors.to})`,
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                transition: 'all 1.5s ease-in-out',
+              }}
+            >
+              HUX<span className="text-white text-[0.25em] align-top leading-none">™</span>
+            </span>
             <span className="block text-sm text-viveon-neon-blue/80 mt-2">by Viveon Gizit Pvt. Ltd.</span>
           </motion.h1>
           
@@ -147,4 +218,5 @@ const EnhancedHeroSection: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-viveon-darker to-transparent z-10"></div>
     </div>;
 };
+
 export default EnhancedHeroSection;
