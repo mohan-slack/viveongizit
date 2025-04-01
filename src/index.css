@@ -155,4 +155,24 @@
       transform: translateY(20px) rotate(-5deg);
     }
   }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.2;
+      filter: drop-shadow(0 0 2px currentColor);
+    }
+    50% {
+      opacity: 0.5;
+      filter: drop-shadow(0 0 6px currentColor);
+    }
+  }
+  
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
