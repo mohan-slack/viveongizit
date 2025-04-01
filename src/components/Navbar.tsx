@@ -4,11 +4,12 @@ import { cn } from '@/lib/utils';
 import Logo from './Logo';
 import { Menu, X, ShoppingCart, User } from 'lucide-react';
 import { Button } from './ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,18 +26,18 @@ const Navbar: React.FC = () => {
 
   const navigationItems = [
     { label: "Home", href: "/", isExternal: false },
-    { label: "Products", href: "#products", isExternal: false },
+    { label: "Products", href: "/products", isExternal: false },
     { label: "Features", href: "/features", isExternal: false },
-    { label: "About", href: "#about", isExternal: false },
-    { label: "Contact", href: "#contact", isExternal: false }
+    { label: "About", href: "/about", isExternal: false },
+    { label: "Contact", href: "/#contact", isExternal: false }
   ];
 
   const scrollToSection = (id: string) => {
     setIsMobileMenuOpen(false);
     
     // If we're not on the home page, navigate there first
-    if (window.location.pathname !== '/') {
-      window.location.href = `/${id}`;
+    if (location.pathname !== '/') {
+      window.location.href = `/#${id}`;
       return;
     }
     
@@ -58,7 +59,8 @@ const Navbar: React.FC = () => {
       // It's an anchor link, scroll to the section
       scrollToSection(href.substring(1));
     } else {
-      // It's a route
+      // It's a route, don't need to do anything special
+      // as the Link component will handle it
       setIsMobileMenuOpen(false);
     }
   };

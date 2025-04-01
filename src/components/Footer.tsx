@@ -4,12 +4,14 @@ import Logo from './Logo';
 import { Button } from './ui/button';
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { Input } from './ui/input';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  const location = useLocation();
+  
   const scrollToSection = (id: string) => {
     // If we're not on the home page, navigate there first with the hash
-    if (window.location.pathname !== '/') {
+    if (location.pathname !== '/') {
       window.location.href = `/#${id}`;
       return;
     }
@@ -35,16 +37,16 @@ const Footer: React.FC = () => {
                 <Link to="/" className="text-gray-400 hover:text-viveon-red transition-colors">Home</Link>
               </li>
               <li>
-                <a onClick={() => scrollToSection('products')} className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer">Earbuds</a>
-              </li>
-              <li>
-                <a onClick={() => scrollToSection('products')} className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer">Smart Rings</a>
+                <Link to="/products" className="text-gray-400 hover:text-viveon-red transition-colors">Products</Link>
               </li>
               <li>
                 <Link to="/features" className="text-gray-400 hover:text-viveon-red transition-colors">Features</Link>
               </li>
               <li>
-                <a onClick={() => scrollToSection('about')} className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer">About Us</a>
+                <Link to="/about" className="text-gray-400 hover:text-viveon-red transition-colors">About Us</Link>
+              </li>
+              <li>
+                <a onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer">Contact</a>
               </li>
             </ul>
           </div>
