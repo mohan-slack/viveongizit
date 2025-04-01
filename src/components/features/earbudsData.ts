@@ -78,5 +78,27 @@ export const getEarbudsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-sky-500",
     additionalInfo: "Nano-coating technology provides complete protection against sweat and water immersion up to 1 meter for 30 minutes.",
     category: "earbuds"
+  },
+  {
+    id: 'earbuds-8',
+    iconName: "Heart",
+    emoji: "❤️",
+    title: "Health Monitoring",
+    description: "Track heart rate and activity metrics during workouts.",
+    color: "border-red-500/30 bg-red-500/5",
+    glowColor: "bg-red-500",
+    additionalInfo: "Precision sensors monitor heart rate, steps, calories burned and can detect irregular heartbeat patterns for improved fitness tracking.",
+    category: "earbuds"
+  },
+  {
+    id: 'earbuds-9',
+    iconName: "Shield",
+    emoji: "🔒",
+    title: "Enhanced Security",
+    description: "Biometric ear mapping ensures only you can use your earbuds.",
+    color: "border-amber-500/30 bg-amber-500/5",
+    glowColor: "bg-amber-500",
+    additionalInfo: "Proprietary ear canal mapping creates a unique biometric signature that prevents unauthorized use and protects your personal audio data.",
+    category: "earbuds"
   }
 ];
