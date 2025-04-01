@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
         
         {/* Logo and tagline bottom section */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-center gap-6">
-          <Logo className="mb-4 md:mb-0" size="large" showSoundWaves={false} />
+          <Logo className="mb-4 md:mb-0" size="xlarge" showSoundWaves={false} />
           <p className="text-gray-400 font-light tracking-wide text-center md:text-left max-w-xl">
             Experience the next generation of wearable technology with our cutting-edge earbuds and smart rings.
           </p>
