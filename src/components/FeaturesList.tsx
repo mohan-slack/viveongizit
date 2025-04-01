@@ -1,146 +1,289 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { 
   Zap, 
   Headphones, 
-  WifiIcon, 
+  Wifi, 
   Battery, 
-  Droplets, 
-  Heart, 
-  BellRing, 
-  BluetoothIcon 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface FeatureProps {
   icon: React.ReactNode;
+  emoji: string;
   title: string;
   description: string;
+  index: number;
   color: string;
-  className?: string;
+  glowColor: string;
 }
 
-const Feature: React.FC<FeatureProps> = ({ icon, title, description, color, className }) => {
+const FeatureCard = ({ icon, emoji, title, description, index, color, glowColor }: FeatureProps) => {
+  const isMobile = useIsMobile();
+  
+  // Animations for each card
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      }
+    }),
+    hover: {
+      scale: 1.05,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 15
+      }
+    }
+  };
+
+  const iconVariants = {
+    rest: { scale: 1 },
+    hover: { 
+      scale: 1.15,
+      rotate: [0, 5, -5, 0],
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+        repeat: Infinity,
+        repeatType: "reverse"
+      }
+    }
+  };
+
+  const pulseVariants = {
+    rest: { opacity: 0.2, scale: 1 },
+    hover: { 
+      opacity: [0.2, 0.4, 0.2],
+      scale: [1, 1.1, 1],
+      transition: {
+        duration: 2,
+        ease: "easeInOut",
+        repeat: Infinity
+      }
+    }
+  };
+  
   return (
-    <div className={cn(
-      "bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-gray-700 transition-all",
-      "hover:bg-black/40 group",
-      className
-    )}>
-      <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${color} group-hover:scale-110 transition-transform`}>
-        {icon}
+    <motion.div
+      className={cn(
+        "relative overflow-hidden backdrop-blur-[10px] p-6 md:p-8 rounded-2xl",
+        "border border-opacity-20 transition-all duration-300",
+        `${color} hover:border-opacity-40`
+      )}
+      custom={index}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      whileHover="hover"
+      variants={containerVariants}
+      style={{
+        background: "rgba(15, 15, 22, 0.65)",
+        boxShadow: `0 8px 32px rgba(0, 0, 0, 0.2)`,
+      }}
+    >
+      {/* Background glow effect */}
+      <motion.div 
+        className={`absolute -z-10 inset-0 opacity-20 ${glowColor} blur-xl rounded-full transform -translate-x-1/4 -translate-y-1/4 w-3/4 h-3/4`}
+        variants={pulseVariants}
+      />
+      
+      <div className="flex flex-col h-full justify-between z-10">
+        <div>
+          <div className="flex items-start justify-between mb-6">
+            {/* Icon container with pulse effect */}
+            <motion.div
+              className={`w-14 h-14 rounded-xl flex items-center justify-center backdrop-blur-sm ${color}`}
+              variants={iconVariants}
+            >
+              {icon}
+            </motion.div>
+            
+            <span className="text-2xl" aria-hidden="true">{emoji}</span>
+          </div>
+          
+          <h3 className="text-xl md:text-2xl font-bold mb-2 text-white tracking-tight">
+            {title}
+          </h3>
+          
+          <p className="text-gray-300 text-sm md:text-base font-light">
+            {description}
+          </p>
+        </div>
+        
+        {/* Bottom decorative line */}
+        <motion.div 
+          className={`h-1 w-1/3 mt-6 rounded-full ${glowColor}`}
+          animate={{ width: ["25%", "60%", "40%"], opacity: [0.6, 1, 0.6] }}
+          transition={{ duration: 3, ease: "easeInOut", repeat: Infinity }}
+        />
       </div>
-      <h3 className="text-white text-xl font-bold mb-2">{title}</h3>
-      <p className="text-gray-400">{description}</p>
+    </motion.div>
+  );
+};
+
+// Connector line component for desktop
+const ConnectorLines = () => {
+  return (
+    <div className="absolute inset-0 z-0 hidden lg:block pointer-events-none">
+      <svg className="w-full h-full" viewBox="0 0 1000 500" preserveAspectRatio="none">
+        {/* Animated connector paths */}
+        <motion.path 
+          d="M250,130 C400,90 500,200 750,150" 
+          stroke="rgba(255,58,47,0.2)" 
+          strokeWidth="2" 
+          fill="none"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 2, delay: 0.5 }}
+        />
+        <motion.path 
+          d="M250,350 C400,300 600,400 750,350" 
+          stroke="rgba(0,255,255,0.2)" 
+          strokeWidth="2" 
+          fill="none"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 2, delay: 0.8 }}
+        />
+        <motion.path 
+          d="M250,240 C500,190 500,300 750,240" 
+          stroke="rgba(155,48,255,0.2)" 
+          strokeWidth="2" 
+          fill="none" 
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 2, delay: 1.1 }}
+        />
+      </svg>
     </div>
   );
 };
 
 const FeaturesList: React.FC = () => {
-  const earbudFeatures = [
+  const features = [
     {
-      icon: <Zap className="text-viveon-red" size={24} />,
-      title: "Fast Charging",
-      description: "Get 8 hours of playtime with just 15 minutes of charging.",
-      color: "bg-viveon-red/10 text-viveon-red",
+      icon: <Zap size={24} className="text-viveon-red" />,
+      emoji: "⚡",
+      title: "Lightning-Fast Charging",
+      description: "Power up in a flash! Just 15 minutes of charging gives you 8 hours of uninterrupted playtime.",
+      color: "border-viveon-red/30 bg-viveon-red/5",
+      glowColor: "bg-viveon-red",
     },
     {
-      icon: <Headphones className="text-viveon-neon-blue" size={24} />,
-      title: "Active Noise Cancellation",
-      description: "Block out the world and immerse yourself in your music.",
-      color: "bg-viveon-neon-blue/10 text-viveon-neon-blue",
+      icon: <Headphones size={24} className="text-viveon-neon-blue" />,
+      emoji: "🎧",
+      title: "Immersive Noise Cancellation",
+      description: "Block distractions, dive into pure audio bliss, and experience music like never before.",
+      color: "border-viveon-neon-blue/30 bg-viveon-neon-blue/5",
+      glowColor: "bg-viveon-neon-blue",
     },
     {
-      icon: <WifiIcon className="text-viveon-neon-purple" size={24} />,
-      title: "Seamless Connectivity",
-      description: "Instant pairing with all your devices with Bluetooth 5.2.",
-      color: "bg-viveon-neon-purple/10 text-viveon-neon-purple",
+      icon: <Wifi size={24} className="text-viveon-neon-purple" />,
+      emoji: "📡",
+      title: "Instant Bluetooth 5.4 Connectivity",
+      description: "Seamlessly pair with any device and enjoy ultra-stable, lag-free connections.",
+      color: "border-viveon-neon-purple/30 bg-viveon-neon-purple/5",
+      glowColor: "bg-viveon-neon-purple",
     },
     {
-      icon: <Battery className="text-green-500" size={24} />,
-      title: "Long Battery Life",
-      description: "Enjoy up to 36 hours of total playtime with the charging case.",
-      color: "bg-green-500/10 text-green-500",
+      icon: <Battery size={24} className="text-green-500" />,
+      emoji: "🔋",
+      title: "Marathon Battery Life",
+      description: "Go the distance with up to 36 hours of total playtime, including the charging case.",
+      color: "border-green-500/30 bg-green-500/5",
+      glowColor: "bg-green-500",
     },
   ];
 
-  const ringFeatures = [
-    {
-      icon: <Heart className="text-viveon-red" size={24} />,
-      title: "Health Monitoring",
-      description: "Track your heart rate, blood oxygen levels, and sleep patterns.",
-      color: "bg-viveon-red/10 text-viveon-red",
-    },
-    {
-      icon: <Droplets className="text-viveon-neon-blue" size={24} />,
-      title: "Water Resistant",
-      description: "IP68 rated for water and dust resistance for worry-free wear.",
-      color: "bg-viveon-neon-blue/10 text-viveon-neon-blue",
-    },
-    {
-      icon: <BellRing className="text-viveon-neon-purple" size={24} />,
-      title: "Smart Notifications",
-      description: "Feel subtle vibrations for calls, messages, and app alerts.",
-      color: "bg-viveon-neon-purple/10 text-viveon-neon-purple",
-    },
-    {
-      icon: <BluetoothIcon className="text-green-500" size={24} />,
-      title: "NFC Payments",
-      description: "Make contactless payments with a simple tap of your ring.",
-      color: "bg-green-500/10 text-green-500",
-    },
-  ];
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Staggered layout
+  const getStaggeredGrid = () => {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 relative">
+        <div className="md:mt-0 space-y-6 lg:space-y-10">
+          <FeatureCard {...features[0]} index={0} />
+          <FeatureCard {...features[2]} index={2} />
+        </div>
+        <div className="md:mt-12 space-y-6 lg:space-y-10">
+          <FeatureCard {...features[1]} index={1} />
+          <FeatureCard {...features[3]} index={3} />
+        </div>
+        <ConnectorLines />
+      </div>
+    );
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const subtitleVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+        duration: 0.8
+      }
+    }
+  };
 
   return (
-    <div id="features" className="bg-viveon-darker py-20">
-      <div className="container mx-auto px-4">
+    <section 
+      id="features" 
+      className="relative py-20 lg:py-32 overflow-hidden" 
+      ref={sectionRef}
+    >
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            <span className="text-white">Cutting-Edge </span>
+          <motion.h2 
+            className="text-3xl md:text-5xl font-bold mb-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={titleVariants}
+          >
+            <span className="text-white">Revolutionary </span>
             <span className="gradient-text">Features</span>
-          </h2>
-          <p className="text-gray-400 max-w-3xl mx-auto">Our products combine innovative technology with sleek design to provide you with the ultimate audio and wearable experience.</p>
+          </motion.h2>
+          
+          <motion.p
+            className="text-gray-400 max-w-2xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={subtitleVariants}
+          >
+            Experience cutting-edge technology with uncompromising design. 
+            Our earbuds combine innovation with performance for the ultimate audio experience.
+          </motion.p>
         </div>
 
-        <div className="mb-20">
-          <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
-            <span className="text-viveon-red mr-2">EARBUDS</span> Features
-            <div className="ml-4 h-px bg-gradient-to-r from-viveon-red to-transparent flex-grow"></div>
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {earbudFeatures.map((feature, index) => (
-              <Feature 
-                key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-                color={feature.color}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
-            <span className="text-viveon-neon-blue mr-2">SMART RING</span> Features
-            <div className="ml-4 h-px bg-gradient-to-r from-viveon-neon-blue to-transparent flex-grow"></div>
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {ringFeatures.map((feature, index) => (
-              <Feature 
-                key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-                color={feature.color}
-              />
-            ))}
-          </div>
-        </div>
+        {getStaggeredGrid()}
+        
+        {/* Background decorative elements */}
+        <div className="absolute top-1/4 left-0 w-64 h-64 bg-viveon-red/5 rounded-full filter blur-[100px] -z-10 animate-pulse" />
+        <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-viveon-neon-blue/5 rounded-full filter blur-[100px] -z-10 animate-pulse" />
       </div>
-    </div>
+    </section>
   );
 };
 
