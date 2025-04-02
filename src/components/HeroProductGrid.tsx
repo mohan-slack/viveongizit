@@ -9,28 +9,52 @@ interface HeroProductGridProps {
 const HeroProductGrid: React.FC<HeroProductGridProps> = ({ className }) => {
   return (
     <div className={className}>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <motion.div className="relative group" initial={{
-          opacity: 0,
-          x: -50
-        }} animate={{
-          opacity: 1,
-          x: 0
-        }} transition={{
-          duration: 1,
-          delay: 0.3
-        }}>
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-red/70 to-viveon-neon-purple/70 rounded-xl blur opacity-40 group-hover:opacity-60 transition duration-300"></div>
-          <div className="relative bg-black rounded-xl overflow-hidden">
-            <img src="/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png" alt="HUX Smart Ring Collection" className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-              <h3 className="text-white text-xl font-bold">HUX NEXUS PRO</h3>
-              <p className="text-viveon-neon-blue/80 mt-1">Next-gen wearable technology</p>
+      <div className="grid grid-cols-1 gap-8 max-w-6xl mx-auto">
+        {/* First row - two cards side by side on md screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <motion.div className="relative group" initial={{
+            opacity: 0,
+            x: -50
+          }} animate={{
+            opacity: 1,
+            x: 0
+          }} transition={{
+            duration: 1,
+            delay: 0.3
+          }}>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-red/70 to-viveon-neon-purple/70 rounded-xl blur opacity-40 group-hover:opacity-60 transition duration-300"></div>
+            <div className="relative bg-black rounded-xl overflow-hidden">
+              <img src="/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png" alt="HUX Smart Ring Collection" className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
+                <h3 className="text-white text-xl font-bold">HUX NEXUS PRO</h3>
+                <p className="text-viveon-neon-blue/80 mt-1">Next-gen wearable technology</p>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+          
+          <motion.div className="relative group" initial={{
+            opacity: 0,
+            x: 50
+          }} animate={{
+            opacity: 1,
+            x: 0
+          }} transition={{
+            duration: 1,
+            delay: 0.6
+          }}>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-neon-purple/70 to-viveon-neon-blue/70 rounded-xl blur opacity-40 group-hover:opacity-60 transition duration-300"></div>
+            <div className="relative bg-black rounded-xl overflow-hidden">
+              <img src="/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png" alt="HUX Earbuds Premium Collection" className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
+                <h3 className="text-white text-xl font-bold">HUX SONIC ELITE</h3>
+                <p className="text-viveon-neon-blue/80 mt-1">Crystal clear sound</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
         
-        <motion.div className="relative group row-span-2 md:mt-[-80px]" initial={{
+        {/* Second row - centered featured product */}
+        <motion.div className="relative group mx-auto md:w-2/3" initial={{
           opacity: 0,
           y: 50
         }} animate={{
@@ -45,26 +69,6 @@ const HeroProductGrid: React.FC<HeroProductGridProps> = ({ className }) => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
               <h3 className="text-white text-xl font-bold">HUX QUANTUM PRO</h3>
               <p className="text-viveon-neon-blue/80 mt-1">Wear the Future of Wellness</p>
-            </div>
-          </div>
-        </motion.div>
-        
-        <motion.div className="relative group" initial={{
-          opacity: 0,
-          x: 50
-        }} animate={{
-          opacity: 1,
-          x: 0
-        }} transition={{
-          duration: 1,
-          delay: 0.6
-        }}>
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-neon-purple/70 to-viveon-neon-blue/70 rounded-xl blur opacity-40 group-hover:opacity-60 transition duration-300"></div>
-          <div className="relative bg-black rounded-xl overflow-hidden">
-            <img src="/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png" alt="HUX Earbuds Premium Collection" className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-              <h3 className="text-white text-xl font-bold">HUX SONIC ELITE</h3>
-              <p className="text-viveon-neon-blue/80 mt-1">Crystal clear sound</p>
             </div>
           </div>
         </motion.div>
