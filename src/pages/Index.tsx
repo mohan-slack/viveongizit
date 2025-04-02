@@ -16,6 +16,18 @@ const Index = () => {
   
   // Handle scroll to section from navigation
   useEffect(() => {
+    // Check for scrollToTop state
+    if (location.state && location.state.scrollToTop) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      // Clear the state
+      window.history.replaceState({}, document.title);
+      return;
+    }
+    
     // Check if there's state with scrollToSection
     if (location.state && location.state.scrollToSection) {
       const sectionId = location.state.scrollToSection;

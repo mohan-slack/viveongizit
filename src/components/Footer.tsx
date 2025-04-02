@@ -10,21 +10,37 @@ const Footer: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const handleContactClick = (e: React.MouseEvent) => {
+  const handleNavClick = (href: string, e: React.MouseEvent) => {
     e.preventDefault();
-    const isHomePage = location.pathname === '/';
     
-    if (!isHomePage) {
-      // If we're not on the home page, navigate programmatically
-      navigate('/', { state: { scrollToSection: 'contact' } });
-    } else {
-      // We're already on home page, just scroll
-      const element = document.getElementById('contact');
-      if (element) {
+    // Handle contact section specifically
+    if (href === '#contact') {
+      const isHomePage = location.pathname === '/';
+      
+      if (!isHomePage) {
+        // If we're not on the home page, navigate programmatically
+        navigate('/', { state: { scrollToSection: 'contact' } });
+      } else {
+        // We're already on home page, just scroll
+        const element = document.getElementById('contact');
+        if (element) {
+          window.scrollTo({
+            top: element.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      }
+    } else if (href.startsWith('/')) {
+      // For regular route navigation - need to scroll to top
+      if (location.pathname === href) {
+        // If already on the same page, just scroll to top
         window.scrollTo({
-          top: element.offsetTop - 80,
+          top: 0,
           behavior: 'smooth'
         });
+      } else {
+        // Navigate to the new page and scroll to top when it loads
+        navigate(href, { state: { scrollToTop: true } });
       }
     }
   };
@@ -38,21 +54,45 @@ const Footer: React.FC = () => {
             <h3 className="text-white text-lg font-bold mb-6 tracking-tight">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-viveon-red transition-colors">Home</Link>
+                <a 
+                  href="/" 
+                  onClick={(e) => handleNavClick('/', e)}
+                  className="text-gray-400 hover:text-viveon-red transition-colors"
+                >
+                  Home
+                </a>
               </li>
               <li>
-                <Link to="/products" className="text-gray-400 hover:text-viveon-red transition-colors">Products</Link>
+                <a 
+                  href="/products" 
+                  onClick={(e) => handleNavClick('/products', e)}
+                  className="text-gray-400 hover:text-viveon-red transition-colors"
+                >
+                  Products
+                </a>
               </li>
               <li>
-                <Link to="/features" className="text-gray-400 hover:text-viveon-red transition-colors">Features</Link>
+                <a 
+                  href="/features" 
+                  onClick={(e) => handleNavClick('/features', e)}
+                  className="text-gray-400 hover:text-viveon-red transition-colors"
+                >
+                  Features
+                </a>
               </li>
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-viveon-red transition-colors">About Us</Link>
+                <a 
+                  href="/about" 
+                  onClick={(e) => handleNavClick('/about', e)}
+                  className="text-gray-400 hover:text-viveon-red transition-colors"
+                >
+                  About Us
+                </a>
               </li>
               <li>
                 <a 
                   href="#contact" 
-                  onClick={handleContactClick} 
+                  onClick={(e) => handleNavClick('#contact', e)} 
                   className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer"
                 >
                   Contact
@@ -72,7 +112,7 @@ const Footer: React.FC = () => {
               <li>
                 <a 
                   href="#contact" 
-                  onClick={handleContactClick} 
+                  onClick={(e) => handleNavClick('#contact', e)} 
                   className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer"
                 >
                   Contact Support
@@ -120,7 +160,13 @@ const Footer: React.FC = () => {
         
         {/* Logo and tagline bottom section */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-center gap-6">
-          <Logo className="mb-4 md:mb-0" size="large" showSoundWaves={false} />
+          <a 
+            href="/" 
+            onClick={(e) => handleNavClick('/', e)} 
+            className="mb-4 md:mb-0"
+          >
+            <Logo className="" size="large" showSoundWaves={false} />
+          </a>
           <p className="text-gray-400 font-light tracking-wide text-center md:text-left max-w-xl">
             Experience the next generation of wearable technology with our cutting-edge earbuds and smart rings.
           </p>

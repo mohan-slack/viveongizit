@@ -75,7 +75,17 @@ const Navbar: React.FC = () => {
       
       setIsMobileMenuOpen(false);
     } else {
-      // Regular route navigation, let Link handle it
+      // Regular route navigation - need to scroll to top
+      if (location.pathname === href) {
+        // If already on the same page, just scroll to top
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      } else {
+        // Navigate to the new page and scroll to top when it loads
+        navigate(href, { state: { scrollToTop: true } });
+      }
       setIsMobileMenuOpen(false);
     }
   };
@@ -88,7 +98,10 @@ const Navbar: React.FC = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+        <Link to="/" onClick={() => {
+          setIsMobileMenuOpen(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}>
           <Logo size={isScrolled ? "small" : "medium"} showSoundWaves={false} />
         </Link>
 
@@ -105,13 +118,16 @@ const Navbar: React.FC = () => {
                   {item.label}
                 </a>
               ) : (
-                <Link 
-                  to={item.href}
+                <a 
+                  href={item.href}
                   className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.href, item.isExternal, e);
+                  }}
                 >
                   {item.label}
-                </Link>
+                </a>
               )}
             </li>
           ))}
@@ -154,13 +170,16 @@ const Navbar: React.FC = () => {
                     {item.label}
                   </a>
                 ) : (
-                  <Link 
-                    to={item.href}
+                  <a 
+                    href={item.href}
                     className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.href, item.isExternal, e);
+                    }}
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 )}
               </li>
             ))}
