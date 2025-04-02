@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ZapIcon } from 'lucide-react';
@@ -14,7 +15,7 @@ const HuxLogoAnimation: React.FC = () => {
 
   // Generate random audio levels for visualization
   const generateAudioLevels = () => {
-    const levels = Array.from({ length: 5 }, () => Math.random() * 0.7 + 0.3);
+    const levels = Array.from({ length: 12 }, () => Math.random() * 0.7 + 0.3);
     setAudioLevels(levels);
     
     if (animationStage >= 2 && animationStage < 4) {
@@ -122,13 +123,88 @@ const HuxLogoAnimation: React.FC = () => {
     );
   }
 
-  // Audio wave colors
-  const leftWaveColor = "#F97316"; // Bright Orange
-  const rightWaveColor = "#8B5CF6"; // Vivid Purple
+  // Audio wave colors with more vibrant colors
+  const leftWaveGradient = ["#FF416C", "#A83279", "#9E30FF"]; // Magenta to Purple
+  const rightWaveGradient = ["#4776E6", "#30CFD0", "#00FFF0"]; // Blue to Cyan
 
   // The animation sequence
   return (
     <div className="relative h-32 w-full flex justify-center items-center">
+      {/* Fullscreen Audio Visualization Left Side */}
+      <AnimatePresence>
+        {animationStage >= 2 && animationStage < 4 && (
+          <motion.div
+            className="absolute left-0 top-0 h-full w-1/2 flex items-center justify-end px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-end h-full w-full space-x-1 justify-end">
+              {audioLevels.map((level, index) => (
+                <motion.div
+                  key={`left-${index}`}
+                  className="w-3 md:w-4 rounded-t-md"
+                  style={{
+                    height: `${level * 70}%`,
+                    background: `linear-gradient(to top, ${leftWaveGradient[index % leftWaveGradient.length]}, ${leftWaveGradient[(index + 1) % leftWaveGradient.length]})`,
+                    boxShadow: `0 0 12px ${leftWaveGradient[index % leftWaveGradient.length]}`,
+                  }}
+                  animate={{ 
+                    height: [`${level * 70}%`, `${(Math.random() * 0.8 + 0.2) * 70}%`],
+                    opacity: [0.7, 1]
+                  }}
+                  transition={{ 
+                    duration: 0.4 + (index * 0.05), 
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "mirror"
+                  }}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      {/* Fullscreen Audio Visualization Right Side */}
+      <AnimatePresence>
+        {animationStage >= 2 && animationStage < 4 && (
+          <motion.div
+            className="absolute right-0 top-0 h-full w-1/2 flex items-center justify-start px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-end h-full w-full space-x-1 justify-start">
+              {audioLevels.map((level, index) => (
+                <motion.div
+                  key={`right-${index}`}
+                  className="w-3 md:w-4 rounded-t-md"
+                  style={{
+                    height: `${level * 70}%`,
+                    background: `linear-gradient(to top, ${rightWaveGradient[index % rightWaveGradient.length]}, ${rightWaveGradient[(index + 1) % rightWaveGradient.length]})`,
+                    boxShadow: `0 0 12px ${rightWaveGradient[index % rightWaveGradient.length]}`,
+                  }}
+                  animate={{ 
+                    height: [`${level * 70}%`, `${(Math.random() * 0.8 + 0.2) * 70}%`],
+                    opacity: [0.7, 1]
+                  }}
+                  transition={{ 
+                    duration: 0.4 + (index * 0.05), 
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    delay: index * 0.03
+                  }}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
       {/* Earbud Dock with Lightning Effect */}
       <AnimatePresence>
         {animationStage >= 1 && (
@@ -198,49 +274,6 @@ const HuxLogoAnimation: React.FC = () => {
         )}
       </AnimatePresence>
       
-      {/* 3D Audio Visualization Left (for H) */}
-      <AnimatePresence>
-        {animationStage >= 2 && animationStage < 4 && (
-          <motion.div
-            className="absolute"
-            style={{ left: "calc(50% - 100px)", top: "50%", transform: "translate(-100%, -50%)" }}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 100, 
-              damping: 10,
-              duration: 0.8
-            }}
-          >
-            <div className="flex items-end h-12 space-x-1">
-              {audioLevels.map((level, index) => (
-                <motion.div
-                  key={`left-${index}`}
-                  className="w-1.5 rounded-t-md bg-gradient-to-t from-orange-300 to-orange-500"
-                  style={{
-                    height: `${level * 100}%`,
-                    boxShadow: `0 0 8px ${leftWaveColor}, 0 0 12px ${leftWaveColor}40`,
-                    transform: 'perspective(200px) rotateX(-10deg)',
-                  }}
-                  animate={{ 
-                    height: [`${level * 100}%`, `${(Math.random() * 0.7 + 0.3) * 100}%`],
-                    opacity: [0.7, 1]
-                  }}
-                  transition={{ 
-                    duration: 0.4, 
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "mirror"
-                  }}
-                />
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
       {/* Letter H Animation - From Left */}
       <AnimatePresence>
         {animationStage >= 2 && (
@@ -259,6 +292,7 @@ const HuxLogoAnimation: React.FC = () => {
               backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
               backgroundClip: animationStage >= 4 ? "text" : "border-box",
               WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
+              zIndex: 10
             }}
           >
             H
@@ -298,53 +332,10 @@ const HuxLogoAnimation: React.FC = () => {
               backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
               backgroundClip: animationStage >= 4 ? "text" : "border-box",
               WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
+              zIndex: 10
             }}
           >
             U
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
-      {/* 3D Audio Visualization Right (for X) */}
-      <AnimatePresence>
-        {animationStage >= 2 && animationStage < 4 && (
-          <motion.div
-            className="absolute"
-            style={{ right: "calc(50% - 100px)", top: "50%", transform: "translate(100%, -50%)" }}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 100, 
-              damping: 10,
-              duration: 0.8
-            }}
-          >
-            <div className="flex items-end h-12 space-x-1">
-              {audioLevels.map((level, index) => (
-                <motion.div
-                  key={`right-${index}`}
-                  className="w-1.5 rounded-t-md bg-gradient-to-t from-purple-400 to-purple-600"
-                  style={{
-                    height: `${level * 100}%`,
-                    boxShadow: `0 0 8px ${rightWaveColor}, 0 0 12px ${rightWaveColor}40`,
-                    transform: 'perspective(200px) rotateX(-10deg)',
-                  }}
-                  animate={{ 
-                    height: [`${level * 100}%`, `${(Math.random() * 0.7 + 0.3) * 100}%`],
-                    opacity: [0.7, 1]
-                  }}
-                  transition={{ 
-                    duration: 0.3, 
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "mirror",
-                    delay: index * 0.05
-                  }}
-                />
-              ))}
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -368,6 +359,7 @@ const HuxLogoAnimation: React.FC = () => {
               backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
               backgroundClip: animationStage >= 4 ? "text" : "border-box",
               WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
+              zIndex: 10
             }}
           >
             X
