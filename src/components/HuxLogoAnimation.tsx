@@ -53,17 +53,17 @@ const HuxLogoAnimation: React.FC = () => {
 
   // Calculate colors for each letter based on the wave position
   const getLetterColors = () => {
-    // Base colors from the existing design
-    const redColor = "rgba(255, 58, 47, 0.9)";
-    const purpleColor = "rgba(155, 48, 255, 0.8)";
-    const blueColor = "rgba(0, 255, 255, 0.8)";
+    // Vibrant colors (original colors)
+    const redColor = "rgba(255, 58, 47, 0.9)";  // Bright red
+    const purpleColor = "rgba(155, 48, 255, 0.8)";  // Vibrant purple
+    const blueColor = "rgba(0, 255, 255, 0.8)";  // Cyan/teal
     
     // Calculate position for each letter (0-3 range)
     const hPosition = (colorWavePosition) % 3;
     const uPosition = (colorWavePosition + 1) % 3;
     const xPosition = (colorWavePosition + 2) % 3;
     
-    // Map position to color
+    // Map position to color - creating a wave effect where colors shift positions
     const getColorForPosition = (pos: number) => {
       if (pos < 1) return redColor;
       if (pos < 2) return purpleColor;
@@ -84,6 +84,7 @@ const HuxLogoAnimation: React.FC = () => {
         <motion.span
           style={{ 
             color: letterColors.hColor,
+            textShadow: '0 0 15px rgba(255, 58, 47, 0.5)',
             transition: 'color 0.5s ease-in-out',
           }}
         >
@@ -92,6 +93,7 @@ const HuxLogoAnimation: React.FC = () => {
         <motion.span
           style={{ 
             color: letterColors.uColor,
+            textShadow: '0 0 15px rgba(155, 48, 255, 0.5)',
             transition: 'color 0.5s ease-in-out',
           }}
         >
@@ -100,6 +102,7 @@ const HuxLogoAnimation: React.FC = () => {
         <motion.span
           style={{ 
             color: letterColors.xColor,
+            textShadow: '0 0 15px rgba(0, 255, 255, 0.5)',
             transition: 'color 0.5s ease-in-out',
           }}
         >
@@ -197,6 +200,7 @@ const HuxLogoAnimation: React.FC = () => {
             }}
             style={{ 
               color: "#FF3A2F",
+              textShadow: '0 0 15px rgba(255, 58, 47, 0.5)',
             }}
           >
             H
@@ -233,6 +237,7 @@ const HuxLogoAnimation: React.FC = () => {
             }}
             style={{ 
               color: "#9B30FF",
+              textShadow: '0 0 15px rgba(155, 48, 255, 0.5)',
             }}
           >
             U
@@ -256,6 +261,7 @@ const HuxLogoAnimation: React.FC = () => {
             }}
             style={{ 
               color: "#00FFFF",
+              textShadow: '0 0 15px rgba(0, 255, 255, 0.5)',
             }}
           >
             X
