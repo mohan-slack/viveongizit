@@ -4,24 +4,28 @@ import Logo from './Logo';
 import { Button } from './ui/button';
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { Input } from './ui/input';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   
-  const scrollToSection = (id: string) => {
-    // If we're not on the home page, navigate to home first with the hash
-    if (location.pathname !== '/') {
-      window.location.href = `/#${id}`;
-      return;
-    }
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const isHomePage = location.pathname === '/';
     
-    const element = document.getElementById(id);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80,
-        behavior: 'smooth'
-      });
+    if (!isHomePage) {
+      // If we're not on the home page, navigate programmatically
+      navigate('/', { state: { scrollToSection: 'contact' } });
+    } else {
+      // We're already on home page, just scroll
+      const element = document.getElementById('contact');
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
     }
   };
   
@@ -46,12 +50,13 @@ const Footer: React.FC = () => {
                 <Link to="/about" className="text-gray-400 hover:text-viveon-red transition-colors">About Us</Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('contact')} 
-                  className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer bg-transparent border-0 p-0 text-left"
+                <a 
+                  href="#contact" 
+                  onClick={handleContactClick} 
+                  className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer"
                 >
                   Contact
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -65,12 +70,13 @@ const Footer: React.FC = () => {
               <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Terms of Service</a></li>
               <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Shipping & Returns</a></li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('contact')} 
-                  className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer bg-transparent border-0 p-0 text-left"
+                <a 
+                  href="#contact" 
+                  onClick={handleContactClick} 
+                  className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer"
                 >
                   Contact Support
-                </button>
+                </a>
               </li>
             </ul>
           </div>

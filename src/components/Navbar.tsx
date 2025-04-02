@@ -4,12 +4,13 @@ import { cn } from '@/lib/utils';
 import Logo from './Logo';
 import { Menu, X, ShoppingCart, User } from 'lucide-react';
 import { Button } from './ui/button';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +25,23 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Check if we need to scroll to a section after navigation
+  useEffect(() => {
+    // If there's a hash in the URL, scroll to that section
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          window.scrollTo({
+            top: element.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }, 100); // Small delay to ensure the DOM is ready
+      }
+    }
+  }, [location]);
+
   const navigationItems = [
     { label: "Home", href: "/", isExternal: false },
     { label: "Products", href: "/products", isExternal: false },
@@ -32,42 +50,32 @@ const Navbar: React.FC = () => {
     { label: "Contact", href: "/#contact", isExternal: false }
   ];
 
-  const scrollToSection = (id: string) => {
-    setIsMobileMenuOpen(false);
-    
-    // If we're not on the home page, navigate to home first with the hash
-    if (location.pathname !== '/') {
-      window.location.href = `/#${id}`;
-      return;
-    }
-    
-    const element = document.getElementById(id);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const handleNavClick = (href: string, isExternal: boolean, e: React.MouseEvent) => {
     if (isExternal) return; // Let external links work normally
     
-    if (href.startsWith('/#')) {
+    // For contact section or any other hash link
+    if (href.includes('#')) {
       e.preventDefault();
-      const id = href.replace('/#', '');
-      scrollToSection(id);
-      return;
-    }
-    
-    if (href.includes('#') && !href.startsWith('/')) {
-      e.preventDefault();
-      // It's an anchor link on current page, scroll to the section
-      const id = href.split('#')[1];
-      scrollToSection(id);
+      const isHomePage = location.pathname === '/';
+      const hashPart = href.includes('/#') ? href.split('/#')[1] : href.split('#')[1];
+      
+      if (!isHomePage) {
+        // If we're not on the home page, navigate programmatically
+        navigate('/', { state: { scrollToSection: hashPart } });
+      } else {
+        // We're already on home page, just scroll
+        const element = document.getElementById(hashPart);
+        if (element) {
+          window.scrollTo({
+            top: element.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      }
+      
+      setIsMobileMenuOpen(false);
     } else {
-      // It's a route, don't need to do anything special
-      // as the Link component will handle it
+      // Regular route navigation, let Link handle it
       setIsMobileMenuOpen(false);
     }
   };
@@ -88,7 +96,7 @@ const Navbar: React.FC = () => {
         <ul className="hidden md:flex space-x-8">
           {navigationItems.map((item) => (
             <li key={item.label}>
-              {item.href.startsWith('#') || item.href.includes('/#') ? (
+              {item.href.includes('#') ? (
                 <a 
                   href={item.href}
                   className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
@@ -137,7 +145,7 @@ const Navbar: React.FC = () => {
           <ul className="py-4 px-4 flex flex-col">
             {navigationItems.map((item) => (
               <li key={item.label} className="py-2 border-b border-gray-800">
-                {item.href.startsWith('#') || item.href.includes('/#') ? (
+                {item.href.includes('#') ? (
                   <a 
                     href={item.href}
                     className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
