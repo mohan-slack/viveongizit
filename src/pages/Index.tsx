@@ -9,6 +9,7 @@ import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 import ContactSection from '@/components/ContactSection';
 import DynamicBackground from '@/components/DynamicBackground';
+import AIAssistant from '@/components/AIAssistant/AIAssistant';
 import { useLocation } from 'react-router-dom';
 
 const Index = () => {
@@ -79,6 +80,9 @@ const Index = () => {
       <ContactSection />
       <CallToAction />
       <Footer />
+      
+      {/* AI Assistant */}
+      <AIAssistant />
     </div>
   );
 };
