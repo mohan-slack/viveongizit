@@ -17,12 +17,12 @@ const Logo: React.FC<LogoProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
   
-  // Size mappings with xlarge added (4x medium size)
+  // Size mappings with increased sizes
   const sizeClasses = {
-    small: "h-24",
-    medium: "h-32",
-    large: "h-48",
-    xlarge: "h-128", // 4x the medium size
+    small: "h-28", // Increased from h-24
+    medium: "h-36", // Increased from h-32
+    large: "h-56", // Increased from h-48
+    xlarge: "h-144", // Increased from h-128
   };
 
   const handleLogoClick = () => {
