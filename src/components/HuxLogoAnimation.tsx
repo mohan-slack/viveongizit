@@ -6,7 +6,7 @@ import { ZapIcon } from 'lucide-react';
 const HuxLogoAnimation: React.FC = () => {
   const [animationStage, setAnimationStage] = useState(0);
   const [animationComplete, setAnimationComplete] = useState(false);
-  const [colorWavePosition, setColorWavePosition] = useState(0);
+  const [textColor, setTextColor] = useState(0);
   const [textOpacity, setTextOpacity] = useState(1);
 
   // Start the animation sequence
@@ -29,11 +29,11 @@ const HuxLogoAnimation: React.FC = () => {
     }
   }, [animationStage]);
 
-  // Color cycling wave effect for the final logo
+  // Color cycling effect for the final logo
   useEffect(() => {
     if (animationComplete) {
       const colorInterval = setInterval(() => {
-        setColorWavePosition(prev => (prev + 0.03) % 3);
+        setTextColor(prev => (prev + 0.01) % 3);
       }, 150);
 
       const opacityInterval = setInterval(() => {
@@ -51,62 +51,46 @@ const HuxLogoAnimation: React.FC = () => {
     }
   }, [animationComplete]);
 
-  // Calculate colors for each letter based on the wave position
-  const getLetterColors = () => {
-    // Vibrant colors (original colors)
-    const redColor = "#FF3A2F";  // Bright red
-    const purpleColor = "#9B30FF";  // Vibrant purple
-    const blueColor = "#00FFFF";  // Cyan/teal
-    
-    // Calculate position for each letter (0-3 range)
-    const hPosition = (colorWavePosition) % 3;
-    const uPosition = (colorWavePosition + 1) % 3;
-    const xPosition = (colorWavePosition + 2) % 3;
-    
-    // Map position to color - creating a wave effect where colors shift positions
-    const getColorForPosition = (pos: number) => {
-      if (pos < 1) return redColor;
-      if (pos < 2) return purpleColor;
-      return blueColor;
-    };
-    
-    return {
-      hColor: getColorForPosition(hPosition),
-      uColor: getColorForPosition(uPosition),
-      xColor: getColorForPosition(xPosition)
-    };
+  const getGradientStyle = () => {
+    if (textColor < 1) {
+      const ratio = textColor;
+      return {
+        from: `rgba(255, 58, 47, ${0.9 - 0.2 * ratio * textOpacity})`,
+        via: `rgba(155, 48, 255, ${0.8 * textOpacity})`,
+        to: `rgba(0, 255, 255, ${0.8 - 0.3 * (1-ratio) * textOpacity})`
+      };
+    } else if (textColor < 2) {
+      const ratio = textColor - 1;
+      return {
+        from: `rgba(255, 58, 47, ${0.7 * textOpacity})`,
+        via: `rgba(155, 48, 255, ${0.8 - 0.2 * ratio * textOpacity})`,
+        to: `rgba(0, 255, 255, ${0.8 * textOpacity})`
+      };
+    } else {
+      const ratio = textColor - 2;
+      return {
+        from: `rgba(255, 58, 47, ${0.7 + 0.2 * ratio * textOpacity})`,
+        via: `rgba(155, 48, 255, ${0.6 * textOpacity})`,
+        to: `rgba(0, 255, 255, ${0.8 - 0.3 * ratio * textOpacity})`
+      };
+    }
   };
 
   if (animationComplete) {
-    const letterColors = getLetterColors();
+    const gradientColors = getGradientStyle();
     return (
-      <div className="font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)] flex">
-        <motion.span
-          style={{ 
-            color: letterColors.hColor,
-            transition: 'color 0.5s ease-in-out',
-          }}
-        >
-          H
-        </motion.span>
-        <motion.span
-          style={{ 
-            color: letterColors.uColor,
-            transition: 'color 0.5s ease-in-out',
-          }}
-        >
-          U
-        </motion.span>
-        <motion.span
-          style={{ 
-            color: letterColors.xColor,
-            transition: 'color 0.5s ease-in-out',
-          }}
-        >
-          X
-        </motion.span>
-        <span className="text-white text-[0.25em] align-top leading-none">™</span>
-      </div>
+      <motion.span 
+        className="font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]"
+        style={{ 
+          backgroundImage: `linear-gradient(to right, ${gradientColors.from}, ${gradientColors.via}, ${gradientColors.to})`,
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          color: 'transparent',
+          transition: 'all 1.5s ease-in-out',
+        }}
+      >
+        HUX<span className="text-white text-[0.25em] align-top leading-none">™</span>
+      </motion.span>
     );
   }
 
@@ -196,7 +180,10 @@ const HuxLogoAnimation: React.FC = () => {
               duration: 0.8
             }}
             style={{ 
-              color: "#FF3A2F",
+              color: animationStage >= 4 ? "transparent" : "#FF3A2F",
+              backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
+              backgroundClip: animationStage >= 4 ? "text" : "border-box",
+              WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
             }}
           >
             H
@@ -232,7 +219,10 @@ const HuxLogoAnimation: React.FC = () => {
               duration: 0.8
             }}
             style={{ 
-              color: "#9B30FF",
+              color: animationStage >= 4 ? "transparent" : "#9B30FF",
+              backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
+              backgroundClip: animationStage >= 4 ? "text" : "border-box",
+              WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
             }}
           >
             U
@@ -255,7 +245,10 @@ const HuxLogoAnimation: React.FC = () => {
               delay: 0.1
             }}
             style={{ 
-              color: "#00FFFF",
+              color: animationStage >= 4 ? "transparent" : "#00FFFF",
+              backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
+              backgroundClip: animationStage >= 4 ? "text" : "border-box",
+              WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
             }}
           >
             X
@@ -277,6 +270,8 @@ const HuxLogoAnimation: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      
+      {/* Combining into final HUX logo happens via the animationStage state */}
     </div>
   );
 };
