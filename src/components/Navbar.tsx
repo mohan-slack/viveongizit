@@ -53,15 +53,16 @@ const Navbar: React.FC = () => {
   const handleNavClick = (href: string, isExternal: boolean, e: React.MouseEvent) => {
     if (isExternal) return; // Let external links work normally
     
-    if (href === "/#contact") {
+    if (href.startsWith('/#')) {
       e.preventDefault();
-      scrollToSection('contact');
+      const id = href.replace('/#', '');
+      scrollToSection(id);
       return;
     }
     
-    if (href.includes('#')) {
+    if (href.includes('#') && !href.startsWith('/')) {
       e.preventDefault();
-      // It's an anchor link, scroll to the section
+      // It's an anchor link on current page, scroll to the section
       const id = href.split('#')[1];
       scrollToSection(id);
     } else {
@@ -87,7 +88,7 @@ const Navbar: React.FC = () => {
         <ul className="hidden md:flex space-x-8">
           {navigationItems.map((item) => (
             <li key={item.label}>
-              {item.href.startsWith('#') ? (
+              {item.href.startsWith('#') || item.href.includes('/#') ? (
                 <a 
                   href={item.href}
                   className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
@@ -136,7 +137,7 @@ const Navbar: React.FC = () => {
           <ul className="py-4 px-4 flex flex-col">
             {navigationItems.map((item) => (
               <li key={item.label} className="py-2 border-b border-gray-800">
-                {item.href.startsWith('#') ? (
+                {item.href.startsWith('#') || item.href.includes('/#') ? (
                   <a 
                     href={item.href}
                     className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
