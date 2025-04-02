@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import EnhancedHeroSection from '@/components/EnhancedHeroSection';
@@ -82,8 +83,8 @@ const Index = () => {
       <CallToAction />
       <Footer />
       
-      {/* AI Assistant */}
-      <AIAssistant />
+      {/* AI Assistant (only for mobile - desktop version is inline with earbuds heading) */}
+      {isMobile && <AIAssistant />}
     </div>
   );
 };

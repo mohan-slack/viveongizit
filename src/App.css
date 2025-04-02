@@ -65,9 +65,8 @@
   display: inline-block;
 }
 
-/* Make sure AI Assistant is visible on mobile in inline mode */
 @media (max-width: 768px) {
   .assistant-inline {
-    display: inline-block;
+    display: none;
   }
 }

@@ -97,19 +97,56 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className, hideOnMobile = fal
                 ease: "easeInOut"
               }}
             >
-              {/* Earbud case image */}
+              {/* Robot head inspired by the image */}
               <div className={cn(
-                "w-12 h-12 md:w-16 md:h-16 flex items-center justify-center relative",
-                isHovered ? "scale-110 transition-transform" : "transition-transform"
+                "w-12 h-12 md:w-16 md:h-16 bg-gradient-to-b from-gray-200 to-gray-300 rounded-lg flex items-center justify-center relative",
+                "border-2 shadow-lg",
+                isHovered ? "border-viveon-red" : "border-gray-300"
               )}>
-                <img 
-                  src="/lovable-uploads/148630aa-7dc0-48ab-8e8a-206789faeea5.png" 
-                  alt="AI Assistant" 
-                  className={cn(
-                    "w-full h-full object-contain",
-                    isHovered ? "filter drop-shadow-[0_0_8px_rgba(255,58,47,0.6)]" : ""
-                  )}
-                />
+                {/* Robot face plate */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-gray-200 to-gray-300 overflow-hidden">
+                  {/* Metallic texture */}
+                  <div className="absolute inset-0 opacity-30 bg-noise"></div>
+                  
+                  {/* Highlight reflections */}
+                  <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-white/20 rounded-full blur-md"></div>
+                  <div className="absolute top-3/4 left-3/4 w-1/2 h-1/2 bg-black/10 rounded-full blur-md"></div>
+                </div>
+                
+                {/* Robot eyes */}
+                <div className="relative z-10 flex space-x-2 md:space-x-3">
+                  <motion.div 
+                    className={cn(
+                      "w-2 h-2 md:w-3 md:h-3 rounded-full bg-viveon-neon-blue shadow-[0_0_10px_rgba(0,255,255,0.7)]",
+                      isHovered ? "animate-pulse" : ""
+                    )}
+                    animate={isHovered ? {
+                      scale: [1, 1.2, 1],
+                      opacity: [0.8, 1, 0.8]
+                    } : {}}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  ></motion.div>
+                  <motion.div 
+                    className={cn(
+                      "w-2 h-2 md:w-3 md:h-3 rounded-full bg-viveon-neon-blue shadow-[0_0_10px_rgba(0,255,255,0.7)]",
+                      isHovered ? "animate-pulse" : ""
+                    )}
+                    animate={isHovered ? {
+                      scale: [1, 1.2, 1],
+                      opacity: [0.8, 1, 0.8]
+                    } : {}}
+                    transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+                  ></motion.div>
+                </div>
+                
+                {/* Robot ears/antennas */}
+                <div className="absolute -left-1 -top-1 md:-left-2 md:-top-2 w-2 h-4 md:w-4 md:h-6 bg-gradient-to-b from-gray-300 to-gray-400 rounded-full transform -rotate-12"></div>
+                <div className="absolute -right-1 -top-1 md:-right-2 md:-top-2 w-2 h-4 md:w-4 md:h-6 bg-gradient-to-b from-gray-300 to-gray-400 rounded-full transform rotate-12"></div>
+                
+                {/* Mouth/speaker */}
+                <div className="absolute bottom-2 md:bottom-3 left-0 right-0 flex justify-center">
+                  <div className="w-5 md:w-8 h-0.5 md:h-1 bg-gray-600/50 rounded-full"></div>
+                </div>
               </div>
             </motion.div>
           </motion.div>

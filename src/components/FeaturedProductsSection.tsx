@@ -11,9 +11,9 @@ const FeaturedProductsSection: React.FC = () => {
     {
       id: 1,
       name: "HUX QUANTUM X",
-      category: "WIRELESS EARBUDS",
+      category: "WIRELESS EARBUDS", // Changed back from "SMART RING" to "WIRELESS EARBUDS"
       price: "$249.99",
-      imagePath: "/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png",
+      imagePath: "/lovable-uploads/97d37c64-bc58-45fb-9fae-1199e9856c7e.png", // Earbuds image verified
       color: "red" as const,
     },
     {
@@ -21,7 +21,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX SONIC PRO",
       category: "WIRELESS EARBUDS",
       price: "$199.99",
-      imagePath: "/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png",
+      imagePath: "/lovable-uploads/701c7baf-bad4-4ac1-a5c8-972935c2f4f7.png", // Swapped: Now using NEXUS RING image
       color: "blue" as const,
     },
     {
@@ -29,7 +29,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX PULSE ELITE",
       category: "WIRELESS EARBUDS",
       price: "$179.99",
-      imagePath: "/lovable-uploads/6c2a0bec-beee-4711-8b62-ab7cdc642158.png",
+      imagePath: "/lovable-uploads/6c2a0bec-beee-4711-8b62-ab7cdc642158.png", // Changed from 23ad61cc... to different earbuds image
       color: "purple" as const,
     },
   ];
@@ -40,7 +40,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX NEXUS RING",
       category: "SMART RING",
       price: "$299.99",
-      imagePath: "/lovable-uploads/75db4cf4-b69c-4857-96ea-7dc22bad242c.png",
+      imagePath: "/lovable-uploads/75db4cf4-b69c-4857-96ea-7dc22bad242c.png", // Swapped: Now using SONIC PRO image
       color: "red" as const,
     },
     {
@@ -48,7 +48,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX AURA RING",
       category: "SMART RING",
       price: "$249.99",
-      imagePath: "/lovable-uploads/02af7663-ba07-41b9-b76a-29b4f90aafa9.png",
+      imagePath: "/lovable-uploads/02af7663-ba07-41b9-b76a-29b4f90aafa9.png", // Smart Ring image verified
       color: "blue" as const,
     },
     {
@@ -56,7 +56,7 @@ const FeaturedProductsSection: React.FC = () => {
       name: "HUX FLUX RING",
       category: "SMART RING",
       price: "$229.99",
-      imagePath: "/lovable-uploads/0935fe07-f357-4ada-a951-0709d047a02f.png",
+      imagePath: "/lovable-uploads/0935fe07-f357-4ada-a951-0709d047a02f.png", // Updated to use the new HUX FLUX RING image
       color: "purple" as const,
     },
   ];
@@ -70,8 +70,8 @@ const FeaturedProductsSection: React.FC = () => {
               <div className="flex items-center">
                 <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-red/90">Earbuds</span></h2>
                 {/* AI Assistant positioned right next to the heading */}
-                <div className="ml-4 transform scale-75">
-                  <AIAssistant className="assistant-inline" />
+                <div className="hidden md:block ml-4 transform scale-75">
+                  <AIAssistant hideOnMobile={true} className="assistant-inline" />
                 </div>
               </div>
               <p className="text-gray-400">Experience sound like never before</p>
