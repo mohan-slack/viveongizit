@@ -9,8 +9,8 @@ interface HeroProductGridProps {
 const HeroProductGrid: React.FC<HeroProductGridProps> = ({ className }) => {
   return (
     <div className={className}>
-      <div className="grid grid-cols-1 gap-6 sm:gap-8 max-w-6xl mx-auto">
-        {/* All cards in a single column for better mobile display */}
+      <div className="grid grid-cols-1 gap-8 max-w-6xl mx-auto">
+        {/* Improved spacing and layout for better mobile display */}
         <motion.div className="relative group" initial={{
           opacity: 0,
           y: -20
