@@ -33,8 +33,8 @@ const Products = () => {
       </div>
       <Footer />
       
-      {/* AI Assistant (only for mobile - desktop version is inline with earbuds heading) */}
-      {isMobile && <AIAssistant />}
+      {/* AI Assistant */}
+      <AIAssistant />
     </div>
   );
 };
