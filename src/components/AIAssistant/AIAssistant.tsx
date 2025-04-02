@@ -97,34 +97,27 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className, hideOnMobile = fal
                 ease: "easeInOut"
               }}
             >
-              {/* New earbud case icon */}
+              {/* Earbud case icon with transparent background */}
               <div 
                 className={cn(
-                  "w-12 h-12 md:w-16 md:h-16 rounded-xl flex items-center justify-center relative overflow-hidden",
-                  "shadow-lg transition-all duration-300",
+                  "w-12 h-12 md:w-16 md:h-16 rounded-xl flex items-center justify-center relative",
+                  "transition-all duration-300",
                   isHovered ? "shadow-viveon-red/30" : ""
                 )}
               >
                 <img 
-                  src="/lovable-uploads/5d313094-e192-4ebc-9074-cf6d111ca14f.png"
+                  src="/lovable-uploads/cdd308e7-4882-4bb2-9fd5-b1d504d99ba8.png"
                   alt="AI Assistant" 
                   className={cn(
-                    "w-full h-full object-cover",
+                    "w-full h-full object-contain",
                     isHovered ? "scale-105" : "scale-100",
                     "transition-transform duration-300"
                   )}
                 />
                 
-                {/* Overlay effect on hover */}
-                <div className={cn(
-                  "absolute inset-0 bg-gradient-to-b from-transparent to-black/30",
-                  "transition-opacity duration-300",
-                  isHovered ? "opacity-50" : "opacity-0"
-                )}></div>
-                
                 {/* Glow effect on hover */}
                 {isHovered && (
-                  <div className="absolute inset-0 bg-viveon-red/10 animate-pulse"></div>
+                  <div className="absolute inset-0 bg-viveon-red/10 animate-pulse rounded-xl"></div>
                 )}
               </div>
             </motion.div>
