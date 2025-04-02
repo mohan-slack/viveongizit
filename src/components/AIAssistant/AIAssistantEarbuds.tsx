@@ -2,7 +2,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const AIAssistantEarbuds: React.FC = () => {
+interface AIAssistantEarbudsProps {
+  isAnimating: boolean;
+}
+
+const AIAssistantEarbuds: React.FC<AIAssistantEarbudsProps> = ({ isAnimating }) => {
   // Variants for animation
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,23 +37,25 @@ const AIAssistantEarbuds: React.FC = () => {
       className="absolute top-0 left-0 right-0 flex justify-center items-start pointer-events-none"
       variants={containerVariants}
       initial="hidden"
-      animate="visible"
+      animate={isAnimating ? "visible" : "hidden"}
     >
       {/* Left earbud */}
       <motion.div
-        className="relative mx-3 mt-8"
+        className="relative mx-3"
         variants={earbudVariants}
-        animate={{
+        animate={isAnimating ? {
           rotateY: [0, 180, 360],
-          y: [-10, -50, -30]
+          y: [-10, -70, -50],
+          x: [-20, -40, -30]
+        } : {
+          y: 30,
+          opacity: 0
         }}
+        initial={{ y: 30, opacity: 0 }}
         transition={{
-          duration: 4,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-          times: [0, 0.5, 1],
-          delay: 0.2
+          duration: 2,
+          times: [0, 0.6, 1],
+          ease: "easeOut",
         }}
       >
         <div className="w-12 h-20 relative">
@@ -57,6 +63,9 @@ const AIAssistantEarbuds: React.FC = () => {
           <div className="absolute inset-0 bg-black rounded-xl transform rotate-45 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-viveon-red/10 to-transparent"></div>
+            
+            {/* Glossy reflection */}
+            <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-white/10 rounded-br-full"></div>
             
             {/* HUX logo */}
             <div className="absolute bottom-1 right-1 left-1 text-center transform -rotate-45">
@@ -83,24 +92,34 @@ const AIAssistantEarbuds: React.FC = () => {
             animate={{ opacity: [0.1, 0.3, 0.1] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           ></motion.div>
+          
+          {/* Light reflections */}
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-4 h-4 bg-white/5 rounded-full blur-sm"
+            animate={{ opacity: [0.1, 0.2, 0.1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          ></motion.div>
         </div>
       </motion.div>
       
       {/* Right earbud */}
       <motion.div
-        className="relative mx-3 mt-8"
+        className="relative mx-3"
         variants={earbudVariants}
-        animate={{
+        animate={isAnimating ? {
           rotateY: [0, -180, -360],
-          y: [-20, -40, -20]
+          y: [-10, -70, -50],
+          x: [20, 40, 30]
+        } : {
+          y: 30,
+          opacity: 0
         }}
+        initial={{ y: 30, opacity: 0 }}
         transition={{
-          duration: 4,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-          times: [0, 0.5, 1],
-          delay: 0.5
+          duration: 2,
+          times: [0, 0.6, 1],
+          ease: "easeOut",
+          delay: 0.2
         }}
       >
         <div className="w-12 h-20 relative">
@@ -108,6 +127,9 @@ const AIAssistantEarbuds: React.FC = () => {
           <div className="absolute inset-0 bg-black rounded-xl transform -rotate-45 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-viveon-neon-blue/10 to-transparent"></div>
+            
+            {/* Glossy reflection */}
+            <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-white/10 rounded-bl-full"></div>
             
             {/* HUX logo */}
             <div className="absolute bottom-1 right-1 left-1 text-center transform rotate-45">
@@ -134,8 +156,33 @@ const AIAssistantEarbuds: React.FC = () => {
             animate={{ opacity: [0.1, 0.3, 0.1] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           ></motion.div>
+          
+          {/* Light reflections */}
+          <motion.div 
+            className="absolute top-1/4 right-1/4 w-4 h-4 bg-white/5 rounded-full blur-sm"
+            animate={{ opacity: [0.1, 0.2, 0.1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          ></motion.div>
         </div>
       </motion.div>
+
+      {/* Sound waves animation when earbuds emerge */}
+      {isAnimating && (
+        <>
+          <motion.div
+            className="absolute top-10 left-1/3 w-20 h-20 border border-viveon-red/20 rounded-full"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: [0, 2, 4], opacity: [0, 0.3, 0] }}
+            transition={{ duration: 1.5, delay: 0.8, ease: "easeOut" }}
+          />
+          <motion.div
+            className="absolute top-10 right-1/3 w-20 h-20 border border-viveon-neon-blue/20 rounded-full"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: [0, 2, 4], opacity: [0, 0.3, 0] }}
+            transition={{ duration: 1.5, delay: 1, ease: "easeOut" }}
+          />
+        </>
+      )}
     </motion.div>
   );
 };

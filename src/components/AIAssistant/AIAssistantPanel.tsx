@@ -7,7 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { getEarbudsModels } from './earbudsModelsData';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-const AIAssistantPanel: React.FC = () => {
+interface AIAssistantPanelProps {
+  isAnimating: boolean;
+}
+
+const AIAssistantPanel: React.FC<AIAssistantPanelProps> = ({ isAnimating }) => {
   const navigate = useNavigate();
   const earbudsModels = getEarbudsModels();
   const [selectedModel, setSelectedModel] = useState(earbudsModels[2].id); // Default to Quantum
@@ -36,8 +40,15 @@ const AIAssistantPanel: React.FC = () => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9, y: 10 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.8 }}
+      animate={{ 
+        opacity: 1, 
+        scale: 1, 
+        y: 0, 
+        transition: { 
+          duration: 0.5, 
+          delay: isAnimating ? 1.2 : 0.8 
+        }
+      }}
       className="w-72 bg-black/80 backdrop-blur-md rounded-xl p-4 border border-gray-800/50 shadow-lg"
     >
       <div className="text-center mb-3">
@@ -106,6 +117,11 @@ const AIAssistantPanel: React.FC = () => {
           </TabsContent>
         ))}
       </Tabs>
+      
+      {/* Animated gradient border */}
+      <div className="absolute inset-0 rounded-xl p-[1px] overflow-hidden pointer-events-none">
+        <div className="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-conic-gradient opacity-50"></div>
+      </div>
     </motion.div>
   );
 };

@@ -16,8 +16,15 @@ interface AIAssistantProps {
 const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+
+  // Handle animation sequence
+  const handleOpenAssistant = () => {
+    setIsAnimating(true);
+    setIsOpen(true);
+  };
 
   // Effect to handle clicks outside the assistant to close it
   useEffect(() => {
@@ -58,7 +65,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
           >
             <motion.div
               className="cursor-pointer"
-              onClick={() => setIsOpen(true)}
+              onClick={handleOpenAssistant}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               animate={{
@@ -72,28 +79,54 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
             >
               {/* Robot head inspired by the image */}
               <div className={cn(
-                "w-16 h-16 md:w-20 md:h-20 bg-white rounded-lg flex items-center justify-center relative",
+                "w-16 h-16 md:w-20 md:h-20 bg-gradient-to-b from-gray-200 to-gray-300 rounded-lg flex items-center justify-center relative",
                 "border-2 shadow-lg",
                 isHovered ? "border-viveon-red" : "border-gray-300"
               )}>
-                {/* Robot face */}
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-gray-100 to-gray-200"></div>
+                {/* Robot face plate */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-gray-200 to-gray-300 overflow-hidden">
+                  {/* Metallic texture */}
+                  <div className="absolute inset-0 opacity-30 bg-noise"></div>
+                  
+                  {/* Highlight reflections */}
+                  <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-white/20 rounded-full blur-md"></div>
+                  <div className="absolute top-3/4 left-3/4 w-1/2 h-1/2 bg-black/10 rounded-full blur-md"></div>
+                </div>
                 
                 {/* Robot eyes */}
                 <div className="relative z-10 flex space-x-4">
-                  <div className={cn(
-                    "w-3 h-3 rounded-full bg-cyan-400",
-                    isHovered ? "animate-pulse" : ""
-                  )}></div>
-                  <div className={cn(
-                    "w-3 h-3 rounded-full bg-cyan-400",
-                    isHovered ? "animate-pulse" : ""
-                  )}></div>
+                  <motion.div 
+                    className={cn(
+                      "w-3 h-3 rounded-full bg-viveon-neon-blue shadow-[0_0_10px_rgba(0,255,255,0.7)]",
+                      isHovered ? "animate-pulse" : ""
+                    )}
+                    animate={isHovered ? {
+                      scale: [1, 1.2, 1],
+                      opacity: [0.8, 1, 0.8]
+                    } : {}}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  ></motion.div>
+                  <motion.div 
+                    className={cn(
+                      "w-3 h-3 rounded-full bg-viveon-neon-blue shadow-[0_0_10px_rgba(0,255,255,0.7)]",
+                      isHovered ? "animate-pulse" : ""
+                    )}
+                    animate={isHovered ? {
+                      scale: [1, 1.2, 1],
+                      opacity: [0.8, 1, 0.8]
+                    } : {}}
+                    transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+                  ></motion.div>
                 </div>
                 
                 {/* Robot ears/antennas */}
-                <div className="absolute -left-2 -top-2 w-4 h-6 bg-white rounded-full transform -rotate-12"></div>
-                <div className="absolute -right-2 -top-2 w-4 h-6 bg-white rounded-full transform rotate-12"></div>
+                <div className="absolute -left-2 -top-2 w-4 h-6 bg-gradient-to-b from-gray-300 to-gray-400 rounded-full transform -rotate-12"></div>
+                <div className="absolute -right-2 -top-2 w-4 h-6 bg-gradient-to-b from-gray-300 to-gray-400 rounded-full transform rotate-12"></div>
+                
+                {/* Mouth/speaker */}
+                <div className="absolute bottom-3 left-0 right-0 flex justify-center">
+                  <div className="w-8 h-1 bg-gray-600/50 rounded-full"></div>
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -114,11 +147,11 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
               </Button>
               
               <div className="relative mb-4">
-                <AIAssistantDock />
-                <AIAssistantEarbuds />
+                <AIAssistantDock isAnimating={isAnimating} setIsAnimating={setIsAnimating} />
+                <AIAssistantEarbuds isAnimating={isAnimating} />
               </div>
               
-              <AIAssistantPanel />
+              <AIAssistantPanel isAnimating={isAnimating} />
             </div>
           </motion.div>
         )}
