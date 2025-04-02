@@ -18,8 +18,9 @@ const FinalLogo: React.FC<FinalLogoProps> = ({ isVisible, textColor, textOpacity
     initialOpacity: textOpacity
   });
   
+  // Using a simple div instead of motion.div to avoid React internal error
   return (
-    <motion.div 
+    <div 
       className="font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]"
       style={{ 
         backgroundImage: `linear-gradient(to right, ${gradientStyle.from}, ${gradientStyle.via}, ${gradientStyle.to})`,
@@ -30,7 +31,7 @@ const FinalLogo: React.FC<FinalLogoProps> = ({ isVisible, textColor, textOpacity
       }}
     >
       HUX<span className="text-white text-[0.25em] align-top leading-none">™</span>
-    </motion.div>
+    </div>
   );
 };
 
