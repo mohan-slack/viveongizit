@@ -4,12 +4,15 @@ import AudioVisualizer from './logo/AudioVisualizer';
 import EarbudDock from './logo/EarbudDock';
 import AnimatedLetters from './logo/AnimatedLetters';
 import FinalLogo from './logo/FinalLogo';
+import { useGradientEffect } from '../hooks/useGradientEffect';
 
 const HuxLogoAnimation: React.FC = () => {
   const [animationStage, setAnimationStage] = useState(0);
   const [animationComplete, setAnimationComplete] = useState(false);
-  const [textColor, setTextColor] = useState(0);
-  const [textOpacity, setTextOpacity] = useState(1);
+  
+  const { colorValue, opacity } = useGradientEffect({
+    enabled: animationComplete
+  });
 
   // Start the animation sequence
   useEffect(() => {
@@ -31,28 +34,6 @@ const HuxLogoAnimation: React.FC = () => {
     }
   }, [animationStage]);
 
-  // Color cycling effect for the final logo
-  useEffect(() => {
-    if (animationComplete) {
-      const colorInterval = setInterval(() => {
-        setTextColor(prev => (prev + 0.01) % 3);
-      }, 150);
-
-      const opacityInterval = setInterval(() => {
-        setTextOpacity(prev => {
-          if (prev <= 0.7) return prev + 0.01;
-          if (prev >= 1) return prev - 0.01;
-          return prev - 0.01;
-        });
-      }, 100);
-
-      return () => {
-        clearInterval(colorInterval);
-        clearInterval(opacityInterval);
-      };
-    }
-  }, [animationComplete]);
-
   return (
     <div className="relative h-32 w-full flex justify-center items-center">
       {/* Audio visualization only active during stages 2 and 3 */}
@@ -67,8 +48,8 @@ const HuxLogoAnimation: React.FC = () => {
       {/* Final logo with gradient effects */}
       <FinalLogo 
         isVisible={animationComplete} 
-        textColor={textColor} 
-        textOpacity={textOpacity} 
+        textColor={colorValue} 
+        textOpacity={opacity} 
       />
     </div>
   );

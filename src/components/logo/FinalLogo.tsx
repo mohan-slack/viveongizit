@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useGradientEffect } from '../../hooks/useGradientEffect';
 
 interface FinalLogoProps {
   isVisible: boolean;
@@ -11,38 +12,17 @@ interface FinalLogoProps {
 const FinalLogo: React.FC<FinalLogoProps> = ({ isVisible, textColor, textOpacity }) => {
   if (!isVisible) return null;
 
-  const getGradientStyle = () => {
-    if (textColor < 1) {
-      const ratio = textColor;
-      return {
-        from: `rgba(255, 58, 47, ${0.9 - 0.2 * ratio * textOpacity})`,
-        via: `rgba(155, 48, 255, ${0.8 * textOpacity})`,
-        to: `rgba(0, 255, 255, ${0.8 - 0.3 * (1-ratio) * textOpacity})`
-      };
-    } else if (textColor < 2) {
-      const ratio = textColor - 1;
-      return {
-        from: `rgba(255, 58, 47, ${0.7 * textOpacity})`,
-        via: `rgba(155, 48, 255, ${0.8 - 0.2 * ratio * textOpacity})`,
-        to: `rgba(0, 255, 255, ${0.8 * textOpacity})`
-      };
-    } else {
-      const ratio = textColor - 2;
-      return {
-        from: `rgba(255, 58, 47, ${0.7 + 0.2 * ratio * textOpacity})`,
-        via: `rgba(155, 48, 255, ${0.6 * textOpacity})`,
-        to: `rgba(0, 255, 255, ${0.8 - 0.3 * ratio * textOpacity})`
-      };
-    }
-  };
-
-  const gradientColors = getGradientStyle();
+  const { gradientStyle } = useGradientEffect({
+    enabled: true,
+    initialColorValue: textColor,
+    initialOpacity: textOpacity
+  });
   
   return (
     <motion.span 
       className="font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]"
       style={{ 
-        backgroundImage: `linear-gradient(to right, ${gradientColors.from}, ${gradientColors.via}, ${gradientColors.to})`,
+        backgroundImage: `linear-gradient(to right, ${gradientStyle.from}, ${gradientStyle.via}, ${gradientStyle.to})`,
         backgroundClip: 'text',
         WebkitBackgroundClip: 'text',
         color: 'transparent',
