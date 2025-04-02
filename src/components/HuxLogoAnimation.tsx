@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ZapIcon } from 'lucide-react';
+import { ZapIcon, AudioWaveform } from 'lucide-react';
 
 const HuxLogoAnimation: React.FC = () => {
   const [animationStage, setAnimationStage] = useState(0);
@@ -94,6 +94,10 @@ const HuxLogoAnimation: React.FC = () => {
     );
   }
 
+  // Audio wave colors
+  const leftWaveColor = "#F97316"; // Bright Orange
+  const rightWaveColor = "#8B5CF6"; // Vivid Purple
+
   // The animation sequence
   return (
     <div className="relative h-32 w-full flex justify-center items-center">
@@ -166,6 +170,32 @@ const HuxLogoAnimation: React.FC = () => {
         )}
       </AnimatePresence>
       
+      {/* Audio Waves Left (for H) */}
+      <AnimatePresence>
+        {animationStage >= 2 && animationStage < 4 && (
+          <motion.div
+            className="absolute"
+            style={{ left: "calc(50% - 100px)", top: "50%", transform: "translate(-100%, -50%)" }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 100, 
+              damping: 10,
+              duration: 0.8
+            }}
+          >
+            <AudioWaveform 
+              size={40} 
+              color={leftWaveColor} 
+              className="animate-pulse" 
+              style={{ filter: "drop-shadow(0 0 8px rgba(249, 115, 22, 0.7))" }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
       {/* Letter H Animation - From Left */}
       <AnimatePresence>
         {animationStage >= 2 && (
@@ -226,6 +256,32 @@ const HuxLogoAnimation: React.FC = () => {
             }}
           >
             U
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      {/* Audio Waves Right (for X) */}
+      <AnimatePresence>
+        {animationStage >= 2 && animationStage < 4 && (
+          <motion.div
+            className="absolute"
+            style={{ right: "calc(50% - 100px)", top: "50%", transform: "translate(100%, -50%)" }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 100, 
+              damping: 10,
+              duration: 0.8
+            }}
+          >
+            <AudioWaveform 
+              size={40} 
+              color={rightWaveColor} 
+              className="animate-pulse" 
+              style={{ filter: "drop-shadow(0 0 8px rgba(139, 92, 246, 0.7))" }}
+            />
           </motion.div>
         )}
       </AnimatePresence>
