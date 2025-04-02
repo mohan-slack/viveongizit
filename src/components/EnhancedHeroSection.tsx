@@ -12,7 +12,7 @@ const EnhancedHeroSection: React.FC = () => {
       if (parallaxRef.current) {
         const scrollValue = window.scrollY;
         // Reduced parallax effect for better mobile experience
-        parallaxRef.current.style.transform = `translateY(${scrollValue * 0.15}px)`;
+        parallaxRef.current.style.transform = `translateY(${scrollValue * 0.1}px)`;
       }
     };
     window.addEventListener('scroll', handleScroll);
@@ -23,10 +23,10 @@ const EnhancedHeroSection: React.FC = () => {
     <div className="relative overflow-hidden bg-viveon-darker">
       <HeroBackground />
       
-      <div className="container relative z-10 mx-auto px-4 py-8 pt-24 md:py-16 md:pt-32">
+      <div className="container relative z-10 mx-auto px-4 py-8 pt-20 md:py-16 md:pt-32">
         <HeroContent />
         
-        <div ref={parallaxRef} className="relative mt-6 md:mt-10 pb-8">
+        <div ref={parallaxRef} className="relative mt-6 md:mt-10 pb-16">
           <HeroProductGrid className="w-full" />
         </div>
       </div>
