@@ -66,14 +66,15 @@ const FeaturedProductsSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div id="earbuds" className="mb-20">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 relative">
-            <div className="flex flex-col md:flex-row items-start md:items-end gap-2 md:gap-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-red/90">Earbuds</span></h2>
-              <p className="text-gray-400 mt-1 md:mt-0 md:mb-1">Experience sound like never before</p>
-            </div>
-            
-            {/* AI Assistant positioned in absolute for desktop, hidden on mobile */}
-            <div className="hidden md:block absolute -right-0 -top-20 lg:-top-24 xl:-top-28 z-10 transform scale-75 lg:scale-90 xl:scale-100">
-              <AIAssistant hideOnMobile={true} className="assistant-inline" />
+            <div className="flex flex-col items-start gap-2">
+              <div className="flex items-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-red/90">Earbuds</span></h2>
+                {/* AI Assistant positioned right next to the heading */}
+                <div className="hidden md:block ml-4 transform scale-75">
+                  <AIAssistant hideOnMobile={true} className="assistant-inline" />
+                </div>
+              </div>
+              <p className="text-gray-400">Experience sound like never before</p>
             </div>
             
             <Button variant="ghost" className="text-white hover:text-viveon-red/90 group mt-4 md:mt-0">

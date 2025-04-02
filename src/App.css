@@ -61,6 +61,8 @@
 .assistant-inline {
   pointer-events: auto;
   z-index: 30;
+  position: relative;
+  display: inline-block;
 }
 
 @media (max-width: 768px) {
