@@ -1,13 +1,41 @@
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ZapIcon, AudioWaveform } from 'lucide-react';
+import { ZapIcon } from 'lucide-react';
 
 const HuxLogoAnimation: React.FC = () => {
   const [animationStage, setAnimationStage] = useState(0);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [textColor, setTextColor] = useState(0);
   const [textOpacity, setTextOpacity] = useState(1);
+  
+  // Audio bar animation
+  const [audioLevels, setAudioLevels] = useState<number[]>([]);
+  const audioAnimationRef = useRef<number | null>(null);
+
+  // Generate random audio levels for visualization
+  const generateAudioLevels = () => {
+    const levels = Array.from({ length: 5 }, () => Math.random() * 0.7 + 0.3);
+    setAudioLevels(levels);
+    
+    if (animationStage >= 2 && animationStage < 4) {
+      audioAnimationRef.current = requestAnimationFrame(generateAudioLevels);
+    } else if (audioAnimationRef.current) {
+      cancelAnimationFrame(audioAnimationRef.current);
+    }
+  };
+
+  // Start and stop audio animation
+  useEffect(() => {
+    if (animationStage >= 2 && animationStage < 4) {
+      generateAudioLevels();
+    }
+    
+    return () => {
+      if (audioAnimationRef.current) {
+        cancelAnimationFrame(audioAnimationRef.current);
+      }
+    };
+  }, [animationStage]);
 
   // Start the animation sequence
   useEffect(() => {
@@ -170,7 +198,7 @@ const HuxLogoAnimation: React.FC = () => {
         )}
       </AnimatePresence>
       
-      {/* Audio Waves Left (for H) */}
+      {/* 3D Audio Visualization Left (for H) */}
       <AnimatePresence>
         {animationStage >= 2 && animationStage < 4 && (
           <motion.div
@@ -186,12 +214,29 @@ const HuxLogoAnimation: React.FC = () => {
               duration: 0.8
             }}
           >
-            <AudioWaveform 
-              size={40} 
-              color={leftWaveColor} 
-              className="animate-pulse" 
-              style={{ filter: "drop-shadow(0 0 8px rgba(249, 115, 22, 0.7))" }}
-            />
+            <div className="flex items-end h-12 space-x-1">
+              {audioLevels.map((level, index) => (
+                <motion.div
+                  key={`left-${index}`}
+                  className="w-1.5 rounded-t-md bg-gradient-to-t from-orange-300 to-orange-500"
+                  style={{
+                    height: `${level * 100}%`,
+                    boxShadow: `0 0 8px ${leftWaveColor}, 0 0 12px ${leftWaveColor}40`,
+                    transform: 'perspective(200px) rotateX(-10deg)',
+                  }}
+                  animate={{ 
+                    height: [`${level * 100}%`, `${(Math.random() * 0.7 + 0.3) * 100}%`],
+                    opacity: [0.7, 1]
+                  }}
+                  transition={{ 
+                    duration: 0.4, 
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "mirror"
+                  }}
+                />
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -260,7 +305,7 @@ const HuxLogoAnimation: React.FC = () => {
         )}
       </AnimatePresence>
       
-      {/* Audio Waves Right (for X) */}
+      {/* 3D Audio Visualization Right (for X) */}
       <AnimatePresence>
         {animationStage >= 2 && animationStage < 4 && (
           <motion.div
@@ -276,12 +321,30 @@ const HuxLogoAnimation: React.FC = () => {
               duration: 0.8
             }}
           >
-            <AudioWaveform 
-              size={40} 
-              color={rightWaveColor} 
-              className="animate-pulse" 
-              style={{ filter: "drop-shadow(0 0 8px rgba(139, 92, 246, 0.7))" }}
-            />
+            <div className="flex items-end h-12 space-x-1">
+              {audioLevels.map((level, index) => (
+                <motion.div
+                  key={`right-${index}`}
+                  className="w-1.5 rounded-t-md bg-gradient-to-t from-purple-400 to-purple-600"
+                  style={{
+                    height: `${level * 100}%`,
+                    boxShadow: `0 0 8px ${rightWaveColor}, 0 0 12px ${rightWaveColor}40`,
+                    transform: 'perspective(200px) rotateX(-10deg)',
+                  }}
+                  animate={{ 
+                    height: [`${level * 100}%`, `${(Math.random() * 0.7 + 0.3) * 100}%`],
+                    opacity: [0.7, 1]
+                  }}
+                  transition={{ 
+                    duration: 0.3, 
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    delay: index * 0.05
+                  }}
+                />
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
