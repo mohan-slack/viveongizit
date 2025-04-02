@@ -6,7 +6,7 @@ export interface EarbudsModelFeatures {
   description: string;
   price: string;
   features: {
-    icon: React.ComponentType;
+    icon: string; // Changed from React.ComponentType to string
     title: string;
     description: string;
   }[];
