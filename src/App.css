@@ -56,3 +56,15 @@
     hsl(344, 100%, 50%)
   );
 }
+
+/* Assistant positioning for the featured products section */
+.assistant-inline {
+  pointer-events: auto;
+  z-index: 30;
+}
+
+@media (max-width: 768px) {
+  .assistant-inline {
+    display: none;
+  }
+}

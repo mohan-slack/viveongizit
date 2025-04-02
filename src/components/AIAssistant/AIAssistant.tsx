@@ -11,9 +11,10 @@ import { cn } from '@/lib/utils';
 
 interface AIAssistantProps {
   className?: string;
+  hideOnMobile?: boolean;
 }
 
-const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
+const AIAssistant: React.FC<AIAssistantProps> = ({ className, hideOnMobile = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -40,16 +41,35 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
     };
   }, [isOpen]);
 
-  // Position adjustments based on device
-  const positionClasses = isMobile 
-    ? "bottom-4 right-4" 
-    : "bottom-8 right-8";
+  // Determine if we should show the floating assistant
+  const showFloatingAssistant = (() => {
+    if (className?.includes('assistant-inline')) {
+      return false;
+    }
+    if (hideOnMobile && isMobile) {
+      return false;
+    }
+    return true;
+  })();
+
+  // Position adjustments based on device and layout mode
+  const positionClasses = className?.includes('assistant-inline')
+    ? "" // No positioning classes for inline mode
+    : isMobile 
+      ? "bottom-4 right-4" 
+      : "bottom-8 right-8";
+
+  // Don't render anything if configured to hide on mobile and we're on mobile
+  if (hideOnMobile && isMobile && !className?.includes('assistant-inline')) {
+    return null;
+  }
 
   return (
     <div 
       ref={containerRef}
       className={cn(
-        "fixed z-50 perspective-1000",
+        "perspective-1000",
+        showFloatingAssistant ? "fixed z-50" : "relative z-20",
         positionClasses,
         className
       )}
@@ -79,7 +99,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
             >
               {/* Robot head inspired by the image */}
               <div className={cn(
-                "w-16 h-16 md:w-20 md:h-20 bg-gradient-to-b from-gray-200 to-gray-300 rounded-lg flex items-center justify-center relative",
+                "w-12 h-12 md:w-16 md:h-16 bg-gradient-to-b from-gray-200 to-gray-300 rounded-lg flex items-center justify-center relative",
                 "border-2 shadow-lg",
                 isHovered ? "border-viveon-red" : "border-gray-300"
               )}>
@@ -94,10 +114,10 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
                 </div>
                 
                 {/* Robot eyes */}
-                <div className="relative z-10 flex space-x-4">
+                <div className="relative z-10 flex space-x-2 md:space-x-3">
                   <motion.div 
                     className={cn(
-                      "w-3 h-3 rounded-full bg-viveon-neon-blue shadow-[0_0_10px_rgba(0,255,255,0.7)]",
+                      "w-2 h-2 md:w-3 md:h-3 rounded-full bg-viveon-neon-blue shadow-[0_0_10px_rgba(0,255,255,0.7)]",
                       isHovered ? "animate-pulse" : ""
                     )}
                     animate={isHovered ? {
@@ -108,7 +128,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
                   ></motion.div>
                   <motion.div 
                     className={cn(
-                      "w-3 h-3 rounded-full bg-viveon-neon-blue shadow-[0_0_10px_rgba(0,255,255,0.7)]",
+                      "w-2 h-2 md:w-3 md:h-3 rounded-full bg-viveon-neon-blue shadow-[0_0_10px_rgba(0,255,255,0.7)]",
                       isHovered ? "animate-pulse" : ""
                     )}
                     animate={isHovered ? {
@@ -120,12 +140,12 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
                 </div>
                 
                 {/* Robot ears/antennas */}
-                <div className="absolute -left-2 -top-2 w-4 h-6 bg-gradient-to-b from-gray-300 to-gray-400 rounded-full transform -rotate-12"></div>
-                <div className="absolute -right-2 -top-2 w-4 h-6 bg-gradient-to-b from-gray-300 to-gray-400 rounded-full transform rotate-12"></div>
+                <div className="absolute -left-1 -top-1 md:-left-2 md:-top-2 w-2 h-4 md:w-4 md:h-6 bg-gradient-to-b from-gray-300 to-gray-400 rounded-full transform -rotate-12"></div>
+                <div className="absolute -right-1 -top-1 md:-right-2 md:-top-2 w-2 h-4 md:w-4 md:h-6 bg-gradient-to-b from-gray-300 to-gray-400 rounded-full transform rotate-12"></div>
                 
                 {/* Mouth/speaker */}
-                <div className="absolute bottom-3 left-0 right-0 flex justify-center">
-                  <div className="w-8 h-1 bg-gray-600/50 rounded-full"></div>
+                <div className="absolute bottom-2 md:bottom-3 left-0 right-0 flex justify-center">
+                  <div className="w-5 md:w-8 h-0.5 md:h-1 bg-gray-600/50 rounded-full"></div>
                 </div>
               </div>
             </motion.div>

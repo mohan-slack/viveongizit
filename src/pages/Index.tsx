@@ -11,9 +11,11 @@ import ContactSection from '@/components/ContactSection';
 import DynamicBackground from '@/components/DynamicBackground';
 import AIAssistant from '@/components/AIAssistant/AIAssistant';
 import { useLocation } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   const location = useLocation();
+  const isMobile = useIsMobile();
   
   // Handle scroll to section from navigation
   useEffect(() => {
@@ -81,8 +83,8 @@ const Index = () => {
       <CallToAction />
       <Footer />
       
-      {/* AI Assistant */}
-      <AIAssistant />
+      {/* AI Assistant (only for mobile - desktop version is inline with earbuds heading) */}
+      {isMobile && <AIAssistant />}
     </div>
   );
 };

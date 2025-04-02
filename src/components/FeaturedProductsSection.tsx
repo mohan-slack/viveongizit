@@ -3,6 +3,7 @@ import React from 'react';
 import ProductCard from './ProductCard';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
+import AIAssistant from './AIAssistant/AIAssistant';
 
 const FeaturedProductsSection: React.FC = () => {
   // Updated product names to match their image types
@@ -64,12 +65,18 @@ const FeaturedProductsSection: React.FC = () => {
     <div className="bg-viveon-dark py-20">
       <div className="container mx-auto px-4">
         <div id="earbuds" className="mb-20">
-          <div className="flex justify-between items-end mb-12">
-            <div>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 relative">
+            <div className="flex flex-col md:flex-row items-start md:items-end gap-2 md:gap-4">
               <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-red/90">Earbuds</span></h2>
-              <p className="text-gray-400 mt-2">Experience sound like never before</p>
+              <p className="text-gray-400 mt-1 md:mt-0 md:mb-1">Experience sound like never before</p>
             </div>
-            <Button variant="ghost" className="text-white hover:text-viveon-red/90 group">
+            
+            {/* AI Assistant positioned in absolute for desktop, hidden on mobile */}
+            <div className="hidden md:block absolute -right-0 -top-20 lg:-top-24 xl:-top-28 z-10 transform scale-75 lg:scale-90 xl:scale-100">
+              <AIAssistant hideOnMobile={true} className="assistant-inline" />
+            </div>
+            
+            <Button variant="ghost" className="text-white hover:text-viveon-red/90 group mt-4 md:mt-0">
               View All
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>

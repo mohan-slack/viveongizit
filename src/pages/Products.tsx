@@ -1,13 +1,15 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import DynamicBackground from '@/components/DynamicBackground';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
+import AIAssistant from '@/components/AIAssistant/AIAssistant';
 import { useLocation } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Products = () => {
   const location = useLocation();
+  const isMobile = useIsMobile();
   
   // Handle scroll to top when navigating to this page
   useEffect(() => {
@@ -30,6 +32,9 @@ const Products = () => {
         <FeaturedProductsSection />
       </div>
       <Footer />
+      
+      {/* AI Assistant (only for mobile - desktop version is inline with earbuds heading) */}
+      {isMobile && <AIAssistant />}
     </div>
   );
 };
