@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Play, Volume2 } from 'lucide-react';
+import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AIAssistantDock from './AIAssistantDock';
 import AIAssistantEarbuds from './AIAssistantEarbuds';
@@ -70,41 +70,30 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className }) => {
                 ease: "easeInOut"
               }}
             >
+              {/* Robot head inspired by the image */}
               <div className={cn(
-                "w-16 h-16 md:w-20 md:h-20 bg-black rounded-full flex items-center justify-center relative",
-                "border-2 border-viveon-neon-blue shadow-lg",
-                isHovered ? "border-viveon-red" : "border-viveon-neon-blue"
+                "w-16 h-16 md:w-20 md:h-20 bg-white rounded-lg flex items-center justify-center relative",
+                "border-2 shadow-lg",
+                isHovered ? "border-viveon-red" : "border-gray-300"
               )}>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-b from-gray-900/80 to-black"></div>
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="flex space-x-3">
-                    <div className={cn(
-                      "w-2 h-2 rounded-full bg-viveon-neon-blue",
-                      isHovered ? "bg-viveon-red animate-pulse" : "bg-viveon-neon-blue"
-                    )}></div>
-                    <div className={cn(
-                      "w-2 h-2 rounded-full bg-viveon-neon-blue",
-                      isHovered ? "bg-viveon-red animate-pulse" : "bg-viveon-neon-blue"
-                    )}></div>
-                  </div>
-                  <span className={cn(
-                    "text-xs mt-1",
-                    isHovered ? "text-viveon-red" : "text-viveon-neon-blue"
-                  )}>HUX AI</span>
+                {/* Robot face */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-gray-100 to-gray-200"></div>
+                
+                {/* Robot eyes */}
+                <div className="relative z-10 flex space-x-4">
+                  <div className={cn(
+                    "w-3 h-3 rounded-full bg-cyan-400",
+                    isHovered ? "animate-pulse" : ""
+                  )}></div>
+                  <div className={cn(
+                    "w-3 h-3 rounded-full bg-cyan-400",
+                    isHovered ? "animate-pulse" : ""
+                  )}></div>
                 </div>
                 
-                {/* Pulsing ring effect */}
-                <AnimatePresence>
-                  {isHovered && (
-                    <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1.2, opacity: 0.3 }}
-                      exit={{ scale: 1.5, opacity: 0 }}
-                      transition={{ duration: 1, repeat: Infinity }}
-                      className="absolute inset-0 rounded-full border-2 border-viveon-red"
-                    ></motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Robot ears/antennas */}
+                <div className="absolute -left-2 -top-2 w-4 h-6 bg-white rounded-full transform -rotate-12"></div>
+                <div className="absolute -right-2 -top-2 w-4 h-6 bg-white rounded-full transform rotate-12"></div>
               </div>
             </motion.div>
           </motion.div>
