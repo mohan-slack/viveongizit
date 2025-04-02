@@ -5,12 +5,14 @@ import Logo from './Logo';
 import { Menu, X, ShoppingCart, User } from 'lucide-react';
 import { Button } from './ui/button';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,8 +103,12 @@ const Navbar: React.FC = () => {
         <Link to="/" onClick={() => {
           setIsMobileMenuOpen(false);
           window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}>
-          <Logo size={isScrolled ? "small" : "medium"} showSoundWaves={false} />
+        }} className="flex items-center">
+          <Logo 
+            size={isScrolled ? "small" : "medium"} 
+            showSoundWaves={false} 
+            className={isMobile ? "ml-0 -my-2" : ""}
+          />
         </Link>
 
         {/* Desktop Menu */}

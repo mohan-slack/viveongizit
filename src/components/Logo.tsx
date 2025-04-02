@@ -2,6 +2,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface LogoProps {
   className?: string;
@@ -16,13 +17,14 @@ const Logo: React.FC<LogoProps> = ({
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const isMobile = useIsMobile();
   
-  // Size mappings with increased sizes
+  // Adjust size classes for better mobile display
   const sizeClasses = {
-    small: "h-28", // Increased from h-24
-    medium: "h-36", // Increased from h-32
-    large: "h-56", // Increased from h-48
-    xlarge: "h-144", // Increased from h-128
+    small: isMobile ? "h-20" : "h-28", // Smaller on mobile
+    medium: isMobile ? "h-24" : "h-36", // Smaller on mobile
+    large: isMobile ? "h-40" : "h-56", // Smaller on mobile
+    xlarge: isMobile ? "h-64" : "h-144", // Smaller on mobile
   };
 
   const handleLogoClick = () => {
