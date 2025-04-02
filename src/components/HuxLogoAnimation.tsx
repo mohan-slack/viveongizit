@@ -15,7 +15,7 @@ const HuxLogoAnimation: React.FC = () => {
 
   // Generate random audio levels for visualization
   const generateAudioLevels = () => {
-    const levels = Array.from({ length: 12 }, () => Math.random() * 0.7 + 0.3);
+    const levels = Array.from({ length: 20 }, () => Math.random() * 0.7 + 0.3);
     setAudioLevels(levels);
     
     if (animationStage >= 2 && animationStage < 4) {
@@ -123,39 +123,49 @@ const HuxLogoAnimation: React.FC = () => {
     );
   }
 
-  // Audio wave colors with more vibrant colors
-  const leftWaveGradient = ["#FF416C", "#A83279", "#9E30FF"]; // Magenta to Purple
-  const rightWaveGradient = ["#4776E6", "#30CFD0", "#00FFF0"]; // Blue to Cyan
+  // Define audio bar colors to match the reference image
+  const audioBarColors = [
+    "#9C56DB", // Purple
+    "#854ED6", // Purple
+    "#6F45D1", // Purple
+    "#5F3EB0", // Purple
+    "#4768D9", // Blue
+    "#3E7BE0", // Blue
+    "#3493E5", // Light Blue
+    "#2BA9EA", // Light Blue
+    "#22BFEF", // Cyan
+    "#B33A8B", // Pink
+  ];
 
   // The animation sequence
   return (
     <div className="relative h-32 w-full flex justify-center items-center">
-      {/* Fullscreen Audio Visualization Left Side */}
+      {/* Fullscreen Audio Visualization - Left Side */}
       <AnimatePresence>
         {animationStage >= 2 && animationStage < 4 && (
           <motion.div
-            className="absolute left-0 top-0 h-full w-1/2 flex items-center justify-end px-4"
+            className="absolute left-0 top-0 h-full w-1/2 flex items-center justify-end space-x-1 px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex items-end h-full w-full space-x-1 justify-end">
-              {audioLevels.map((level, index) => (
+            <div className="flex items-end h-full w-full justify-end space-x-1">
+              {audioLevels.slice(0, 10).map((level, index) => (
                 <motion.div
                   key={`left-${index}`}
-                  className="w-3 md:w-4 rounded-t-md"
+                  className="w-2 md:w-2.5 rounded-t-md"
                   style={{
-                    height: `${level * 70}%`,
-                    background: `linear-gradient(to top, ${leftWaveGradient[index % leftWaveGradient.length]}, ${leftWaveGradient[(index + 1) % leftWaveGradient.length]})`,
-                    boxShadow: `0 0 12px ${leftWaveGradient[index % leftWaveGradient.length]}`,
+                    height: `${level * 100}%`,
+                    backgroundColor: audioBarColors[index % audioBarColors.length],
+                    boxShadow: `0 0 8px ${audioBarColors[index % audioBarColors.length]}`,
                   }}
                   animate={{ 
-                    height: [`${level * 70}%`, `${(Math.random() * 0.8 + 0.2) * 70}%`],
+                    height: [`${level * 100}%`, `${(Math.random() * 0.8 + 0.2) * 100}%`],
                     opacity: [0.7, 1]
                   }}
                   transition={{ 
-                    duration: 0.4 + (index * 0.05), 
+                    duration: 0.3 + (index * 0.03), 
                     ease: "easeInOut",
                     repeat: Infinity,
                     repeatType: "mirror"
@@ -167,36 +177,36 @@ const HuxLogoAnimation: React.FC = () => {
         )}
       </AnimatePresence>
       
-      {/* Fullscreen Audio Visualization Right Side */}
+      {/* Fullscreen Audio Visualization - Right Side */}
       <AnimatePresence>
         {animationStage >= 2 && animationStage < 4 && (
           <motion.div
-            className="absolute right-0 top-0 h-full w-1/2 flex items-center justify-start px-4"
+            className="absolute right-0 top-0 h-full w-1/2 flex items-center justify-start space-x-1 px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex items-end h-full w-full space-x-1 justify-start">
-              {audioLevels.map((level, index) => (
+            <div className="flex items-end h-full w-full justify-start space-x-1">
+              {audioLevels.slice(10, 20).map((level, index) => (
                 <motion.div
                   key={`right-${index}`}
-                  className="w-3 md:w-4 rounded-t-md"
+                  className="w-2 md:w-2.5 rounded-t-md"
                   style={{
-                    height: `${level * 70}%`,
-                    background: `linear-gradient(to top, ${rightWaveGradient[index % rightWaveGradient.length]}, ${rightWaveGradient[(index + 1) % rightWaveGradient.length]})`,
-                    boxShadow: `0 0 12px ${rightWaveGradient[index % rightWaveGradient.length]}`,
+                    height: `${level * 100}%`,
+                    backgroundColor: audioBarColors[(audioBarColors.length - 1 - index) % audioBarColors.length],
+                    boxShadow: `0 0 8px ${audioBarColors[(audioBarColors.length - 1 - index) % audioBarColors.length]}`,
                   }}
                   animate={{ 
-                    height: [`${level * 70}%`, `${(Math.random() * 0.8 + 0.2) * 70}%`],
+                    height: [`${level * 100}%`, `${(Math.random() * 0.8 + 0.2) * 100}%`],
                     opacity: [0.7, 1]
                   }}
                   transition={{ 
-                    duration: 0.4 + (index * 0.05), 
+                    duration: 0.3 + (index * 0.03), 
                     ease: "easeInOut",
                     repeat: Infinity,
                     repeatType: "mirror",
-                    delay: index * 0.03
+                    delay: index * 0.02
                   }}
                 />
               ))}
