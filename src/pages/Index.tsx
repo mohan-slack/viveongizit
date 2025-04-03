@@ -8,7 +8,6 @@ import AboutSection from '@/components/AboutSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 import ContactSection from '@/components/ContactSection';
-import DynamicBackground from '@/components/DynamicBackground';
 import AIAssistant from '@/components/AIAssistant/AIAssistant';
 import { useLocation } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -72,8 +71,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-viveon-darker text-white relative overflow-hidden">
-      <DynamicBackground />
+    <div className="min-h-screen relative">
       <Navbar />
       <EnhancedHeroSection />
       <FeaturedProductsSection />

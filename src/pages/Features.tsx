@@ -1,8 +1,6 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import DynamicBackground from '@/components/DynamicBackground';
 import InteractiveFeatureShowcase from '@/components/features/InteractiveFeatureShowcase';
 import { FeatureProps } from '@/components/features/FeatureTypes';
 import { useLocation } from 'react-router-dom';
@@ -94,8 +92,7 @@ const Features = () => {
   }, [location]);
   
   return (
-    <div className="min-h-screen bg-viveon-darker text-white relative overflow-hidden">
-      <DynamicBackground />
+    <div className="min-h-screen relative">
       <Navbar />
       
       <div className="container mx-auto px-4 py-24">

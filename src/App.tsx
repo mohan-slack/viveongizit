@@ -9,6 +9,7 @@ import Features from "./pages/Features";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Products from "./pages/Products";
+import DynamicBackground from "@/components/DynamicBackground";
 import "./App.css";
 
 const queryClient = new QueryClient();
@@ -41,9 +42,12 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <RouterProvider router={router} />
-        <Toaster />
-        <Sonner />
+        <div className="min-h-screen bg-viveon-darker text-white relative overflow-hidden">
+          <DynamicBackground />
+          <RouterProvider router={router} />
+          <Toaster />
+          <Sonner />
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );
