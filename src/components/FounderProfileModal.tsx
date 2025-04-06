@@ -50,12 +50,23 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
     };
   }, [isMobile]);
   
-  // Close when clicking outside - improved for mobile
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
+  // Close when clicking outside - improved for modal behavior
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      // Check if click is outside the modal content
+      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+        onClose();
+      }
+    };
+    
+    // Add event listener to document body
+    document.addEventListener('mousedown', handleOutsideClick);
+    
+    // Clean up event listener
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [onClose]);
   
   // Handle escape key press
   useEffect(() => {
@@ -79,7 +90,6 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        onClick={handleBackdropClick}
         key="modal-backdrop"
       >
         {/* Blurred backdrop */}
@@ -117,7 +127,7 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
         
         {/* Profile card with 3D effect */}
         <motion.div
-          ref={containerRef}
+          ref={modalRef}
           className={`relative max-h-[90vh] ${isMobile ? 'w-[95%] max-w-md' : 'w-11/12 max-w-xl'} bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-[0_10px_50px_rgba(0,0,0,0.5)] overflow-hidden overflow-y-auto`}
           initial={{ scale: 0.9, y: 50, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
