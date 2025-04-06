@@ -45,6 +45,7 @@ const CategoryDisplay: React.FC<CategoryDisplayProps> = ({
         animate="visible"
         key={activeCategory} // Force re-render on category change
       >
+        {/* Display all cards instead of limiting to 6 */}
         {activeData.map((feature, index) => (
           <FeatureCard 
             key={`${activeCategory}-${index}`}

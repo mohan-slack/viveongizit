@@ -5,75 +5,15 @@ import Footer from '@/components/Footer';
 import InteractiveFeatureShowcase from '@/components/features/InteractiveFeatureShowcase';
 import { FeatureProps } from '@/components/features/FeatureTypes';
 import { useLocation } from 'react-router-dom';
+import { getEarbudsData } from '@/components/features/earbudsData';
+import { getSmartRingsData } from '@/components/features/smartRingsData';
 
-// Combine only the 6 required features from both product types
+// Use all features data from both product types
 const featuresData: Omit<FeatureProps, 'index' | 'selected' | 'onSelect' | 'onDeselect'>[] = [
-  {
-    id: 'earbuds-fast-charging',
-    iconName: "Zap",
-    emoji: "⚡",
-    title: "Lightning-Fast Charging",
-    description: "Power up in 15 minutes for 8+ hours of playtime.",
-    color: "border-viveon-red/30 bg-viveon-red/5",
-    glowColor: "bg-viveon-red",
-    additionalInfo: "Our proprietary fast-charging technology uses advanced power delivery algorithms to safely maximize battery capacity in record time.",
-    category: "earbuds" as const
-  },
-  {
-    id: 'earbuds-noise-cancellation',
-    iconName: "Headphones",
-    emoji: "🎧",
-    title: "Immersive Noise Cancellation",
-    description: "Advanced ANC tech to block external noise and enhance clarity.",
-    color: "border-viveon-neon-blue/30 bg-viveon-neon-blue/5",
-    glowColor: "bg-viveon-neon-blue",
-    additionalInfo: "Utilizing 8 microphones and AI-powered sound processing to create a bubble of silence around you, with adjustable transparency levels.",
-    category: "earbuds" as const
-  },
-  {
-    id: 'earbuds-spatial-audio',
-    iconName: "Music",
-    emoji: "🏟️",
-    title: "3D Spatial Audio",
-    description: "Cinematic surround sound with real-time head tracking.",
-    color: "border-purple-500/30 bg-purple-500/5",
-    glowColor: "bg-purple-500",
-    additionalInfo: "Dynamic head tracking adjusts sound fields in real-time, creating an immersive audio environment that adapts to your movement.",
-    category: "earbuds" as const
-  },
-  {
-    id: 'ring-health-monitoring',
-    iconName: "Heart",
-    emoji: "❤️",
-    title: "Advanced Health Monitoring",
-    description: "Track heart rate, blood oxygen, sleep, and stress levels.",
-    color: "border-red-500/30 bg-red-500/5",
-    glowColor: "bg-red-500",
-    additionalInfo: "Clinical-grade sensors provide continuous monitoring with 99.8% accuracy compared to medical devices.",
-    category: "smartrings" as const
-  },
-  {
-    id: 'ring-gesture-control',
-    iconName: "Hand",
-    emoji: "🤟",
-    title: "Gesture Control",
-    description: "Use finger movements to control devices without touching them.",
-    color: "border-amber-500/30 bg-amber-500/5",
-    glowColor: "bg-amber-500",
-    additionalInfo: "Advanced motion sensors recognize 28 distinct gestures that can be customized to control your entire smart home ecosystem.",
-    category: "smartrings" as const
-  },
-  {
-    id: 'ring-nfc-payments',
-    iconName: "CreditCard",
-    emoji: "💳",
-    title: "NFC Payments",
-    description: "Make contactless payments securely with just a tap.",
-    color: "border-indigo-500/30 bg-indigo-500/5",
-    glowColor: "bg-indigo-500",
-    additionalInfo: "Secure element technology meets highest banking standards with support for Visa, Mastercard, and major digital wallet platforms.",
-    category: "smartrings" as const
-  }
+  // Get the first 3 items from earbuds data
+  ...getEarbudsData().slice(0, 3),
+  // Get the first 3 items from smart rings data
+  ...getSmartRingsData().slice(0, 3)
 ];
 
 const Features = () => {
