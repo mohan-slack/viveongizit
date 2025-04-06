@@ -19,7 +19,7 @@ export const getEarbudsModels = (): EarbudsModelFeatures[] => [
     name: 'HUX Lite',
     color: 'bg-blue-500',
     description: 'Entry-level earbuds with premium sound',
-    price: '$99',
+    price: 'Rs. 1,999/-',
     features: [
       {
         icon: 'Battery',
@@ -48,7 +48,7 @@ export const getEarbudsModels = (): EarbudsModelFeatures[] => [
     name: 'HUX Pro',
     color: 'bg-viveon-red',
     description: 'Professional-grade audio experience',
-    price: '$149',
+    price: 'Rs. 2,999/-',
     features: [
       {
         icon: 'Battery',
@@ -77,7 +77,7 @@ export const getEarbudsModels = (): EarbudsModelFeatures[] => [
     name: 'HUX Quantum',
     color: 'bg-viveon-neon-blue',
     description: 'Ultimate wireless audio experience',
-    price: '$199',
+    price: 'Rs. 3,999/-',
     features: [
       {
         icon: 'Zap',
