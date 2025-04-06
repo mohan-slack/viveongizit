@@ -53,7 +53,8 @@ const Logo: React.FC<LogoProps> = ({
           alt="VIVEON Logo" 
           className={cn(
             sizeClasses[size],
-            "object-contain max-w-full"
+            "object-contain max-w-full transition-all duration-300 hover:drop-shadow-[0_0_15px_rgba(255,58,47,0.7)]",
+            "hover:animate-[pulse_1.5s_ease-in-out_infinite]"
           )}
         />
         
