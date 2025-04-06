@@ -11,11 +11,8 @@ const HuxLogoAnimation: React.FC = () => {
   const { animationStage, animationComplete, textColor, textOpacity } = useLogoAnimation();
   const { audioLevels } = useAudioAnimation(animationStage);
 
-  // For the initial red HUX™ before animation
-  if (animationStage === 0) {
-    return <InitialLogo />;
-  }
-
+  // Skip the initial red HUX by going directly to the animation sequence
+  // or showing the completed logo immediately
   if (animationComplete) {
     return <CompleteLogo textColor={textColor} textOpacity={textOpacity} />;
   }

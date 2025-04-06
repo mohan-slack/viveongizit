@@ -2,17 +2,15 @@
 import { useState, useEffect } from 'react';
 
 export const useLogoAnimation = () => {
-  const [animationStage, setAnimationStage] = useState(0);
+  // Start at stage 1 instead of 0 to skip the initial red HUX
+  const [animationStage, setAnimationStage] = useState(1);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [textColor, setTextColor] = useState(0);
   const [textOpacity, setTextOpacity] = useState(1);
 
   // Start the animation sequence
   useEffect(() => {
-    if (animationStage === 0) {
-      const timer = setTimeout(() => setAnimationStage(1), 500);
-      return () => clearTimeout(timer);
-    } else if (animationStage === 1) {
+    if (animationStage === 1) {
       const timer = setTimeout(() => setAnimationStage(2), 1200);
       return () => clearTimeout(timer);
     } else if (animationStage === 2) {
