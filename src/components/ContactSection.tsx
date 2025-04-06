@@ -49,7 +49,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <h3 className="text-white text-lg font-bold mb-2">Email</h3>
                 <p className="text-gray-400">
-                  office@viveongizit.com
+                  contact@viveon-tech.com
                 </p>
               </div>
             </div>
