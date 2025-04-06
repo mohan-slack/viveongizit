@@ -105,6 +105,15 @@ const HuxLogoAnimation: React.FC = () => {
     }
   };
 
+  // For the initial red HUX™ before animation
+  if (animationStage === 0) {
+    return (
+      <div className="font-bold tracking-tighter text-7xl md:text-8xl">
+        <span style={{ color: "#ea384c" }}>HUX<span className="text-white text-[0.25em] align-top leading-none">™</span></span>
+      </div>
+    );
+  }
+
   if (animationComplete) {
     const gradientColors = getGradientStyle();
     // Simplified rendering to avoid measurement issues
@@ -186,8 +195,8 @@ const HuxLogoAnimation: React.FC = () => {
       {/* Center content */}
       <div className="relative z-10">
         {/* Simplified animation stages */}
-        {animationStage <= 1 && (
-          <div className="text-6xl md:text-7xl font-bold text-viveon-red">HUX™</div>
+        {animationStage === 1 && (
+          <div className="text-6xl md:text-7xl font-bold text-viveon-red">HUX<span className="text-white text-[0.25em] align-top leading-none">™</span></div>
         )}
         
         {animationStage >= 2 && animationStage < 4 && (
