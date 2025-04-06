@@ -58,7 +58,6 @@ const ContactSection: React.FC = () => {
             <div className="mt-8 text-center">
               <div className="flex items-center justify-center mb-2">
                 <h3 className="text-white text-lg font-bold">Viveon Gizit Private Limited</h3>
-                <span className="ml-1 text-viveon-neon-blue text-xs align-top">™</span>
               </div>
               <p className="text-gray-400 text-sm">
                 HUX™ is a registered trademark of Viveon Gizit Private Limited. All rights reserved.
