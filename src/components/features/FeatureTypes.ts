@@ -18,6 +18,6 @@ export interface FeatureProps {
 }
 
 export interface InteractiveFeatureProps {
-  features: Omit<FeatureProps, 'index' | 'selected' | 'onSelect' | 'onDeselect' | 'id'>[];
+  features: Omit<FeatureProps, 'index' | 'selected' | 'onSelect' | 'onDeselect'>[];
   maxVisible?: number;
 }
