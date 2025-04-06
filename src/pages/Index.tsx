@@ -7,7 +7,7 @@ import FuturisticFeaturesShowcase from '@/components/features/showcase/Futuristi
 import AboutSection from '@/components/AboutSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
-import ContactSection from '@/components/ContactSection';
+import CustomContactSection from '@/components/CustomContactSection';
 import AIAssistant from '@/components/AIAssistant/AIAssistant';
 import { useLocation } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -77,7 +77,7 @@ const Index = () => {
       <FeaturedProductsSection />
       <FuturisticFeaturesShowcase />
       <AboutSection />
-      <ContactSection />
+      <CustomContactSection />
       <CallToAction />
       <Footer />
       
