@@ -12,34 +12,25 @@ const InteractiveFeatureShowcase: React.FC<InteractiveFeatureProps> = ({
   maxVisible = 6 
 }) => {
   const [selectedFeatureId, setSelectedFeatureId] = useState<string | null>(null);
-  const [visibleFeatures, setVisibleFeatures] = useState<(Omit<FeatureProps, 'index' | 'selected' | 'onSelect' | 'onDeselect' | 'id'> & { id: string, selected: boolean })[]>([]);
+  const [visibleFeatures, setVisibleFeatures] = useState<(Omit<FeatureProps, 'index' | 'selected' | 'onSelect' | 'onDeselect'> & { id: string, selected: boolean })[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
   
-  // Initialize with IDs
+  // Initialize features
   useEffect(() => {
-    const initialFeatures = features.map((feature, idx) => ({
+    const enhancedFeatures = features.map(feature => ({
       ...feature,
-      id: `feature-${idx}`,
+      id: feature.id || `feature-${Math.random().toString(36).substr(2, 9)}`,
       selected: false
     }));
     
     // Set initial visible features
-    updateVisibleFeatures(initialFeatures, 0);
+    updateVisibleFeatures(enhancedFeatures, 0);
   }, [features]);
   
   const updateVisibleFeatures = (allFeatures: any[], page: number) => {
     const startIdx = page * maxVisible;
     const endIdx = Math.min(startIdx + maxVisible, allFeatures.length);
-    const visible = allFeatures.slice(startIdx, endIdx);
-    
-    // If we don't have enough items to fill the page, loop back from the beginning
-    if (visible.length < maxVisible && allFeatures.length > maxVisible) {
-      const remaining = maxVisible - visible.length;
-      const additionalItems = allFeatures.slice(0, remaining);
-      setVisibleFeatures([...visible, ...additionalItems]);
-    } else {
-      setVisibleFeatures(visible);
-    }
+    setVisibleFeatures(allFeatures.slice(startIdx, endIdx));
   };
   
   const handleSelect = (id: string) => {
@@ -68,13 +59,13 @@ const InteractiveFeatureShowcase: React.FC<InteractiveFeatureProps> = ({
     const nextPage = newPage >= totalPages ? 0 : newPage;
     setCurrentPage(nextPage);
     
-    const allFeatures = features.map((feature, idx) => ({
+    const enhancedFeatures = features.map(feature => ({
       ...feature,
-      id: `feature-${idx}`,
+      id: feature.id || `feature-${Math.random().toString(36).substr(2, 9)}`,
       selected: false
     }));
     
-    updateVisibleFeatures(allFeatures, nextPage);
+    updateVisibleFeatures(enhancedFeatures, nextPage);
     setSelectedFeatureId(null);
   };
   
@@ -85,13 +76,13 @@ const InteractiveFeatureShowcase: React.FC<InteractiveFeatureProps> = ({
     const prevPage = newPage < 0 ? totalPages - 1 : newPage;
     setCurrentPage(prevPage);
     
-    const allFeatures = features.map((feature, idx) => ({
+    const enhancedFeatures = features.map(feature => ({
       ...feature,
-      id: `feature-${idx}`,
+      id: feature.id || `feature-${Math.random().toString(36).substr(2, 9)}`,
       selected: false
     }));
     
-    updateVisibleFeatures(allFeatures, prevPage);
+    updateVisibleFeatures(enhancedFeatures, prevPage);
     setSelectedFeatureId(null);
   };
   
@@ -206,12 +197,12 @@ const InteractiveFeatureShowcase: React.FC<InteractiveFeatureProps> = ({
                 whileHover={{ scale: 1.2 }}
                 onClick={() => {
                   setCurrentPage(idx);
-                  const allFeatures = features.map((feature, i) => ({
+                  const enhancedFeatures = features.map(feature => ({
                     ...feature,
-                    id: `feature-${i}`,
+                    id: feature.id || `feature-${Math.random().toString(36).substr(2, 9)}`,
                     selected: false
                   }));
-                  updateVisibleFeatures(allFeatures, idx);
+                  updateVisibleFeatures(enhancedFeatures, idx);
                   setSelectedFeatureId(null);
                 }}
               />
