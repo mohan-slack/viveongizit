@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, ScrollRestoration } from "react-router-dom";
 import Index from "./pages/Index";
 import Features from "./pages/Features";
 import NotFound from "./pages/NotFound";
@@ -12,7 +12,16 @@ import Products from "./pages/Products";
 import DynamicBackground from "@/components/DynamicBackground";
 import "./App.css";
 
-const queryClient = new QueryClient();
+// Create a new query client with appropriate settings
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, // Prevent refetching when window regains focus
+      retry: 1, // Only retry failed requests once
+      staleTime: 5 * 60 * 1000, // Data considered fresh for 5 minutes
+    },
+  },
+});
 
 // Create router using the recommended createBrowserRouter API
 const router = createBrowserRouter([

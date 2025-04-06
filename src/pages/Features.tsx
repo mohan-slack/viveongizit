@@ -10,10 +10,10 @@ import { getSmartRingsData } from '@/components/features/smartRingsData';
 
 // Use all features data from both product types
 const featuresData: Omit<FeatureProps, 'index' | 'selected' | 'onSelect' | 'onDeselect'>[] = [
-  // Get the first 3 items from earbuds data
-  ...getEarbudsData().slice(0, 3),
-  // Get the first 3 items from smart rings data
-  ...getSmartRingsData().slice(0, 3)
+  // Get all items from earbuds data
+  ...getEarbudsData(),
+  // Get all items from smart rings data
+  ...getSmartRingsData()
 ];
 
 const Features = () => {
@@ -21,16 +21,15 @@ const Features = () => {
   
   // Handle scroll to top when navigating to this page
   useEffect(() => {
-    if (location.state && location.state.scrollToTop) {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-      
-      // Clear the state
-      window.history.replaceState({}, document.title);
-    }
-  }, [location]);
+    // Clear any stale or incomplete navigation state
+    window.history.replaceState({}, document.title);
+    
+    // Always ensure we're at the top when loading the features page
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
   
   return (
     <div className="min-h-screen relative">
@@ -47,7 +46,7 @@ const Features = () => {
         </div>
         
         <div className="mb-24">
-          <InteractiveFeatureShowcase features={featuresData} maxVisible={6} />
+          <InteractiveFeatureShowcase features={featuresData} maxVisible={9} />
         </div>
       </div>
       

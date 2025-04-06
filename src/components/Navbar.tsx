@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import Logo from './Logo';
@@ -15,6 +14,10 @@ const Navbar: React.FC = () => {
   const isMobile = useIsMobile();
 
   useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
@@ -27,42 +30,21 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Check if we need to scroll to a section after navigation
-  useEffect(() => {
-    // If there's a hash in the URL, scroll to that section
-    if (location.hash) {
-      const id = location.hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          window.scrollTo({
-            top: element.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }, 100); // Small delay to ensure the DOM is ready
-      }
-    }
-  }, [location]);
-
-  const navigationItems = [
-    { label: "Home", href: "/", isExternal: false },
-    { label: "Products", href: "/products", isExternal: false },
-    { label: "Features", href: "/features", isExternal: false },
-    { label: "About", href: "/about", isExternal: false },
-    { label: "Contact", href: "/#contact", isExternal: false }
-  ];
-
   const handleNavClick = (href: string, isExternal: boolean, e: React.MouseEvent) => {
+    e.preventDefault();
+    
     if (isExternal) return; // Let external links work normally
+    
+    // Close mobile menu
+    setIsMobileMenuOpen(false);
     
     // For contact section or any other hash link
     if (href.includes('#')) {
-      e.preventDefault();
       const isHomePage = location.pathname === '/';
       const hashPart = href.includes('/#') ? href.split('/#')[1] : href.split('#')[1];
       
       if (!isHomePage) {
-        // If we're not on the home page, navigate programmatically
+        // If we're not on the home page, navigate to home and then scroll
         navigate('/', { state: { scrollToSection: hashPart } });
       } else {
         // We're already on home page, just scroll
@@ -74,23 +56,23 @@ const Navbar: React.FC = () => {
           });
         }
       }
-      
-      setIsMobileMenuOpen(false);
     } else {
-      // Regular route navigation - need to scroll to top
-      if (location.pathname === href) {
-        // If already on the same page, just scroll to top
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      } else {
-        // Navigate to the new page and scroll to top when it loads
-        navigate(href, { state: { scrollToTop: true } });
-      }
-      setIsMobileMenuOpen(false);
+      // Regular route navigation - just navigate, don't use state as it can cause issues
+      navigate(href);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   };
+
+  const navigationItems = [
+    { label: "Home", href: "/", isExternal: false },
+    { label: "Products", href: "/products", isExternal: false },
+    { label: "Features", href: "/features", isExternal: false },
+    { label: "About", href: "/about", isExternal: false },
+    { label: "Contact", href: "/#contact", isExternal: false }
+  ];
 
   return (
     <nav
@@ -111,7 +93,6 @@ const Navbar: React.FC = () => {
           />
         </Link>
 
-        {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8">
           {navigationItems.map((item) => (
             <li key={item.label}>
@@ -139,7 +120,6 @@ const Navbar: React.FC = () => {
           ))}
         </ul>
 
-        {/* Action Buttons */}
         <div className="hidden md:flex items-center space-x-4">
           <Button variant="ghost" size="icon" className="text-white hover:text-viveon-red">
             <User size={20} />
@@ -152,7 +132,6 @@ const Navbar: React.FC = () => {
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -161,32 +140,18 @@ const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-viveon-dark/95 backdrop-blur-lg animate-fadeIn">
           <ul className="py-4 px-4 flex flex-col">
             {navigationItems.map((item) => (
               <li key={item.label} className="py-2 border-b border-gray-800">
-                {item.href.includes('#') ? (
-                  <a 
-                    href={item.href}
-                    className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
-                    onClick={(e) => handleNavClick(item.href, item.isExternal, e)}
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <a 
-                    href={item.href}
-                    className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(item.href, item.isExternal, e);
-                    }}
-                  >
-                    {item.label}
-                  </a>
-                )}
+                <a 
+                  href={item.href}
+                  className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
+                  onClick={(e) => handleNavClick(item.href, item.isExternal, e)}
+                >
+                  {item.label}
+                </a>
               </li>
             ))}
             <li className="py-4 flex justify-center">

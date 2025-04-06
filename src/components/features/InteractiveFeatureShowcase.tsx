@@ -9,7 +9,7 @@ import { useFeatureManager } from './showcase/useFeatureManager';
 
 const InteractiveFeatureShowcase: React.FC<InteractiveFeatureProps> = ({ 
   features, 
-  maxVisible = 6 
+  maxVisible = 9 
 }) => {
   const {
     visibleFeatures,
@@ -42,11 +42,13 @@ const InteractiveFeatureShowcase: React.FC<InteractiveFeatureProps> = ({
           onSelect={handleSelect}
         />
         
-        <FeaturePagination 
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
+        {totalPages > 1 && (
+          <FeaturePagination 
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        )}
       </div>
     </div>
   );

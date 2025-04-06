@@ -16,7 +16,10 @@ const NotFound = () => {
   }, [location.pathname]);
 
   const goHome = () => {
+    // Navigate home without state to avoid potential issues
     navigate('/');
+    // Manually scroll to top
+    window.scrollTo(0, 0);
   };
 
   return (
