@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
-import { ShoppingCart, AlertCircle } from 'lucide-react';
+import { ShoppingCart, AlertCircle, Heart } from 'lucide-react';
 
 interface ProductCardProps {
   name: string;
@@ -21,10 +20,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   color = 'red',
   className 
 }) => {
-  // Added state for tracking if a product is in cart
   const [isInCart, setIsInCart] = useState(false);
 
-  // Updated color map with more harmonious and less bright colors
   const colorMap = {
     red: {
       border: 'border-viveon-red/20',
@@ -49,7 +46,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     },
   };
 
-  // Function to handle the add to cart button click
   const handleAddToCart = () => {
     setIsInCart(!isInCart);
   };
