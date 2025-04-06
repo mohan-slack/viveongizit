@@ -107,19 +107,18 @@ const HuxLogoAnimation: React.FC = () => {
 
   if (animationComplete) {
     const gradientColors = getGradientStyle();
+    // Simplified rendering to avoid measurement issues
     return (
-      <motion.span 
-        className="font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]"
+      <div className="font-bold tracking-tighter text-7xl md:text-8xl drop-shadow-[0_3px_10px_rgba(255,58,47,0.3)]"
         style={{ 
           backgroundImage: `linear-gradient(to right, ${gradientColors.from}, ${gradientColors.via}, ${gradientColors.to})`,
           backgroundClip: 'text',
           WebkitBackgroundClip: 'text',
           color: 'transparent',
           transition: 'all 1.5s ease-in-out',
-        }}
-      >
+        }}>
         HUX<span className="text-white text-[0.25em] align-top leading-none">™</span>
-      </motion.span>
+      </div>
     );
   }
 
@@ -137,262 +136,69 @@ const HuxLogoAnimation: React.FC = () => {
     "#B33A8B", // Pink
   ];
 
-  // The animation sequence
+  // The animation sequence - simplified to avoid complex measurements
   return (
     <div className="relative h-32 w-full flex justify-center items-center">
       {/* Fullscreen Audio Visualization - Left Side */}
-      <AnimatePresence>
-        {animationStage >= 2 && animationStage < 4 && (
-          <motion.div
-            className="absolute left-0 top-0 h-full w-1/2 flex items-center justify-end space-x-1 px-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-end h-full w-full justify-end space-x-1">
-              {audioLevels.slice(0, 10).map((level, index) => (
-                <motion.div
-                  key={`left-${index}`}
-                  className="w-2 md:w-2.5 rounded-t-md"
-                  style={{
-                    height: `${level * 100}%`,
-                    backgroundColor: audioBarColors[index % audioBarColors.length],
-                    boxShadow: `0 0 8px ${audioBarColors[index % audioBarColors.length]}`,
-                  }}
-                  animate={{ 
-                    height: [`${level * 100}%`, `${(Math.random() * 0.8 + 0.2) * 100}%`],
-                    opacity: [0.7, 1]
-                  }}
-                  transition={{ 
-                    duration: 0.3 + (index * 0.03), 
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "mirror"
-                  }}
-                />
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {animationStage >= 2 && animationStage < 4 && (
+        <div
+          className="absolute left-0 top-0 h-full w-1/2 flex items-center justify-end space-x-1 px-4"
+          style={{ opacity: 1 }}
+        >
+          <div className="flex items-end h-full w-full justify-end space-x-1">
+            {audioLevels.slice(0, 10).map((level, index) => (
+              <div
+                key={`left-${index}`}
+                className="w-2 md:w-2.5 rounded-t-md"
+                style={{
+                  height: `${level * 100}%`,
+                  backgroundColor: audioBarColors[index % audioBarColors.length],
+                  boxShadow: `0 0 8px ${audioBarColors[index % audioBarColors.length]}`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
       
       {/* Fullscreen Audio Visualization - Right Side */}
-      <AnimatePresence>
+      {animationStage >= 2 && animationStage < 4 && (
+        <div
+          className="absolute right-0 top-0 h-full w-1/2 flex items-center justify-start space-x-1 px-4"
+          style={{ opacity: 1 }}
+        >
+          <div className="flex items-end h-full w-full justify-start space-x-1">
+            {audioLevels.slice(10, 20).map((level, index) => (
+              <div
+                key={`right-${index}`}
+                className="w-2 md:w-2.5 rounded-t-md"
+                style={{
+                  height: `${level * 100}%`,
+                  backgroundColor: audioBarColors[(audioBarColors.length - 1 - index) % audioBarColors.length],
+                  boxShadow: `0 0 8px ${audioBarColors[(audioBarColors.length - 1 - index) % audioBarColors.length]}`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+      
+      {/* Center content */}
+      <div className="relative z-10">
+        {/* Simplified animation stages */}
+        {animationStage <= 1 && (
+          <div className="text-6xl md:text-7xl font-bold text-viveon-red">HUX™</div>
+        )}
+        
         {animationStage >= 2 && animationStage < 4 && (
-          <motion.div
-            className="absolute right-0 top-0 h-full w-1/2 flex items-center justify-start space-x-1 px-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-end h-full w-full justify-start space-x-1">
-              {audioLevels.slice(10, 20).map((level, index) => (
-                <motion.div
-                  key={`right-${index}`}
-                  className="w-2 md:w-2.5 rounded-t-md"
-                  style={{
-                    height: `${level * 100}%`,
-                    backgroundColor: audioBarColors[(audioBarColors.length - 1 - index) % audioBarColors.length],
-                    boxShadow: `0 0 8px ${audioBarColors[(audioBarColors.length - 1 - index) % audioBarColors.length]}`,
-                  }}
-                  animate={{ 
-                    height: [`${level * 100}%`, `${(Math.random() * 0.8 + 0.2) * 100}%`],
-                    opacity: [0.7, 1]
-                  }}
-                  transition={{ 
-                    duration: 0.3 + (index * 0.03), 
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "mirror",
-                    delay: index * 0.02
-                  }}
-                />
-              ))}
-            </div>
-          </motion.div>
+          <div className="text-6xl md:text-7xl font-bold flex">
+            <span className="text-viveon-red">H</span>
+            <span className="text-viveon-neon-blue">U</span>
+            <span className="text-viveon-neon-purple">X</span>
+            <span className="text-white text-[0.25em] align-top leading-none">™</span>
+          </div>
         )}
-      </AnimatePresence>
-      
-      {/* Earbud Dock with Lightning Effect */}
-      <AnimatePresence>
-        {animationStage >= 1 && (
-          <motion.div 
-            className="absolute"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 260, 
-              damping: 20,
-              duration: 0.7
-            }}
-          >
-            {/* Earbud Dock */}
-            <div className="relative w-48 h-24 bg-gradient-to-r from-gray-900 to-black rounded-xl border border-viveon-neon-blue/30 flex justify-center items-center overflow-hidden">
-              {/* Lightning Effects */}
-              <motion.div
-                className="absolute inset-0 bg-viveon-neon-blue/5"
-                animate={{ 
-                  opacity: [0.1, 0.3, 0.1, 0.5, 0.1],
-                  scale: [1, 1.05, 1, 1.02, 1]
-                }}
-                transition={{ 
-                  duration: 1.5, 
-                  repeat: 1,
-                  repeatType: "reverse"
-                }}
-              />
-              
-              {/* Left Earbud */}
-              <motion.div 
-                className="absolute left-6 top-6 w-10 h-12 rounded-full bg-black border-2 border-viveon-neon-blue/60"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-              />
-              
-              {/* Right Earbud - Transforms into U */}
-              <motion.div 
-                className="absolute right-6 top-6 w-10 h-12 rounded-full bg-black border-2 border-viveon-neon-blue/60"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ 
-                  opacity: animationStage >= 2 ? 0 : 1, 
-                  y: 0 
-                }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-              />
-              
-              {/* Lightning Icon */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ 
-                  opacity: [0, 1, 0.5, 1, 0], 
-                  scale: [0.5, 1.2, 0.9, 1.1, 0.8] 
-                }}
-                transition={{ 
-                  duration: 1, 
-                  times: [0, 0.2, 0.4, 0.6, 1],
-                  delay: 0.5
-                }}
-              >
-                <ZapIcon className="text-viveon-neon-blue w-8 h-8" />
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
-      {/* Letter H Animation - From Left */}
-      <AnimatePresence>
-        {animationStage >= 2 && (
-          <motion.div
-            className="absolute text-6xl md:text-7xl font-bold"
-            initial={{ x: -100, opacity: 0 }}
-            animate={{ x: animationStage >= 4 ? 0 : -20, opacity: 1 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 100, 
-              damping: 10,
-              duration: 0.8
-            }}
-            style={{ 
-              color: animationStage >= 4 ? "transparent" : "#FF3A2F",
-              backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
-              backgroundClip: animationStage >= 4 ? "text" : "border-box",
-              WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
-              zIndex: 10
-            }}
-          >
-            H
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
-      {/* Letter U Animation - Transform from Earbud */}
-      <AnimatePresence>
-        {animationStage >= 2 && (
-          <motion.div
-            className="absolute text-6xl md:text-7xl font-bold"
-            initial={{ 
-              y: 10, 
-              scale: 0.1, 
-              opacity: 0,
-              borderRadius: "50%",
-              width: "10px",
-              height: "12px",
-            }}
-            animate={{ 
-              y: 0, 
-              scale: 1, 
-              opacity: 1,
-              borderRadius: "0%",
-              width: "auto",
-              height: "auto"
-            }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 120, 
-              damping: 15,
-              duration: 0.8
-            }}
-            style={{ 
-              color: animationStage >= 4 ? "transparent" : "#9B30FF",
-              backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
-              backgroundClip: animationStage >= 4 ? "text" : "border-box",
-              WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
-              zIndex: 10
-            }}
-          >
-            U
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
-      {/* Letter X Animation - From Right */}
-      <AnimatePresence>
-        {animationStage >= 2 && (
-          <motion.div
-            className="absolute text-6xl md:text-7xl font-bold"
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: animationStage >= 4 ? 0 : 20, opacity: 1 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 100, 
-              damping: 10,
-              duration: 0.8,
-              delay: 0.1
-            }}
-            style={{ 
-              color: animationStage >= 4 ? "transparent" : "#00FFFF",
-              backgroundImage: animationStage >= 4 ? "linear-gradient(to right, rgba(255,58,47,0.9), rgba(155,48,255,0.8), rgba(0,255,255,0.8))" : "none",
-              backgroundClip: animationStage >= 4 ? "text" : "border-box",
-              WebkitBackgroundClip: animationStage >= 4 ? "text" : "border-box",
-              zIndex: 10
-            }}
-          >
-            X
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
-      {/* Final Flash Effect */}
-      <AnimatePresence>
-        {animationStage >= 3 && (
-          <motion.div 
-            className="absolute inset-0 flex justify-center items-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.8, 0] }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="absolute inset-0 bg-viveon-neon-blue/20 rounded-lg blur-xl"></div>
-            <ZapIcon className="text-viveon-neon-blue w-12 h-12" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
-      {/* Combining into final HUX logo happens via the animationStage state */}
+      </div>
     </div>
   );
 };
