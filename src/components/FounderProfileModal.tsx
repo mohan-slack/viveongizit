@@ -50,21 +50,23 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
     };
   }, [isMobile]);
   
-  // Close when clicking outside - improved for modal behavior
+  // Enhanced outside click detection with touchstart for mobile
   useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
-      // Check if click is outside the modal content
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      // Check if click/touch is outside the modal content
       if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
         onClose();
       }
     };
     
-    // Add event listener to document body
+    // Add event listeners for both mouse and touch events
     document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick);
     
-    // Clean up event listener
+    // Clean up event listeners
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
     };
   }, [onClose]);
   
@@ -92,7 +94,7 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
         exit={{ opacity: 0 }}
         key="modal-backdrop"
       >
-        {/* Blurred backdrop */}
+        {/* Blurred backdrop with improved tap area for mobile */}
         <motion.div 
           className="absolute inset-0 bg-black/70 backdrop-blur-md"
           initial={{ opacity: 0 }}
@@ -101,8 +103,23 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
           transition={{ duration: 0.2 }}
         />
         
-        {/* Particle effects in background */}
-        {Array.from({ length: 8 }).map((_, i) => (
+        {/* More visible close button for mobile */}
+        {isMobile && (
+          <motion.button
+            className="fixed top-4 right-4 z-[60] w-10 h-10 flex items-center justify-center rounded-full bg-viveon-red/90 border border-white/20 text-white shadow-lg"
+            onClick={onClose}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <X size={24} />
+          </motion.button>
+        )}
+        
+        {/* Simplified particle effects for better performance */}
+        {!isMobile && Array.from({ length: 6 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 rounded-full bg-white"
@@ -125,10 +142,10 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
           />
         ))}
         
-        {/* Profile card with 3D effect */}
+        {/* Profile card with better touch interaction */}
         <motion.div
           ref={modalRef}
-          className={`relative max-h-[90vh] ${isMobile ? 'w-[95%] max-w-md' : 'w-11/12 max-w-xl'} bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-[0_10px_50px_rgba(0,0,0,0.5)] overflow-hidden overflow-y-auto`}
+          className={`relative max-h-[90vh] ${isMobile ? 'w-[95%] max-w-md' : 'w-11/12 max-w-xl'} bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-[0_10px_50px_rgba(0,0,0,0.5)] overflow-hidden overflow-y-auto`}
           initial={{ scale: 0.9, y: 50, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
           exit={{ scale: 0.9, y: 50, opacity: 0 }}
@@ -138,50 +155,52 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
             stiffness: 200,
           }}
         >
-          {/* Background pattern */}
+          {/* Background pattern - simplified for mobile */}
           <div className="absolute inset-0 bg-grid-lines opacity-10" />
           
-          {/* Glowing border effect */}
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur opacity-30" />
+          {/* Reduced intensity glow for better performance */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur opacity-20" />
           
-          {/* Close button - improved for mobile */}
-          <motion.button
-            className="absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-white/80 hover:text-white"
-            onClick={(e) => {
-              e.stopPropagation();
-              onClose();
-            }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <X size={isMobile ? 18 : 20} />
-          </motion.button>
+          {/* Close button */}
+          {!isMobile && (
+            <motion.button
+              className="absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-white/80 hover:text-white"
+              onClick={(e) => {
+                e.stopPropagation();
+                onClose();
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <X size={isMobile ? 18 : 20} />
+            </motion.button>
+          )}
 
           <div className="relative z-10">
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center md:items-start">
-              {/* Avatar with animations */}
+              {/* Avatar with simplified animations for mobile */}
               <motion.div
                 className="relative"
                 animate={{ 
-                  y: [0, -5, 0],
-                  rotate: [0, -1, 0, 1, 0],
+                  y: isMobile ? [0, -3, 0] : [0, -5, 0],
+                  rotate: isMobile ? 0 : [0, -1, 0, 1, 0],
                 }}
                 transition={{
-                  y: { repeat: Infinity, duration: 4, ease: "easeInOut" },
+                  y: { repeat: Infinity, duration: isMobile ? 3 : 4, ease: "easeInOut" },
                   rotate: { repeat: Infinity, duration: 6, ease: "easeInOut" },
                 }}
               >
                 <motion.div 
                   className="absolute -inset-1 rounded-full bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue blur-md"
                   animate={{
-                    opacity: [0.5, 0.8, 0.5],
-                    scale: [1, 1.05, 1],
+                    opacity: [0.5, 0.7, 0.5],
+                    scale: [1, 1.03, 1],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: isMobile ? 3 : 2,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
@@ -209,7 +228,7 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
                     y: [0, -2, 0],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: isMobile ? 3 : 2,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
@@ -259,27 +278,27 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
               <p className="text-gray-300">{founder.longDescription}</p>
             </motion.div>
             
-            {/* Expertise with 3D animated tags */}
+            {/* Expertise with optimized rendering for mobile */}
             <motion.div
               className="mt-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.4 }}
             >
               <h3 className="text-lg font-semibold mb-4 text-white">Areas of Expertise</h3>
               <ExpertiseTags 
                 expertise={founder.expertise} 
                 role={founder.role} 
-                interactive={!isMobile} 
+                interactive={false} 
               />
             </motion.div>
             
-            {/* Experience visualization */}
+            {/* Experience visualization - simplified for mobile */}
             <motion.div
               className="mt-6 bg-white/5 rounded-lg p-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.5 }}
             >
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-300">Years in Industry</span>
@@ -295,10 +314,28 @@ const FounderProfileModal: React.FC<FounderProfileModalProps> = ({
                   }}
                   initial={{ width: 0 }}
                   animate={{ width: `${Math.min((founder.yearsExperience / 20) * 100, 100)}%` }}
-                  transition={{ delay: 0.7, duration: 0.6 }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
                 />
               </div>
             </motion.div>
+            
+            {/* Mobile-specific instructions for closing */}
+            {isMobile && (
+              <motion.div 
+                className="mt-6 text-center text-sm text-white/60"
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: [0.6, 1, 0.6]
+                }}
+                transition={{
+                  delay: 1,
+                  duration: 2,
+                  repeat: Infinity
+                }}
+              >
+                Tap outside to close
+              </motion.div>
+            )}
           </div>
         </motion.div>
       </motion.div>
