@@ -4,18 +4,6 @@ import React from 'react';
 const HeroBackground: React.FC = () => {
   return (
     <>
-      {/* Smart Rings Background Image */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{
-          backgroundImage: 'url(/lovable-uploads/14ee2b65-dcc1-46a9-9125-5fbac6389a27.png)',
-          filter: 'contrast(1.2) brightness(0.8)'
-        }}
-      ></div>
-      
-      {/* Dark overlay for better text contrast */}
-      <div className="absolute inset-0 z-0 bg-black/60"></div>
-      
       {/* Animated floating orbs */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-viveon-red/10 rounded-full filter blur-3xl opacity-30 animate-float" style={{
@@ -30,7 +18,7 @@ const HeroBackground: React.FC = () => {
       </div>
       
       {/* Grid pattern overlay for cyberpunk effect */}
-      <div className="absolute inset-0 z-0 opacity-5" style={{
+      <div className="absolute inset-0 z-0 opacity-10" style={{
         backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(255, 58, 47, 0.15) 25%, rgba(255, 58, 47, 0.15) 26%, transparent 27%, transparent 74%, rgba(255, 58, 47, 0.15) 75%, rgba(255, 58, 47, 0.15) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.15) 25%, rgba(0, 255, 255, 0.15) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.15) 75%, rgba(0, 255, 255, 0.15) 76%, transparent 77%, transparent)',
         backgroundSize: '50px 50px'
       }}></div>
