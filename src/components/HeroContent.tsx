@@ -29,7 +29,7 @@ const HeroContent: React.FC = () => {
         animate={{ opacity: 1 }} 
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        Where sound meets sensation. Experience our HUX QUANTUM earbuds and HUX NEXUS rings - wearable tech that doesn't just connect you to the digital world, but elevates your presence within it.
+        Sound reimagined. Reality redefined. HUX QUANTUM earbuds and HUX NEXUS rings don't just connect—they transform.
       </motion.p>
       
       <motion.div 
