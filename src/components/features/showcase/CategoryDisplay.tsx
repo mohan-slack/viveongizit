@@ -23,7 +23,7 @@ const CategoryDisplay: React.FC<CategoryDisplayProps> = ({
       opacity: 1,
       transition: {
         when: "beforeChildren",
-        staggerChildren: 0.1
+        staggerChildren: 0.08
       }
     }
   };
@@ -36,18 +36,29 @@ const CategoryDisplay: React.FC<CategoryDisplayProps> = ({
       />
       
       <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         key="smartrings"
       >
         {activeData.map((feature, index) => (
-          <FeatureCard 
+          <motion.div
             key={`smartrings-${index}`}
-            {...feature} 
-            index={index} 
-          />
+            className="h-full"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              delay: index * 0.08,
+              duration: 0.6,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+          >
+            <FeatureCard 
+              {...feature} 
+              index={index} 
+            />
+          </motion.div>
         ))}
       </motion.div>
     </>
