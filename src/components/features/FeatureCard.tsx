@@ -11,7 +11,6 @@ import CardBackground from './card/CardBackground';
 import SelectionIndicator from './card/SelectionIndicator';
 import CardIcon from './card/CardIcon';
 import CardContent from './card/CardContent';
-import { containerVariants } from './card/CardAnimations';
 
 const FeatureCard = ({ 
   iconName, 
@@ -35,6 +34,33 @@ const FeatureCard = ({
       onSelect(id);
     }
   };
+
+  // Simplified animation variants
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      scale: 0.95
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        delay: index * 0.1,
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1]
+      }
+    },
+    hover: {
+      y: -8,
+      scale: 1.02,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
   
   return (
     <HoverCard>
@@ -43,23 +69,19 @@ const FeatureCard = ({
           className={cn(
             "relative overflow-hidden backdrop-blur-[10px] p-6 md:p-8 rounded-2xl transform-gpu cursor-pointer h-full",
             "border border-opacity-20 transition-all duration-300",
-            "perspective-1000",
             selected 
               ? `${color} border-opacity-80` 
               : `${color} hover:border-opacity-60`,
             selected ? "shadow-[0_0_30px_rgba(255,255,255,0.1)]" : ""
           )}
-          custom={index}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          whileHover={selected ? "selected" : "hover"}
-          animate={selected ? "selected" : "rest"}
-          variants={containerVariants}
+          whileHover="hover"
+          variants={cardVariants}
           style={{
             background: selected ? "rgba(20, 20, 30, 0.85)" : "rgba(10, 10, 15, 0.75)",
-            boxShadow: `0 10px 30px rgba(0, 0, 0, ${selected ? 0.5 : 0.3})`,
-            transformStyle: "preserve-3d"
+            boxShadow: `0 10px 30px rgba(0, 0, 0, ${selected ? 0.5 : 0.3})`
           }}
           onClick={handleCardClick}
         >
@@ -69,7 +91,7 @@ const FeatureCard = ({
           {/* Background Effects */}
           <CardBackground glowColor={glowColor} selected={selected} />
           
-          <div className="flex flex-col h-full justify-between z-10 relative transform-gpu" style={{ transformStyle: "preserve-3d" }}>
+          <div className="flex flex-col h-full justify-between z-10 relative">
             <div className="flex items-start justify-between mb-6">
               {/* Icon container with pulse effect */}
               <CardIcon iconName={iconName} color={color} selected={selected} />

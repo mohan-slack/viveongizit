@@ -18,8 +18,6 @@ export const containerVariants = {
   hover: {
     y: -8,
     scale: 1.02,
-    rotateX: 5,
-    rotateY: 2,
     transition: {
       duration: 0.3,
       ease: "easeOut"
@@ -28,8 +26,6 @@ export const containerVariants = {
   selected: {
     y: -12,
     scale: 1.05,
-    rotateX: 8,
-    rotateY: 3,
     transition: {
       duration: 0.4,
       ease: "easeOut"
@@ -38,8 +34,6 @@ export const containerVariants = {
   rest: {
     y: 0,
     scale: 1,
-    rotateX: 0,
-    rotateY: 0,
     transition: {
       duration: 0.3,
       ease: "easeOut"
@@ -67,7 +61,7 @@ export const iconVariants = {
     transition: {
       delay: 0.3,
       duration: 0.5,
-      ease: "backOut"
+      ease: "easeOut"
     }
   },
   hover: {

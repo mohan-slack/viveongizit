@@ -14,21 +14,22 @@ const CardBackground: React.FC<CardBackgroundProps> = ({ glowColor, selected }) 
       <motion.div 
         className="absolute inset-0 rounded-2xl opacity-20"
         style={{
-          background: `linear-gradient(135deg, ${glowColor.replace('bg-', 'rgba(').replace('-500', ', 0.1)')} 0%, transparent 50%, ${glowColor.replace('bg-', 'rgba(').replace('-500', ', 0.05)')} 100%)`
+          background: `linear-gradient(135deg, ${glowColor.replace('bg-', '').replace('-500', '')} 10%, transparent 50%, ${glowColor.replace('bg-', '').replace('-500', '')} 5%)`
         }}
         animate={{
-          opacity: selected ? [0.2, 0.4, 0.2] : [0.1, 0.2, 0.1],
+          opacity: selected ? 0.3 : 0.15,
         }}
         transition={{
-          duration: 3,
+          duration: 2,
           ease: "easeInOut",
-          repeat: Infinity
+          repeat: Infinity,
+          repeatType: "reverse"
         }}
       />
       
       {/* Subtle moving particles effect */}
       <div className="absolute inset-0 overflow-hidden rounded-2xl">
-        {[...Array(3)].map((_, i) => (
+        {[1, 2, 3].map((i) => (
           <motion.div
             key={i}
             className={`absolute w-1 h-1 ${glowColor} rounded-full opacity-30`}
