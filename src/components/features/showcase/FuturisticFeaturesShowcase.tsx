@@ -3,19 +3,29 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useMousePosition } from '@/hooks/use-mouse-position';
-import CategorySwitch from './CategorySwitch';
 import FeatureSectionHeading from './FeatureSectionHeading';
 import CategoryDisplay from './CategoryDisplay';
 import FeaturesBackgroundEffects from './FeaturesBackgroundEffects';
-import { useFeatureCategoryData } from './useFeatureCategoryData';
+import { getSmartRingsData } from '../smartRingsData';
 
 const FuturisticFeaturesShowcase: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<'earbuds' | 'smartrings'>('earbuds');
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
   const isMobile = useIsMobile();
   const containerRef = useRef<HTMLDivElement>(null);
   const mousePosition = useMousePosition(containerRef);
   
-  const { activeData, isDataLoaded } = useFeatureCategoryData(activeCategory);
+  // Use only smart rings data
+  const [smartRingsData] = useState(() => getSmartRingsData());
+  
+  // Load data on mount
+  React.useEffect(() => {
+    // Mark data as loaded with a small delay to help initial render performance
+    const timer = setTimeout(() => {
+      setIsDataLoaded(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
   
   return (
     <section 
@@ -48,14 +58,9 @@ const FuturisticFeaturesShowcase: React.FC = () => {
         >
           <FeatureSectionHeading />
           
-          <CategorySwitch 
-            activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-          />
-          
           <CategoryDisplay
-            activeCategory={activeCategory}
-            activeData={activeData}
+            activeCategory="smartrings"
+            activeData={smartRingsData}
           />
         </motion.div>
       </div>
