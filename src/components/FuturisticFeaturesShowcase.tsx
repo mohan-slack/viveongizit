@@ -1,11 +1,9 @@
 
 import React, { useState, useRef, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { getEarbudsData } from './features/earbudsData';
 import { getSmartRingsData } from './features/smartRingsData';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useMousePosition } from '@/hooks/use-mouse-position';
-import CategorySwitch from './features/showcase/CategorySwitch';
 import FeatureSectionHeading from './features/showcase/FeatureSectionHeading';
 import CategoryDisplay from './features/showcase/CategoryDisplay';
 
@@ -15,14 +13,12 @@ const FeatureAnimatedBackground = lazy(() =>
 );
 
 const FuturisticFeaturesShowcase: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<'earbuds' | 'smartrings'>('earbuds');
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const isMobile = useIsMobile();
   const containerRef = useRef<HTMLDivElement>(null);
   const mousePosition = useMousePosition(containerRef);
   
-  // Use state to store data for better performance
-  const [earbudsData] = useState(() => getEarbudsData());
+  // Use only smart rings data
   const [smartRingsData] = useState(() => getSmartRingsData());
   
   // Load data on mount
@@ -34,8 +30,6 @@ const FuturisticFeaturesShowcase: React.FC = () => {
     
     return () => clearTimeout(timer);
   }, []);
-  
-  const activeData = activeCategory === 'earbuds' ? earbudsData : smartRingsData;
   
   // Animation variants
   const containerVariants = {
@@ -77,14 +71,9 @@ const FuturisticFeaturesShowcase: React.FC = () => {
         >
           <FeatureSectionHeading />
           
-          <CategorySwitch 
-            activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-          />
-          
           <CategoryDisplay
-            activeCategory={activeCategory}
-            activeData={activeData}
+            activeCategory="smartrings"
+            activeData={smartRingsData}
           />
         </motion.div>
       </div>
