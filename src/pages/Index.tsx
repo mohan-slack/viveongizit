@@ -1,8 +1,9 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import EnhancedHeroSection from '@/components/EnhancedHeroSection';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
-import FuturisticFeaturesShowcase from '@/components/features/showcase/FuturisticFeaturesShowcase';
+import FuturisticFeaturesShowcase from '@/components/FuturisticFeaturesShowcase';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
 import CallToAction from '@/components/CallToAction';

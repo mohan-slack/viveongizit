@@ -6,18 +6,15 @@ import { FeatureProps } from '../FeatureTypes';
 import FeatureCard from '../FeatureCard';
 
 interface CategoryDisplayProps {
-  activeCategory: 'earbuds' | 'smartrings';
+  activeCategory: 'smartrings';
   activeData: Omit<FeatureProps, 'index'>[];
 }
 
 const CategoryDisplay: React.FC<CategoryDisplayProps> = ({ 
-  activeCategory, 
   activeData
 }) => {
-  const featuresTitle = activeCategory === 'earbuds' ? 'Next-Gen Earbuds' : 'Smart Ring Technology';
-  const featuresSubtitle = activeCategory === 'earbuds' 
-    ? 'Experience sound like never before with our premium wireless earbuds'
-    : 'Transform your lifestyle with wearable tech that adapts to you';
+  const featuresTitle = 'Smart Ring Technology';
+  const featuresSubtitle = 'Transform your lifestyle with wearable tech that adapts to you';
     
   // Animation variants
   const containerVariants = {
@@ -43,12 +40,11 @@ const CategoryDisplay: React.FC<CategoryDisplayProps> = ({
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        key={activeCategory} // Force re-render on category change
+        key="smartrings"
       >
-        {/* Display all cards instead of limiting to 6 */}
         {activeData.map((feature, index) => (
           <FeatureCard 
-            key={`${activeCategory}-${index}`}
+            key={`smartrings-${index}`}
             {...feature} 
             index={index} 
           />
