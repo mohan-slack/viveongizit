@@ -12,7 +12,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-viveon-red",
     additionalInfo: "Navigate your devices with simple taps and swipes directly on the ring surface",
     category: "smartrings",
-    backgroundImage: "/lovable-uploads/02af7663-ba07-41b9-b76a-29b4f90aafa9.png"
+    backgroundImage: "/lovable-uploads/f22aa84c-eee5-4a54-b16e-ae116d8ae23a.png"
   },
   {
     id: 'smartring-2',
@@ -24,7 +24,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-viveon-neon-blue",
     additionalInfo: "Advanced bioimpedance sensors provide accurate body fat percentage measurements",
     category: "smartrings",
-    backgroundImage: "/lovable-uploads/0935fe07-f357-4ada-a951-0709d047a02f.png"
+    backgroundImage: "/lovable-uploads/6eb376f4-57db-4739-8ddd-1ff2837821ff.png"
   },
   {
     id: 'smartring-3',
@@ -36,7 +36,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-viveon-neon-purple",
     additionalInfo: "Monitor sleep stages, quality, and receive AI-powered improvement suggestions",
     category: "smartrings",
-    backgroundImage: "/lovable-uploads/148630aa-7dc0-48ab-8e8a-206789faeea5.png"
+    backgroundImage: "/lovable-uploads/6e9faf63-0780-4d01-9f6d-72b21989cf62.png"
   },
   {
     id: 'smartring-4',
@@ -60,7 +60,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-purple-500",
     additionalInfo: "Heart rate variability analysis provides stress insights and relaxation techniques",
     category: "smartrings",
-    backgroundImage: "/lovable-uploads/19008984-8282-451e-91c9-266c0d1c364b.png"
+    backgroundImage: "/lovable-uploads/9ec12441-23f9-477b-aa64-89c05a1b431f.png"
   },
   {
     id: 'smartring-6',
@@ -72,7 +72,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-blue-500",
     additionalInfo: "Optical sensors track glucose trends continuously throughout the day",
     category: "smartrings",
-    backgroundImage: "/lovable-uploads/23ad61cc-c2c4-4ea6-a7cf-c844678ec0ef.png"
+    backgroundImage: "/lovable-uploads/a0c36f68-ac13-4dbb-9c43-043f1beb9ce9.png"
   },
   {
     id: 'smartring-7',
@@ -84,7 +84,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-sky-500",
     additionalInfo: "Precise temperature sensors detect fever and track circadian rhythms",
     category: "smartrings",
-    backgroundImage: "/lovable-uploads/29776c52-7359-45a6-83ce-18a42ea0b8aa.png"
+    backgroundImage: "/lovable-uploads/97c43e61-fcf5-4f9e-9cc2-df81bb60a6d8.png"
   },
   {
     id: 'smartring-8',
@@ -96,7 +96,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-red-500",
     additionalInfo: "Bank-grade encryption ensures safe transactions at millions of locations worldwide",
     category: "smartrings",
-    backgroundImage: "/lovable-uploads/3eebc2bb-d694-4ba4-b8a5-9a4a6cb23287.png"
+    backgroundImage: "/lovable-uploads/98fd856e-b87b-4fa7-ac5c-6c593c54b448.png"
   },
   {
     id: 'smartring-9',
@@ -108,7 +108,7 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-amber-500",
     additionalInfo: "Customizable vibration patterns for different contacts and notification types",
     category: "smartrings",
-    backgroundImage: "/lovable-uploads/677085e7-aad4-423e-8673-b7c52b1080c3.png"
+    backgroundImage: "/lovable-uploads/f694a5a5-6ed5-41b4-abbf-58cbbfb280c2.png"
   },
   {
     id: 'smartring-10',
@@ -120,6 +120,6 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     glowColor: "bg-orange-500",
     additionalInfo: "Quick triple-tap sends GPS location and emergency message to designated contacts",
     category: "smartrings",
-    backgroundImage: "/lovable-uploads/6c2a0bec-beee-4711-8b62-ab7cdc642158.png"
+    backgroundImage: "/lovable-uploads/ac364875-2d34-4643-a84d-bc85cdf5decd.png"
   }
 ];
