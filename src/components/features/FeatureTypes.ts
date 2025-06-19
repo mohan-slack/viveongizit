@@ -15,3 +15,8 @@ export interface FeatureProps {
   onDeselect?: (id: string) => void;
   backgroundImage?: string;
 }
+
+export interface InteractiveFeatureProps {
+  features: Omit<FeatureProps, 'index'>[];
+  maxVisible?: number;
+}
