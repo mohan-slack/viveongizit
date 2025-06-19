@@ -68,8 +68,9 @@ const FeatureCard = ({
       <HoverCardTrigger asChild>
         <motion.div
           className={cn(
-            "relative overflow-hidden backdrop-blur-[10px] p-6 md:p-8 rounded-2xl transform-gpu cursor-pointer h-full",
+            "relative overflow-hidden backdrop-blur-[10px] rounded-2xl transform-gpu cursor-pointer",
             "border border-opacity-20 transition-all duration-300",
+            "aspect-square min-h-[280px] md:min-h-[320px]", // Fixed aspect ratio and minimum height
             selected 
               ? `${color} border-opacity-80` 
               : `${color} hover:border-opacity-60`,
@@ -89,26 +90,17 @@ const FeatureCard = ({
           {/* Selection Indicator */}
           <SelectionIndicator visible={selected} glowColor={glowColor} />
           
-          {/* Background Effects */}
+          {/* Background Effects - Main Image Display */}
           <CardBackground glowColor={glowColor} selected={selected} backgroundImage={backgroundImage} />
           
-          <div className="flex flex-col h-full justify-between z-10 relative">
-            <div className="flex items-start justify-between mb-6">
-              {/* Icon container with pulse effect */}
-              <CardIcon iconName={iconName} color={color} selected={selected} />
-              
-              <span className="text-2xl" aria-hidden="true">{emoji}</span>
-            </div>
-            
-            {/* Card Content */}
-            <CardContent 
-              title={title}
-              description={description}
-              additionalInfo={additionalInfo}
-              selected={selected}
-              glowColor={glowColor}
-            />
-          </div>
+          {/* Minimal Card Content */}
+          <CardContent 
+            title={title}
+            description={description}
+            additionalInfo={additionalInfo}
+            selected={selected}
+            glowColor={glowColor}
+          />
         </motion.div>
       </HoverCardTrigger>
       

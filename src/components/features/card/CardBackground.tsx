@@ -11,30 +11,28 @@ interface CardBackgroundProps {
 const CardBackground: React.FC<CardBackgroundProps> = ({ glowColor, selected, backgroundImage }) => {
   return (
     <>
-      {/* Feature Image Display - Main Content */}
+      {/* Full Feature Image Display - Main Content */}
       {backgroundImage && (
-        <div className="absolute inset-4 rounded-xl overflow-hidden z-10">
+        <div className="absolute inset-2 rounded-xl overflow-hidden z-10">
           <img 
             src={backgroundImage}
             alt="Feature showcase"
-            className="w-full h-full object-cover rounded-xl"
+            className="w-full h-full object-contain rounded-xl"
             style={{
-              filter: selected ? 'brightness(1.1) contrast(1.1)' : 'brightness(0.9) contrast(1.0)'
+              filter: selected ? 'brightness(1.1) contrast(1.05)' : 'brightness(1.0) contrast(1.0)'
             }}
           />
-          {/* Overlay for better text readability if needed */}
-          <div className="absolute inset-0 bg-black/20 rounded-xl" />
         </div>
       )}
       
       {/* Subtle gradient overlay for depth */}
       <motion.div 
-        className="absolute inset-0 rounded-2xl opacity-10"
+        className="absolute inset-0 rounded-2xl opacity-5"
         style={{
           background: `linear-gradient(135deg, ${glowColor.replace('bg-', '').replace('-500', '')} 10%, transparent 50%)`
         }}
         animate={{
-          opacity: selected ? 0.2 : 0.1,
+          opacity: selected ? 0.1 : 0.05,
         }}
         transition={{
           duration: 2,
@@ -47,13 +45,13 @@ const CardBackground: React.FC<CardBackgroundProps> = ({ glowColor, selected, ba
       {/* Enhanced glow effect for selected state */}
       {selected && (
         <motion.div 
-          className="absolute -inset-2 rounded-3xl opacity-20 blur-xl z-0"
+          className="absolute -inset-1 rounded-3xl opacity-20 blur-lg z-0"
           style={{
             background: `linear-gradient(45deg, ${glowColor.replace('bg-', '').replace('-500', '')}, transparent, ${glowColor.replace('bg-', '').replace('-500', '')})`
           }}
           animate={{
-            opacity: [0.1, 0.3, 0.1],
-            scale: [1, 1.05, 1],
+            opacity: [0.1, 0.25, 0.1],
+            scale: [1, 1.02, 1],
           }}
           transition={{
             duration: 2,
