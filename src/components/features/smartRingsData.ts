@@ -39,18 +39,6 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     backgroundImage: "/lovable-uploads/6e9faf63-0780-4d01-9f6d-72b21989cf62.png"
   },
   {
-    id: 'smartring-4',
-    iconName: "Heart",
-    emoji: "❤️",
-    title: "ECG Measurement",
-    description: "Medical-grade heart rhythm monitoring for cardiovascular health tracking",
-    color: "border-green-500/30 bg-green-500/5",
-    glowColor: "bg-green-500",
-    additionalInfo: "Real-time electrocardiogram readings with abnormality detection alerts",
-    category: "smartrings",
-    backgroundImage: "/lovable-uploads/14ee2b65-dcc1-46a9-9125-5fbac6389a27.png"
-  },
-  {
     id: 'smartring-5',
     iconName: "Brain",
     emoji: "🧠",

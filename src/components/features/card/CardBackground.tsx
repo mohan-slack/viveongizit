@@ -13,34 +13,21 @@ const CardBackground: React.FC<CardBackgroundProps> = ({ glowColor, selected, ba
     <>
       {/* Full Feature Image Display - Main Content */}
       {backgroundImage && (
-        <div className="absolute inset-2 rounded-xl overflow-hidden z-10">
+        <div className="absolute inset-0 rounded-xl overflow-hidden z-10">
           <img 
             src={backgroundImage}
             alt="Feature showcase"
-            className="w-full h-full object-contain rounded-xl"
+            className="w-full h-full object-cover rounded-xl"
             style={{
-              filter: selected ? 'brightness(1.1) contrast(1.05)' : 'brightness(1.0) contrast(1.0)'
+              filter: selected ? 'brightness(1.1) contrast(1.05)' : 'brightness(1.0) contrast(1.0)',
+              objectPosition: 'center center',
+              transform: 'scale(1.1)' // Slight zoom to crop out potential borders
             }}
           />
+          {/* Subtle overlay to ensure text readability if needed */}
+          <div className="absolute inset-0 bg-black/10 rounded-xl" />
         </div>
       )}
-      
-      {/* Subtle gradient overlay for depth */}
-      <motion.div 
-        className="absolute inset-0 rounded-2xl opacity-5"
-        style={{
-          background: `linear-gradient(135deg, ${glowColor.replace('bg-', '').replace('-500', '')} 10%, transparent 50%)`
-        }}
-        animate={{
-          opacity: selected ? 0.1 : 0.05,
-        }}
-        transition={{
-          duration: 2,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatType: "reverse"
-        }}
-      />
       
       {/* Enhanced glow effect for selected state */}
       {selected && (
