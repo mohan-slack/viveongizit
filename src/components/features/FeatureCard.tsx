@@ -24,7 +24,8 @@ const FeatureCard = ({
   selected = false,
   onSelect,
   onDeselect,
-  id
+  id,
+  backgroundImage
 }: FeatureProps) => {
   const isMobile = useIsMobile();
   
@@ -89,7 +90,7 @@ const FeatureCard = ({
           <SelectionIndicator visible={selected} glowColor={glowColor} />
           
           {/* Background Effects */}
-          <CardBackground glowColor={glowColor} selected={selected} />
+          <CardBackground glowColor={glowColor} selected={selected} backgroundImage={backgroundImage} />
           
           <div className="flex flex-col h-full justify-between z-10 relative">
             <div className="flex items-start justify-between mb-6">

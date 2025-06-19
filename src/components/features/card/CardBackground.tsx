@@ -5,11 +5,23 @@ import { motion } from 'framer-motion';
 interface CardBackgroundProps {
   glowColor: string;
   selected: boolean;
+  backgroundImage?: string;
 }
 
-const CardBackground: React.FC<CardBackgroundProps> = ({ glowColor, selected }) => {
+const CardBackground: React.FC<CardBackgroundProps> = ({ glowColor, selected, backgroundImage }) => {
   return (
     <>
+      {/* Background Image */}
+      {backgroundImage && (
+        <div 
+          className="absolute inset-0 rounded-2xl bg-cover bg-center bg-no-repeat opacity-20"
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+            filter: 'brightness(0.3) contrast(1.2)'
+          }}
+        />
+      )}
+      
       {/* Animated gradient background */}
       <motion.div 
         className="absolute inset-0 rounded-2xl opacity-20"
