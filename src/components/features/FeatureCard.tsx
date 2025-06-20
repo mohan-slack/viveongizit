@@ -70,7 +70,7 @@ const FeatureCard = ({
           className={cn(
             "relative overflow-hidden backdrop-blur-[10px] rounded-2xl transform-gpu cursor-pointer",
             "border border-opacity-20 transition-all duration-300",
-            "aspect-square w-full", // Removed min-height and padding constraints
+            "aspect-[4/3] w-full", // Changed to 4:3 aspect ratio to better match image dimensions
             selected 
               ? `${color} border-opacity-80` 
               : `${color} hover:border-opacity-60`,

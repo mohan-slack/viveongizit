@@ -17,11 +17,11 @@ const CardBackground: React.FC<CardBackgroundProps> = ({ glowColor, selected, ba
           <img 
             src={backgroundImage}
             alt="Feature showcase"
-            className="w-full h-full object-cover rounded-2xl"
+            className="w-full h-full object-contain rounded-2xl bg-transparent"
             style={{
               filter: selected ? 'brightness(1.1) contrast(1.05)' : 'brightness(1.0) contrast(1.0)',
               objectPosition: 'center center',
-              objectFit: 'cover'
+              objectFit: 'contain'
             }}
           />
         </div>
