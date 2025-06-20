@@ -13,19 +13,16 @@ const CardBackground: React.FC<CardBackgroundProps> = ({ glowColor, selected, ba
     <>
       {/* Full Feature Image Display - Main Content */}
       {backgroundImage && (
-        <div className="absolute inset-0 rounded-xl overflow-hidden z-10">
+        <div className="absolute inset-0 rounded-xl overflow-hidden z-10 bg-gray-900">
           <img 
             src={backgroundImage}
             alt="Feature showcase"
-            className="w-full h-full object-cover rounded-xl"
+            className="w-full h-full object-contain rounded-xl"
             style={{
               filter: selected ? 'brightness(1.1) contrast(1.05)' : 'brightness(1.0) contrast(1.0)',
-              objectPosition: 'center center',
-              transform: 'scale(1.1)' // Slight zoom to crop out potential borders
+              objectPosition: 'center center'
             }}
           />
-          {/* Subtle overlay to ensure text readability if needed */}
-          <div className="absolute inset-0 bg-black/10 rounded-xl" />
         </div>
       )}
       
