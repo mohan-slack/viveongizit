@@ -29,7 +29,7 @@ const HeroContent: React.FC = () => {
         animate={{ opacity: 1 }} 
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        Sound reimagined. Reality redefined. HUX QUANTUM earbuds and HUX NEXUS rings don't just connect—they transform.
+        Reality redefined. HUX NEXUS rings don't just connect—they transform your lifestyle with cutting-edge wearable technology.
       </motion.p>
       
       <motion.div 
@@ -39,10 +39,10 @@ const HeroContent: React.FC = () => {
         transition={{ duration: 0.8, delay: 0.6 }}
       >
         <Button className="bg-viveon-red/90 hover:bg-viveon-red/80 text-white px-8 py-6 text-lg font-medium tracking-wide border border-viveon-red/30 shadow-md rounded-full">
-          HUX QUANTUM EARBUDS
+          HUX NEXUS RINGS
         </Button>
         <Button variant="outline" className="border-viveon-neon-blue/70 text-viveon-neon-blue/90 hover:bg-viveon-neon-blue/10 px-8 py-6 text-lg font-medium tracking-wide group shadow-md rounded-full">
-          HUX NEXUS RINGS
+          EXPLORE FEATURES
           <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </Button>
       </motion.div>

@@ -5,14 +5,10 @@ import Footer from '@/components/Footer';
 import InteractiveFeatureShowcase from '@/components/features/InteractiveFeatureShowcase';
 import { FeatureProps } from '@/components/features/FeatureTypes';
 import { useLocation } from 'react-router-dom';
-import { getEarbudsData } from '@/components/features/earbudsData';
 import { getSmartRingsData } from '@/components/features/smartRingsData';
 
-// Use all features data from both product types
+// Use only smart rings data
 const featuresData: Omit<FeatureProps, 'index' | 'selected' | 'onSelect' | 'onDeselect'>[] = [
-  // Get all items from earbuds data
-  ...getEarbudsData(),
-  // Get all items from smart rings data
   ...getSmartRingsData()
 ];
 
@@ -38,10 +34,10 @@ const Features = () => {
       <div className="container mx-auto px-4 py-24">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gradient-text bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">
-            Explore Our Features
+            Smart Ring Features
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-            Discover the future of wearable technology with our interactive feature showcase
+            Discover the future of wearable technology with our smart ring features
           </p>
         </div>
         

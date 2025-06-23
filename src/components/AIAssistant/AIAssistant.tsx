@@ -3,9 +3,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import AIAssistantDock from './AIAssistantDock';
-import AIAssistantEarbuds from './AIAssistantEarbuds';
-import AIAssistantPanel from './AIAssistantPanel';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 
@@ -17,15 +14,8 @@ interface AIAssistantProps {
 const AIAssistant: React.FC<AIAssistantProps> = ({ className, hideOnMobile = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
-
-  // Handle animation sequence
-  const handleOpenAssistant = () => {
-    setIsAnimating(true);
-    setIsOpen(true);
-  };
 
   // Effect to handle clicks outside the assistant to close it
   useEffect(() => {
@@ -85,7 +75,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className, hideOnMobile = fal
           >
             <motion.div
               className="cursor-pointer"
-              onClick={handleOpenAssistant}
+              onClick={() => setIsOpen(true)}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               animate={{
@@ -158,7 +148,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className, hideOnMobile = fal
             transition={{ duration: 0.4 }}
             className="flex flex-col items-center"
           >
-            <div className="relative mb-4">
+            <div className="relative">
               <Button 
                 className="absolute -top-2 -right-2 rounded-full p-0 w-6 h-6 bg-viveon-red hover:bg-viveon-red/80 z-20"
                 onClick={() => setIsOpen(false)}
@@ -166,12 +156,22 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ className, hideOnMobile = fal
                 <X className="w-3 h-3" />
               </Button>
               
-              <div className="relative mb-4">
-                <AIAssistantDock isAnimating={isAnimating} setIsAnimating={setIsAnimating} />
-                <AIAssistantEarbuds isAnimating={isAnimating} />
+              <div className="w-72 bg-black/80 backdrop-blur-md rounded-xl p-4 border border-gray-800/50 shadow-lg">
+                <div className="text-center">
+                  <h3 className="text-lg font-bold text-white tracking-tight">
+                    HUX <span className="text-viveon-red">Smart Rings</span>
+                  </h3>
+                  <p className="text-sm text-gray-400 mt-2">
+                    Experience the future of wearable technology with our intelligent smart rings featuring health monitoring, contactless payments, and seamless connectivity.
+                  </p>
+                  <Button 
+                    className="bg-viveon-red hover:bg-viveon-red/80 text-white py-3 px-6 rounded-full mt-4"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Explore Features
+                  </Button>
+                </div>
               </div>
-              
-              <AIAssistantPanel isAnimating={isAnimating} />
             </div>
           </motion.div>
         )}

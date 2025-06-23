@@ -81,7 +81,7 @@ const Index = () => {
       <CallToAction />
       <Footer />
       
-      {/* AI Assistant (only for mobile - desktop version is inline with earbuds heading) */}
+      {/* AI Assistant */}
       {isMobile && <AIAssistant />}
     </div>
   );
