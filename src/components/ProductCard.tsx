@@ -9,6 +9,7 @@ interface ProductCardProps {
   category: string;
   imagePath: string;
   secondaryImagePath?: string;
+  tertiaryImagePath?: string;
   color: 'red' | 'blue' | 'purple';
   className?: string;
 }
@@ -18,15 +19,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
   category, 
   imagePath, 
   secondaryImagePath,
+  tertiaryImagePath,
   color = 'red',
   className 
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  const images = secondaryImagePath ? [imagePath, secondaryImagePath] : [imagePath];
+  const images = [imagePath, secondaryImagePath, tertiaryImagePath].filter(Boolean) as string[];
 
-  // Auto-transition images for HUX NEXUS RING
+  // Auto-transition images for products with multiple images
   useEffect(() => {
     if (images.length > 1) {
       const interval = setInterval(() => {

@@ -26,7 +26,9 @@ const FeaturedProductsSection: React.FC = () => {
       id: 3,
       name: "HUX FLUX RING",
       category: "SMART RING",
-      imagePath: "/lovable-uploads/0935fe07-f357-4ada-a951-0709d047a02f.png",
+      imagePath: "/lovable-uploads/b1dbfd05-9fff-498b-9f74-f970426c9d40.png",
+      secondaryImagePath: "/lovable-uploads/31aa2ec6-ace8-480e-ba4e-00f71d367d38.png",
+      tertiaryImagePath: "/lovable-uploads/33f5ef8f-c261-4411-95f2-f853a81e30b3.png",
       color: "purple" as const,
     },
   ];
