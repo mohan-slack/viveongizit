@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useMousePosition } from '@/hooks/use-mouse-position';
 import FeatureSectionHeading from './FeatureSectionHeading';
-import CategoryDisplay from './CategoryDisplay';
 import FeaturesBackgroundEffects from './FeaturesBackgroundEffects';
+import SmartRingGrid from './SmartRingGrid';
 import { getSmartRingsData } from '../smartRingsData';
 
 const FuturisticFeaturesShowcase: React.FC = () => {
@@ -58,10 +58,7 @@ const FuturisticFeaturesShowcase: React.FC = () => {
         >
           <FeatureSectionHeading />
           
-          <CategoryDisplay
-            activeCategory="smartrings"
-            activeData={smartRingsData}
-          />
+          <SmartRingGrid />
         </motion.div>
       </div>
     </section>
