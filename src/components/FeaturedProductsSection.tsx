@@ -18,7 +18,8 @@ const FeaturedProductsSection: React.FC = () => {
       id: 2,
       name: "HUX AURA RING",
       category: "SMART RING",
-      imagePath: "/lovable-uploads/02af7663-ba07-41b9-b76a-29b4f90aafa9.png",
+      imagePath: "/lovable-uploads/2ea98b0a-5fc8-4e3d-ae84-b4471e6b27ca.png",
+      secondaryImagePath: "/lovable-uploads/4e6c051d-1c01-4d13-8d3b-d868f38e392a.png",
       color: "blue" as const,
     },
     {
