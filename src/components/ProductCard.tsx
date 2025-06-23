@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
-import { ShoppingCart, AlertCircle, Heart } from 'lucide-react';
+import { Clock, Heart } from 'lucide-react';
 
 interface ProductCardProps {
   name: string;
   category: string;
-  price: string;
   imagePath: string;
   color: 'red' | 'blue' | 'purple';
   className?: string;
@@ -15,39 +15,29 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ 
   name, 
   category, 
-  price, 
   imagePath, 
   color = 'red',
   className 
 }) => {
-  const [isInCart, setIsInCart] = useState(false);
-
   const colorMap = {
     red: {
       border: 'border-viveon-red/20',
       glow: 'before:shadow-[0_0_15px_rgba(255,58,47,0.2)]',
       text: 'text-viveon-red/90',
-      btn: 'bg-viveon-red/90 hover:bg-viveon-red/80',
-      comingSoon: 'bg-white text-viveon-red/90 border border-viveon-red/90',
+      comingSoon: 'bg-gradient-to-r from-viveon-red/80 to-viveon-red/60 hover:from-viveon-red/90 hover:to-viveon-red/70 text-white border border-viveon-red/40 shadow-lg shadow-viveon-red/20',
     },
     blue: {
       border: 'border-viveon-neon-blue/20',
       glow: 'before:shadow-[0_0_15px_rgba(0,255,255,0.2)]',
       text: 'text-viveon-neon-blue/90',
-      btn: 'bg-viveon-neon-blue/90 hover:bg-viveon-neon-blue/80',
-      comingSoon: 'bg-white text-viveon-neon-blue/90 border border-viveon-neon-blue/90',
+      comingSoon: 'bg-gradient-to-r from-viveon-neon-blue/80 to-viveon-neon-blue/60 hover:from-viveon-neon-blue/90 hover:to-viveon-neon-blue/70 text-white border border-viveon-neon-blue/40 shadow-lg shadow-viveon-neon-blue/20',
     },
     purple: {
       border: 'border-viveon-neon-purple/20',
       glow: 'before:shadow-[0_0_15px_rgba(155,48,255,0.2)]',
       text: 'text-viveon-neon-purple/90',
-      btn: 'bg-viveon-neon-purple/90 hover:bg-viveon-neon-purple/80',
-      comingSoon: 'bg-white text-viveon-neon-purple/90 border border-viveon-neon-purple/90',
+      comingSoon: 'bg-gradient-to-r from-viveon-neon-purple/80 to-viveon-neon-purple/60 hover:from-viveon-neon-purple/90 hover:to-viveon-neon-purple/70 text-white border border-viveon-neon-purple/40 shadow-lg shadow-viveon-neon-purple/20',
     },
-  };
-
-  const handleAddToCart = () => {
-    setIsInCart(!isInCart);
   };
 
   return (
@@ -77,24 +67,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
       
       <div>
         <span className={`text-sm ${colorMap[color].text} font-medium`}>{category}</span>
-        <h3 className="text-white text-xl font-bold mt-1">{name}</h3>
-        <div className="flex justify-between items-center mt-4">
-          <span className="text-white font-bold">{price}</span>
+        <h3 className="text-white text-xl font-bold mt-1 mb-4">{name}</h3>
+        <div className="flex justify-center">
           <Button 
-            className={isInCart ? colorMap[color].comingSoon : colorMap[color].btn}
-            onClick={handleAddToCart}
-          >
-            {isInCart ? (
-              <>
-                <AlertCircle size={16} className="mr-2" />
-                Coming Soon
-              </>
-            ) : (
-              <>
-                <ShoppingCart size={16} className="mr-2" />
-                Add to Cart
-              </>
+            className={cn(
+              "px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105",
+              colorMap[color].comingSoon
             )}
+          >
+            <Clock size={16} className="mr-2" />
+            Coming Soon
           </Button>
         </div>
       </div>

@@ -10,7 +10,6 @@ const FeaturedProductsSection: React.FC = () => {
       id: 1,
       name: "HUX NEXUS RING",
       category: "SMART RING",
-      price: "Rs. 6,499/-",
       imagePath: "/lovable-uploads/75db4cf4-b69c-4857-96ea-7dc22bad242c.png",
       color: "red" as const,
     },
@@ -18,7 +17,6 @@ const FeaturedProductsSection: React.FC = () => {
       id: 2,
       name: "HUX AURA RING",
       category: "SMART RING",
-      price: "Rs. 16,999/-",
       imagePath: "/lovable-uploads/02af7663-ba07-41b9-b76a-29b4f90aafa9.png",
       color: "blue" as const,
     },
@@ -26,7 +24,6 @@ const FeaturedProductsSection: React.FC = () => {
       id: 3,
       name: "HUX FLUX RING",
       category: "SMART RING",
-      price: "Rs. 8,999/-",
       imagePath: "/lovable-uploads/0935fe07-f357-4ada-a951-0709d047a02f.png",
       color: "purple" as const,
     },
@@ -53,7 +50,6 @@ const FeaturedProductsSection: React.FC = () => {
                 key={product.id}
                 name={product.name}
                 category={product.category}
-                price={product.price}
                 imagePath={product.imagePath}
                 color={product.color}
               />
