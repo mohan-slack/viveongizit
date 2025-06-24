@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import { Button } from './ui/button';
@@ -26,7 +25,7 @@ const FeaturedProductsSection: React.FC = () => {
       id: 3,
       name: "HUX FLUX RING",
       category: "SMART RING",
-      imagePath: "/lovable-uploads/b1dbfd05-9fff-498b-9f74-f970426c9d40.png",
+      imagePath: "/lovable-uploads/162ee09f-6912-4594-a92f-028530a38205.png",
       secondaryImagePath: "/lovable-uploads/31aa2ec6-ace8-480e-ba4e-00f71d367d38.png",
       tertiaryImagePath: "/lovable-uploads/33f5ef8f-c261-4411-95f2-f853a81e30b3.png",
       color: "purple" as const,
@@ -56,6 +55,7 @@ const FeaturedProductsSection: React.FC = () => {
                 category={product.category}
                 imagePath={product.imagePath}
                 secondaryImagePath={product.secondaryImagePath}
+                tertiaryImagePath={product.tertiaryImagePath}
                 color={product.color}
               />
             ))}
