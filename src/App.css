@@ -1,4 +1,3 @@
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -28,21 +27,6 @@
   }
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 8px rgba(255, 58, 47, 0.5));
-  }
-  50% {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 15px rgba(255, 58, 47, 0.8));
-  }
-  100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 8px rgba(255, 58, 47, 0.5));
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
@@ -56,33 +40,3 @@
 .read-the-docs {
   color: #888;
 }
-
-/* Global styles that were previously in JSX */
-.bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
-}
-
-.bg-conic-gradient {
-  background: conic-gradient(
-    from 0deg,
-    hsl(344, 100%, 50%),
-    hsl(200, 100%, 50%),
-    hsl(272, 100%, 65%),
-    hsl(344, 100%, 50%)
-  );
-}
-
-/* Assistant positioning for the featured products section */
-.assistant-inline {
-  pointer-events: auto;
-  z-index: 30;
-  position: relative;
-  display: inline-block;
-}
-
-@media (max-width: 768px) {
-  .assistant-inline {
-    display: none;
-  }
-}
-

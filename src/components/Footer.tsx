@@ -5,12 +5,10 @@ import { Button } from './ui/button';
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { Input } from './ui/input';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 const Footer: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const isMobile = useIsMobile();
   
   const handleNavClick = (href: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -167,11 +165,7 @@ const Footer: React.FC = () => {
             onClick={(e) => handleNavClick('/', e)} 
             className="mb-4 md:mb-0"
           >
-            <Logo 
-              className={isMobile ? "scale-75" : ""} 
-              size={isMobile ? "medium" : "large"} 
-              showSoundWaves={false} 
-            />
+            <Logo className="" size="large" showSoundWaves={false} />
           </a>
           <p className="text-gray-400 font-light tracking-wide text-center md:text-left max-w-xl">
             Experience the next generation of wearable technology with our cutting-edge earbuds and smart rings.
