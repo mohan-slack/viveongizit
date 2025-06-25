@@ -13,7 +13,7 @@ const ContactSection: React.FC = () => {
               <span className="gradient-text">Us</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Have questions about our HUX™ products or interested in collaboration? Reach out to us through any of the following channels.
+              Have questions about our HUX products or interested in collaboration? Reach out to us through any of the following channels.
             </p>
           </div>
           
@@ -49,7 +49,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <h3 className="text-white text-lg font-bold mb-2">Email</h3>
                 <p className="text-gray-400">
-                  office@viveongizit.com
+                  contact@viveon-tech.com
                 </p>
               </div>
             </div>
@@ -58,7 +58,6 @@ const ContactSection: React.FC = () => {
             <div className="mt-8 text-center">
               <div className="flex items-center justify-center mb-2">
                 <h3 className="text-white text-lg font-bold">Viveon Gizit Private Limited</h3>
-                <span className="ml-1 text-viveon-neon-blue text-xs align-top">™</span>
               </div>
               <p className="text-gray-400 text-sm">
                 HUX™ is a registered trademark of Viveon Gizit Private Limited. All rights reserved.

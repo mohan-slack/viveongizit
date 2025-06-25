@@ -1,7 +1,6 @@
 
-import React from 'react';
-
 export interface FeatureProps {
+  id?: string;
   iconName: string;
   emoji: string;
   title: string;
@@ -14,10 +13,10 @@ export interface FeatureProps {
   selected?: boolean;
   onSelect?: (id: string) => void;
   onDeselect?: (id: string) => void;
-  id: string;
+  backgroundImage?: string;
 }
 
 export interface InteractiveFeatureProps {
-  features: Omit<FeatureProps, 'index' | 'selected' | 'onSelect' | 'onDeselect' | 'id'>[];
+  features: Omit<FeatureProps, 'index'>[];
   maxVisible?: number;
 }

@@ -5,14 +5,16 @@ import EnhancedHeroSection from '@/components/EnhancedHeroSection';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
 import FuturisticFeaturesShowcase from '@/components/FuturisticFeaturesShowcase';
 import AboutSection from '@/components/AboutSection';
+import ContactSection from '@/components/ContactSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
-import ContactSection from '@/components/ContactSection';
-import DynamicBackground from '@/components/DynamicBackground';
+import AIAssistant from '@/components/AIAssistant/AIAssistant';
 import { useLocation } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   const location = useLocation();
+  const isMobile = useIsMobile();
   
   // Handle scroll to section from navigation
   useEffect(() => {
@@ -69,8 +71,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-viveon-darker text-white relative overflow-hidden">
-      <DynamicBackground />
+    <div className="min-h-screen relative">
       <Navbar />
       <EnhancedHeroSection />
       <FeaturedProductsSection />
@@ -79,6 +80,9 @@ const Index = () => {
       <ContactSection />
       <CallToAction />
       <Footer />
+      
+      {/* AI Assistant */}
+      {isMobile && <AIAssistant />}
     </div>
   );
 };
