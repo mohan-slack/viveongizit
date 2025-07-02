@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import HeroBackground from './HeroBackground';
 import HeroContent from './HeroContent';
-import HeroProductGrid from './HeroProductGrid';
+import ScrollingRingCarousel from './ScrollingRingCarousel';
 
 const EnhancedHeroSection: React.FC = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
@@ -26,8 +26,8 @@ const EnhancedHeroSection: React.FC = () => {
       <div className="container relative z-10 mx-auto px-4 py-8 pt-20 md:py-16 md:pt-32">
         <HeroContent />
         
-        <div ref={parallaxRef} className="relative mt-6 md:mt-10 pb-16">
-          <HeroProductGrid className="w-full" />
+        <div ref={parallaxRef} className="relative mt-6 md:mt-10">
+          <ScrollingRingCarousel />
         </div>
       </div>
     </div>
