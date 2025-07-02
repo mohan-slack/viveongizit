@@ -98,16 +98,4 @@ export const getSmartRingsData = (): Omit<FeatureProps, 'index'>[] => [
     category: "smartrings",
     backgroundImage: "/lovable-uploads/f694a5a5-6ed5-41b4-abbf-58cbbfb280c2.png"
   },
-  {
-    id: 'smartring-10',
-    iconName: "AlertTriangle",
-    emoji: "🚨",
-    title: "One-key Trigger SOS",
-    description: "Emergency alert system with instant location sharing and contact notification",
-    color: "border-orange-500/30 bg-orange-500/5",
-    glowColor: "bg-orange-500",
-    additionalInfo: "Quick triple-tap sends GPS location and emergency message to designated contacts",
-    category: "smartrings",
-    backgroundImage: "/lovable-uploads/ac364875-2d34-4643-a84d-bc85cdf5decd.png"
-  }
 ];
