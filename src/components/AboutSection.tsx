@@ -12,7 +12,7 @@ const AboutSection: React.FC = () => {
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur-md opacity-50"></div>
               <div className="relative bg-black rounded-2xl overflow-hidden">
-                <img src="/lovable-uploads/6c2a0bec-beee-4711-8b62-ab7cdc642158.png" alt="HUX Technology by Viveon" className="w-full h-auto" />
+                <img src="/lovable-uploads/ad606094-c16f-4418-9c42-8d147e72ee26.png" alt="HUX Smart Rings by Viveon" className="w-full h-auto" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <span className="text-viveon-red font-bold tracking-wider text-lg">HUX<span className="text-white text-[0.5em] align-top leading-none">™</span></span>
