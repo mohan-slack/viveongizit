@@ -15,7 +15,7 @@ const HeroContent: React.FC = () => {
       duration: 0.8,
       ease: "easeOut"
     }}>
-        <span className="block text-white font-light tracking-wider letter-spacing-wide text-lg md:text-xl mb-1">
+        <span className="block tracking-wider letter-spacing-wide text-lg md:text-xl mb-1 text-stone-800 font-normal">
           INTRODUCING THE FUTURE OF TECH
         </span>
         
