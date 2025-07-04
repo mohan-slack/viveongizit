@@ -2,10 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
+import RotatingRing from './3D/RotatingRing';
 
 const HeroContent: React.FC = () => {
   return <div className="max-w-4xl mx-auto text-center mb-16">
-      <motion.div className="mb-6" initial={{
+      <motion.div className="mb-8" initial={{
       opacity: 0,
       y: 20
     }} animate={{
@@ -18,20 +19,23 @@ const HeroContent: React.FC = () => {
         <img 
           src="/lovable-uploads/51bd4a63-8d7e-4ee9-a0bd-8f1b88aec749.png" 
           alt="HUX - Introducing the Future of Tech" 
-          className="w-full max-w-2xl mx-auto h-auto"
+          className="w-full max-w-3xl mx-auto h-auto mb-8"
         />
       </motion.div>
       
-      <motion.p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-light tracking-wide" initial={{
-      opacity: 0
+      {/* 3D Rotating Ring */}
+      <motion.div className="mb-8" initial={{
+      opacity: 0,
+      scale: 0.8
     }} animate={{
-      opacity: 1
+      opacity: 1,
+      scale: 1
     }} transition={{
-      duration: 0.8,
-      delay: 0.3
+      duration: 1,
+      delay: 0.4
     }}>
-        Reality redefined. HUX NEXUS rings don't just connect—they transform your lifestyle with cutting-edge wearable technology.
-      </motion.p>
+        <RotatingRing />
+      </motion.div>
       
       <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" initial={{
       opacity: 0,
@@ -41,7 +45,7 @@ const HeroContent: React.FC = () => {
       y: 0
     }} transition={{
       duration: 0.8,
-      delay: 0.6
+      delay: 0.8
     }}>
         <Button className="bg-viveon-red/90 hover:bg-viveon-red/80 text-white px-8 py-6 text-lg font-medium tracking-wide border border-viveon-red/30 shadow-md rounded-full">
           HUX NEXUS RINGS
