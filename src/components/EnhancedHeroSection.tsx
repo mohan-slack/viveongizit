@@ -20,7 +20,7 @@ const EnhancedHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative overflow-hidden bg-viveon-darker">
+    <div className="relative overflow-hidden bg-gradient-to-b from-cream-50 to-cream-100">
       <HeroBackground />
       
       <div className="container relative z-10 mx-auto px-4 py-8 pt-20 md:py-16 md:pt-32">

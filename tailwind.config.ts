@@ -31,6 +31,18 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        cream: {
+          50: "#FAF8F5",
+          100: "#F5F1EB", 
+          200: "#EDE6DB",
+          300: "#E0D5C7",
+          400: "#D4C4B2",
+          500: "#C8B299",
+          600: "#B8A082",
+          700: "#9D8A6E",
+          800: "#7D6E5A",
+          900: "#5F5449",
+        },
         viveon: {
           red: "#FF3A2F",
           dark: "#0D0F12",
