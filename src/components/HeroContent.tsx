@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
-import HuxLogoAnimation from './HuxLogo';
+
 const HeroContent: React.FC = () => {
   return <div className="max-w-4xl mx-auto text-center mb-16">
-      <motion.h1 className="mb-6" initial={{
+      <motion.div className="mb-6" initial={{
       opacity: 0,
       y: 20
     }} animate={{
@@ -15,14 +15,12 @@ const HeroContent: React.FC = () => {
       duration: 0.8,
       ease: "easeOut"
     }}>
-        <span className="block text-white font-light tracking-wider letter-spacing-wide text-lg md:text-xl mb-1">
-          INTRODUCING THE FUTURE OF TECH
-        </span>
-        
-        <HuxLogoAnimation />
-        
-        <span className="block text-sm text-viveon-neon-blue/80 mt-2">by Viveon Gizit Pvt. Ltd.</span>
-      </motion.h1>
+        <img 
+          src="/lovable-uploads/51bd4a63-8d7e-4ee9-a0bd-8f1b88aec749.png" 
+          alt="HUX - Introducing the Future of Tech" 
+          className="w-full max-w-2xl mx-auto h-auto"
+        />
+      </motion.div>
       
       <motion.p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-light tracking-wide" initial={{
       opacity: 0
