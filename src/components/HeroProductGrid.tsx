@@ -58,7 +58,7 @@ const HeroProductGrid: React.FC<HeroProductGridProps> = ({ className }) => {
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 >
-                  <div className="relative overflow-hidden aspect-[4/3]">
+                  <div className="relative overflow-hidden aspect-[3/2]">
                     <img 
                       src={ring.src}
                       alt={ring.alt}
