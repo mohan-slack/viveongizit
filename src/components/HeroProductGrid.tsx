@@ -11,11 +11,6 @@ interface HeroProductGridProps {
 const HeroProductGrid: React.FC<HeroProductGridProps> = ({ className }) => {
   const ringImages = [
     {
-      src: '/lovable-uploads/0ced9fe4-e16d-4f05-85ee-eac44021ea25.png',
-      alt: 'HUX Smart Ring Collection - CE01 & TM05',
-      title: 'Premium Collection'
-    },
-    {
       src: '/lovable-uploads/a2b322a8-cce2-493a-8a46-c407851ccfc5.png',
       alt: 'HUX Smart Rings - Silver & Gold Edition',
       title: 'Luxury Edition'
@@ -67,7 +62,7 @@ const HeroProductGrid: React.FC<HeroProductGridProps> = ({ className }) => {
                     <img 
                       src={ring.src}
                       alt={ring.alt}
-                      className="w-full h-64 md:h-80 object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 filter brightness-95 contrast-105"
+                      className="w-full h-auto max-h-80 object-contain transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 filter brightness-95 contrast-105"
                     />
                     
                     {/* Animated overlay */}
