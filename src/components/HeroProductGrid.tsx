@@ -58,11 +58,11 @@ const HeroProductGrid: React.FC<HeroProductGridProps> = ({ className }) => {
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 >
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden aspect-[4/3]">
                     <img 
                       src={ring.src}
                       alt={ring.alt}
-                      className="w-full h-auto max-h-80 object-contain transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 filter brightness-95 contrast-105"
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 filter brightness-95 contrast-105"
                     />
                     
                     {/* Animated overlay */}
