@@ -16,11 +16,6 @@ const HeroProductGrid: React.FC<HeroProductGridProps> = ({ className }) => {
       title: 'Luxury Edition'
     },
     {
-      src: '/lovable-uploads/94c1797e-efb8-4507-bb13-1490c37799de.png',
-      alt: 'HUX Smart Rings - Professional Series',
-      title: 'Professional Series'
-    },
-    {
       src: '/lovable-uploads/67eb3408-bce5-4bbf-838f-42cfb22c7dd3.png',
       alt: 'HUX Smart Rings - Carbon Fiber & Designer',
       title: 'Designer Series'
