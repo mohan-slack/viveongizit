@@ -5,52 +5,90 @@ import { motion } from 'framer-motion';
 const EnhancedHeroSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [animationStarted, setAnimationStarted] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) {
       const video = videoRef.current;
       
-      // Ensure video attributes are set
-      video.setAttribute('playsinline', 'true');
-      video.setAttribute('webkit-playsinline', 'true');
+      // Force all video properties
       video.muted = true;
       video.loop = true;
       video.autoplay = true;
+      video.playsInline = true;
+      video.controls = false;
+      video.preload = 'auto';
       
-      // Set playback rate to make video slower
-      video.playbackRate = 0.7;
+      // Set additional attributes for better compatibility
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      video.setAttribute('muted', '');
+      video.setAttribute('autoplay', '');
+      video.setAttribute('loop', '');
       
-      // Multiple attempts to play video
-      const attemptPlay = async () => {
-        try {
-          await video.play();
-        } catch (error) {
-          console.log('Initial autoplay failed, setting up interaction listeners');
-          
-          // Fallback: play on any user interaction
-          const playOnInteraction = async () => {
-            try {
-              await video.play();
-              document.removeEventListener('click', playOnInteraction);
-              document.removeEventListener('touchstart', playOnInteraction);
-              document.removeEventListener('scroll', playOnInteraction);
-              document.removeEventListener('keydown', playOnInteraction);
-            } catch (e) {
-              console.log('Play on interaction failed:', e);
-            }
-          };
-          
-          document.addEventListener('click', playOnInteraction);
-          document.addEventListener('touchstart', playOnInteraction);
-          document.addEventListener('scroll', playOnInteraction);
-          document.addEventListener('keydown', playOnInteraction);
-        }
+      const handleVideoLoad = () => {
+        setVideoLoaded(true);
+        video.playbackRate = 0.7;
+        
+        // Aggressive play attempt
+        const playVideo = async () => {
+          try {
+            video.currentTime = 0;
+            await video.play();
+            console.log('Video started playing successfully');
+          } catch (error) {
+            console.log('Video autoplay blocked, will try on interaction');
+            
+            // Set up interaction handlers
+            const interactions = ['click', 'touchstart', 'touchend', 'scroll', 'keydown', 'mousemove'];
+            
+            const playOnInteraction = async (e: Event) => {
+              try {
+                await video.play();
+                console.log('Video started after interaction:', e.type);
+                // Remove all listeners after successful play
+                interactions.forEach(event => {
+                  document.removeEventListener(event, playOnInteraction);
+                });
+              } catch (playError) {
+                console.log('Failed to play after interaction:', playError);
+              }
+            };
+            
+            // Add all interaction listeners
+            interactions.forEach(event => {
+              document.addEventListener(event, playOnInteraction, { once: false });
+            });
+          }
+        };
+        
+        // Try multiple times with delays
+        playVideo();
+        setTimeout(playVideo, 100);
+        setTimeout(playVideo, 500);
+        setTimeout(playVideo, 1000);
       };
       
-      // Try to play immediately and on load
-      video.addEventListener('loadeddata', attemptPlay);
-      video.addEventListener('canplay', attemptPlay);
-      attemptPlay();
+      const handleCanPlay = () => {
+        handleVideoLoad();
+      };
+      
+      // Add event listeners
+      video.addEventListener('loadeddata', handleVideoLoad);
+      video.addEventListener('canplay', handleCanPlay);
+      video.addEventListener('canplaythrough', handleVideoLoad);
+      
+      // Force load if already ready
+      if (video.readyState >= 2) {
+        handleVideoLoad();
+      }
+      
+      // Cleanup function
+      return () => {
+        video.removeEventListener('loadeddata', handleVideoLoad);
+        video.removeEventListener('canplay', handleCanPlay);
+        video.removeEventListener('canplaythrough', handleVideoLoad);
+      };
     }
     
     // Start animation after component mounts
