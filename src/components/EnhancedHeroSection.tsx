@@ -9,23 +9,48 @@ const EnhancedHeroSection: React.FC = () => {
   useEffect(() => {
     if (videoRef.current) {
       const video = videoRef.current;
+      
+      // Ensure video attributes are set
+      video.setAttribute('playsinline', 'true');
+      video.setAttribute('webkit-playsinline', 'true');
+      video.muted = true;
+      video.loop = true;
+      video.autoplay = true;
+      
       // Set playback rate to make video slower
       video.playbackRate = 0.7;
       
-      // Force video to play on all devices
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Auto-play was prevented, try again with user interaction
-          const playVideo = () => {
-            video.play();
-            document.removeEventListener('click', playVideo);
-            document.removeEventListener('touchstart', playVideo);
+      // Multiple attempts to play video
+      const attemptPlay = async () => {
+        try {
+          await video.play();
+        } catch (error) {
+          console.log('Initial autoplay failed, setting up interaction listeners');
+          
+          // Fallback: play on any user interaction
+          const playOnInteraction = async () => {
+            try {
+              await video.play();
+              document.removeEventListener('click', playOnInteraction);
+              document.removeEventListener('touchstart', playOnInteraction);
+              document.removeEventListener('scroll', playOnInteraction);
+              document.removeEventListener('keydown', playOnInteraction);
+            } catch (e) {
+              console.log('Play on interaction failed:', e);
+            }
           };
-          document.addEventListener('click', playVideo);
-          document.addEventListener('touchstart', playVideo);
-        });
-      }
+          
+          document.addEventListener('click', playOnInteraction);
+          document.addEventListener('touchstart', playOnInteraction);
+          document.addEventListener('scroll', playOnInteraction);
+          document.addEventListener('keydown', playOnInteraction);
+        }
+      };
+      
+      // Try to play immediately and on load
+      video.addEventListener('loadeddata', attemptPlay);
+      video.addEventListener('canplay', attemptPlay);
+      attemptPlay();
     }
     
     // Start animation after component mounts
@@ -56,8 +81,8 @@ const EnhancedHeroSection: React.FC = () => {
       </div>
       
       {/* Content overlay */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen pt-32">
-        <div className="text-center px-4 max-w-4xl">
+      <div className="relative z-10 flex items-start justify-center min-h-screen pt-16">
+        <div className="text-center px-4 max-w-4xl mt-8">
           {/* Main heading with smaller font */}
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
