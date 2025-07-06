@@ -8,8 +8,24 @@ const EnhancedHeroSection: React.FC = () => {
 
   useEffect(() => {
     if (videoRef.current) {
+      const video = videoRef.current;
       // Set playback rate to make video slower
-      videoRef.current.playbackRate = 0.7;
+      video.playbackRate = 0.7;
+      
+      // Force video to play on all devices
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Auto-play was prevented, try again with user interaction
+          const playVideo = () => {
+            video.play();
+            document.removeEventListener('click', playVideo);
+            document.removeEventListener('touchstart', playVideo);
+          };
+          document.addEventListener('click', playVideo);
+          document.addEventListener('touchstart', playVideo);
+        });
+      }
     }
     
     // Start animation after component mounts
@@ -27,6 +43,8 @@ const EnhancedHeroSection: React.FC = () => {
           loop
           muted
           playsInline
+          preload="auto"
+          controls={false}
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.8) contrast(1.1)' }}
         >
@@ -38,14 +56,14 @@ const EnhancedHeroSection: React.FC = () => {
       </div>
       
       {/* Content overlay */}
-      <div className="relative z-10 flex items-start justify-center min-h-screen pt-20">
+      <div className="relative z-10 flex items-center justify-center min-h-screen pt-32">
         <div className="text-center px-4 max-w-4xl">
           {/* Main heading with smaller font */}
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6"
+            className="text-lg md:text-2xl lg:text-3xl font-bold text-white mb-8"
           >
             INTRODUCING THE FUTURE OF TECH
           </motion.h1>
@@ -104,6 +122,17 @@ const EnhancedHeroSection: React.FC = () => {
                 transition={{ duration: 1.1, delay: 1.8, type: "spring", bounce: 0.3 }}
               >
                 <span className="bg-gradient-to-r from-viveon-neon-purple to-viveon-red bg-clip-text text-transparent">X</span>
+                
+                {/* Trademark symbol positioned at top-right of X */}
+                <motion.span 
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={animationStarted ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 2.5 }}
+                  className="absolute -top-2 -right-3 text-viveon-neon-purple text-lg md:text-xl lg:text-2xl"
+                >
+                  ™
+                </motion.span>
+                
                 {/* Sparkle effects */}
                 {animationStarted && (
                   <>
@@ -132,16 +161,6 @@ const EnhancedHeroSection: React.FC = () => {
                   </>
                 )}
               </motion.div>
-              
-              {/* Trademark symbol */}
-              <motion.span 
-                initial={{ opacity: 0, scale: 0 }}
-                animate={animationStarted ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 2.5 }}
-                className="text-viveon-neon-purple text-xl md:text-2xl lg:text-3xl align-top ml-1"
-              >
-                ™
-              </motion.span>
             </div>
           </div>
           
@@ -150,9 +169,9 @@ const EnhancedHeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 2.8 }}
-            className="text-sm md:text-lg text-gray-300 font-light"
+            className="text-xs md:text-sm text-gray-300 font-light"
           >
-            by Viveon Gizit Pvt. Ltd.
+            Viveon Gizit
           </motion.p>
         </div>
       </div>
