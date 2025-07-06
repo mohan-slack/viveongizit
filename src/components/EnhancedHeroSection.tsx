@@ -24,7 +24,7 @@ const EnhancedHeroSection: React.FC = () => {
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.8) contrast(1.1)' }}
         >
-          <source src="/b3212ce873334143963cad34fdbd9dc5.mp4" type="video/mp4" />
+          <source src="/hux_video_clean_trimmed_retry.mp4" type="video/mp4" />
         </video>
         
         {/* Dark overlay for better text readability */}
