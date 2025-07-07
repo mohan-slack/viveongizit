@@ -74,8 +74,13 @@ const EnhancedHeroSection: React.FC = () => {
             playsInline
             preload="auto"
             controls={false}
+            controlsList="nodownload nofullscreen noremoteplaybook" 
+            disablePictureInPicture={true}
             className="w-full h-full object-cover"
-            style={{ filter: 'brightness(0.8) contrast(1.1)' }}
+            style={{ 
+              filter: 'brightness(0.8) contrast(1.1)',
+              pointerEvents: 'none'
+            }}
           >
             <source src="/hux_video_clean_trimmed_retry.mp4" type="video/mp4" />
           </video>
@@ -106,7 +111,7 @@ const EnhancedHeroSection: React.FC = () => {
           </motion.h1>
           
           {/* Animated HUX with special effects */}
-          <div className="relative mb-4">
+          <div className="relative mb-2">
             <div className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 flex items-center justify-center gap-1">
               {/* Letter H - glides from left with water ripple */}
               <motion.div 
@@ -201,12 +206,12 @@ const EnhancedHeroSection: React.FC = () => {
             </div>
           </div>
           
-          {/* Company name with smaller font */}
+          {/* Company name with larger font */}
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 2.8 }}
-            className="text-xs md:text-sm text-gray-300 font-light"
+            className="text-sm md:text-lg lg:text-xl text-gray-300 font-light"
           >
             Viveon Gizit
           </motion.p>
