@@ -63,52 +63,44 @@ const EnhancedHeroSection: React.FC = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-viveon-darker">
-      {/* Enhanced Video/Image Background */}
-      <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-        <div className="relative w-full max-w-7xl mx-auto" style={{ aspectRatio: '21/9' }}>
-          {!videoError ? (
-            <video
-              ref={videoRef}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              controls={false}
-              className="w-full h-full rounded-lg object-cover shadow-2xl"
-              style={{ 
-                filter: 'brightness(0.85) contrast(1.15) saturate(1.1)',
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-              }}
-            >
-              <source src="/hux_video_clean_trimmed_retry.mp4" type="video/mp4" />
-            </video>
-          ) : (
-            <img 
-              src="/lovable-uploads/b4315c7f-658c-4f78-81f2-9438f8bbb6cd.png"
-              alt="HUX Smart Ring"
-              className="w-full h-full rounded-lg object-cover shadow-2xl"
-              style={{ 
-                filter: 'brightness(0.85) contrast(1.15) saturate(1.1)',
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-              }}
-            />
-          )}
-        </div>
+      {/* Video/Image Background */}
+      <div className="absolute inset-0 w-full h-full">
+        {!videoError ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            controls={false}
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(0.8) contrast(1.1)' }}
+          >
+            <source src="/hux_video_clean_trimmed_retry.mp4" type="video/mp4" />
+          </video>
+        ) : (
+          <img 
+            src="/lovable-uploads/b4315c7f-658c-4f78-81f2-9438f8bbb6cd.png"
+            alt="HUX Smart Ring"
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(0.8) contrast(1.1)' }}
+          />
+        )}
         
-        {/* Enhanced gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30" />
       </div>
       
-      {/* Enhanced content overlay */}
-      <div className="relative z-10 flex items-start justify-center min-h-screen pt-20">
-        <div className="text-center px-4 max-w-5xl mt-12">
-          {/* Main heading with better positioning */}
+      {/* Content overlay */}
+      <div className="relative z-10 flex items-start justify-center min-h-screen pt-16">
+        <div className="text-center px-4 max-w-4xl mt-8">
+          {/* Main heading with smaller font */}
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-12 tracking-wide"
+            className="text-lg md:text-2xl lg:text-3xl font-bold text-white mb-8"
           >
             INTRODUCING THE FUTURE OF TECH
           </motion.h1>
@@ -209,12 +201,12 @@ const EnhancedHeroSection: React.FC = () => {
             </div>
           </div>
           
-          {/* Company name closer to HUX with larger font */}
+          {/* Company name with smaller font */}
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 2.8 }}
-            className="text-sm md:text-lg lg:text-xl text-gray-200 font-light mt-2 tracking-wider"
+            className="text-xs md:text-sm text-gray-300 font-light"
           >
             Viveon Gizit
           </motion.p>
