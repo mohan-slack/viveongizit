@@ -8,92 +8,84 @@ const EnhancedHeroSection: React.FC = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
+    // Start animation immediately
+    setAnimationStarted(true);
+    
     if (videoRef.current) {
       const video = videoRef.current;
       
-      // Force all video properties
+      // Reset and configure video
       video.muted = true;
       video.loop = true;
       video.autoplay = true;
       video.playsInline = true;
       video.controls = false;
-      video.preload = 'auto';
+      video.preload = 'metadata';
+      video.playbackRate = 0.7;
       
-      // Set additional attributes for better compatibility
+      // Set attributes for cross-browser compatibility
       video.setAttribute('playsinline', '');
       video.setAttribute('webkit-playsinline', '');
       video.setAttribute('muted', '');
       video.setAttribute('autoplay', '');
       video.setAttribute('loop', '');
       
-      const handleVideoLoad = () => {
-        setVideoLoaded(true);
-        video.playbackRate = 0.7;
-        
-        // Aggressive play attempt
-        const playVideo = async () => {
-          try {
-            video.currentTime = 0;
-            await video.play();
-            console.log('Video started playing successfully');
-          } catch (error) {
-            console.log('Video autoplay blocked, will try on interaction');
-            
-            // Set up interaction handlers
-            const interactions = ['click', 'touchstart', 'touchend', 'scroll', 'keydown', 'mousemove'];
-            
-            const playOnInteraction = async (e: Event) => {
-              try {
-                await video.play();
-                console.log('Video started after interaction:', e.type);
-                // Remove all listeners after successful play
-                interactions.forEach(event => {
-                  document.removeEventListener(event, playOnInteraction);
-                });
-              } catch (playError) {
-                console.log('Failed to play after interaction:', playError);
-              }
-            };
-            
-            // Add all interaction listeners
-            interactions.forEach(event => {
-              document.addEventListener(event, playOnInteraction, { once: false });
-            });
+      const tryPlay = async () => {
+        try {
+          video.currentTime = 0;
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            await playPromise;
+            console.log('✅ Video playing successfully');
+            setVideoLoaded(true);
           }
-        };
-        
-        // Try multiple times with delays
-        playVideo();
-        setTimeout(playVideo, 100);
-        setTimeout(playVideo, 500);
-        setTimeout(playVideo, 1000);
+        } catch (error) {
+          console.log('⚠️ Video autoplay prevented:', error);
+          
+          // Try to play on user interaction
+          const handleInteraction = async () => {
+            try {
+              await video.play();
+              console.log('✅ Video started after user interaction');
+              setVideoLoaded(true);
+              // Remove listeners after successful play
+              ['click', 'touchstart', 'keydown', 'scroll'].forEach(event => {
+                document.removeEventListener(event, handleInteraction);
+              });
+            } catch (playError) {
+              console.log('❌ Video play failed:', playError);
+            }
+          };
+          
+          ['click', 'touchstart', 'keydown', 'scroll'].forEach(event => {
+            document.addEventListener(event, handleInteraction, { once: true });
+          });
+        }
       };
       
-      const handleCanPlay = () => {
-        handleVideoLoad();
+      // Multiple load event handlers
+      const handleLoad = () => {
+        console.log('📹 Video can play, attempting to start...');
+        tryPlay();
       };
       
-      // Add event listeners
-      video.addEventListener('loadeddata', handleVideoLoad);
-      video.addEventListener('canplay', handleCanPlay);
-      video.addEventListener('canplaythrough', handleVideoLoad);
+      video.addEventListener('loadedmetadata', handleLoad);
+      video.addEventListener('canplay', handleLoad);
       
-      // Force load if already ready
+      // Force immediate play attempt
       if (video.readyState >= 2) {
-        handleVideoLoad();
+        handleLoad();
       }
       
-      // Cleanup function
+      // Retry mechanism
+      setTimeout(tryPlay, 100);
+      setTimeout(tryPlay, 1000);
+      
       return () => {
-        video.removeEventListener('loadeddata', handleVideoLoad);
-        video.removeEventListener('canplay', handleCanPlay);
-        video.removeEventListener('canplaythrough', handleVideoLoad);
+        video.removeEventListener('loadedmetadata', handleLoad);
+        video.removeEventListener('canplay', handleLoad);
       };
     }
-    
-    // Start animation after component mounts
-    const timer = setTimeout(() => setAnimationStarted(true), 500);
-    return () => clearTimeout(timer);
   }, []);
 
   return (
