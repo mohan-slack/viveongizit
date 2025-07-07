@@ -6,105 +6,87 @@ const EnhancedHeroSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [animationStarted, setAnimationStarted] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     // Start animation immediately
     setAnimationStarted(true);
     
-    if (videoRef.current) {
+    if (videoRef.current && !videoLoaded) {
       const video = videoRef.current;
       
-      // Reset and configure video
+      // Configure video properties
       video.muted = true;
       video.loop = true;
-      video.autoplay = true;
       video.playsInline = true;
       video.controls = false;
-      video.preload = 'metadata';
-      video.playbackRate = 0.7;
+      video.preload = 'auto';
       
-      // Set attributes for cross-browser compatibility
-      video.setAttribute('playsinline', '');
-      video.setAttribute('webkit-playsinline', '');
-      video.setAttribute('muted', '');
-      video.setAttribute('autoplay', '');
-      video.setAttribute('loop', '');
-      
-      const tryPlay = async () => {
+      const handleVideoReady = async () => {
         try {
-          video.currentTime = 0;
-          const playPromise = video.play();
-          if (playPromise !== undefined) {
-            await playPromise;
-            console.log('✅ Video playing successfully');
-            setVideoLoaded(true);
-          }
+          video.playbackRate = 0.7;
+          await video.play();
+          setVideoLoaded(true);
+          setVideoError(false);
         } catch (error) {
-          console.log('⚠️ Video autoplay prevented:', error);
+          console.log('Video autoplay blocked, waiting for user interaction');
           
-          // Try to play on user interaction
-          const handleInteraction = async () => {
+          const playOnInteraction = async () => {
             try {
               await video.play();
-              console.log('✅ Video started after user interaction');
               setVideoLoaded(true);
-              // Remove listeners after successful play
-              ['click', 'touchstart', 'keydown', 'scroll'].forEach(event => {
-                document.removeEventListener(event, handleInteraction);
-              });
-            } catch (playError) {
-              console.log('❌ Video play failed:', playError);
+              setVideoError(false);
+            } catch (err) {
+              setVideoError(true);
             }
           };
           
-          ['click', 'touchstart', 'keydown', 'scroll'].forEach(event => {
-            document.addEventListener(event, handleInteraction, { once: true });
-          });
+          document.addEventListener('click', playOnInteraction, { once: true });
+          document.addEventListener('touchstart', playOnInteraction, { once: true });
         }
       };
-      
-      // Multiple load event handlers
-      const handleLoad = () => {
-        console.log('📹 Video can play, attempting to start...');
-        tryPlay();
+
+      const handleError = () => {
+        setVideoError(true);
+        setVideoLoaded(false);
       };
       
-      video.addEventListener('loadedmetadata', handleLoad);
-      video.addEventListener('canplay', handleLoad);
-      
-      // Force immediate play attempt
-      if (video.readyState >= 2) {
-        handleLoad();
-      }
-      
-      // Retry mechanism
-      setTimeout(tryPlay, 100);
-      setTimeout(tryPlay, 1000);
+      video.addEventListener('loadeddata', handleVideoReady);
+      video.addEventListener('error', handleError);
       
       return () => {
-        video.removeEventListener('loadedmetadata', handleLoad);
-        video.removeEventListener('canplay', handleLoad);
+        video.removeEventListener('loadeddata', handleVideoReady);
+        video.removeEventListener('error', handleError);
       };
     }
-  }, []);
+  }, [videoLoaded]);
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-viveon-darker">
-      {/* Video Background */}
+      {/* Video/Image Background */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          controls={false}
-          className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.8) contrast(1.1)' }}
-        >
-          <source src="/hux_video_clean_trimmed_retry.mp4" type="video/mp4" />
-        </video>
+        {!videoError ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            controls={false}
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(0.8) contrast(1.1)' }}
+          >
+            <source src="/hux_video_clean_trimmed_retry.mp4" type="video/mp4" />
+          </video>
+        ) : (
+          <img 
+            src="/lovable-uploads/b4315c7f-658c-4f78-81f2-9438f8bbb6cd.png"
+            alt="HUX Smart Ring"
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(0.8) contrast(1.1)' }}
+          />
+        )}
         
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/30" />
