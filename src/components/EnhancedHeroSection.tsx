@@ -1,9 +1,10 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { RevealTextHUX } from "@/components/RevealTextHUX";
 
 export function HeroSection() {
   return (
@@ -22,7 +23,7 @@ export function HeroSection() {
       </motion.h1>
 
       <div className="mt-6">
-        <RevealText />
+        <RevealTextHUX />
       </div>
     </LampContainer>
   );
@@ -107,57 +108,6 @@ export const LampContainer = ({
   );
 };
 
-export function RevealText() {
-  const text = "HUX";
-  const trademark = "™";
-  const [showOverlay, setShowOverlay] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowOverlay(true), 1200); // after INTRODUCING finishes
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <div className="flex items-center justify-center relative">
-      <div className="flex relative">
-        {text.split("").map((letter, index) => (
-          <motion.span
-            key={index}
-            className="text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tight relative overflow-hidden bg-gradient-to-br from-cyan-300 via-cyan-400 to-blue-600 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(34,211,238,0.7)]"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{
-              delay: index * 0.1,
-              type: "spring",
-              damping: 8,
-              stiffness: 200,
-              mass: 0.8,
-            }}
-          >
-            {letter}
-            {showOverlay && (
-              <motion.span
-                className="absolute inset-0 text-cyan-500 opacity-0"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 1, 0] }}
-                transition={{
-                  delay: index * 0.05,
-                  duration: 0.4,
-                  ease: "easeInOut",
-                }}
-              >
-                {letter}
-              </motion.span>
-            )}
-          </motion.span>
-        ))}
-        <span className="absolute text-[0.5em] text-slate-400 -top-2 right-0"> 
-          {trademark}
-        </span>
-      </div>
-    </div>
-  );
-}
 
 const EnhancedHeroSection = HeroSection;
 export default EnhancedHeroSection;
