@@ -1,224 +1,127 @@
 
-import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-const EnhancedHeroSection: React.FC = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [animationStarted, setAnimationStarted] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const [videoError, setVideoError] = useState(false);
-
-  useEffect(() => {
-    // Start animation immediately
-    setAnimationStarted(true);
-    
-    if (videoRef.current && !videoLoaded) {
-      const video = videoRef.current;
-      
-      // Configure video properties
-      video.muted = true;
-      video.loop = true;
-      video.playsInline = true;
-      video.controls = false;
-      video.preload = 'auto';
-      
-      const handleVideoReady = async () => {
-        try {
-          video.playbackRate = 0.7;
-          await video.play();
-          setVideoLoaded(true);
-          setVideoError(false);
-        } catch (error) {
-          console.log('Video autoplay blocked, waiting for user interaction');
-          
-          const playOnInteraction = async () => {
-            try {
-              await video.play();
-              setVideoLoaded(true);
-              setVideoError(false);
-            } catch (err) {
-              setVideoError(true);
-            }
-          };
-          
-          document.addEventListener('click', playOnInteraction, { once: true });
-          document.addEventListener('touchstart', playOnInteraction, { once: true });
-        }
-      };
-
-      const handleError = () => {
-        setVideoError(true);
-        setVideoLoaded(false);
-      };
-      
-      video.addEventListener('loadeddata', handleVideoReady);
-      video.addEventListener('error', handleError);
-      
-      return () => {
-        video.removeEventListener('loadeddata', handleVideoReady);
-        video.removeEventListener('error', handleError);
-      };
-    }
-  }, [videoLoaded]);
-
+export function HeroSection() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-viveon-darker">
-      {/* Video/Image Background */}
-      <div className="absolute inset-0 w-full h-full">
-        {!videoError ? (
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            controls={false}
-            controlsList="nodownload nofullscreen noremoteplaybook" 
-            disablePictureInPicture={true}
-            className="w-full h-full object-cover"
-            style={{ 
-              filter: 'brightness(0.8) contrast(1.1)',
-              pointerEvents: 'none'
-            }}
-          >
-            <source src="/hux_video_clean_trimmed_retry.mp4" type="video/mp4" />
-          </video>
-        ) : (
-          <img 
-            src="/lovable-uploads/b4315c7f-658c-4f78-81f2-9438f8bbb6cd.png"
-            alt="HUX Smart Ring"
-            className="w-full h-full object-cover"
-            style={{ filter: 'brightness(0.8) contrast(1.1)' }}
-          />
-        )}
-        
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/30" />
+    <LampContainer>
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.4,
+          duration: 1,
+          ease: "easeOut",
+        }}
+        className="mt-8 text-center text-2xl sm:text-3xl md:text-5xl font-medium tracking-widest text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.7)]"
+      >
+        INTRODUCING THE FUTURE OF TECH
+      </motion.h1>
+
+      <motion.h2
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          delay: 1.4,
+          duration: 1,
+          ease: "easeOut",
+        }}
+        className="mt-6 bg-gradient-to-br from-cyan-400 via-blue-600 to-purple-600 bg-clip-text 
+        text-transparent text-center 
+        text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tight 
+        drop-shadow-[0_4px_10px_rgba(34,211,238,0.5)] 
+        animate-gradient-shimmer"
+      >
+        HUX™
+      </motion.h2>
+    </LampContainer>
+  );
+}
+
+export const LampContainer = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <div
+      className={cn(
+        "relative flex min-h-[80vh] sm:min-h-screen flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-slate-950 w-full rounded-md z-0",
+        className
+      )}
+    >
+      {/* Lamp Effects */}
+      <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0">
+        <motion.div
+          initial={{ opacity: 0.5, width: "15rem" }}
+          whileInView={{ opacity: 1, width: "30rem" }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          style={{
+            backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
+          }}
+          className="absolute inset-auto right-1/2 h-56 w-[18rem] sm:w-[24rem] lg:w-[30rem] bg-gradient-conic from-cyan-500 via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top]"
+        >
+          <div className="absolute w-full left-0 bg-slate-950 h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
+          <div className="absolute w-40 h-full left-0 bg-slate-950 bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0.5, width: "15rem" }}
+          whileInView={{ opacity: 1, width: "30rem" }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          style={{
+            backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
+          }}
+          className="absolute inset-auto left-1/2 h-56 w-[18rem] sm:w-[24rem] lg:w-[30rem] bg-gradient-conic from-transparent via-transparent to-cyan-500 text-white [--conic-position:from_290deg_at_center_top]"
+        >
+          <div className="absolute w-40 h-full right-0 bg-slate-950 bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
+          <div className="absolute w-full right-0 bg-slate-950 h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
+        </motion.div>
+
+        <div className="absolute top-1/2 h-48 w-full translate-y-12 scale-x-150 bg-slate-950 blur-2xl"></div>
+        <div className="absolute top-1/2 z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
+        <div className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-1/2 rounded-full bg-cyan-500 opacity-50 blur-3xl"></div>
+        <motion.div
+          initial={{ width: "8rem" }}
+          whileInView={{ width: "16rem" }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          className="absolute inset-auto z-30 h-36 w-64 -translate-y-[6rem] rounded-full bg-cyan-400 blur-2xl"
+        ></motion.div>
+        <motion.div
+          initial={{ width: "15rem" }}
+          whileInView={{ width: "30rem" }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          className="absolute inset-auto z-50 h-0.5 w-[30rem] -translate-y-[7rem] bg-cyan-400 "
+        ></motion.div>
+        <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-slate-950 "></div>
       </div>
-      
-      {/* Content overlay */}
-      <div className="relative z-10 flex items-start justify-center min-h-screen pt-16">
-        <div className="text-center px-4 max-w-4xl mt-8">
-          {/* Main heading with smaller font */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-2xl lg:text-3xl font-bold text-white mb-8"
-          >
-            INTRODUCING THE FUTURE OF TECH
-          </motion.h1>
-          
-          {/* Animated HUX with special effects */}
-          <div className="relative mb-2">
-            <div className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 flex items-center justify-center gap-1">
-              {/* Letter H - glides from left with water ripple */}
-              <motion.div 
-                className="relative inline-block"
-                initial={{ x: -200, opacity: 0 }}
-                animate={animationStarted ? { x: 0, opacity: 1 } : {}}
-                transition={{ duration: 1.2, delay: 0.5, type: "spring", bounce: 0.3 }}
-              >
-                <span className="bg-gradient-to-r from-viveon-neon-purple to-viveon-red bg-clip-text text-transparent">H</span>
-                {/* Water ripple effect */}
-                {animationStarted && (
-                  <>
-                    {[...Array(3)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className="absolute inset-0 border-2 border-viveon-neon-blue/40 rounded-full"
-                        initial={{ scale: 0, opacity: 0.8 }}
-                        animate={{ scale: [0, 2, 4], opacity: [0.8, 0.4, 0] }}
-                        transition={{ duration: 1.5, delay: 0.5 + i * 0.2, repeat: 2 }}
-                      />
-                    ))}
-                  </>
-                )}
-              </motion.div>
-              
-              {/* Letter U - drops from top with digital beam */}
-              <motion.div 
-                className="relative inline-block"
-                initial={{ y: -300, opacity: 0 }}
-                animate={animationStarted ? { y: 0, opacity: 1 } : {}}
-                transition={{ duration: 1, delay: 1.2, type: "spring", bounce: 0.4 }}
-              >
-                <span className="bg-gradient-to-r from-viveon-neon-purple to-viveon-red bg-clip-text text-transparent">U</span>
-                {/* Digital beam effect */}
-                {animationStarted && (
-                  <motion.div
-                    className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-viveon-neon-blue to-transparent"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 80, opacity: [0, 1, 0] }}
-                    transition={{ duration: 1.5, delay: 1.2 }}
-                  />
-                )}
-              </motion.div>
-              
-              {/* Letter X - flies from right with sparkle */}
-              <motion.div 
-                className="relative inline-block"
-                initial={{ x: 200, opacity: 0, rotate: 180 }}
-                animate={animationStarted ? { x: 0, opacity: 1, rotate: 0 } : {}}
-                transition={{ duration: 1.1, delay: 1.8, type: "spring", bounce: 0.3 }}
-              >
-                <span className="bg-gradient-to-r from-viveon-neon-purple to-viveon-red bg-clip-text text-transparent">X</span>
-                
-                {/* Trademark symbol positioned at top-right of X */}
-                <motion.span 
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={animationStarted ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 2.5 }}
-                  className="absolute -top-2 -right-3 text-viveon-neon-purple text-lg md:text-xl lg:text-2xl"
-                >
-                  ™
-                </motion.span>
-                
-                {/* Sparkle effects */}
-                {animationStarted && (
-                  <>
-                    {[...Array(8)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className="absolute w-1 h-1 bg-viveon-neon-purple rounded-full"
-                        style={{
-                          top: `${Math.random() * 100}%`,
-                          left: `${Math.random() * 100}%`,
-                        }}
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ 
-                          scale: [0, 1.5, 0], 
-                          opacity: [0, 1, 0],
-                          x: (Math.random() - 0.5) * 100,
-                          y: (Math.random() - 0.5) * 100 
-                        }}
-                        transition={{ 
-                          duration: 2, 
-                          delay: 1.8 + i * 0.1,
-                          repeat: 1 
-                        }}
-                      />
-                    ))}
-                  </>
-                )}
-              </motion.div>
-            </div>
-          </div>
-          
-          {/* Company name with larger font */}
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 2.8 }}
-            className="text-sm md:text-lg lg:text-xl text-gray-300 font-light"
-          >
-            Viveon Gizit
-          </motion.p>
-        </div>
+
+      <div className="relative z-50 flex -translate-y-40 sm:-translate-y-60 lg:-translate-y-80 flex-col items-center px-5">
+        {children}
       </div>
     </div>
   );
 };
 
+const EnhancedHeroSection = HeroSection;
 export default EnhancedHeroSection;
