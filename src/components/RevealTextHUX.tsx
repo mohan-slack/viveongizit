@@ -19,9 +19,10 @@ export function RevealTextHUX() {
         {text.split("").map((letter, index) => (
           <motion.span
             key={index}
-            className="text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tight relative overflow-hidden
-            bg-gradient-to-br from-yellow-300 via-amber-400 to-orange-600
-            bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(251,191,36,0.7)]"
+            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold tracking-tight relative overflow-hidden
+            bg-gradient-to-br from-slate-200 via-slate-300 to-slate-500
+            bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(148,163,184,0.8)]
+            [text-shadow:0_0_30px_rgba(148,163,184,0.6)]"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{
@@ -35,7 +36,7 @@ export function RevealTextHUX() {
             {letter}
             {showOverlay && (
               <motion.span
-                className="absolute inset-0 text-amber-400 opacity-0"
+                className="absolute inset-0 text-slate-300 opacity-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: [0, 1, 1, 0] }}
                 transition={{
