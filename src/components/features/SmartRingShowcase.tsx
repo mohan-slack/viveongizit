@@ -1,11 +1,11 @@
 
 import React from 'react';
-import SmartRingGrid from './showcase/SmartRingGrid';
+import SmartRingFeatures from './SmartRingFeatures';
 
 const SmartRingShowcase: React.FC = () => {
   return (
     <section id="smart-ring-showcase" className="relative">
-      <SmartRingGrid />
+      <SmartRingFeatures />
     </section>
   );
 };
