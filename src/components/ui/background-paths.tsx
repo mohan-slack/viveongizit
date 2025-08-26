@@ -104,7 +104,7 @@ export function BackgroundPaths({
                             <DecryptedText 
                                 text="HUX"
                                 className="inline-block text-5xl sm:text-7xl md:text-8xl text-transparent bg-gradient-to-r from-[#000022] via-[#1f3f6d] via-[#469396] to-[#f1ffa5] bg-clip-text"
-                                encryptedClassName="inline-block text-5xl sm:text-7xl md:text-8xl text-gray-400/60"
+                                encryptedClassName="inline-block text-5xl sm:text-7xl md:text-8xl text-slate-400 drop-shadow-[0_0_10px_rgba(148,163,184,0.5)]"
                                 parentClassName="cursor-pointer"
                                 speed={80}
                                 maxIterations={15}
