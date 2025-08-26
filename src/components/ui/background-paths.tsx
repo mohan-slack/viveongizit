@@ -103,8 +103,8 @@ export function BackgroundPaths({
                         <span className="inline-block text-5xl sm:text-7xl md:text-8xl">
                             <DecryptedText 
                                 text="HUX"
-                                className="inline-block text-5xl sm:text-7xl md:text-8xl text-slate-600 [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
-                                encryptedClassName="inline-block text-5xl sm:text-7xl md:text-8xl text-slate-600 [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
+                                className="inline-block text-5xl sm:text-7xl md:text-8xl text-transparent bg-gradient-to-r from-slate-600 via-slate-500 to-slate-400 bg-clip-text [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1),0_0_15px_rgba(148,163,184,0.4)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:from-slate-500 hover:via-slate-400 hover:to-slate-300 hover:[text-shadow:0_0_4px_rgba(255,255,255,0.4),0_0_12px_rgba(255,255,255,0.2),0_0_20px_rgba(148,163,184,0.6)] transition-all duration-300"
+                                encryptedClassName="inline-block text-5xl sm:text-7xl md:text-8xl text-transparent bg-gradient-to-r from-slate-600 via-slate-500 to-slate-400 bg-clip-text [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
                                 parentClassName="cursor-pointer"
                                 speed={80}
                                 maxIterations={15}
