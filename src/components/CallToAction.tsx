@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button } from './ui/button';
+import { GradientButton } from './ui/gradient-button';
 import { ArrowRight } from 'lucide-react';
 
 const CallToAction: React.FC = () => {
@@ -31,13 +31,13 @@ const CallToAction: React.FC = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="bg-viveon-red hover:bg-viveon-red/80 text-white px-8 font-medium">
+              <GradientButton className="px-8 font-medium">
                 SHOP NOW
-              </Button>
-              <Button size="lg" variant="outline" className="border-viveon-neon-blue text-viveon-neon-blue hover:bg-viveon-neon-blue/10 px-8 font-medium group">
+              </GradientButton>
+              <GradientButton variant="variant" className="px-8 font-medium group">
                 EXPLORE COLLECTION
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              </GradientButton>
             </div>
           </div>
         </div>

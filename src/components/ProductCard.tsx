@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
+import { GradientButton } from './ui/gradient-button';
 import { cn } from '@/lib/utils';
 import { Clock, Heart } from 'lucide-react';
 
@@ -149,16 +150,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <span className={`text-sm ${colorMap[color].text} font-medium tracking-wide`}>{category}</span>
         <h3 className="text-white text-xl font-bold mt-1 mb-4 group-hover:text-glow transition-all duration-300">{name}</h3>
         <div className="flex justify-center">
-          <Button 
-            className={cn(
-              "px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95",
-              colorMap[color].comingSoon,
-              "shadow-xl backdrop-blur-sm"
-            )}
-          >
+          <GradientButton className="px-6 py-3 font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl backdrop-blur-sm">
             <Clock size={16} className="mr-2" />
             Coming Soon
-          </Button>
+          </GradientButton>
         </div>
       </div>
 
