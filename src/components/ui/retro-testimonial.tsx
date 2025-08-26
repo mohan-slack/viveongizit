@@ -297,7 +297,7 @@ const TestimonialCard = ({
 				}}
 			>
 				<div
-					className={`${index % 2 === 0 ? "rotate-0" : "-rotate-0"} rounded-3xl bg-gradient-to-b from-background to-muted/50 h-[500px] md:h-[550px] w-80 md:w-96 overflow-hidden flex flex-col items-center justify-center relative z-10 shadow-md border`}
+					className={`${index % 2 === 0 ? "rotate-0" : "-rotate-0"} rounded-3xl bg-white/10 backdrop-blur-sm h-[500px] md:h-[550px] w-80 md:w-96 overflow-hidden flex flex-col items-center justify-center relative z-10 shadow-md border border-white/20`}
 				>
 					<div className="absolute opacity-20" style={{inset: "-1px 0 0"}}>
 						<div className="absolute inset-0">
