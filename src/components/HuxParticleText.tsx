@@ -6,8 +6,8 @@ const HuxParticleText = () => {
       <ParticleTextEffect
         text="HUX"
         className="absolute inset-0"
-        colors={['ff3a2f', 'ff6b47', 'ffa726', 'ffcc02', '00bcd4', '42a5f5', '5c6bc0', 'ab47bc']}
-        animationForce={100}
+        colors={['00d4ff', '0099ff', '0066ff', '3366ff', '6633ff', '9933ff', 'cc33ff', 'ff3399']}
+        animationForce={60}
         particleDensity={2}
       />
     </div>
