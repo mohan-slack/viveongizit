@@ -47,33 +47,71 @@ const SmartRingGrid: React.FC = () => {
   };
 
   return (
-    <div className="relative py-20 lg:py-28 overflow-hidden">
-      {/* Enhanced dark tech-style background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
-        <div className="absolute inset-0 bg-grid-lines opacity-8" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/60" />
-        {/* Subtle animated glow effects */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-viveon-red/3 rounded-full filter blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-viveon-neon-blue/3 rounded-full filter blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+    <div className="relative py-24 lg:py-32 overflow-hidden">
+      {/* Enhanced futuristic background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-viveon-dark via-viveon-darker to-black">
+        <div className="absolute inset-0 bg-grid-lines opacity-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-viveon-darker/80 via-transparent to-viveon-darker/80" />
+        
+        {/* Dynamic floating elements */}
+        <motion.div 
+          className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-r from-viveon-red/20 to-viveon-neon-purple/20 rounded-full filter blur-[100px]"
+          animate={{ 
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.7, 0.3],
+            x: [0, 50, 0],
+            y: [0, -30, 0]
+          }}
+          transition={{ duration: 12, repeat: Infinity }}
+        />
+        <motion.div 
+          className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-viveon-neon-blue/20 to-viveon-neon-purple/20 rounded-full filter blur-[120px]"
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            opacity: [0.5, 0.3, 0.5],
+            x: [0, -40, 0],
+            y: [0, 20, 0]
+          }}
+          transition={{ duration: 15, repeat: Infinity, delay: 3 }}
+        />
+        <motion.div 
+          className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-r from-viveon-red/10 to-viveon-neon-blue/10 rounded-full filter blur-[150px]"
+          animate={{ 
+            scale: [1, 1.4, 1],
+            opacity: [0.2, 0.4, 0.2],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ duration: 20, repeat: Infinity, delay: 6 }}
+        />
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">
+          <motion.h2 
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-gradient-shimmer"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
             Smart Ring Features
-          </h2>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Discover the future of wearable technology with our advanced smart ring capabilities
-          </p>
+          </motion.h2>
+          <motion.p 
+            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            Experience the future of wearable technology with our revolutionary smart ring capabilities
+          </motion.p>
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -81,76 +119,95 @@ const SmartRingGrid: React.FC = () => {
           {gridData.map((feature, index) => (
             <motion.div
               key={feature.id}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center group"
               variants={cardVariants}
               whileHover="hover"
             >
-              {/* Feature Card */}
+              {/* Enhanced Feature Card */}
               <div
                 className={cn(
-                  "relative overflow-hidden backdrop-blur-[12px] rounded-3xl transform-gpu cursor-pointer",
-                  "border-2 border-opacity-30 transition-all duration-500",
-                  "w-full aspect-square p-6", // Square aspect ratio with padding
-                  `${feature.color} hover:border-opacity-70`,
-                  "shadow-[0_15px_50px_rgba(0,0,0,0.4)]",
-                  "hover:shadow-[0_25px_80px_rgba(0,0,0,0.6)]"
+                  "relative overflow-hidden backdrop-blur-[16px] rounded-3xl transform-gpu cursor-pointer",
+                  "border-2 border-opacity-40 transition-all duration-700 group-hover:duration-300",
+                  "w-full aspect-square p-8 group-hover:p-6", 
+                  `${feature.color} hover:border-opacity-90`,
+                  "shadow-[0_20px_60px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_100px_rgba(0,0,0,0.7)]",
+                  "group-hover:shadow-2xl"
                 )}
                 style={{
-                  background: "rgba(8, 8, 12, 0.85)",
+                  background: "rgba(5, 5, 8, 0.90)",
                 }}
               >
-                {/* Subtle glow effect */}
+                {/* Enhanced glow effect */}
                 <div 
-                  className="absolute -inset-2 rounded-[2rem] opacity-15 blur-xl transition-opacity duration-500 hover:opacity-25"
+                  className="absolute -inset-4 rounded-[2.5rem] opacity-20 blur-2xl transition-all duration-700 group-hover:opacity-40 group-hover:blur-xl"
                   style={{
-                    background: `linear-gradient(135deg, ${feature.glowColor.replace('bg-', '').replace('-500', '')}, transparent, ${feature.glowColor.replace('bg-', '').replace('-500', '')})`
+                    background: `radial-gradient(ellipse at center, ${feature.glowColor.replace('bg-', '').replace('-500', '')}, transparent 70%)`
                   }}
                 />
                 
-                {/* Image container with proper aspect ratio preservation */}
+                {/* Holographic shine effect */}
+                <div className="absolute inset-0 rounded-3xl holographic opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
+                
+                {/* Image container with enhanced styling */}
                 {feature.backgroundImage && (
                   <div className="relative w-full h-full flex items-center justify-center">
-                    <img 
+                    <motion.img 
                       src={feature.backgroundImage}
                       alt={feature.title}
-                      className="max-w-full max-h-full object-contain"
+                      className="max-w-full max-h-full object-contain transition-all duration-500 group-hover:scale-110"
                       style={{
-                        filter: 'brightness(1.05) contrast(1.02)',
+                        filter: 'brightness(1.1) contrast(1.05) saturate(1.1)',
                       }}
+                      whileHover={{
+                        scale: 1.15,
+                        filter: 'brightness(1.2) contrast(1.1) saturate(1.2)',
+                      }}
+                      transition={{ duration: 0.3 }}
                     />
                   </div>
                 )}
                 
-                {/* Feature number indicator */}
-                <div className="absolute top-4 left-4 z-20">
-                  <div className={cn(
-                    "w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white",
-                    feature.glowColor,
-                    "shadow-lg backdrop-blur-sm"
-                  )}>
+                {/* Enhanced feature number indicator */}
+                <div className="absolute top-6 left-6 z-20">
+                  <motion.div 
+                    className={cn(
+                      "w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold text-white",
+                      feature.glowColor,
+                      "shadow-xl backdrop-blur-sm border border-white/20 group-hover:scale-110"
+                    )}
+                    whileHover={{ scale: 1.2, rotate: 360 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     {index + 1}
-                  </div>
+                  </motion.div>
                 </div>
 
-                {/* Bottom accent line */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
-                  <div 
-                    className={`h-1 w-12 rounded-full ${feature.glowColor} opacity-70`}
+                {/* Enhanced bottom accent line with animation */}
+                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
+                  <motion.div 
+                    className={`h-1.5 w-16 rounded-full ${feature.glowColor} opacity-70 group-hover:opacity-100 group-hover:w-20`}
+                    whileHover={{ scaleX: 1.3, scaleY: 1.5 }}
+                    transition={{ duration: 0.3 }}
                   />
+                </div>
+
+                {/* Particle effect overlay */}
+                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent animate-pulse" />
                 </div>
               </div>
 
-              {/* Feature Title Below Card */}
+              {/* Enhanced Feature Title */}
               <motion.div 
-                className="mt-6 text-center"
+                className="mt-8 text-center group-hover:transform group-hover:scale-105 transition-transform duration-300"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: index * 0.1 + 0.3 }}
+                transition={{ delay: index * 0.1 + 0.4 }}
               >
-                <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-viveon-red group-hover:to-viveon-neon-blue group-hover:bg-clip-text transition-all duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-gray-400 max-w-xs mx-auto leading-relaxed">
+                <p className="text-sm md:text-base text-gray-400 max-w-xs mx-auto leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   {feature.description}
                 </p>
               </motion.div>
