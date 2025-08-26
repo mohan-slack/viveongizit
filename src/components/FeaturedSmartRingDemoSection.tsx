@@ -40,11 +40,11 @@ export default function FeaturedSmartRingDemoSection() {
   ];
 
   return (
-    <section className="py-24 px-4">
+    <section className="py-24 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <header className="text-left mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4 text-black">
             Monitor Your Body. <br />
             Master Your Health with{" "}
             <span 
@@ -63,7 +63,7 @@ export default function FeaturedSmartRingDemoSection() {
         {/* Demo Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
           {/* Video/Image Card */}
-          <Card className="lg:col-span-2 bg-card border-border p-2 overflow-hidden relative flex flex-col min-h-[500px]">
+          <Card className="lg:col-span-2 bg-white border-gray-200 p-2 overflow-hidden relative flex flex-col min-h-[500px]">
             <CardContent className="p-0 relative flex-grow group">
               {isPlaying ? (
                 <video
@@ -97,15 +97,15 @@ export default function FeaturedSmartRingDemoSection() {
             {ringFeatures.map((feature, index) => (
               <div
                 key={index}
-                className="flex flex-col border border-border rounded-xl p-4 hover:shadow-md transition-all duration-300 hover:border-primary/20 bg-card/50 backdrop-blur-sm"
+                className="flex flex-col border border-gray-200 rounded-xl p-4 hover:shadow-md transition-all duration-300 hover:border-gray-300 bg-white"
               >
                 <div className="flex items-center gap-2 mb-2">
                   {feature.icon}
-                  <h3 className="text-base font-medium text-foreground">
+                  <h3 className="text-base font-medium text-black">
                     {feature.title}
                   </h3>
                 </div>
-                <p className="text-sm text-muted-foreground">{feature.subtitle}</p>
+                <p className="text-sm text-gray-600">{feature.subtitle}</p>
               </div>
             ))}
           </div>
@@ -116,7 +116,7 @@ export default function FeaturedSmartRingDemoSection() {
           {integrations.map((integration) => (
             <div
               key={integration.name}
-              className="p-3 flex items-center gap-3 hover:bg-card/80 rounded-xl transition-all duration-300 border border-border/50"
+              className="p-3 flex items-center gap-3 hover:bg-gray-50 rounded-xl transition-all duration-300 border border-gray-200"
             >
               <img
                 src={`https://logo.clearbit.com/${integration.domain}`}
@@ -130,17 +130,17 @@ export default function FeaturedSmartRingDemoSection() {
                 }}
               />
               <div>
-                <div className="font-medium text-foreground">{integration.name}</div>
-                <div className="text-xs text-muted-foreground">{integration.subtitle}</div>
+                <div className="font-medium text-black">{integration.name}</div>
+                <div className="text-xs text-gray-500">{integration.subtitle}</div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Footer */}
-        <footer className="text-center py-12 text-muted-foreground text-sm">
+        <footer className="text-center py-12 text-gray-500 text-sm">
           Discover deeper insights with HUX. <br />
-          <span className="text-muted-foreground/70">Your health, redefined.</span>
+          <span className="text-gray-400">Your health, redefined.</span>
         </footer>
       </div>
     </section>
