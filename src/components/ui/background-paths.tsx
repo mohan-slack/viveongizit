@@ -72,7 +72,7 @@ export function BackgroundPaths({
                     className="max-w-4xl mx-auto"
                 >
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 tracking-tighter">
-                        {words.map((word, wordIndex) => (
+                        {words.slice(0, -1).map((word, wordIndex) => (
                             <span
                                 key={wordIndex}
                                 className="inline-block mr-4 last:mr-0"
@@ -99,6 +99,41 @@ export function BackgroundPaths({
                                 ))}
                             </span>
                         ))}
+                        <span className="inline-block text-5xl sm:text-7xl md:text-8xl">
+                            {"HUX".split("").map((letter, letterIndex) => (
+                                <motion.span
+                                    key={`hux-${letterIndex}`}
+                                    initial={{ y: 100, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{
+                                        delay: (words.length - 1) * 0.1 + letterIndex * 0.03,
+                                        type: "spring",
+                                        stiffness: 150,
+                                        damping: 25,
+                                    }}
+                                    className="inline-block text-transparent bg-clip-text 
+                                    bg-gradient-to-r from-neutral-900 to-neutral-700/80 
+                                    dark:from-white dark:to-white/80"
+                                >
+                                    {letter}
+                                </motion.span>
+                            ))}
+                            <motion.span
+                                initial={{ y: 100, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    delay: (words.length - 1) * 0.1 + 3 * 0.03,
+                                    type: "spring",
+                                    stiffness: 150,
+                                    damping: 25,
+                                }}
+                                className="text-xs align-top text-transparent bg-clip-text 
+                                bg-gradient-to-r from-neutral-900 to-neutral-700/80 
+                                dark:from-white dark:to-white/80"
+                            >
+                                ™
+                            </motion.span>
+                        </span>
                     </h1>
 
                     <div
