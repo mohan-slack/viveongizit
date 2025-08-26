@@ -102,7 +102,7 @@ export function BackgroundPaths({
                         ))}
                         <span className="inline-block text-5xl sm:text-7xl md:text-8xl">
                             <DecryptedText 
-                                text="HUX™"
+                                text="HUX"
                                 className="inline-block text-5xl sm:text-7xl md:text-8xl text-transparent bg-gradient-to-r from-[#000022] via-[#1f3f6d] via-[#469396] to-[#f1ffa5] bg-clip-text"
                                 encryptedClassName="inline-block text-5xl sm:text-7xl md:text-8xl text-gray-400/60"
                                 parentClassName="cursor-pointer"
