@@ -70,11 +70,11 @@ export default function FeaturedSmartRingDemoSection() {
             Monitor Your Body. <br />
             Master Your Health with{" "}
             <span 
-              className="inline-block text-transparent font-bold"
+              className="inline-block font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
               style={{
-                backgroundImage: "linear-gradient(to right, #000022, #1f3f6d, #469396, #f1ffa5)",
                 WebkitBackgroundClip: "text",
-                backgroundClip: "text"
+                backgroundClip: "text",
+                color: "hsl(var(--primary))" // Fallback color
               }}
             >
               HUX Smart Ring
