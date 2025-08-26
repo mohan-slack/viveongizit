@@ -328,7 +328,7 @@ const Hero: React.FC<HeroProps> = ({
   const canvasRef = useShaderBackground();
 
   return (
-    <div className={`relative w-full h-screen overflow-hidden ${className}`}>
+    <div className={`fixed top-0 left-0 w-full h-full overflow-hidden m-0 p-0 ${className}`} style={{ width: '100vw', height: '100vh' }}>
       <style>{`
         @keyframes fade-in-down {
           from {
@@ -391,11 +391,12 @@ const Hero: React.FC<HeroProps> = ({
       
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full object-contain touch-none"
+        className="absolute inset-0 w-full h-full touch-none"
+        style={{ width: '100vw', height: '100vh', objectFit: 'cover' }}
       />
       
       {/* Hero Content Overlay */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white" style={{ width: '100vw', height: '100vh' }}>
         {/* Trust Badge */}
         {trustBadge && (
           <div className="mb-8 animate-fade-in-down">
