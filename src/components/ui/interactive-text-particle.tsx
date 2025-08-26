@@ -172,7 +172,7 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
 
     textBox.str = text;
     // Make text larger and more prominent
-    textBox.h = Math.floor(Math.min(canvas.width / textBox.str.length * 0.8, canvas.height * 0.6));
+    textBox.h = Math.floor(Math.min(canvas.width / textBox.str.length * 1.0, canvas.height * 0.8));
 
     interactionRadiusRef.current = Math.max(80, textBox.h * 1.2);
 
