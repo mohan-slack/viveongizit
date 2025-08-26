@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { DecryptedText } from "./decrypted-text";
 
 function FloatingPaths({ position }: { position: number }) {
     const paths = Array.from({ length: 36 }, (_, i) => ({
@@ -100,27 +101,18 @@ export function BackgroundPaths({
                             </span>
                         ))}
                         <span className="inline-block text-5xl sm:text-7xl md:text-8xl">
-                            {"HUX".split("").map((letter, letterIndex) => (
-                                <motion.span
-                                    key={`hux-${letterIndex}`}
-                                    initial={{ y: 100, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{
-                                        delay: (words.length - 1) * 0.1 + letterIndex * 0.03,
-                                        type: "spring",
-                                        stiffness: 150,
-                                        damping: 25,
-                                    }}
-                                    className="inline-block text-transparent"
-                                    style={{
-                                        backgroundImage: "linear-gradient(to right, #000022, #1f3f6d, #469396, #f1ffa5)",
-                                        WebkitBackgroundClip: "text",
-                                        backgroundClip: "text"
-                                    }}
-                                >
-                                    {letter}
-                                </motion.span>
-                            ))}
+                            <DecryptedText 
+                                text="HUX™"
+                                className="inline-block text-5xl sm:text-7xl md:text-8xl text-transparent bg-gradient-to-r from-[#000022] via-[#1f3f6d] via-[#469396] to-[#f1ffa5] bg-clip-text"
+                                encryptedClassName="inline-block text-5xl sm:text-7xl md:text-8xl text-gray-400/60"
+                                parentClassName="cursor-pointer"
+                                speed={80}
+                                maxIterations={15}
+                                sequential={true}
+                                revealDirection="center"
+                                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+"
+                                animateOn="hover"
+                            />
                         </span>
                     </h1>
 
@@ -138,7 +130,16 @@ export function BackgroundPaths({
                             hover:shadow-md dark:hover:shadow-neutral-800/50"
                         >
                             <span className="opacity-90 group-hover:opacity-100 transition-opacity">
-                                Discover Excellence
+                                <DecryptedText 
+                                    text="Discover Excellence"
+                                    className="opacity-90 group-hover:opacity-100 transition-opacity"
+                                    encryptedClassName="opacity-60 text-gray-500"
+                                    speed={60}
+                                    maxIterations={12}
+                                    sequential={true}
+                                    characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+                                    animateOn="hover"
+                                />
                             </span>
                             <span
                                 className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 
