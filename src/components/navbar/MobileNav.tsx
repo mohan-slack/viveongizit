@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavItem } from './nav-items';
-import { Button } from '@/components/ui/button';
+import { GradientButton } from '@/components/ui/gradient-button';
 
 interface MobileNavProps {
   navigationItems: NavItem[];
@@ -31,9 +31,9 @@ const MobileNav: React.FC<MobileNavProps> = ({
           </li>
         ))}
         <li className="py-4 flex justify-center">
-          <Button className="bg-viveon-red hover:bg-viveon-red/80 text-white w-full font-medium">
+          <GradientButton className="w-full font-medium">
             SHOP NOW
-          </Button>
+          </GradientButton>
         </li>
       </ul>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Button } from './ui/button';
+import { GradientButton } from './ui/gradient-button';
 import { ArrowRight } from 'lucide-react';
 
 const HeroContent: React.FC = () => {
@@ -43,13 +43,13 @@ const HeroContent: React.FC = () => {
       duration: 0.8,
       delay: 0.6
     }}>
-        <Button className="bg-viveon-red/90 hover:bg-viveon-red/80 text-white px-8 py-6 text-lg font-medium tracking-wide border border-viveon-red/30 shadow-md rounded-full">
+        <GradientButton className="px-8 py-6 text-lg font-medium tracking-wide">
           HUX NEXUS RINGS
-        </Button>
-        <Button variant="outline" className="border-viveon-neon-blue/70 px-8 py-6 text-lg font-medium tracking-wide group shadow-md rounded-full bg-gray-950 hover:bg-gray-800 text-[#00eeea]">
+        </GradientButton>
+        <GradientButton variant="variant" className="px-8 py-6 text-lg font-medium tracking-wide group">
           EXPLORE FEATURES
           <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-        </Button>
+        </GradientButton>
       </motion.div>
     </div>;
 };

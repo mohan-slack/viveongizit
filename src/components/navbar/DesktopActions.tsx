@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { GradientButton } from '@/components/ui/gradient-button';
 import { ShoppingCart, User } from 'lucide-react';
 
 const DesktopActions: React.FC = () => {
@@ -12,9 +13,9 @@ const DesktopActions: React.FC = () => {
       <Button variant="ghost" size="icon" className="text-white hover:text-viveon-red">
         <ShoppingCart size={20} />
       </Button>
-      <Button className="bg-viveon-red hover:bg-viveon-red/80 text-white font-medium">
+      <GradientButton className="font-medium">
         SHOP NOW
-      </Button>
+      </GradientButton>
     </div>
   );
 };
