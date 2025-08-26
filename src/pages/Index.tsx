@@ -5,7 +5,6 @@ import EnhancedHeroSection from '@/components/EnhancedHeroSection';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
 import FuturisticFeaturesShowcase from '@/components/FuturisticFeaturesShowcase';
 import AboutSection from '@/components/AboutSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
@@ -78,7 +77,6 @@ const Index = () => {
       <FeaturedProductsSection />
       <FuturisticFeaturesShowcase />
       <AboutSection />
-      <TestimonialsSection />
       <ContactSection />
       <CallToAction />
       <Footer />
