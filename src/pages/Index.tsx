@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import EnhancedHeroSection from '@/components/EnhancedHeroSection';
+import FeaturedProductsSection from '@/components/FeaturedProductsSection';
 import AnimatedSections from '@/components/ui/animated-sections';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
@@ -73,6 +74,7 @@ const Index = () => {
     <div className="min-h-screen relative">
       <Navbar />
       <EnhancedHeroSection />
+      <FeaturedProductsSection />
       <AnimatedSections />
       <AboutSection />
       <ContactSection />
