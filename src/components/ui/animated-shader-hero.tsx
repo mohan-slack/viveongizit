@@ -328,15 +328,7 @@ const Hero: React.FC<HeroProps> = ({
   const canvasRef = useShaderBackground();
 
   return (
-    <div className={`relative w-full h-screen overflow-hidden ${className}`} style={{ 
-      width: '100vw', 
-      height: '100vh', 
-      margin: 0, 
-      padding: 0, 
-      position: 'relative',
-      boxShadow: 'none',
-      border: 'none'
-    }}>
+    <div className={`fixed top-0 left-0 w-full h-full overflow-hidden m-0 p-0 ${className}`} style={{ width: '100vw', height: '100vh' }}>
       <style>{`
         @keyframes fade-in-down {
           from {
@@ -400,87 +392,68 @@ const Hero: React.FC<HeroProps> = ({
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full touch-none"
-        style={{ 
-          width: '100vw', 
-          height: '100vh', 
-          objectFit: 'cover',
-          border: 'none',
-          outline: 'none',
-          boxShadow: 'none'
-        }}
+        style={{ width: '100vw', height: '100vh', objectFit: 'cover' }}
       />
       
       {/* Hero Content Overlay */}
-      <div 
-        className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white"
-        style={{ 
-          width: '100vw', 
-          height: '100vh',
-          padding: '0',
-          margin: '0',
-          overflow: 'hidden',
-          boxSizing: 'border-box'
-        }}
-      >
-        <div className="flex flex-col items-center justify-center w-full h-full max-w-none">
-          <div className="text-center space-y-3 sm:space-y-4 md:space-y-6 w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-            {/* Trust Badge */}
-            {trustBadge && (
-              <div className="mb-6 sm:mb-8 animate-fade-in-down">
-                <div className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-viveon-red/10 backdrop-blur-md border border-viveon-red/30 rounded-full text-xs sm:text-sm max-w-fit mx-auto">
-                  {trustBadge.icons && (
-                    <div className="flex">
-                      {trustBadge.icons.map((icon, index) => (
-                        <span key={index} className="text-viveon-neon-blue">
-                          {icon}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  <span className="text-viveon-light whitespace-nowrap">{trustBadge.text}</span>
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white" style={{ width: '100vw', height: '100vh' }}>
+        {/* Trust Badge */}
+        {trustBadge && (
+          <div className="mb-8 animate-fade-in-down">
+            <div className="flex items-center gap-2 px-6 py-3 bg-viveon-red/10 backdrop-blur-md border border-viveon-red/30 rounded-full text-sm">
+              {trustBadge.icons && (
+                <div className="flex">
+                  {trustBadge.icons.map((icon, index) => (
+                    <span key={index} className="text-viveon-neon-blue">
+                      {icon}
+                    </span>
+                  ))}
                 </div>
-              </div>
-            )}
-
-            {/* Main Heading with Animation */}
-            <div className="space-y-1 sm:space-y-2 w-full">
-              <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold bg-gradient-to-r from-viveon-neon-purple via-viveon-neon-blue to-viveon-red bg-clip-text text-transparent animate-fade-in-up animation-delay-200 leading-tight break-words hyphens-auto">
-                INTRODUCING THE FUTURE OF TECH
-              </h1>
-              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-fade-in-up animation-delay-400 leading-tight break-words">
-                HUX
-              </h1>
+              )}
+              <span className="text-viveon-light">{trustBadge.text}</span>
             </div>
-            
-            {/* Subtitle with Animation */}
-            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl xl:max-w-3xl mx-auto animate-fade-in-up animation-delay-600">
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-viveon-light/90 font-light leading-relaxed break-words hyphens-auto">
-                {subtitle}
-              </p>
-            </div>
-            
-            {/* CTA Buttons with Animation */}
-            {buttons && (
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center items-center mt-4 sm:mt-6 md:mt-8 lg:mt-10 animate-fade-in-up animation-delay-800 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto">
-                {buttons.primary && (
-                  <button 
-                    onClick={buttons.primary.onClick}
-                    className="w-full sm:w-auto px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-gradient-to-r from-viveon-red to-viveon-neon-purple hover:from-viveon-red/80 hover:to-viveon-neon-purple/80 text-white rounded-full font-semibold text-xs sm:text-sm md:text-base lg:text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-viveon-red/25 whitespace-nowrap"
-                  >
-                    {buttons.primary.text}
-                  </button>
-                )}
-                {buttons.secondary && (
-                  <button 
-                    onClick={buttons.secondary.onClick}
-                    className="w-full sm:w-auto px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-viveon-dark/10 hover:bg-viveon-dark/20 border border-viveon-neon-blue/30 hover:border-viveon-neon-blue/50 text-viveon-neon-blue rounded-full font-semibold text-xs sm:text-sm md:text-base lg:text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm whitespace-nowrap"
-                  >
-                    {buttons.secondary.text}
-                  </button>
-                )}
-              </div>
-            )}
           </div>
+        )}
+
+        <div className="text-center space-y-6 max-w-5xl mx-auto px-4">
+          {/* Main Heading with Animation */}
+          <div className="space-y-2">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-viveon-neon-purple via-viveon-neon-blue to-viveon-red bg-clip-text text-transparent animate-fade-in-up animation-delay-200">
+              INTRODUCING THE FUTURE OF TECH
+            </h1>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-fade-in-up animation-delay-400">
+              HUX
+            </h1>
+          </div>
+          
+          {/* Subtitle with Animation */}
+          <div className="max-w-3xl mx-auto animate-fade-in-up animation-delay-600">
+            <p className="text-lg md:text-xl lg:text-2xl text-viveon-light/90 font-light leading-relaxed">
+              {subtitle}
+            </p>
+          </div>
+          
+          {/* CTA Buttons with Animation */}
+          {buttons && (
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10 animate-fade-in-up animation-delay-800">
+              {buttons.primary && (
+                <button 
+                  onClick={buttons.primary.onClick}
+                  className="px-8 py-4 bg-gradient-to-r from-viveon-red to-viveon-neon-purple hover:from-viveon-red/80 hover:to-viveon-neon-purple/80 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-viveon-red/25"
+                >
+                  {buttons.primary.text}
+                </button>
+              )}
+              {buttons.secondary && (
+                <button 
+                  onClick={buttons.secondary.onClick}
+                  className="px-8 py-4 bg-viveon-dark/10 hover:bg-viveon-dark/20 border border-viveon-neon-blue/30 hover:border-viveon-neon-blue/50 text-viveon-neon-blue rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+                >
+                  {buttons.secondary.text}
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -92,7 +92,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen relative" style={{ margin: 0, padding: 0 }}>
+    <div className="min-h-screen relative">
       <Navbar />
       <Hero
         trustBadge={{
@@ -115,7 +115,7 @@ const Index = () => {
           }
         }}
       />
-      <div id="products" style={{ paddingTop: '0' }}>
+      <div id="products">
         <FeaturedProductsSection />
       </div>
       <div id="features">
