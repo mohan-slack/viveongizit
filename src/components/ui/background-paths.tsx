@@ -118,21 +118,6 @@ export function BackgroundPaths({
                                     {letter}
                                 </motion.span>
                             ))}
-                            <motion.span
-                                initial={{ y: 100, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{
-                                    delay: (words.length - 1) * 0.1 + 3 * 0.03,
-                                    type: "spring",
-                                    stiffness: 150,
-                                    damping: 25,
-                                }}
-                                className="text-lg relative -top-4 text-transparent bg-clip-text 
-                                bg-gradient-to-r from-neutral-900 to-neutral-700/80 
-                                dark:from-white dark:to-white/80"
-                            >
-                                ™
-                            </motion.span>
                         </span>
                     </h1>
 
