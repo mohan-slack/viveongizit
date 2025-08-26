@@ -103,8 +103,8 @@ export function BackgroundPaths({
                         <span className="inline-block text-5xl sm:text-7xl md:text-8xl">
                             <DecryptedText 
                                 text="HUX"
-                                className="inline-block text-5xl sm:text-7xl md:text-8xl text-transparent bg-gradient-to-r from-[#000022] via-[#1f3f6d] via-[#469396] to-[#f1ffa5] bg-clip-text"
-                                encryptedClassName="inline-block text-5xl sm:text-7xl md:text-8xl text-slate-400 drop-shadow-[0_0_10px_rgba(148,163,184,0.5)]"
+                                className="inline-block text-5xl sm:text-7xl md:text-8xl text-slate-600 [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
+                                encryptedClassName="inline-block text-5xl sm:text-7xl md:text-8xl text-slate-600 [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
                                 parentClassName="cursor-pointer"
                                 speed={80}
                                 maxIterations={15}
