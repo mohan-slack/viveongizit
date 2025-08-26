@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import EnhancedHeroSection from '@/components/EnhancedHeroSection';
-import { GoogleGeminiEffectDemo } from '@/components/ui/google-gemini-effect';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
 import FuturisticFeaturesShowcase from '@/components/FuturisticFeaturesShowcase';
 import AboutSection from '@/components/AboutSection';
@@ -75,7 +74,6 @@ const Index = () => {
     <div className="min-h-screen relative">
       <Navbar />
       <EnhancedHeroSection />
-      <GoogleGeminiEffectDemo />
       <FeaturedProductsSection />
       <FuturisticFeaturesShowcase />
       <AboutSection />
