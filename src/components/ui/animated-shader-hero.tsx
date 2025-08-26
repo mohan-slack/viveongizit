@@ -328,7 +328,7 @@ const Hero: React.FC<HeroProps> = ({
   const canvasRef = useShaderBackground();
 
   return (
-    <div className={`fixed top-0 left-0 w-full h-full overflow-hidden m-0 p-0 ${className}`} style={{ width: '100vw', height: '100vh' }}>
+    <div className={`relative w-full h-screen overflow-hidden ${className}`} style={{ width: '100vw', height: '100vh', margin: 0, padding: 0, position: 'relative' }}>
       <style>{`
         @keyframes fade-in-down {
           from {
@@ -415,31 +415,31 @@ const Hero: React.FC<HeroProps> = ({
           </div>
         )}
 
-        <div className="text-center space-y-6 max-w-5xl mx-auto px-4">
+        <div className="text-center space-y-6 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Heading with Animation */}
           <div className="space-y-2">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-viveon-neon-purple via-viveon-neon-blue to-viveon-red bg-clip-text text-transparent animate-fade-in-up animation-delay-200">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-r from-viveon-neon-purple via-viveon-neon-blue to-viveon-red bg-clip-text text-transparent animate-fade-in-up animation-delay-200 leading-tight">
               INTRODUCING THE FUTURE OF TECH
             </h1>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-fade-in-up animation-delay-400">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-fade-in-up animation-delay-400 leading-tight">
               HUX
             </h1>
           </div>
           
           {/* Subtitle with Animation */}
-          <div className="max-w-3xl mx-auto animate-fade-in-up animation-delay-600">
-            <p className="text-lg md:text-xl lg:text-2xl text-viveon-light/90 font-light leading-relaxed">
+          <div className="max-w-3xl mx-auto animate-fade-in-up animation-delay-600 px-4">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-viveon-light/90 font-light leading-relaxed">
               {subtitle}
             </p>
           </div>
           
           {/* CTA Buttons with Animation */}
           {buttons && (
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10 animate-fade-in-up animation-delay-800">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 sm:mt-10 animate-fade-in-up animation-delay-800 px-4">
               {buttons.primary && (
                 <button 
                   onClick={buttons.primary.onClick}
-                  className="px-8 py-4 bg-gradient-to-r from-viveon-red to-viveon-neon-purple hover:from-viveon-red/80 hover:to-viveon-neon-purple/80 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-viveon-red/25"
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-viveon-red to-viveon-neon-purple hover:from-viveon-red/80 hover:to-viveon-neon-purple/80 text-white rounded-full font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-viveon-red/25"
                 >
                   {buttons.primary.text}
                 </button>
@@ -447,7 +447,7 @@ const Hero: React.FC<HeroProps> = ({
               {buttons.secondary && (
                 <button 
                   onClick={buttons.secondary.onClick}
-                  className="px-8 py-4 bg-viveon-dark/10 hover:bg-viveon-dark/20 border border-viveon-neon-blue/30 hover:border-viveon-neon-blue/50 text-viveon-neon-blue rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-viveon-dark/10 hover:bg-viveon-dark/20 border border-viveon-neon-blue/30 hover:border-viveon-neon-blue/50 text-viveon-neon-blue rounded-full font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm"
                 >
                   {buttons.secondary.text}
                 </button>

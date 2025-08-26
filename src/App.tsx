@@ -51,7 +51,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="min-h-screen bg-viveon-darker text-white relative overflow-hidden">
+        <div className="min-h-screen bg-viveon-darker text-white relative overflow-hidden" style={{ margin: 0, padding: 0 }}>
           <DynamicBackground />
           <RouterProvider router={router} />
           <Toaster />

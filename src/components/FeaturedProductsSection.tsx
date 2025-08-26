@@ -26,7 +26,7 @@ const FeaturedProductsSection: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white py-20 w-full">
+    <div className="bg-white py-16 sm:py-20 w-full"  style={{ marginTop: '0' }}>
       <div className="w-full px-6 md:px-12 lg:px-16">
         <div id="rings" className="mb-12">
           <div className="flex justify-between items-end mb-12">
@@ -40,7 +40,7 @@ const FeaturedProductsSection: React.FC = () => {
             </Button>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto px-4 sm:px-0">
             {smartRings.map((product) => (
               <ProductCard 
                 key={product.id}
