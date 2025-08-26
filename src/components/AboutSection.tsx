@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const AboutSection: React.FC = () => {
   return <div id="about" className="bg-gradient-to-b from-viveon-dark to-black py-20">
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="lg:w-1/2">
             <div className="relative">

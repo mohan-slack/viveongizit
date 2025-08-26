@@ -40,7 +40,7 @@ export default function SmartRingFeatures() {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black z-0" />
 
       {/* Scrolling Images */}
-      <div className="relative z-10 w-full max-w-7xl">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden">
           <div
             className="flex gap-6 w-max animate-scroll"

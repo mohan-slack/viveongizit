@@ -34,7 +34,7 @@ const FeaturedProductsSection: React.FC = () => {
 
   return (
     <div className="bg-viveon-dark py-20">
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="rings" className="mb-12">
           <div className="flex justify-between items-end mb-12">
             <div>

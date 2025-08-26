@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 const CallToAction: React.FC = () => {
   return (
     <div className="bg-viveon-darker py-20">
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative bg-gradient-to-r from-viveon-dark to-black overflow-hidden rounded-3xl p-12">
           {/* Background effects */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
