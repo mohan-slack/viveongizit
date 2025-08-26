@@ -111,9 +111,12 @@ export function BackgroundPaths({
                                         stiffness: 150,
                                         damping: 25,
                                     }}
-                                    className="inline-block text-transparent bg-clip-text 
-                                    bg-gradient-to-r from-neutral-900 to-neutral-700/80 
-                                    dark:from-white dark:to-white/80"
+                                    className="inline-block text-transparent"
+                                    style={{
+                                        backgroundImage: "linear-gradient(to right, #000022, #1f3f6d, #469396, #f1ffa5)",
+                                        WebkitBackgroundClip: "text",
+                                        backgroundClip: "text"
+                                    }}
                                 >
                                     {letter}
                                 </motion.span>
