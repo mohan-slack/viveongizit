@@ -5,25 +5,24 @@ import { Button } from "@/components/ui/button";
 import { DecryptedText } from "./decrypted-text";
 
 function FloatingPaths({ position }: { position: number }) {
-    const paths = Array.from({ length: 48 }, (_, i) => ({
+    const paths = Array.from({ length: 36 }, (_, i) => ({
         id: i,
-        d: `M-${500 - i * 6 * position} -${250 + i * 8}C-${
-            500 - i * 6 * position
-        } -${250 + i * 8} -${400 - i * 6 * position} ${300 - i * 8} ${
-            200 - i * 6 * position
-        } ${450 - i * 8}C${800 - i * 6 * position} ${600 - i * 8} ${
-            900 - i * 6 * position
-        } ${1100 - i * 8} ${900 - i * 6 * position} ${1100 - i * 8}`,
+        d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
+            380 - i * 5 * position
+        } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
+            152 - i * 5 * position
+        } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
+            684 - i * 5 * position
+        } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
         color: `rgba(15,23,42,${0.1 + i * 0.03})`,
         width: 0.5 + i * 0.03,
     }));
 
     return (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
             <svg
-                className="w-full h-full min-w-full min-h-full text-slate-950 dark:text-white"
-                viewBox="0 0 1920 1080"
-                preserveAspectRatio="xMidYMid slice"
+                className="w-full h-full text-slate-950 dark:text-white"
+                viewBox="0 0 696 316"
                 fill="none"
             >
                 <title>Background Paths</title>
@@ -60,20 +59,20 @@ export function BackgroundPaths({
     const words = title.split(" ");
 
     return (
-        <div className="relative h-screen w-screen flex items-center justify-center overflow-hidden bg-white dark:bg-neutral-950">
+        <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white dark:bg-neutral-950">
             <div className="absolute inset-0">
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />
             </div>
 
-            <div className="relative z-10 w-full h-full flex items-center justify-center text-center">
+            <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 2 }}
-                    className="w-full max-w-6xl px-8"
+                    className="max-w-4xl mx-auto"
                 >
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-12 tracking-tighter">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 tracking-tighter">
                         {words.slice(0, -1).map((word, wordIndex) => (
                             <span
                                 key={wordIndex}
@@ -101,11 +100,11 @@ export function BackgroundPaths({
                                 ))}
                             </span>
                         ))}
-                        <span className="inline-block text-6xl sm:text-8xl md:text-9xl lg:text-[12rem]">
+                        <span className="inline-block text-5xl sm:text-7xl md:text-8xl">
                             <DecryptedText 
                                 text="HUX"
-                                className="inline-block text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] text-transparent bg-gradient-to-r from-slate-600 via-slate-500 to-slate-400 bg-clip-text [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1),0_0_15px_rgba(148,163,184,0.4)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:from-slate-500 hover:via-slate-400 hover:to-slate-300 hover:[text-shadow:0_0_4px_rgba(255,255,255,0.4),0_0_12px_rgba(255,255,255,0.2),0_0_20px_rgba(148,163,184,0.6)] transition-all duration-300"
-                                encryptedClassName="inline-block text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] text-transparent bg-gradient-to-r from-slate-600 via-slate-500 to-slate-400 bg-clip-text [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
+                                className="inline-block text-5xl sm:text-7xl md:text-8xl text-transparent bg-gradient-to-r from-slate-600 via-slate-500 to-slate-400 bg-clip-text [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1),0_0_15px_rgba(148,163,184,0.4)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:from-slate-500 hover:via-slate-400 hover:to-slate-300 hover:[text-shadow:0_0_4px_rgba(255,255,255,0.4),0_0_12px_rgba(255,255,255,0.2),0_0_20px_rgba(148,163,184,0.6)] transition-all duration-300"
+                                encryptedClassName="inline-block text-5xl sm:text-7xl md:text-8xl text-transparent bg-gradient-to-r from-slate-600 via-slate-500 to-slate-400 bg-clip-text [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
                                 parentClassName="cursor-pointer"
                                 speed={80}
                                 maxIterations={15}
