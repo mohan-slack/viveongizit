@@ -1,6 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { NavItem } from './nav-items';
+import { cn } from '@/lib/utils';
 
 interface DesktopNavProps {
   navigationItems: NavItem[];
@@ -11,33 +13,56 @@ const DesktopNav: React.FC<DesktopNavProps> = ({
   navigationItems,
   handleNavClick 
 }) => {
+  const [activeTab, setActiveTab] = useState(navigationItems[0]?.label || 'Home');
+
   return (
-    <ul className="hidden md:flex space-x-8">
-      {navigationItems.map((item) => (
-        <li key={item.label}>
-          {item.href.includes('#') ? (
-            <a 
+    <div className="hidden md:flex items-center gap-3 bg-white/5 border border-white/20 backdrop-blur-lg py-1 px-1 rounded-full">
+      {navigationItems.map((item) => {
+        const isActive = activeTab === item.label;
+
+        return (
+          <div key={item.label} className="relative">
+            <a
               href={item.href}
-              className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
-              onClick={(e) => handleNavClick(item.href, item.isExternal, e)}
-            >
-              {item.label}
-            </a>
-          ) : (
-            <a 
-              href={item.href}
-              className="text-white hover:text-viveon-red transition-colors duration-300 text-sm tracking-wider font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-viveon-red after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
               onClick={(e) => {
-                e.preventDefault();
-                handleNavClick(item.href, item.isExternal, e);
+                setActiveTab(item.label);
+                if (item.href.includes('#')) {
+                  handleNavClick(item.href, item.isExternal, e);
+                } else {
+                  e.preventDefault();
+                  handleNavClick(item.href, item.isExternal, e);
+                }
               }}
+              className={cn(
+                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                "text-white/80 hover:text-viveon-red",
+                isActive && "bg-white/10 text-viveon-red"
+              )}
             >
               {item.label}
+              {isActive && (
+                <motion.div
+                  layoutId="lamp"
+                  className="absolute inset-0 w-full bg-viveon-red/5 rounded-full -z-10"
+                  initial={false}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30,
+                  }}
+                >
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-viveon-red rounded-t-full">
+                    <div className="absolute w-12 h-6 bg-viveon-red/20 rounded-full blur-md -top-2 -left-2" />
+                    <div className="absolute w-8 h-6 bg-viveon-red/20 rounded-full blur-md -top-1" />
+                    <div className="absolute w-4 h-4 bg-viveon-red/20 rounded-full blur-sm top-0 left-2" />
+                  </div>
+                </motion.div>
+              )}
             </a>
-          )}
-        </li>
-      ))}
-    </ul>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
