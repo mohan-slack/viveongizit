@@ -328,7 +328,15 @@ const Hero: React.FC<HeroProps> = ({
   const canvasRef = useShaderBackground();
 
   return (
-    <div className={`relative w-full h-screen overflow-hidden ${className}`} style={{ width: '100vw', height: '100vh', margin: 0, padding: 0, position: 'relative' }}>
+    <div className={`relative w-full h-screen overflow-hidden ${className}`} style={{ 
+      width: '100vw', 
+      height: '100vh', 
+      margin: 0, 
+      padding: 0, 
+      position: 'relative',
+      boxShadow: 'none',
+      border: 'none'
+    }}>
       <style>{`
         @keyframes fade-in-down {
           from {
@@ -392,11 +400,23 @@ const Hero: React.FC<HeroProps> = ({
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full touch-none"
-        style={{ width: '100vw', height: '100vh', objectFit: 'cover' }}
+        style={{ 
+          width: '100vw', 
+          height: '100vh', 
+          objectFit: 'cover',
+          border: 'none',
+          outline: 'none',
+          boxShadow: 'none'
+        }}
       />
       
       {/* Hero Content Overlay */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white" style={{ width: '100vw', height: '100vh' }}>
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white overflow-hidden" style={{ 
+        width: '100vw', 
+        height: '100vh',
+        padding: '0',
+        margin: '0'
+      }}>
         {/* Trust Badge */}
         {trustBadge && (
           <div className="mb-8 animate-fade-in-down">
@@ -415,31 +435,31 @@ const Hero: React.FC<HeroProps> = ({
           </div>
         )}
 
-        <div className="text-center space-y-6 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center space-y-4 sm:space-y-6 w-full max-w-none px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12">
           {/* Main Heading with Animation */}
-          <div className="space-y-2">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-r from-viveon-neon-purple via-viveon-neon-blue to-viveon-red bg-clip-text text-transparent animate-fade-in-up animation-delay-200 leading-tight">
+          <div className="space-y-1 sm:space-y-2 w-full">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold bg-gradient-to-r from-viveon-neon-purple via-viveon-neon-blue to-viveon-red bg-clip-text text-transparent animate-fade-in-up animation-delay-200 leading-tight px-2 break-words">
               INTRODUCING THE FUTURE OF TECH
             </h1>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-fade-in-up animation-delay-400 leading-tight">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-fade-in-up animation-delay-400 leading-tight px-2 break-words">
               HUX
             </h1>
           </div>
           
           {/* Subtitle with Animation */}
-          <div className="max-w-3xl mx-auto animate-fade-in-up animation-delay-600 px-4">
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-viveon-light/90 font-light leading-relaxed">
+          <div className="w-full max-w-2xl mx-auto animate-fade-in-up animation-delay-600 px-2 sm:px-4">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-viveon-light/90 font-light leading-relaxed break-words">
               {subtitle}
             </p>
           </div>
           
           {/* CTA Buttons with Animation */}
           {buttons && (
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 sm:mt-10 animate-fade-in-up animation-delay-800 px-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mt-6 sm:mt-8 md:mt-10 animate-fade-in-up animation-delay-800 px-2 sm:px-4 w-full max-w-2xl mx-auto">
               {buttons.primary && (
                 <button 
                   onClick={buttons.primary.onClick}
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-viveon-red to-viveon-neon-purple hover:from-viveon-red/80 hover:to-viveon-neon-purple/80 text-white rounded-full font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-viveon-red/25"
+                  className="w-full sm:w-auto px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-gradient-to-r from-viveon-red to-viveon-neon-purple hover:from-viveon-red/80 hover:to-viveon-neon-purple/80 text-white rounded-full font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-viveon-red/25 whitespace-nowrap"
                 >
                   {buttons.primary.text}
                 </button>
@@ -447,7 +467,7 @@ const Hero: React.FC<HeroProps> = ({
               {buttons.secondary && (
                 <button 
                   onClick={buttons.secondary.onClick}
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-viveon-dark/10 hover:bg-viveon-dark/20 border border-viveon-neon-blue/30 hover:border-viveon-neon-blue/50 text-viveon-neon-blue rounded-full font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+                  className="w-full sm:w-auto px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-viveon-dark/10 hover:bg-viveon-dark/20 border border-viveon-neon-blue/30 hover:border-viveon-neon-blue/50 text-viveon-neon-blue rounded-full font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm whitespace-nowrap"
                 >
                   {buttons.secondary.text}
                 </button>
