@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { DecryptedText } from "./decrypted-text";
+import { HuxParticleText } from "../HuxParticleText";
 
 function FloatingPaths({ position }: { position: number }) {
     const paths = Array.from({ length: 36 }, (_, i) => ({
@@ -100,20 +101,9 @@ export function BackgroundPaths({
                                 ))}
                             </span>
                         ))}
-                        <span className="inline-block text-5xl sm:text-7xl md:text-8xl">
-                            <DecryptedText 
-                                text="HUX"
-                                className="inline-block text-5xl sm:text-7xl md:text-8xl text-transparent bg-gradient-to-r from-slate-600 via-slate-500 to-slate-400 bg-clip-text [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1),0_0_15px_rgba(148,163,184,0.4)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:from-slate-500 hover:via-slate-400 hover:to-slate-300 hover:[text-shadow:0_0_4px_rgba(255,255,255,0.4),0_0_12px_rgba(255,255,255,0.2),0_0_20px_rgba(148,163,184,0.6)] transition-all duration-300"
-                                encryptedClassName="inline-block text-5xl sm:text-7xl md:text-8xl text-transparent bg-gradient-to-r from-slate-600 via-slate-500 to-slate-400 bg-clip-text [text-shadow:0_0_2px_rgba(255,255,255,0.3),0_0_8px_rgba(255,255,255,0.1)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
-                                parentClassName="cursor-pointer"
-                                speed={80}
-                                maxIterations={15}
-                                sequential={true}
-                                revealDirection="center"
-                                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+"
-                                animateOn="hover"
-                            />
-                        </span>
+                        <div className="inline-block text-5xl sm:text-7xl md:text-8xl h-24 sm:h-32 md:h-40 w-full max-w-md mx-auto">
+                            <HuxParticleText />
+                        </div>
                     </h1>
 
                     <div
