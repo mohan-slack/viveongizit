@@ -421,8 +421,9 @@ const Hero: React.FC<HeroProps> = ({
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-viveon-neon-purple via-viveon-neon-blue to-viveon-red bg-clip-text text-transparent animate-fade-in-up animation-delay-200">
               {headline.line1}
             </h1>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-fade-in-up animation-delay-400">
-              {headline.line2}
+            <h1 className="font-bold animate-fade-in-up animation-delay-400">
+              <span className="text-3xl md:text-5xl lg:text-6xl bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">FUTURE OF TECH </span>
+              <span className="text-5xl md:text-7xl lg:text-8xl bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">HUX™</span>
             </h1>
           </div>
           
