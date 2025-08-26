@@ -248,7 +248,7 @@ const TestimonialCard = ({
 							initial={{opacity: 0}}
 							animate={{opacity: 1}}
 							exit={{opacity: 0}}
-							className="bg-black/50 backdrop-blur-lg h-full w-full fixed inset-0"
+							className="bg-white/80 backdrop-blur-lg h-full w-full fixed inset-0"
 						/>
 						<motion.div
 							initial={{opacity: 0}}
