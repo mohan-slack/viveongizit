@@ -173,16 +173,9 @@
     @apply border-border;
   }
 
-  html {
-    margin: 0;
-    padding: 0;
-  }
-
   body {
     @apply bg-white text-foreground font-sans;
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='%23FF3A2F' stroke='white' stroke-width='1' opacity='0.8'/></svg>") 8 8, auto;
-    margin: 0;
-    padding: 0;
   }
 
   h1, h2, h3, h4, h5, h6 {
