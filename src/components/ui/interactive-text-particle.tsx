@@ -55,8 +55,8 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
   const interactionRadiusRef = useRef<number>(100);
 
   const [canvasSize, setCanvasSize] = useState<{ width: number; height: number }>({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 800,
+    height: 200,
   });
 
   const [textBox] = useState<TextBox>({ str: text });
@@ -82,12 +82,12 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
       this.oy = y;
       this.cx = x;
       this.cy = y;
-      this.or = rand(5, 1);
+      this.or = rand(3, 1);
       this.cr = this.or;
       this.pv = 0;
       this.ov = 0;
-      this.f = rand(animationForce + 15, animationForce - 15);
-      this.rgb = rgb.map(c => Math.max(0, c + rand(13, -13)));
+      this.f = rand(animationForce + 25, animationForce - 10);
+      this.rgb = rgb.map(c => Math.max(0, c + rand(20, -20)));
     }
 
     draw() {
@@ -107,9 +107,11 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
         const dy = this.cy - pointerRef.current.y;
         const dist = Math.hypot(dx, dy);
         if (dist < interactionRadius && dist > 0) {
-          const force = Math.min(this.f, (interactionRadius - dist) / dist * 2);
+          const force = Math.min(this.f * 0.8, (interactionRadius - dist) / dist * 4);
           this.cx += (dx / dist) * force;
           this.cy += (dy / dist) * force;
+          // Add subtle rotation and scale effects
+          this.cr = this.or * (1 + Math.sin(Date.now() * 0.01) * 0.3);
           moved = true;
         }
       }
@@ -118,10 +120,12 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
       const ody = this.oy - this.cy;
       const od = Math.hypot(odx, ody);
 
-      if (od > 1) {
-        const restore = Math.min(od * 0.1, 3);
+      if (od > 0.5) {
+        const restore = Math.min(od * 0.15, 4);
         this.cx += (odx / od) * restore;
         this.cy += (ody / od) * restore;
+        // Reset radius gradually
+        this.cr = this.cr * 0.98 + this.or * 0.02;
         moved = true;
       }
 
@@ -167,11 +171,12 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
     if (!canvas || !ctx) return;
 
     textBox.str = text;
-    textBox.h = Math.floor(canvas.width / textBox.str.length);
+    // Make text larger and more prominent
+    textBox.h = Math.floor(Math.min(canvas.width / textBox.str.length * 0.8, canvas.height * 0.6));
 
-    interactionRadiusRef.current = Math.max(50, textBox.h * 1.5);
+    interactionRadiusRef.current = Math.max(80, textBox.h * 1.2);
 
-    ctx.font = `900 ${textBox.h}px Verdana, sans-serif`;
+    ctx.font = `900 ${textBox.h}px "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
@@ -194,8 +199,19 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
     if (!ctx || !canvas) return;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particlesRef.current.forEach(p => p.move(interactionRadiusRef.current, hasPointerRef.current));
-    animationIdRef.current = requestAnimationFrame(animate);
+    
+    let hasMovement = false;
+    particlesRef.current.forEach(p => {
+      const moved = p.move(interactionRadiusRef.current, hasPointerRef.current);
+      if (moved) hasMovement = true;
+    });
+    
+    // Continue animation if there's movement or pointer interaction
+    if (hasMovement || hasPointerRef.current) {
+      animationIdRef.current = requestAnimationFrame(animate);
+    } else {
+      animationIdRef.current = null;
+    }
   };
 
   const initialize = () => {
@@ -203,22 +219,35 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
     const ctx = ctxRef.current;
     if (!canvas || !ctx) return;
 
-    canvas.width = canvasSize.width;
-    canvas.height = canvasSize.height;
+    // Get the actual container dimensions
+    const container = canvas.parentElement;
+    if (container) {
+      const rect = container.getBoundingClientRect();
+      canvas.width = rect.width || 800;
+      canvas.height = rect.height || 200;
+      setCanvasSize({ width: canvas.width, height: canvas.height });
+    }
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     write();
   };
 
   useEffect(() => {
     const handleResize = () => {
-      setCanvasSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      const canvas = canvasRef.current;
+      if (canvas && canvas.parentElement) {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        setCanvasSize({
+          width: rect.width || 800,
+          height: rect.height || 200,
+        });
+      }
     };
 
     window.addEventListener('resize', handleResize);
+    // Initial size check
+    setTimeout(handleResize, 100);
+    
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -270,10 +299,14 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className={`w-full h-full ${className} cursor-none`}
+      className={`w-full h-full ${className} cursor-crosshair transition-all duration-300 hover:cursor-pointer`}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       onPointerEnter={handlePointerEnter}
+      style={{ 
+        filter: hasPointerRef.current ? 'brightness(1.1) contrast(1.05)' : 'none',
+        transition: 'filter 0.2s ease'
+      }}
     />
   );
 };
