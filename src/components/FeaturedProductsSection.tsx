@@ -9,8 +9,9 @@ const FeaturedProductsSection: React.FC = () => {
       id: 1,
       name: "HUX NEXUS RING",
       category: "SMART RING",
-      imagePath: "/lovable-uploads/aa8bef96-2dd1-4a17-98eb-52e710df2eb9.png",
-      secondaryImagePath: "/lovable-uploads/8fd93b4e-b194-45bd-a3c6-9cffc1edf997.png",
+      imagePath: "/lovable-uploads/8ff34480-1523-4e10-a35f-a8b2e6060aae.png",
+      secondaryImagePath: "/lovable-uploads/c81b7a9e-d4b0-4903-8b12-0dd8947f7d31.png",
+      tertiaryImagePath: "/lovable-uploads/079821f2-8a8b-4705-856a-29d19cdc60f6.png",
       color: "red" as const,
     },
     {
