@@ -26,21 +26,21 @@ const FeaturedProductsSection: React.FC = () => {
   ];
 
   return (
-    <div className="bg-viveon-dark py-20">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-white py-20 w-full">
+      <div className="w-full px-6 md:px-12 lg:px-16">
         <div id="rings" className="mb-12">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">HUX <span className="text-viveon-neon-blue/90">Smart Rings</span></h2>
-              <p className="text-gray-400 mt-2">Technology at your fingertips</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">HUX <span className="text-blue-600">Smart Rings</span></h2>
+              <p className="text-gray-600 mt-2">Technology at your fingertips</p>
             </div>
-            <Button variant="ghost" className="text-white hover:text-viveon-neon-blue/90 group">
+            <Button variant="ghost" className="text-black hover:text-blue-600 group">
               View All
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {smartRings.map((product) => (
               <ProductCard 
                 key={product.id}

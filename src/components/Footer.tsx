@@ -48,18 +48,18 @@ const Footer: React.FC = () => {
   };
   
   return (
-    <footer className="bg-black py-16">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-white py-16 w-full">
+      <div className="w-full px-6 md:px-12 lg:px-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto">
           {/* First column */}
           <div>
-            <h3 className="text-white text-lg font-bold mb-6 tracking-tight">Quick Links</h3>
+            <h3 className="text-black text-lg font-bold mb-6 tracking-tight">Quick Links</h3>
             <ul className="space-y-3">
               <li>
                 <a 
                   href="/" 
                   onClick={(e) => handleNavClick('/', e)}
-                  className="text-gray-400 hover:text-viveon-red transition-colors"
+                  className="text-gray-600 hover:text-red-500 transition-colors"
                 >
                   Home
                 </a>
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
                 <a 
                   href="/products" 
                   onClick={(e) => handleNavClick('/products', e)}
-                  className="text-gray-400 hover:text-viveon-red transition-colors"
+                  className="text-gray-600 hover:text-red-500 transition-colors"
                 >
                   Products
                 </a>
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
                 <a 
                   href="/features" 
                   onClick={(e) => handleNavClick('/features', e)}
-                  className="text-gray-400 hover:text-viveon-red transition-colors"
+                  className="text-gray-600 hover:text-red-500 transition-colors"
                 >
                   Features
                 </a>
@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
                 <a 
                   href="/about" 
                   onClick={(e) => handleNavClick('/about', e)}
-                  className="text-gray-400 hover:text-viveon-red transition-colors"
+                  className="text-gray-600 hover:text-red-500 transition-colors"
                 >
                   About Us
                 </a>
@@ -95,7 +95,7 @@ const Footer: React.FC = () => {
                 <a 
                   href="#contact" 
                   onClick={(e) => handleNavClick('#contact', e)} 
-                  className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer"
+                  className="text-gray-600 hover:text-red-500 transition-colors cursor-pointer"
                 >
                   Contact
                 </a>
@@ -105,17 +105,17 @@ const Footer: React.FC = () => {
           
           {/* Second column */}
           <div>
-            <h3 className="text-white text-lg font-bold mb-6 tracking-tight">Support</h3>
+            <h3 className="text-black text-lg font-bold mb-6 tracking-tight">Support</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">FAQs</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-viveon-red transition-colors">Shipping & Returns</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-red-500 transition-colors">FAQs</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-red-500 transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-red-500 transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-red-500 transition-colors">Shipping & Returns</a></li>
               <li>
                 <a 
                   href="#contact" 
                   onClick={(e) => handleNavClick('#contact', e)} 
-                  className="text-gray-400 hover:text-viveon-red transition-colors cursor-pointer"
+                  className="text-gray-600 hover:text-red-500 transition-colors cursor-pointer"
                 >
                   Contact Support
                 </a>
@@ -125,15 +125,15 @@ const Footer: React.FC = () => {
           
           {/* Third column */}
           <div>
-            <h3 className="text-white text-lg font-bold mb-6 tracking-tight">Newsletter</h3>
-            <p className="text-gray-400 mb-4 font-light">Subscribe to get special offers, free giveaways, and product launches.</p>
+            <h3 className="text-black text-lg font-bold mb-6 tracking-tight">Newsletter</h3>
+            <p className="text-gray-600 mb-4 font-light">Subscribe to get special offers, free giveaways, and product launches.</p>
             <div className="flex mb-4">
               <Input 
                 type="email" 
                 placeholder="Your email" 
-                className="bg-gray-900 border-gray-700 text-white focus:border-viveon-red"
+                className="bg-gray-50 border-gray-300 text-black focus:border-red-500"
               />
-              <Button className="ml-2 bg-viveon-red hover:bg-viveon-red/80">
+              <Button className="ml-2 bg-red-500 hover:bg-red-600">
                 <ArrowRight size={16} />
               </Button>
             </div>
@@ -142,18 +142,18 @@ const Footer: React.FC = () => {
           
           {/* Fourth column */}
           <div>
-            <h3 className="text-white text-lg font-bold mb-6 tracking-tight">Social Media</h3>
+            <h3 className="text-black text-lg font-bold mb-6 tracking-tight">Social Media</h3>
             <div className="flex flex-wrap gap-3">
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
+              <Button variant="ghost" size="icon" className="text-gray-600 hover:text-red-500">
                 <Facebook size={20} />
               </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
+              <Button variant="ghost" size="icon" className="text-gray-600 hover:text-red-500">
                 <Twitter size={20} />
               </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
+              <Button variant="ghost" size="icon" className="text-gray-600 hover:text-red-500">
                 <Instagram size={20} />
               </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-viveon-red">
+              <Button variant="ghost" size="icon" className="text-gray-600 hover:text-red-500">
                 <Youtube size={20} />
               </Button>
             </div>
@@ -161,7 +161,7 @@ const Footer: React.FC = () => {
         </div>
         
         {/* Logo and tagline bottom section */}
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-center gap-6">
+        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row items-center justify-center gap-6">
           <a 
             href="/" 
             onClick={(e) => handleNavClick('/', e)} 
@@ -173,7 +173,7 @@ const Footer: React.FC = () => {
               showSoundWaves={false} 
             />
           </a>
-          <p className="text-gray-400 font-light tracking-wide text-center md:text-left max-w-xl">
+          <p className="text-gray-600 font-light tracking-wide text-center md:text-left max-w-xl">
             Experience the next generation of wearable technology with our cutting-edge earbuds and smart rings.
           </p>
         </div>
