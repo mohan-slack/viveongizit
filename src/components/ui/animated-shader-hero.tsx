@@ -422,7 +422,7 @@ const Hero: React.FC<HeroProps> = ({
               INTRODUCING THE FUTURE OF TECH
             </h1>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-fade-in-up animation-delay-400">
-              HUX<sup className="text-xl md:text-2xl lg:text-3xl -top-2 relative">™</sup>
+              HUX
             </h1>
           </div>
           
