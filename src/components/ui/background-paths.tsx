@@ -127,7 +127,7 @@ export function BackgroundPaths({
                                     stiffness: 150,
                                     damping: 25,
                                 }}
-                                className="text-sm align-top text-transparent bg-clip-text 
+                                className="text-lg relative -top-4 text-transparent bg-clip-text 
                                 bg-gradient-to-r from-neutral-900 to-neutral-700/80 
                                 dark:from-white dark:to-white/80"
                             >
