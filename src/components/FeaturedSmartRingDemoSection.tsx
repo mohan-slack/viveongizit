@@ -1,9 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlayCircle, Moon, Activity, Thermometer, Smile } from "lucide-react";
+import dashboardSpo2 from "@/assets/dashboard-spo2.jpg";
+import dashboardHrv from "@/assets/dashboard-hrv.jpg";
+import dashboardSleep from "@/assets/dashboard-sleep.jpg";
+import dashboardTemperature from "@/assets/dashboard-temperature.jpg";
+import dashboardMood from "@/assets/dashboard-mood.jpg";
 
 export default function FeaturedSmartRingDemoSection() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentDashboard, setCurrentDashboard] = useState(0);
+  
+  const dashboards = [
+    { image: dashboardSpo2, title: "SPO2 Monitoring", subtitle: "Real-time oxygen saturation" },
+    { image: dashboardHrv, title: "HRV Analysis", subtitle: "Heart rate variability trends" },
+    { image: dashboardSleep, title: "Sleep Tracking", subtitle: "REM, Deep & Light stages" },
+    { image: dashboardTemperature, title: "Body Temperature", subtitle: "24-hour fluctuation monitoring" },
+    { image: dashboardMood, title: "Mood Detection", subtitle: "Stress & wellness indicators" }
+  ];
+
+  // Auto-cycle through dashboards
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDashboard((prev) => (prev + 1) % dashboards.length);
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [dashboards.length]);
 
   const ringFeatures = [
     {
@@ -62,33 +84,55 @@ export default function FeaturedSmartRingDemoSection() {
 
         {/* Demo Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
-          {/* Video/Image Card */}
+          {/* Health Dashboard Showcase */}
           <Card className="lg:col-span-2 bg-white border-gray-200 p-2 overflow-hidden relative flex flex-col min-h-[500px]">
-            <CardContent className="p-0 relative flex-grow group">
-              {isPlaying ? (
-                <video
-                  src="/hux_video_clean_trimmed_retry.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover rounded-lg"
-                />
-              ) : (
-                <>
-                  <img
-                    src="/public/lovable-uploads/f22aa84c-eee5-4a54-b16e-ae116d8ae23a.png"
-                    alt="Smart Ring Thumbnail"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                  <button
-                    onClick={() => setIsPlaying(true)}
-                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            <CardContent className="p-0 relative flex-grow">
+              <div className="relative w-full h-full bg-black rounded-lg overflow-hidden">
+                {/* Dashboard Images with Smooth Transitions */}
+                {dashboards.map((dashboard, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                      index === currentDashboard 
+                        ? 'opacity-100 scale-100' 
+                        : 'opacity-0 scale-105'
+                    }`}
                   >
-                    <PlayCircle className="w-16 h-16 text-white drop-shadow-lg" />
-                  </button>
-                </>
-              )}
+                    <img
+                      src={dashboard.image}
+                      alt={dashboard.title}
+                      className="w-full h-full object-cover"
+                    />
+                    
+                    {/* Overlay with metric info */}
+                    <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
+                      <div className="text-sm font-semibold">{dashboard.title}</div>
+                      <div className="text-xs text-gray-300">{dashboard.subtitle}</div>
+                    </div>
+                  </div>
+                ))}
+                
+                {/* Dashboard Indicators */}
+                <div className="absolute bottom-4 right-4 flex gap-2">
+                  {dashboards.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentDashboard(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentDashboard 
+                          ? 'bg-white' 
+                          : 'bg-white/40 hover:bg-white/60'
+                      }`}
+                    />
+                  ))}
+                </div>
+                
+                {/* Pulsing Ring Effect */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute inset-4 border border-purple-500/30 rounded-full animate-pulse"></div>
+                  <div className="absolute inset-8 border border-blue-500/20 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                </div>
+              </div>
             </CardContent>
           </Card>
 
