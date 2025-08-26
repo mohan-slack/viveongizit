@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
-import EnhancedHeroSection from '@/components/EnhancedHeroSection';
+import Hero from '@/components/ui/animated-shader-hero';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
 import FuturisticFeaturesShowcase from '@/components/FuturisticFeaturesShowcase';
 import FeaturedSmartRingDemoSection from '@/components/FeaturedSmartRingDemoSection';
@@ -71,12 +71,56 @@ const Index = () => {
     return () => document.removeEventListener('click', handleAnchorClick);
   }, []);
 
+  const handlePrimaryClick = () => {
+    const element = document.getElementById('products');
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleSecondaryClick = () => {
+    const element = document.getElementById('features');
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen relative">
       <Navbar />
-      <EnhancedHeroSection />
-      <FeaturedProductsSection />
-      <FuturisticFeaturesShowcase />
+      <Hero
+        trustBadge={{
+          text: "Trusted by forward-thinking innovators.",
+          icons: ["✨"]
+        }}
+        headline={{
+          line1: "INTRODUCING THE",
+          line2: "FUTURE OF TECH HUX™"
+        }}
+        subtitle="Experience the next generation of wearable technology with our cutting-edge smart rings. Designed for the future, built for today."
+        buttons={{
+          primary: {
+            text: "EXPLORE SMART RINGS",
+            onClick: handlePrimaryClick
+          },
+          secondary: {
+            text: "DISCOVER FEATURES",
+            onClick: handleSecondaryClick
+          }
+        }}
+      />
+      <div id="products">
+        <FeaturedProductsSection />
+      </div>
+      <div id="features">
+        <FuturisticFeaturesShowcase />
+      </div>
       <FeaturedSmartRingDemoSection />
       <AboutSection />
       <ContactSection />
