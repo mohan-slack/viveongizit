@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function SmartRingFeatures() {
+  console.log("SmartRingFeatures component is rendering");
+  
   const images = [
     "/lovable-uploads/f22aa84c-eee5-4a54-b16e-ae116d8ae23a.png",
     "/lovable-uploads/6eb376f4-57db-4739-8ddd-1ff2837821ff.png",
@@ -11,6 +13,8 @@ export default function SmartRingFeatures() {
     "/lovable-uploads/98fd856e-b87b-4fa7-ac5c-6c593c54b448.png",
     "/lovable-uploads/f694a5a5-6ed5-41b4-abbf-58cbbfb280c2.png",
   ];
+
+  console.log("Images array:", images);
 
   const featureNames = [
     "Smart Touch Control",
