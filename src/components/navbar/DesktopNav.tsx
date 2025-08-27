@@ -26,12 +26,7 @@ const DesktopNav: React.FC<DesktopNavProps> = ({
               href={item.href}
               onClick={(e) => {
                 setActiveTab(item.label);
-                if (item.href.includes('#')) {
-                  handleNavClick(item.href, item.isExternal, e);
-                } else {
-                  e.preventDefault();
-                  handleNavClick(item.href, item.isExternal, e);
-                }
+                handleNavClick(item.href, item.isExternal, e);
               }}
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
