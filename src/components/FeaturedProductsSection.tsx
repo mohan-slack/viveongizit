@@ -69,7 +69,7 @@ const FeaturedProductsSection: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                HUX{' '}
+                <span className="text-gray-400">HUX</span>{' '}
                 <span className="bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-gradient-shimmer">
                   Smart Rings
                 </span>
