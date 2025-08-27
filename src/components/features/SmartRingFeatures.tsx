@@ -31,8 +31,8 @@ export default function SmartRingFeatures() {
   const duplicatedNames = [...featureNames, ...featureNames];
 
   return (
-    <div id="features" className="w-full bg-white relative overflow-hidden flex items-center justify-center py-12">
-      {/* Gradient background */}
+    <div id="feature-cards" className="w-full bg-white relative overflow-hidden flex items-center justify-center py-12">
+      {/* Feature Cards Section */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white z-0" />
 
       {/* Scrolling Images */}
