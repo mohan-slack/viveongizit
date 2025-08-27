@@ -69,14 +69,8 @@ export default function FeaturedSmartRingDemoSection() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4 text-black">
             Monitor Your Body. <br />
             Master Your Health with{" "}
-            <span 
-              className="inline-block font-bold bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent"
-              style={{
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text"
-              }}
-            >
-              HUX Smart Ring
+            <span className="inline-block font-bold">
+              <span className="text-gray-600">HUX</span> <span className="bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">Smart Ring</span>
             </span>
           </h1>
         </header>
