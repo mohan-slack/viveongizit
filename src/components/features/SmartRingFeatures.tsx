@@ -1,23 +1,15 @@
 import React from "react";
-import smartTouchControl from "@/assets/smart-touch-control.jpg";
-import bodyFatRatio from "@/assets/body-fat-ratio.jpg";
-import sleepManagement from "@/assets/sleep-management.jpg";
-import emotionStress from "@/assets/emotion-stress.jpg";
-import glucoseMonitoring from "@/assets/glucose-monitoring.jpg";
-import bodyTemperature from "@/assets/body-temperature.jpg";
-import nfcPayment from "@/assets/nfc-payment.jpg";
-import callingVibration from "@/assets/calling-vibration.jpg";
 
 export default function SmartRingFeatures() {
   const images = [
-    smartTouchControl,
-    bodyFatRatio,
-    sleepManagement,
-    emotionStress,
-    glucoseMonitoring,
-    bodyTemperature,
-    nfcPayment,
-    callingVibration,
+    "/lovable-uploads/f22aa84c-eee5-4a54-b16e-ae116d8ae23a.png",
+    "/lovable-uploads/6eb376f4-57db-4739-8ddd-1ff2837821ff.png",
+    "/lovable-uploads/6e9faf63-0780-4d01-9f6d-72b21989cf62.png",
+    "/lovable-uploads/9ec12441-23f9-477b-aa64-89c05a1b431f.png",
+    "/lovable-uploads/a0c36f68-ac13-4dbb-9c43-043f1beb9ce9.png",
+    "/lovable-uploads/97c43e61-fcf5-4f9e-9cc2-df81bb60a6d8.png",
+    "/lovable-uploads/98fd856e-b87b-4fa7-ac5c-6c593c54b448.png",
+    "/lovable-uploads/f694a5a5-6ed5-41b4-abbf-58cbbfb280c2.png",
   ];
 
   const featureNames = [
