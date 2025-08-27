@@ -31,32 +31,32 @@ export default function SmartRingFeatures() {
   const duplicatedNames = [...featureNames, ...featureNames];
 
   return (
-    <div className="w-full bg-white relative overflow-hidden flex items-center justify-center py-12">
+    <div id="features" className="w-full bg-white relative overflow-hidden flex items-center justify-center py-12">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white z-0" />
 
       {/* Scrolling Images */}
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-16">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-12 lg:px-16">
         <div className="overflow-hidden">
           <div
-            className="flex gap-6 w-max animate-scroll"
+            className="flex gap-4 sm:gap-6 w-max animate-scroll"
             style={{
-              animation: "scroll-right 20s linear infinite",
+              animation: "scroll-right 35s linear infinite",
             }}
           >
             {duplicatedImages.map((image, index) => (
               <div
                 key={index}
-                className="image-item flex-shrink-0 w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 relative group border border-gray-200"
+                className="image-item flex-shrink-0 w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-500 ease-out relative group border border-gray-200"
               >
                 <img
                   src={image}
                   alt={duplicatedNames[index]}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   loading="lazy"
                 />
                 {/* Feature label overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white text-sm font-medium text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 sm:p-4 text-white text-xs sm:text-sm font-medium text-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out">
                   {duplicatedNames[index]}
                 </div>
               </div>
