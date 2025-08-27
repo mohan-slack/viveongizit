@@ -70,7 +70,7 @@ export default function FeaturedSmartRingDemoSection() {
             Monitor Your Body. <br />
             Master Your Health with{" "}
             <span className="inline-block font-bold">
-              <span className="text-gray-600">HUX</span> <span className="bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">Smart Ring</span>
+              <span className="text-gray-400">HUX</span> <span className="bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">Smart Ring</span>
             </span>
           </h1>
         </header>
