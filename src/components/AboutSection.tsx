@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from './ui/button';
 import AboutFounders from './AboutFounders';
 import { Link } from 'react-router-dom';
+import { TextPressure } from './ui/text-pressure';
 
 const AboutSection: React.FC = () => {
   return <div id="about" className="bg-white py-20 w-full">
@@ -15,7 +16,23 @@ const AboutSection: React.FC = () => {
                 <img src="/lovable-uploads/ad606094-c16f-4418-9c42-8d147e72ee26.png" alt="HUX Smart Rings by Viveon" className="w-full h-auto" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="text-red-500 font-bold tracking-wider text-lg">HUX<span className="text-white text-[0.5em] align-top leading-none">™</span></span>
+                  <div className="w-16 h-8 relative">
+                    <TextPressure 
+                      text="HUX"
+                      textColor="#ea384c"
+                      strokeColor="#FFFFFF"
+                      stroke={false}
+                      width={true}
+                      weight={true}
+                      italic={false}
+                      alpha={false}
+                      flex={true}
+                      scale={false}
+                      minFontSize={18}
+                      className="font-bold tracking-wider"
+                    />
+                    <span className="absolute top-0 right-0 text-white text-[0.5em] font-light">™</span>
+                  </div>
                   <h3 className="tracking-tight text-zinc-50 font-normal text-base">By Viveon Gizit Pvt. Ltd.</h3>
                 </div>
               </div>

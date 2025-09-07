@@ -1,10 +1,26 @@
 
 import React from 'react';
+import { TextPressure } from '../ui/text-pressure';
 
 const InitialLogo: React.FC = () => {
   return (
-    <div className="font-bold tracking-tighter text-7xl md:text-8xl hover:animate-[pulse_1.5s_ease-in-out_infinite] transition-all duration-300">
-      <span style={{ color: "#ea384c" }}>HUX<span className="text-white text-[0.25em] align-top leading-none">™</span></span>
+    <div className="w-full h-24 md:h-32 relative">
+      <TextPressure 
+        text="HUX"
+        textColor="#ea384c"
+        strokeColor="#FFFFFF"
+        stroke={true}
+        strokeWidth={2}
+        width={true}
+        weight={true}
+        italic={false}
+        alpha={false}
+        flex={true}
+        scale={false}
+        minFontSize={60}
+        className="relative z-10"
+      />
+      <span className="absolute top-2 right-6 text-white text-xs font-light tracking-wider">™</span>
     </div>
   );
 };
