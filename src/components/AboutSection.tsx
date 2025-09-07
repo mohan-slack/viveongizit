@@ -23,7 +23,11 @@ const AboutSection: React.FC = () => {
           </div>
           
           <div className="lg:w-1/2">
-            <span className="text-red-500 font-bold tracking-wider">ABOUT US</span>
+            <div className="relative inline-block mb-6">
+              <span className="relative inline-block px-8 py-4 text-white font-sans font-bold rounded-[11px] gradient-button gradient-button-variant hover:scale-105 transition-transform duration-300 cursor-pointer">
+                ABOUT US
+              </span>
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-black mt-2 mb-6 tracking-tight">Pioneering the Next Generation of <span className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Wearable Tech</span></h2>
             
             <p className="text-gray-700 mb-6 font-light tracking-wide">
