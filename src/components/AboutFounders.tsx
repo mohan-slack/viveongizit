@@ -35,8 +35,18 @@ const AboutFounders: React.FC = () => {
 
   return (
     <div className="mt-12 md:mt-16">
-      <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-2">Meet Our <span className="gradient-text">Leadership</span></h2>
-      <p className="text-gray-300 text-center mb-8 md:mb-12 max-w-2xl mx-auto px-4">The innovators behind VIVEON's revolutionary wearable technology</p>
+      <div className="text-center mb-12">
+        <div className="relative inline-block mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold relative z-10">
+            <span className="relative inline-block px-8 py-4 text-white font-sans font-bold rounded-[11px] gradient-button gradient-button-variant hover:scale-105 transition-transform duration-300 cursor-pointer">
+              Meet Our Leadership
+            </span>
+          </h2>
+        </div>
+        <p className="text-gray-300 text-center max-w-2xl mx-auto px-4">
+          The innovators behind VIVEON's revolutionary wearable technology
+        </p>
+      </div>
       
       <div className="max-w-4xl mx-auto px-4 md:px-6 space-y-4">
         {founders.map((founder, index) => (

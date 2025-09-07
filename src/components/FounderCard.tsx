@@ -55,16 +55,33 @@ const FounderCard: React.FC<FounderProps> = ({
                 </AvatarFallback>
               </Avatar>
               
-              {/* Role badge */}
-              <div 
-                className="absolute -bottom-1 -right-1 px-2 py-0.5 rounded-full text-xs font-medium border"
-                style={{
-                  backgroundColor: getRoleBadgeColor(role),
-                  color: getRoleTextColor(role),
-                  borderColor: getRoleTextColor(role) + '40'
-                }}
-              >
-                {role}
+              {/* Role badge with 3D effect */}
+              <div className="absolute -bottom-1 -right-1">
+                <div className="relative w-8 h-8">
+                  {/* 3D Emoji Container */}
+                  <div 
+                    className="absolute inset-0 rounded-full shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, ${getRoleTextColor(role)}40, ${getRoleTextColor(role)}80)`
+                    }}
+                  >
+                    <div 
+                      className="absolute inset-0.5 rounded-full"
+                      style={{
+                        background: `linear-gradient(135deg, ${getRoleTextColor(role)}60, ${getRoleTextColor(role)})`
+                      }}
+                    >
+                      <div className="absolute inset-0.5 bg-gradient-to-br from-white/30 to-transparent rounded-full flex items-center justify-center">
+                        <span className="text-sm">{role}</span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Shadow */}
+                  <div 
+                    className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-2 rounded-full blur-sm"
+                    style={{ backgroundColor: `${getRoleTextColor(role)}20` }}
+                  ></div>
+                </div>
               </div>
             </div>
             
