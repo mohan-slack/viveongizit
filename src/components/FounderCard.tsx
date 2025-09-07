@@ -7,7 +7,6 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import FounderProfileModal from './FounderProfileModal';
 import { FounderProps } from '@/types/founder';
 import { getRoleColor, getRoleBadgeColor, getRoleTextColor, getRoleIcon } from '@/utils/founderUtils';
-import FounderCardContent from './FounderCardContent';
 
 const FounderCard: React.FC<FounderProps> = ({ 
   name, 
@@ -25,78 +24,81 @@ const FounderCard: React.FC<FounderProps> = ({
   return (
     <>
       <motion.div 
-        className="h-full w-full perspective-1000 cursor-pointer"
-        onMouseEnter={() => !isMobile && setIsHovered(true)}
-        onMouseLeave={() => !isMobile && setIsHovered(false)}
+        className="group cursor-pointer"
         onClick={() => setIsOpen(true)}
         initial={{ opacity: 0, y: 20 }}
-        animate={{ 
-          opacity: 1, 
-          y: 0,
-          scale: isHovered ? 1.03 : 1,
-          rotate: isHovered ? [0, -1, 1, 0] : 0,
-          transition: { 
-            duration: 0.3,
-            rotate: {
-              repeat: isHovered ? Infinity : 0,
-              repeatType: "mirror",
-              duration: 4
-            }
-          }
-        }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        whileHover={{ y: -4 }}
         whileTap={{ scale: 0.98 }}
       >
-        {/* Card container with glassmorphism effect */}
-        <div className="relative h-full backdrop-blur-xl bg-black/40 border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] group">
-          {/* Background glow effect */}
-          <motion.div 
-            className="absolute -inset-0.5 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur opacity-40"
-            animate={{
-              opacity: isHovered ? 0.6 : 0.4,
-              scale: isHovered ? 1.01 : 1,
-            }}
-            transition={{ duration: 0.3 }}
+        {/* Minimalist card container */}
+        <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border hover:shadow-lg">
+          {/* Subtle role indicator line */}
+          <div 
+            className="absolute top-0 left-0 w-full h-0.5 rounded-t-xl"
+            style={{ backgroundColor: getRoleTextColor(role) }}
           />
           
-          {/* Animated gradient background */}
-          <motion.div 
-            className={`absolute inset-0 bg-gradient-to-b ${getRoleColor(role)} opacity-10`}
-            animate={{ 
-              opacity: isHovered ? 0.2 : 0.1
-            }}
-            transition={{ duration: 0.4 }}
-          />
+          {/* Content */}
+          <div className="flex items-center space-x-4">
+            {/* Avatar */}
+            <div className="relative flex-shrink-0">
+              <Avatar className="w-14 h-14 border-2 border-border/20">
+                <AvatarImage 
+                  src={profileImage} 
+                  alt={`${name} - ${role}`} 
+                  className="object-cover"
+                />
+                <AvatarFallback className="bg-muted">
+                  {getRoleIcon(role)}
+                </AvatarFallback>
+              </Avatar>
+              
+              {/* Role badge */}
+              <div 
+                className="absolute -bottom-1 -right-1 px-2 py-0.5 rounded-full text-xs font-medium border"
+                style={{
+                  backgroundColor: getRoleBadgeColor(role),
+                  color: getRoleTextColor(role),
+                  borderColor: getRoleTextColor(role) + '40'
+                }}
+              >
+                {role}
+              </div>
+            </div>
+            
+            {/* Info */}
+            <div className="flex-1 min-w-0">
+              <h3 className="font-semibold text-foreground truncate">{name}</h3>
+              <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+                {description}
+              </p>
+              
+              {/* Expertise tags */}
+              <div className="flex gap-1 mt-2">
+                {expertise.slice(0, 2).map((skill, index) => (
+                  <span
+                    key={index}
+                    className="px-2 py-1 text-xs bg-muted/50 text-muted-foreground rounded-md"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            
+            {/* Experience indicator */}
+            <div className="flex-shrink-0 text-right">
+              <div className="text-sm font-medium text-foreground">{yearsExperience}+</div>
+              <div className="text-xs text-muted-foreground">years</div>
+            </div>
+          </div>
           
-          {/* Holographic effect */}
-          <motion.div 
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0"
-            animate={{ 
-              opacity: isHovered ? 0.3 : 0,
-              x: isHovered ? ["100%", "-100%"] : "0%",
-            }}
-            transition={{ 
-              duration: 1.5, 
-              repeat: isHovered ? Infinity : 0,
-              ease: "linear" 
-            }}
-          />
-          
-          {/* Grid lines for cyberpunk effect */}
-          <div className="absolute inset-0 bg-grid-lines opacity-10" />
-          
-          {/* Card Content */}
-          <FounderCardContent 
-            name={name}
-            role={role}
-            description={description}
-            expertise={expertise}
-            profileImage={profileImage}
-            yearsExperience={yearsExperience}
-            isHovered={isHovered}
-            getRoleBadgeColor={getRoleBadgeColor}
-            getRoleTextColor={getRoleTextColor}
-            getRoleIcon={getRoleIcon}
-          />
+          {/* Hover indicator */}
+          <div className="absolute bottom-2 right-2 text-xs text-muted-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity">
+            View profile →
+          </div>
         </div>
       </motion.div>
 

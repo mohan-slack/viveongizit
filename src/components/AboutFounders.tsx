@@ -38,7 +38,7 @@ const AboutFounders: React.FC = () => {
       <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-2">Meet Our <span className="gradient-text">Leadership</span></h2>
       <p className="text-gray-300 text-center mb-8 md:mb-12 max-w-2xl mx-auto px-4">The innovators behind VIVEON's revolutionary wearable technology</p>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 space-y-4">
         {founders.map((founder, index) => (
           <FounderCard key={index} {...founder} />
         ))}
