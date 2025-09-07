@@ -7,15 +7,15 @@ const ContactSection: React.FC = () => {
     <div id="contact" className="bg-white py-20 w-full">
       <div className="w-full px-6 md:px-12 lg:px-16">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="relative inline-block mb-6">
-              <h2 className="text-3xl md:text-5xl font-bold relative z-10">
-                <span className="relative inline-block px-8 py-4 text-white font-sans font-bold rounded-[11px] gradient-button gradient-button-variant hover:scale-105 transition-transform duration-300 cursor-pointer">
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="relative inline-block mb-4 sm:mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold relative z-10">
+                <span className="relative inline-block px-6 sm:px-8 py-3 sm:py-4 text-white font-sans font-bold rounded-[11px] gradient-button gradient-button-variant hover:scale-105 transition-transform duration-300 cursor-pointer text-sm sm:text-base">
                   Connect With Us
                 </span>
               </h2>
             </div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto px-4 text-sm sm:text-base">
               Have questions about our HUX products or interested in collaboration? Reach out to us through any of the following channels.
             </p>
           </div>
@@ -36,8 +36,8 @@ const ContactSection: React.FC = () => {
                   {/* Shadow */}
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-3 bg-red-500/20 rounded-full blur-sm"></div>
                 </div>
-                <h3 className="text-black text-lg font-bold mb-2">Location</h3>
-                <p className="text-gray-600">
+                <h3 className="text-black text-base sm:text-lg font-bold mb-2">Location</h3>
+                <p className="text-gray-600 text-sm sm:text-base">
                   Electronic City, Bangalore,<br />
                   Karnataka, INDIA
                 </p>
@@ -57,8 +57,8 @@ const ContactSection: React.FC = () => {
                   {/* Shadow */}
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-3 bg-blue-500/20 rounded-full blur-sm"></div>
                 </div>
-                <h3 className="text-black text-lg font-bold mb-2">Phone</h3>
-                <p className="text-gray-600">
+                <h3 className="text-black text-base sm:text-lg font-bold mb-2">Phone</h3>
+                <p className="text-gray-600 text-sm sm:text-base">
                   +91 9390807900
                 </p>
               </div>
@@ -77,8 +77,8 @@ const ContactSection: React.FC = () => {
                   {/* Shadow */}
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-3 bg-purple-500/20 rounded-full blur-sm"></div>
                 </div>
-                <h3 className="text-black text-lg font-bold mb-2">Email</h3>
-                <p className="text-gray-600">
+                <h3 className="text-black text-base sm:text-lg font-bold mb-2">Email</h3>
+                <p className="text-gray-600 text-xs sm:text-sm lg:text-base break-all">
                   viveongizitpvtltd@gmail.com
                 </p>
               </div>

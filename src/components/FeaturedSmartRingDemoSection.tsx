@@ -66,7 +66,7 @@ export default function FeaturedSmartRingDemoSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <header className="text-left mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4 text-black">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight mb-4 text-black leading-tight">
             Monitor Your Body. <br />
             Master Your Health with{" "}
             <span className="inline-block font-bold">

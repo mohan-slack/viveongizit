@@ -33,7 +33,7 @@ const FounderCard: React.FC<FounderProps> = ({
         whileTap={{ scale: 0.98 }}
       >
         {/* Minimalist card container */}
-        <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border hover:shadow-lg">
+        <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 transition-all duration-300 hover:bg-card/70 hover:border-border hover:shadow-lg">
           {/* Subtle role indicator line */}
           <div 
             className="absolute top-0 left-0 w-full h-0.5 rounded-t-xl"
@@ -41,23 +41,23 @@ const FounderCard: React.FC<FounderProps> = ({
           />
           
           {/* Content */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3 sm:space-x-4">
             {/* Avatar */}
             <div className="relative flex-shrink-0">
-              <Avatar className="w-14 h-14 border-2 border-border/20">
+              <Avatar className="w-12 h-12 sm:w-14 sm:h-14 border-2 border-border/20">
                 <AvatarImage 
                   src={profileImage} 
                   alt={`${name} - ${role}`} 
                   className="object-cover"
                 />
-                <AvatarFallback className="bg-muted text-foreground">
+                <AvatarFallback className="bg-muted text-foreground text-sm">
                   {name.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
               </Avatar>
               
               {/* Role badge with 3D effect */}
               <div className="absolute -bottom-1 -right-1">
-                <div className="relative w-8 h-8">
+                <div className="relative w-7 h-7 sm:w-8 sm:h-8">
                   {/* 3D Emoji Container */}
                   <div 
                     className="absolute inset-0 rounded-full shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform duration-300"
@@ -72,13 +72,13 @@ const FounderCard: React.FC<FounderProps> = ({
                       }}
                     >
                       <div className="absolute inset-0.5 bg-gradient-to-br from-white/30 to-transparent rounded-full flex items-center justify-center">
-                        <span className="text-sm">{role}</span>
+                        <span className="text-xs sm:text-sm">{role}</span>
                       </div>
                     </div>
                   </div>
                   {/* Shadow */}
                   <div 
-                    className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-2 rounded-full blur-sm"
+                    className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-5 h-1.5 sm:w-6 sm:h-2 rounded-full blur-sm"
                     style={{ backgroundColor: `${getRoleTextColor(role)}20` }}
                   ></div>
                 </div>
@@ -87,14 +87,14 @@ const FounderCard: React.FC<FounderProps> = ({
             
             {/* Info */}
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-foreground truncate">{name}</h3>
-              <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+              <h3 className="font-semibold text-foreground truncate text-sm sm:text-base">{name}</h3>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1 line-clamp-2">
                 {description}
               </p>
               
               {/* Expertise tags */}
-              <div className="flex gap-1 mt-2">
-                {expertise.slice(0, 2).map((skill, index) => (
+              <div className="flex gap-1 mt-2 flex-wrap">
+                {expertise.slice(0, isMobile ? 1 : 2).map((skill, index) => (
                   <span
                     key={index}
                     className="px-2 py-1 text-xs bg-muted/50 text-muted-foreground rounded-md"
@@ -102,8 +102,8 @@ const FounderCard: React.FC<FounderProps> = ({
                     {skill}
                   </span>
                 ))}
+              </div>
             </div>
-          </div>
           </div>
           
           {/* Hover indicator */}

@@ -35,15 +35,15 @@ const AboutFounders: React.FC = () => {
 
   return (
     <div className="mt-12 md:mt-16">
-      <div className="text-center mb-12">
-        <div className="relative inline-block mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold relative z-10">
-            <span className="relative inline-block px-8 py-4 text-white font-sans font-bold rounded-[11px] gradient-button gradient-button-variant hover:scale-105 transition-transform duration-300 cursor-pointer">
+      <div className="text-center mb-8 sm:mb-12">
+        <div className="relative inline-block mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold relative z-10">
+            <span className="relative inline-block px-6 sm:px-8 py-3 sm:py-4 text-white font-sans font-bold rounded-[11px] gradient-button gradient-button-variant hover:scale-105 transition-transform duration-300 cursor-pointer text-sm sm:text-base">
               Meet Our Leadership
             </span>
           </h2>
         </div>
-        <p className="text-gray-300 text-center max-w-2xl mx-auto px-4">
+        <p className="text-gray-300 text-center max-w-2xl mx-auto px-4 text-sm sm:text-base">
           The innovators behind VIVEON's revolutionary wearable technology
         </p>
       </div>

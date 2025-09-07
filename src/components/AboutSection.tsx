@@ -27,53 +27,53 @@ const AboutSection: React.FC = () => {
           </div>
           
           <div className="lg:w-1/2">
-            <div className="relative inline-block mb-6">
-              <span className="relative inline-block px-8 py-4 text-white font-sans font-bold rounded-[11px] gradient-button gradient-button-variant hover:scale-105 transition-transform duration-300 cursor-pointer">
+            <div className="relative inline-block mb-4 sm:mb-6">
+              <span className="relative inline-block px-6 sm:px-8 py-3 sm:py-4 text-white font-sans font-bold rounded-[11px] gradient-button gradient-button-variant hover:scale-105 transition-transform duration-300 cursor-pointer text-sm sm:text-base">
                 ABOUT US
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-black mt-2 mb-6 tracking-tight">Pioneering the Next Generation of <span className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Wearable Tech</span></h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mt-2 mb-4 sm:mb-6 tracking-tight">Pioneering the Next Generation of <span className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Wearable Tech</span></h2>
             
-            <p className="text-gray-700 mb-6 font-light tracking-wide">
+            <p className="text-gray-700 mb-4 sm:mb-6 font-light tracking-wide text-sm sm:text-base">
               At Viveon Gizit Private Limited, we believe that technology should not only be powerful but also seamlessly integrated into your lifestyle. Our flagship brand HUX™ represents our commitment to innovation and excellence in wearable technology.
             </p>
             
-            <p className="text-gray-700 mb-6 font-light tracking-wide">
+            <p className="text-gray-700 mb-4 sm:mb-6 font-light tracking-wide text-sm sm:text-base">
               Founded in 2025, our team of engineers, designers, and audio experts work tirelessly to create products that combine cutting-edge technology with sleek, minimalist design. The HUX™ line embodies our vision of developing devices that enhance your daily life without getting in the way.
             </p>
             
-            <p className="text-gray-700 mb-8 font-light tracking-wide">
+            <p className="text-gray-700 mb-6 sm:mb-8 font-light tracking-wide text-sm sm:text-base">
               From our state-of-the-art HUX QUANTUM earbuds that deliver unparalleled sound quality to our HUX NEXUS smart rings that put the power of technology at your fingertips, every product is crafted with precision, innovation, and attention to detail.
             </p>
             
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
               <div className="flex items-center">
-                <div className="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center mr-4">
-                  <span className="text-red-500 font-bold text-2xl">15+</span>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-50 flex items-center justify-center mr-3 sm:mr-4">
+                  <span className="text-red-500 font-bold text-lg sm:text-2xl">15+</span>
                 </div>
                 <div>
-                  <p className="text-black font-bold">Engineers</p>
-                  <p className="text-gray-600 text-sm">Dedicated experts</p>
+                  <p className="text-black font-bold text-sm sm:text-base">Engineers</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">Dedicated experts</p>
                 </div>
               </div>
               
               <div className="flex items-center">
-                <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mr-4">
-                  <span className="text-blue-500 font-bold text-2xl">04</span>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-50 flex items-center justify-center mr-3 sm:mr-4">
+                  <span className="text-blue-500 font-bold text-lg sm:text-2xl">04</span>
                 </div>
                 <div>
-                  <p className="text-black font-bold">Patents</p>
-                  <p className="text-gray-600 text-sm">Innovative technology</p>
+                  <p className="text-black font-bold text-sm sm:text-base">Patents</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">Innovative technology</p>
                 </div>
               </div>
               
               <div className="flex items-center">
-                <div className="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center mr-4">
-                  <span className="text-purple-500 font-bold text-2xl">24/7</span>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-purple-50 flex items-center justify-center mr-3 sm:mr-4">
+                  <span className="text-purple-500 font-bold text-lg sm:text-2xl">24/7</span>
                 </div>
                 <div>
-                  <p className="text-black font-bold">Support</p>
-                  <p className="text-gray-600 text-sm">Always available</p>
+                  <p className="text-black font-bold text-sm sm:text-base">Support</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">Always available</p>
                 </div>
               </div>
             </div>
