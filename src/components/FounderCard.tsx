@@ -50,8 +50,8 @@ const FounderCard: React.FC<FounderProps> = ({
                   alt={`${name} - ${role}`} 
                   className="object-cover"
                 />
-                <AvatarFallback className="bg-muted">
-                  {getRoleIcon(role)}
+                <AvatarFallback className="bg-muted text-foreground">
+                  {name.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
               </Avatar>
               
