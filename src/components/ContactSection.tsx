@@ -8,10 +8,13 @@ const ContactSection: React.FC = () => {
       <div className="w-full px-6 md:px-12 lg:px-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              <span className="text-black">Connect With </span>
-              <span className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Us</span>
-            </h2>
+            <div className="relative inline-block mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold relative z-10">
+                <span className="relative inline-block px-8 py-4 text-white font-sans font-bold rounded-[11px] gradient-button gradient-button-variant hover:scale-105 transition-transform duration-300 cursor-pointer">
+                  Connect With Us
+                </span>
+              </h2>
+            </div>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Have questions about our HUX products or interested in collaboration? Reach out to us through any of the following channels.
             </p>
