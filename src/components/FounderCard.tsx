@@ -85,14 +85,8 @@ const FounderCard: React.FC<FounderProps> = ({
                     {skill}
                   </span>
                 ))}
-              </div>
             </div>
-            
-            {/* Experience indicator */}
-            <div className="flex-shrink-0 text-right">
-              <div className="text-sm font-medium text-foreground">{yearsExperience}+</div>
-              <div className="text-xs text-muted-foreground">years</div>
-            </div>
+          </div>
           </div>
           
           {/* Hover indicator */}
