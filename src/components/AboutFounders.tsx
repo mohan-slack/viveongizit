@@ -6,7 +6,7 @@ const AboutFounders: React.FC = () => {
   const founders = [
     {
       name: "Siva Sundar K",
-      role: "CEO",
+      role: "👨‍💼",
       description: "Visionary leader blending strategy and execution, driving innovation with 12+ years in Operations, Sales & Marketing.",
       longDescription: "A visionary leader with over 12 years in operations, sales, and marketing. His expertise in strategic growth and market positioning has been instrumental in shaping Viveon Gizit into a powerhouse of innovation. His forward-thinking approach and keen market insights have positioned HUX™ as a revolutionary brand in the wearable technology space.",
       expertise: ["Strategic Vision", "Innovation Leadership", "Market Growth"],
@@ -15,7 +15,7 @@ const AboutFounders: React.FC = () => {
     },
     {
       name: "G Surya Reddy",
-      role: "COO",
+      role: "🧑‍💻",
       description: "Finance & operations maestro, ensuring seamless execution and scalable growth with a decade of expertise.",
       longDescription: "The operational backbone of the company, ensuring financial stability and seamless execution. With over a decade in finance and management, he transforms strategies into scalable realities. His meticulous approach to operational excellence and financial management has built a solid foundation for Viveon's continuous growth and market expansion.",
       expertise: ["Financial Strategy", "Operational Excellence", "Business Scaling"],
@@ -24,7 +24,7 @@ const AboutFounders: React.FC = () => {
     },
     {
       name: "T Mohan Reddy",
-      role: "CTO",
+      role: "👨‍🔬",
       description: "The tech architect behind innovation, pioneering R&D and IT advancements for the next-gen wearable revolution.",
       longDescription: "The mastermind behind cutting-edge R&D and IT advancements. With 10+ years of experience, he pioneers next-gen wearable technology, driving product excellence and innovation. His technical brilliance and passion for cutting-edge technology has enabled Viveon to stay ahead of the competition with groundbreaking products that redefine industry standards.",
       expertise: ["R&D Leadership", "Technical Innovation", "Product Architecture"],
