@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlayCircle, Moon, Activity, Thermometer, Smile } from "lucide-react";
-import { TextPressure } from "./ui/text-pressure";
 import dashboardSpo2 from "@/assets/dashboard-spo2.jpg";
 import dashboardHrv from "@/assets/dashboard-hrv.jpg";
 import dashboardSleep from "@/assets/dashboard-sleep.jpg";
@@ -70,22 +69,8 @@ export default function FeaturedSmartRingDemoSection() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4 text-black">
             Monitor Your Body. <br />
             Master Your Health with{" "}
-            <span className="inline-block font-bold flex items-center gap-2">
-              <div className="w-20 h-8 inline-block">
-                <TextPressure 
-                  text="HUX"
-                  textColor="#9CA3AF"
-                  width={true}
-                  weight={true}
-                  italic={false}
-                  alpha={false}
-                  flex={true}
-                  scale={false}
-                  minFontSize={24}
-                  className="text-gray-400"
-                />
-              </div>
-              <span className="bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">Smart Ring</span>
+            <span className="inline-block font-bold">
+              <span className="text-gray-400">HUX</span> <span className="bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">Smart Ring</span>
             </span>
           </h1>
         </header>

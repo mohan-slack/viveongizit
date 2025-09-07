@@ -3,7 +3,6 @@ import React from 'react';
 import { Button } from './ui/button';
 import AboutFounders from './AboutFounders';
 import { Link } from 'react-router-dom';
-import { TextPressure } from './ui/text-pressure';
 
 const AboutSection: React.FC = () => {
   return <div id="about" className="bg-white py-20 w-full">
@@ -17,21 +16,9 @@ const AboutSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="w-16 h-8 relative">
-                    <TextPressure 
-                      text="HUX"
-                      textColor="#ea384c"
-                      strokeColor="#FFFFFF"
-                      stroke={false}
-                      width={true}
-                      weight={true}
-                      italic={false}
-                      alpha={false}
-                      flex={true}
-                      scale={false}
-                      minFontSize={18}
-                      className="font-bold tracking-wider"
-                    />
-                    <span className="absolute top-0 right-0 text-white text-[0.5em] font-light">™</span>
+                    <span className="text-red-500 font-bold tracking-wider text-lg">
+                      HUX<span className="text-white text-[0.5em] align-top leading-none">™</span>
+                    </span>
                   </div>
                   <h3 className="tracking-tight text-zinc-50 font-normal text-base">By Viveon Gizit Pvt. Ltd.</h3>
                 </div>
