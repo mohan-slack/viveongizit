@@ -20,9 +20,18 @@ const ContactSection: React.FC = () => {
           <div className="bg-gray-50 backdrop-blur-lg rounded-2xl p-8 border border-gray-200">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Location */}
-              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-200 hover:border-red-300 transition-all group hover:shadow-md">
-                <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <MapPin className="text-red-500" size={24} />
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-200 hover:border-red-300 transition-all group hover:shadow-lg">
+                <div className="relative w-16 h-16 mb-4 group-hover:scale-110 transition-transform">
+                  {/* 3D Location Pin */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-400 via-red-500 to-red-600 rounded-full shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform duration-300">
+                    <div className="absolute inset-1 bg-gradient-to-br from-red-300 to-red-500 rounded-full">
+                      <div className="absolute inset-1 bg-gradient-to-br from-white/30 to-transparent rounded-full">
+                        <MapPin className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white" size={20} />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Shadow */}
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-3 bg-red-500/20 rounded-full blur-sm"></div>
                 </div>
                 <h3 className="text-black text-lg font-bold mb-2">Location</h3>
                 <p className="text-gray-600">
@@ -32,9 +41,18 @@ const ContactSection: React.FC = () => {
               </div>
               
               {/* Phone */}
-              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-200 hover:border-blue-300 transition-all group hover:shadow-md">
-                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Phone className="text-blue-500" size={24} />
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-200 hover:border-blue-300 transition-all group hover:shadow-lg">
+                <div className="relative w-16 h-16 mb-4 group-hover:scale-110 transition-transform">
+                  {/* 3D Phone */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-2xl shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                    <div className="absolute inset-1 bg-gradient-to-br from-blue-300 to-blue-500 rounded-xl">
+                      <div className="absolute inset-1 bg-gradient-to-br from-white/40 to-transparent rounded-xl">
+                        <Phone className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white" size={18} />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Shadow */}
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-3 bg-blue-500/20 rounded-full blur-sm"></div>
                 </div>
                 <h3 className="text-black text-lg font-bold mb-2">Phone</h3>
                 <p className="text-gray-600">
@@ -43,9 +61,18 @@ const ContactSection: React.FC = () => {
               </div>
               
               {/* Email */}
-              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-200 hover:border-purple-300 transition-all group hover:shadow-md">
-                <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Mail className="text-purple-500" size={24} />
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-200 hover:border-purple-300 transition-all group hover:shadow-lg">
+                <div className="relative w-16 h-16 mb-4 group-hover:scale-110 transition-transform">
+                  {/* 3D Email Envelope */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600 rounded-lg shadow-lg transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                    <div className="absolute inset-1 bg-gradient-to-br from-purple-300 to-purple-500 rounded-md">
+                      <div className="absolute inset-1 bg-gradient-to-br from-white/30 to-transparent rounded-md">
+                        <Mail className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white" size={18} />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Shadow */}
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-3 bg-purple-500/20 rounded-full blur-sm"></div>
                 </div>
                 <h3 className="text-black text-lg font-bold mb-2">Email</h3>
                 <p className="text-gray-600">
