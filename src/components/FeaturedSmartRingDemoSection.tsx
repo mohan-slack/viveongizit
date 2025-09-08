@@ -9,7 +9,6 @@ export default function FeaturedSmartRingDemoSection() {
   const [currentDashboard, setCurrentDashboard] = useState(0);
   
   const dashboards = [
-    { image: dashboardSpo2, title: "SPO2 Monitoring", subtitle: "Real-time oxygen saturation" },
     { image: "/lovable-uploads/7461b774-3563-44bc-9ba3-de5051ce67fb.png", title: "Sleep Monitor", subtitle: "REM, Deep, Light & Awake stages" },
     { image: "/lovable-uploads/130868ad-f627-4a22-b6a9-4f5f05b1f3df.png", title: "HR & SpO2 & Body Temp", subtitle: "Comprehensive vital signs monitoring" },
     { image: "/lovable-uploads/7e9876cb-fe70-4f6a-8e1a-6f5d6addad63.png", title: "ECG Monitoring", subtitle: "Continuous heart rhythm analysis" },
