@@ -5,50 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Heart, Activity, Moon, Shield, Smartphone, AlertTriangle } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import ScrollingFeatureCards from '@/components/ScrollingFeatureCards';
 
 const HuxAuraRing = () => {
   const navigate = useNavigate();
-
-  const features = [
-    {
-      icon: <Activity className="w-8 h-8" />,
-      title: "360° Smart Wellness Monitoring",
-      description: "Powerful features to help you stay in tune with your body in India's diverse climate. Monitor key health metrics in real-time including heart rate, HRV, SpO₂, body temperature, and menstrual cycle tracking.",
-      image: "/lovable-uploads/dashboard-hrv.jpg"
-    },
-    {
-      icon: <AlertTriangle className="w-8 h-8" />,
-      title: "Vibration Alert System",
-      description: "Integrated tactile precision micro motor provides multiple vibration-based reminders perfect for India's busy lifestyle. Get alerts for incoming calls, health warnings, medication reminders, and festival notifications.",
-      image: "/lovable-uploads/calling-vibration.jpg"
-    },
-    {
-      icon: <Heart className="w-8 h-8" />,
-      title: "Exercise Heart Rate Monitoring", 
-      description: "Record each heartbeat during exercise with comprehensive fitness evaluation. Perfect for tracking yoga, cricket, badminton, and other popular Indian sports and wellness activities.",
-      image: "/lovable-uploads/dashboard-hrv.jpg"
-    },
-    {
-      icon: <Smartphone className="w-8 h-8" />,
-      title: "Smart Touch Control",
-      description: "Control your smartphone, tablet, and smart home devices with simple gestures. Compatible with popular Indian apps and IoT devices for seamless smart living.",
-      image: "/lovable-uploads/smart-touch-control.jpg"
-    },
-    {
-      icon: <Moon className="w-8 h-8" />,
-      title: "Comprehensive Sleep Analysis",
-      description: "Monitor sleep patterns adapted for Indian lifestyle with detailed analysis of heart rate, blood oxygen, HRV, and body temperature during rest. Get personalized recovery reports.",
-      image: "/lovable-uploads/sleep-management.jpg"
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Emergency SOS Function",
-      description: "Quick activation by tapping the ring 10 times. Automatically dials emergency contacts and sends location data - crucial for safety in both urban and rural India.",
-      image: "/lovable-uploads/dashboard-mood.jpg"
-    }
-  ];
 
   const specifications = [
     { label: "CPU", value: "Ultra Low Power Bluetooth Chip" },
@@ -128,60 +90,7 @@ const HuxAuraRing = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 relative">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-viveon-neon-blue to-viveon-neon-purple bg-clip-text text-transparent">
-              Revolutionary Features for Modern India
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Experience cutting-edge health monitoring technology designed specifically 
-              for India's diverse climate, lifestyle, and cultural needs.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="bg-viveon-dark/50 border-viveon-neon-blue/20 hover:border-viveon-neon-blue/40 transition-all duration-300 h-full">
-                  <CardContent className="p-6">
-                    <div className="relative mb-6 h-48 rounded-lg overflow-hidden">
-                      <img 
-                        src={feature.image} 
-                        alt={feature.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-viveon-darker to-transparent"></div>
-                      <div className="absolute top-4 left-4 p-3 bg-viveon-neon-blue/20 rounded-full backdrop-blur-sm">
-                        <div className="text-viveon-neon-blue">
-                          {feature.icon}
-                        </div>
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ScrollingFeatureCards />
 
       {/* Specifications Section */}
       <section className="py-20 bg-viveon-dark/30">
