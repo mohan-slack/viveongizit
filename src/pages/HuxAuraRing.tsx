@@ -358,7 +358,7 @@ const HuxAuraRing = () => {
             <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
               <span>✓ Free shipping across India</span>
               <span>✓ 30-day money back guarantee</span>
-              <span>✓ 1-year warranty</span>
+              <span>✓ 6-Months warranty</span>
               <span>✓ 24/7 customer support</span>
             </div>
           </motion.div>
