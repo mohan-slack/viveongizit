@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
   return (
-    <div id="contact" className="bg-white py-20 w-full">
+    <div id="contact" className="bg-white py-10 lg:py-12 w-full">
       <div className="w-full px-6 md:px-12 lg:px-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8 sm:mb-12">

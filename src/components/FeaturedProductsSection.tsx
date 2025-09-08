@@ -27,7 +27,7 @@ const FeaturedProductsSection: React.FC = () => {
   ];
 
   return (
-    <div className="relative bg-gradient-to-br from-background via-background to-muted py-24 w-full overflow-hidden">
+    <div className="relative bg-gradient-to-br from-background via-background to-muted py-12 lg:py-16 w-full overflow-hidden">
       {/* Background grid pattern */}
       <div className="absolute inset-0 bg-grid-lines opacity-5" />
       

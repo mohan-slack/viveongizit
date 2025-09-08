@@ -62,7 +62,7 @@ export default function FeaturedSmartRingDemoSection() {
   ];
 
   return (
-    <section className="py-24 px-4 bg-white">
+    <section className="py-12 lg:py-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <header className="text-left mb-16">
