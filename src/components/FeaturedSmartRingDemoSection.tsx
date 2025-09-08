@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { PlayCircle, Moon, Activity, Thermometer, Smile } from "lucide-react";
+import { PlayCircle, Activity, Thermometer, Smile } from "lucide-react";
 import dashboardSpo2 from "@/assets/dashboard-spo2.jpg";
 import dashboardHrv from "@/assets/dashboard-hrv.jpg";
-import dashboardSleep from "@/assets/dashboard-sleep.jpg";
 import dashboardTemperature from "@/assets/dashboard-temperature.jpg";
 import dashboardMood from "@/assets/dashboard-mood.jpg";
 
@@ -13,7 +12,7 @@ export default function FeaturedSmartRingDemoSection() {
   const dashboards = [
     { image: dashboardSpo2, title: "SPO2 Monitoring", subtitle: "Real-time oxygen saturation" },
     { image: dashboardHrv, title: "HRV Analysis", subtitle: "Heart rate variability trends" },
-    { image: dashboardSleep, title: "Sleep Tracking", subtitle: "REM, Deep & Light stages" },
+    { image: "/lovable-uploads/7e9876cb-fe70-4f6a-8e1a-6f5d6addad63.png", title: "ECG Monitoring", subtitle: "Continuous heart rhythm analysis" },
     { image: dashboardTemperature, title: "Body Temperature", subtitle: "24-hour fluctuation monitoring" },
     { image: dashboardMood, title: "Mood Detection", subtitle: "Stress & wellness indicators" }
   ];
@@ -29,9 +28,9 @@ export default function FeaturedSmartRingDemoSection() {
 
   const ringFeatures = [
     {
-      title: "Sleep Tracking",
-      subtitle: "Understand your sleep cycles and recovery patterns with nightly breakdowns and sleep scores.",
-      icon: <Moon className="w-5 h-5 text-blue-400" />
+      title: "ECG Monitoring",
+      subtitle: "Continuous heart rhythm analysis with real-time ECG waveforms and arrhythmia detection.",
+      icon: <Activity className="w-5 h-5 text-red-400" />
     },
     {
       title: "Heart Rate Variability",
