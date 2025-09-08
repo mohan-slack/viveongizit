@@ -13,6 +13,7 @@ interface ProductCardProps {
   tertiaryImagePath?: string;
   color: 'red' | 'blue' | 'purple';
   className?: string;
+  onClick?: () => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ 
@@ -22,7 +23,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   secondaryImagePath,
   tertiaryImagePath,
   color = 'red',
-  className 
+  className,
+  onClick
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -75,10 +77,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
         colorMap[color].border,
         colorMap[color].glow,
         isHovered && colorMap[color].cardGlow,
+        onClick && "cursor-pointer",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
       style={{
         transform: isHovered ? 'rotateX(5deg) rotateY(5deg) scale(1.02)' : 'rotateX(0deg) rotateY(0deg) scale(1)',
         transformStyle: 'preserve-3d',

@@ -9,6 +9,7 @@ import Features from "./pages/Features";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Products from "./pages/Products";
+import HuxAuraRing from "./pages/HuxAuraRing";
 import DynamicBackground from "@/components/DynamicBackground";
 import "./App.css";
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/products",
     element: <Products />,
+  },
+  {
+    path: "/products/hux-aura-ring",
+    element: <HuxAuraRing />,
   },
   {
     path: "*",

@@ -3,8 +3,11 @@ import ProductCard from './ProductCard';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const FeaturedProductsSection: React.FC = () => {
+  const navigate = useNavigate();
+  
   const smartRings = [
     {
       id: 1,
@@ -138,6 +141,7 @@ const FeaturedProductsSection: React.FC = () => {
                   secondaryImagePath={product.secondaryImagePath}
                   tertiaryImagePath={product.tertiaryImagePath}
                   color={product.color}
+                  onClick={product.name === "HUX AURA RING" ? () => navigate('/products/hux-aura-ring') : undefined}
                 />
               </motion.div>
             ))}
