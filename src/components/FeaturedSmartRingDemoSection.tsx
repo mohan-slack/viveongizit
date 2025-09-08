@@ -91,7 +91,7 @@ export default function FeaturedSmartRingDemoSection() {
                     <img
                       src={dashboard.image}
                       alt={dashboard.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                     
                     {/* Overlay with metric info */}
