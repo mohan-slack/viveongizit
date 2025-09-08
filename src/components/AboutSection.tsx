@@ -10,8 +10,9 @@ const AboutSection: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-16 items-center max-w-6xl mx-auto">
           <div className="lg:w-1/2">
             <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 rounded-2xl blur-md opacity-20"></div>
-              <div className="relative bg-gray-100 rounded-2xl overflow-hidden">
+              <div className="absolute -inset-3 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur-xl opacity-60 animate-pulse"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur-lg opacity-40"></div>
+              <div className="relative bg-gray-100 rounded-2xl overflow-hidden shadow-2xl">
                 <img src="/lovable-uploads/ad606094-c16f-4418-9c42-8d147e72ee26.png" alt="HUX Smart Rings by Viveon" className="w-full h-auto" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">

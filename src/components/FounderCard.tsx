@@ -44,7 +44,8 @@ const FounderCard: React.FC<FounderProps> = ({
           <div className="flex items-center space-x-3 sm:space-x-4">
             {/* Avatar */}
             <div className="relative flex-shrink-0">
-              <Avatar className="w-12 h-12 sm:w-14 sm:h-14 border-2 border-border/20">
+              <div className="absolute -inset-1 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-full blur-md opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+              <Avatar className="relative w-12 h-12 sm:w-14 sm:h-14 border-2 border-viveon-neon-blue/30 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                 <AvatarImage 
                   src={profileImage} 
                   alt={`${name} - ${role}`} 
