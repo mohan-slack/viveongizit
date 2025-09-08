@@ -13,7 +13,7 @@ export default function FeaturedSmartRingDemoSection() {
     { image: "/lovable-uploads/7461b774-3563-44bc-9ba3-de5051ce67fb.png", title: "Sleep Monitor", subtitle: "REM, Deep, Light & Awake stages" },
     { image: "/lovable-uploads/130868ad-f627-4a22-b6a9-4f5f05b1f3df.png", title: "HR & SpO2 & Body Temp", subtitle: "Comprehensive vital signs monitoring" },
     { image: "/lovable-uploads/7e9876cb-fe70-4f6a-8e1a-6f5d6addad63.png", title: "ECG Monitoring", subtitle: "Continuous heart rhythm analysis" },
-    { image: dashboardTemperature, title: "Body Temperature", subtitle: "24-hour fluctuation monitoring" },
+    { image: "/lovable-uploads/7917c6b6-e61e-49cc-99c0-da40ae1e8901.png", title: "Mood Tracking", subtitle: "Real-time stress and emotional wellness monitoring" },
     { image: dashboardMood, title: "Mood Detection", subtitle: "Stress & wellness indicators" }
   ];
 
