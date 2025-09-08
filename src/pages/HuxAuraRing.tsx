@@ -118,12 +118,9 @@ const HuxAuraRing = () => {
               </Badge>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Button size="lg" className="bg-gradient-to-r from-viveon-neon-blue to-viveon-neon-purple hover:opacity-90">
                 Pre-Order Now - ₹12,999
-              </Button>
-              <Button size="lg" variant="outline" className="border-viveon-neon-blue text-viveon-neon-blue hover:bg-viveon-neon-blue hover:text-white">
-                Download AIZO App
               </Button>
             </div>
           </motion.div>
@@ -350,12 +347,9 @@ const HuxAuraRing = () => {
                     </Badge>
                   </div>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex justify-center">
                   <Button size="lg" className="bg-gradient-to-r from-viveon-neon-blue to-viveon-neon-purple hover:opacity-90 min-w-[200px]">
                     Pre-Order Now
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-viveon-neon-blue text-viveon-neon-blue hover:bg-viveon-neon-blue hover:text-white min-w-[200px]">
-                    Download AIZO App
                   </Button>
                 </div>
               </div>
