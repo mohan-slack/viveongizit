@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { PlayCircle, Activity, Thermometer, Smile } from "lucide-react";
+import { PlayCircle, Activity, Thermometer, Smile, Moon } from "lucide-react";
 import dashboardSpo2 from "@/assets/dashboard-spo2.jpg";
-import dashboardHrv from "@/assets/dashboard-hrv.jpg";
 import dashboardTemperature from "@/assets/dashboard-temperature.jpg";
 import dashboardMood from "@/assets/dashboard-mood.jpg";
 
@@ -11,6 +10,7 @@ export default function FeaturedSmartRingDemoSection() {
   
   const dashboards = [
     { image: dashboardSpo2, title: "SPO2 Monitoring", subtitle: "Real-time oxygen saturation" },
+    { image: "/lovable-uploads/7461b774-3563-44bc-9ba3-de5051ce67fb.png", title: "Sleep Monitor", subtitle: "REM, Deep, Light & Awake stages" },
     { image: "/lovable-uploads/130868ad-f627-4a22-b6a9-4f5f05b1f3df.png", title: "HR & SpO2 & Body Temp", subtitle: "Comprehensive vital signs monitoring" },
     { image: "/lovable-uploads/7e9876cb-fe70-4f6a-8e1a-6f5d6addad63.png", title: "ECG Monitoring", subtitle: "Continuous heart rhythm analysis" },
     { image: dashboardTemperature, title: "Body Temperature", subtitle: "24-hour fluctuation monitoring" },
@@ -28,6 +28,11 @@ export default function FeaturedSmartRingDemoSection() {
 
   const ringFeatures = [
     {
+      title: "Sleep Monitor",
+      subtitle: "Track sleep stages including REM, deep, light, and awake periods with detailed analytics.",
+      icon: <Moon className="w-5 h-5 text-blue-400" />
+    },
+    {
       title: "ECG Monitoring",
       subtitle: "Continuous heart rhythm analysis with real-time ECG waveforms and arrhythmia detection.",
       icon: <Activity className="w-5 h-5 text-red-400" />
@@ -36,11 +41,6 @@ export default function FeaturedSmartRingDemoSection() {
       title: "HR & SpO2 & Body Temp",
       subtitle: "Comprehensive vital signs monitoring with heart rate, blood oxygen, and temperature tracking.",
       icon: <Activity className="w-5 h-5 text-pink-400" />
-    },
-    {
-      title: "Body Temperature",
-      subtitle: "Track fluctuations to monitor wellness, recovery, or early signs of illness.",
-      icon: <Thermometer className="w-5 h-5 text-red-400" />
     },
     {
       title: "Mood Detection (Beta)",
