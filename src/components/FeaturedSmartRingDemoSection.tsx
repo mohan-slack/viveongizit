@@ -11,7 +11,7 @@ export default function FeaturedSmartRingDemoSection() {
   
   const dashboards = [
     { image: dashboardSpo2, title: "SPO2 Monitoring", subtitle: "Real-time oxygen saturation" },
-    { image: dashboardHrv, title: "HRV Analysis", subtitle: "Heart rate variability trends" },
+    { image: "/lovable-uploads/130868ad-f627-4a22-b6a9-4f5f05b1f3df.png", title: "HR & SpO2 & Body Temp", subtitle: "Comprehensive vital signs monitoring" },
     { image: "/lovable-uploads/7e9876cb-fe70-4f6a-8e1a-6f5d6addad63.png", title: "ECG Monitoring", subtitle: "Continuous heart rhythm analysis" },
     { image: dashboardTemperature, title: "Body Temperature", subtitle: "24-hour fluctuation monitoring" },
     { image: dashboardMood, title: "Mood Detection", subtitle: "Stress & wellness indicators" }
@@ -33,8 +33,8 @@ export default function FeaturedSmartRingDemoSection() {
       icon: <Activity className="w-5 h-5 text-red-400" />
     },
     {
-      title: "Heart Rate Variability",
-      subtitle: "Get insights into stress, recovery, and readiness with advanced HRV metrics throughout the day.",
+      title: "HR & SpO2 & Body Temp",
+      subtitle: "Comprehensive vital signs monitoring with heart rate, blood oxygen, and temperature tracking.",
       icon: <Activity className="w-5 h-5 text-pink-400" />
     },
     {
