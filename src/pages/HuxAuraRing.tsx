@@ -27,12 +27,12 @@ const HuxAuraRing = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-viveon-darker text-white relative">
+    <div className="min-h-screen relative bg-white">
       <Navbar />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-viveon-neon-blue/10 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-viveon-neon-blue/5 to-transparent"></div>
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ const HuxAuraRing = () => {
             <Button 
               variant="ghost" 
               onClick={() => navigate('/products')}
-              className="mb-8 text-viveon-neon-blue hover:text-white"
+              className="mb-8 text-viveon-neon-blue hover:text-viveon-dark"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Products
@@ -61,7 +61,7 @@ const HuxAuraRing = () => {
               HUX AURA RING
             </h1>
             
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               The Future of Health Monitoring for India - Advanced Smart Ring Technology
               Designed for Indian Lifestyle and Climate Conditions
             </p>
@@ -94,7 +94,7 @@ const HuxAuraRing = () => {
       <ScrollingFeatureCards />
 
       {/* Specifications Section */}
-      <section className="py-20 bg-viveon-dark/30">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -105,13 +105,13 @@ const HuxAuraRing = () => {
             <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-viveon-neon-purple to-viveon-red bg-clip-text text-transparent">
               Technical Specifications
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-gray-600">
               Premium engineering meets Indian quality standards
             </p>
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-viveon-darker/80 border-viveon-neon-purple/30">
+            <Card className="bg-white border-viveon-neon-purple/30 shadow-lg">
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-2 gap-6">
                   {specifications.map((spec, index) => (
@@ -121,12 +121,12 @@ const HuxAuraRing = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.05 }}
-                      className="flex justify-between items-center py-3 border-b border-viveon-neon-blue/20 last:border-b-0"
+                      className="flex justify-between items-center py-3 border-b border-gray-200 last:border-b-0"
                     >
                       <span className="font-medium text-viveon-neon-blue">
                         {spec.label}
                       </span>
-                      <span className="text-gray-300 text-right">
+                      <span className="text-gray-700 text-right">
                         {spec.value}
                       </span>
                     </motion.div>
@@ -189,11 +189,11 @@ const HuxAuraRing = () => {
               </Card>
             </div>
             
-            <div className="bg-gradient-to-r from-viveon-neon-blue/20 to-viveon-neon-purple/20 rounded-2xl p-8 border border-viveon-neon-blue/30">
-              <h3 className="text-2xl font-bold mb-4 text-white">
+            <div className="bg-gradient-to-r from-viveon-neon-blue/10 to-viveon-neon-purple/10 rounded-2xl p-8 border border-viveon-neon-blue/30 shadow-lg">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">
                 Emergency SOS for Indian Conditions
               </h3>
-              <p className="text-gray-300 mb-6">
+              <p className="text-gray-600 mb-6">
                 Designed for India's unique safety needs - works in areas with poor network 
                 connectivity and integrates with local emergency services. Simply tap the ring 
                 10 times to activate emergency protocols.
@@ -218,8 +218,8 @@ const HuxAuraRing = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-viveon-neon-blue/10 via-viveon-neon-purple/10 to-viveon-red/10"></div>
+      <section className="py-20 relative bg-gray-50">
+        <div className="absolute inset-0 bg-gradient-to-r from-viveon-neon-blue/5 via-viveon-neon-purple/5 to-viveon-red/5"></div>
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -230,19 +230,19 @@ const HuxAuraRing = () => {
             <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-viveon-neon-blue via-viveon-neon-purple to-viveon-red bg-clip-text text-transparent">
               Be Among the First in India
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-600 mb-8">
               Join thousands of Indians who are already transforming their health 
               monitoring with the HUX AURA RING. Pre-order now and get exclusive 
               early bird pricing.
             </p>
             
-            <div className="bg-viveon-darker/80 rounded-2xl p-8 border border-viveon-neon-blue/30 mb-8">
+            <div className="bg-white rounded-2xl p-8 border border-viveon-neon-blue/30 shadow-lg mb-8">
               <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="text-left">
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     Early Bird Special
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-600">
                     Limited time offer for first 1000 customers in India
                   </p>
                   <div className="flex items-center gap-4 mt-3">
@@ -265,7 +265,7 @@ const HuxAuraRing = () => {
               </div>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
+            <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-600">
               <span>✓ Free shipping across India</span>
               <span>✓ 6-Months warranty</span>
               <span>✓ 24/7 customer support</span>
