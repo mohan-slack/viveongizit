@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ScrollingFeatureCards from '@/components/ScrollingFeatureCards';
+import smartRingImage from '@/assets/smart-touch-ring.jpg';
 
 const HuxAuraRing = () => {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ const HuxAuraRing = () => {
             <div className="relative mb-8">
               <div className="absolute -inset-3 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-full blur-xl opacity-60 animate-pulse"></div>
               <img 
-                src="/lovable-uploads/148630aa-7dc0-48ab-8e8a-206789faeea5.png" 
+                src={smartRingImage} 
                 alt="HUX AURA Smart Ring" 
                 className="relative w-64 h-64 mx-auto object-contain"
               />
