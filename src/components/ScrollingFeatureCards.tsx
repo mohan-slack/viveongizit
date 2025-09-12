@@ -104,13 +104,15 @@ const ScrollingFeatureCards: React.FC = () => {
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+      const scrollAmount = window.innerWidth < 640 ? 280 : window.innerWidth < 768 ? 320 : 400;
+      scrollContainerRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+      const scrollAmount = window.innerWidth < 640 ? 280 : window.innerWidth < 768 ? 320 : 400;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
@@ -185,7 +187,7 @@ const ScrollingFeatureCards: React.FC = () => {
           
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 scroll-smooth"
+            className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-hide pb-4 scroll-smooth px-2"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {featureCards.map((feature, index) => {
@@ -198,12 +200,12 @@ const ScrollingFeatureCards: React.FC = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex-shrink-0 w-80"
+                  className="flex-shrink-0 w-72 sm:w-80 md:w-96 lg:w-[400px]"
                 >
                   <Card className={`h-full bg-viveon-darker/80 backdrop-blur-md border ${colors.border} hover:border-opacity-60 transition-all duration-500 group overflow-hidden`}>
                     <CardContent className="p-0">
                       {/* Image Section */}
-                      <div className="relative h-48 overflow-hidden">
+                      <div className="relative h-64 sm:h-72 md:h-80 lg:h-96 overflow-hidden">
                         <img
                           src={feature.image}
                           alt={feature.title}
@@ -219,26 +221,11 @@ const ScrollingFeatureCards: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Content Section */}
-                      <div className="p-6">
-                        <h3 className={`text-xl font-bold mb-3 ${colors.text}`}>
+                      {/* Content Section - Only Title */}
+                      <div className="p-4 sm:p-6">
+                        <h3 className={`text-lg sm:text-xl md:text-2xl font-bold text-center ${colors.text}`}>
                           {feature.title}
                         </h3>
-                        <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                          {feature.description}
-                        </p>
-
-                        {/* Benefits */}
-                        <div className="flex flex-wrap gap-2">
-                          {feature.benefits.map((benefit, benefitIndex) => (
-                            <span
-                              key={benefitIndex}
-                              className={`px-3 py-1 text-xs rounded-full border ${colors.badge} transition-all duration-300 hover:scale-105`}
-                            >
-                              {benefit}
-                            </span>
-                          ))}
-                        </div>
                       </div>
 
                       {/* Animated Border Effect */}
@@ -253,26 +240,6 @@ const ScrollingFeatureCards: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-viveon-neon-blue/10 via-viveon-neon-purple/10 to-viveon-red/10 rounded-2xl p-8 border border-viveon-neon-blue/20">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Experience All These Features in One Ring
-            </h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              The HUX AURA RING combines all these revolutionary features into a sleek, 
-              comfortable design that adapts to your Indian lifestyle.
-            </p>
-            <Button className="bg-gradient-to-r from-viveon-neon-blue to-viveon-neon-purple hover:opacity-90 text-white px-8 py-3 rounded-full">
-              Explore Complete Specifications
-            </Button>
-          </div>
-        </motion.div>
       </div>
 
       {/* Custom scrollbar hide styles */}
