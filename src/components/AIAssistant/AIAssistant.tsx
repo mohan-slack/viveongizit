@@ -80,7 +80,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
                   
                   {/* Highlight reflections */}
                   <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-white/20 rounded-full blur-md"></div>
-                  <div className="absolute top-3/4 left-3/4 w-1/2 h-1/2 bg-black/10 rounded-full blur-md"></div>
+                  
                 </div>
                 
                 {/* Robot eyes */}
