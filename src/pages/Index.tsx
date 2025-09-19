@@ -38,10 +38,9 @@ const Index = () => {
       if (element) {
         // Small timeout to ensure the page is fully loaded
         setTimeout(() => {
-          window.scrollTo({
-            top: element.offsetTop - 80, // Adjust for navbar height
-            behavior: 'smooth'
-          });
+          const nav = document.querySelector('nav') as HTMLElement | null;
+          const y = element.getBoundingClientRect().top + window.pageYOffset - ((nav?.offsetHeight ?? 80) + 8);
+          window.scrollTo({ top: y, behavior: 'smooth' });
           
           // Clear the state to prevent scrolling on refresh
           window.history.replaceState({}, document.title);
@@ -54,15 +53,17 @@ const Index = () => {
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
-        e.preventDefault();
-        const id = target.getAttribute('href')?.substring(1);
-        const element = document.getElementById(id || '');
-        if (element) {
-          window.scrollTo({
-            top: element.offsetTop - 80, // Adjust for navbar height
-            behavior: 'smooth'
-          });
+      if (target.tagName === 'A') {
+        const href = (target as HTMLAnchorElement).getAttribute('href') || '';
+        if (href.startsWith('#') || href.includes('/#')) {
+          e.preventDefault();
+          const id = href.startsWith('#') ? href.substring(1) : href.split('/#')[1];
+          const element = document.getElementById(id || '');
+          if (element) {
+            const nav = document.querySelector('nav') as HTMLElement | null;
+            const y = element.getBoundingClientRect().top + window.pageYOffset - ((nav?.offsetHeight ?? 80) + 8);
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
         }
       }
     };

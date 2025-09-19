@@ -32,8 +32,22 @@ export const useNavbar = () => {
     
     // Close mobile menu
     setIsMobileMenuOpen(false);
+
+    const scrollToId = (id: string, attempt = 0) => {
+      const element = document.getElementById(id);
+      const nav = document.querySelector('nav') as HTMLElement | null;
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.pageYOffset - ((nav?.offsetHeight ?? 80) + 8);
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        return true;
+      }
+      if (attempt < 5) {
+        setTimeout(() => scrollToId(id, attempt + 1), 100);
+      }
+      return false;
+    };
     
-    // For contact section or any other hash link
+    // For contact/feature sections or any other hash link
     if (href.includes('#')) {
       const isHomePage = location.pathname === '/';
       const hashPart = href.includes('/#') ? href.split('/#')[1] : href.split('#')[1];
@@ -43,13 +57,7 @@ export const useNavbar = () => {
         navigate('/', { state: { scrollToSection: hashPart } });
       } else {
         // We're already on home page, just scroll
-        const element = document.getElementById(hashPart);
-        if (element) {
-          window.scrollTo({
-            top: element.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
+        scrollToId(hashPart);
       }
     } else {
       // Regular route navigation - just navigate, don't use state as it can cause issues

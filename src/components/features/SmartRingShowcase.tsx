@@ -4,7 +4,7 @@ import SmartRingFeatures from './SmartRingFeatures';
 
 const SmartRingShowcase: React.FC = () => {
   return (
-    <section id="smart-ring-showcase" className="relative">
+    <section id="feature-cards" className="relative">
       <SmartRingFeatures />
     </section>
   );
