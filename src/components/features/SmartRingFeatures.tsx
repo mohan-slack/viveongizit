@@ -46,7 +46,7 @@ export default function SmartRingFeatures() {
                 <div className="w-full h-full rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[3.5rem] overflow-hidden backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl hover:shadow-[0_0_80px_rgba(255,255,255,0.1)] transition-all duration-700 ease-out hover:scale-105 hover:rotate-1 group-hover:bg-white/15">
                   
                   {/* Inner Glass Layer */}
-                  <div className="absolute inset-2 rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] backdrop-blur-sm bg-gradient-to-br from-white/5 to-transparent border border-white/10 overflow-hidden">
+                  <div className="absolute inset-2 rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] backdrop-blur-none sm:backdrop-blur-sm bg-gradient-to-br from-white/10 sm:from-white/5 to-transparent border border-white/20 sm:border-white/10 overflow-hidden">
                     <img
                       src={image}
                       alt={duplicatedNames[index]}
