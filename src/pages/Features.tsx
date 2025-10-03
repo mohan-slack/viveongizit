@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InteractiveFeatureShowcase from '@/components/features/InteractiveFeatureShowcase';
+import RingComfortSection from '@/components/RingComfortSection';
 import { FeatureProps } from '@/components/features/FeatureTypes';
 import { useLocation } from 'react-router-dom';
 import { getSmartRingsData } from '@/components/features/smartRingsData';
@@ -45,6 +46,9 @@ const Features = () => {
           <InteractiveFeatureShowcase features={featuresData} maxVisible={9} />
         </div>
       </div>
+      
+      {/* Full-width Ring Comfort Section */}
+      <RingComfortSection />
       
       <Footer />
     </div>
