@@ -102,7 +102,7 @@ const HuxAuraRing = () => {
             {/* Right: Product Details */}
             <div className="space-y-6">
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-3 text-foreground">
+                <h1 className="text-4xl md:text-5xl font-bold mb-3">
                   HUX AURA Smart Ring
                 </h1>
                 <p className="text-muted-foreground text-lg">
@@ -121,7 +121,7 @@ const HuxAuraRing = () => {
               
               {/* Color Selection */}
               <div>
-                <label className="block text-sm font-medium mb-3 text-foreground">
+                <label className="block text-sm font-medium mb-3">
                   Color: <span className="font-bold">{selectedColor}</span>
                 </label>
                 <div className="flex gap-3">
@@ -141,16 +141,16 @@ const HuxAuraRing = () => {
               
               {/* Size Selection */}
               <div>
-                <label className="block text-sm font-medium mb-3 text-foreground">Ring size</label>
+                <label className="block text-sm font-medium mb-3">Ring size</label>
                 <div className="grid grid-cols-4 gap-2">
                   {sizes.map((size) => (
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
-                      className={`py-3 rounded-lg border transition-all font-medium ${
+                      className={`py-3 rounded-lg border transition-all ${
                         selectedSize === size
                           ? 'bg-primary text-primary-foreground border-primary'
-                          : 'bg-card text-foreground border-border hover:border-primary'
+                          : 'bg-background border-border hover:border-primary'
                       }`}
                     >
                       {size}
@@ -166,8 +166,8 @@ const HuxAuraRing = () => {
               
               {/* Key Features */}
               <div className="space-y-3 pt-4">
-                <h3 className="font-semibold text-lg mb-4 text-foreground">Key Features</h3>
-                <div className="space-y-2 text-sm text-foreground">
+                <h3 className="font-semibold text-lg mb-4">Key Features</h3>
+                <div className="space-y-2 text-sm">
                   <div className="flex items-start gap-2">
                     <span className="text-primary">✓</span>
                     <span>5ATM Waterproof - Swim & shower friendly</span>
