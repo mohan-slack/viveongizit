@@ -7,7 +7,12 @@ import { ParticleTextEffect } from "./interactive-text-particle";
 import { MeshGradient } from "@paper-design/shaders-react";
 import { useEffect, useState } from "react";
 
-export function BackgroundPaths() {
+export function BackgroundPaths({
+    title = "Background Paths",
+}: {
+    title?: string;
+}) {
+    const words = title.split(" ");
     const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
     const [mounted, setMounted] = useState(false);
 
@@ -49,28 +54,18 @@ export function BackgroundPaths() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 2 }}
-                    className="max-w-4xl mx-auto"
+                    className="max-w-6xl mx-auto"
                 >
-                    <div className="mb-8 space-y-6">
-                        <div className="h-32 sm:h-40 md:h-48 w-full">
-                            <ParticleTextEffect
-                                text="INTRODUCING THE FUTURE OF TECH"
-                                className="w-full h-full"
-                                colors={['72b9bb', 'b5d9d9', 'ffd1bd', 'ffebe0', '8cc5b8', 'dbf4a4']}
-                                animationForce={40}
-                                particleDensity={1.5}
-                            />
-                        </div>
-                        <motion.h1 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                            className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter text-transparent bg-clip-text 
-                            bg-gradient-to-r from-neutral-900 to-neutral-700/80 
-                            dark:from-white dark:to-white/80"
-                        >
-                            HUX<span className="text-white text-[0.25em] align-top leading-none">™</span>
-                        </motion.h1>
+                    <div className="w-full h-32 sm:h-40 md:h-48 mb-8">
+                        <ParticleTextEffect 
+                            text="INTRODUCING THE FUTURE OF TECH"
+                            colors={[
+                                'ffad70', 'f7d297', 'edb9a1', 'e697ac', 'b38dca',
+                                '9c76db', '705cb5', '43428e', '2c2142'
+                            ]}
+                            animationForce={80}
+                            particleDensity={3}
+                        />
                     </div>
 
                     <div

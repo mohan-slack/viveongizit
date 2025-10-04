@@ -102,11 +102,6 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
     move(interactionRadius: number, hasPointer: boolean) {
       let moved = false;
 
-      // Add stable vibration - subtle continuous oscillation
-      const time = Date.now() * 0.001;
-      const vibrationX = Math.sin(time * 2 + this.ox * 0.01) * 0.3;
-      const vibrationY = Math.cos(time * 2 + this.oy * 0.01) * 0.3;
-
       if (hasPointer && pointerRef.current.x !== undefined && pointerRef.current.y !== undefined) {
         const dx = this.cx - pointerRef.current.x;
         const dy = this.cy - pointerRef.current.y;
@@ -116,24 +111,21 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
           this.cx += (dx / dist) * force;
           this.cy += (dy / dist) * force;
           // Add subtle rotation and scale effects
-          this.cr = this.or * (1 + Math.sin(time * 10) * 0.3);
+          this.cr = this.or * (1 + Math.sin(Date.now() * 0.01) * 0.3);
           moved = true;
         }
       }
 
-      const odx = (this.ox + vibrationX) - this.cx;
-      const ody = (this.oy + vibrationY) - this.cy;
+      const odx = this.ox - this.cx;
+      const ody = this.oy - this.cy;
       const od = Math.hypot(odx, ody);
 
       if (od > 0.5) {
         const restore = Math.min(od * 0.15, 4);
         this.cx += (odx / od) * restore;
         this.cy += (ody / od) * restore;
-        // Reset radius gradually with subtle pulse
-        this.cr = this.cr * 0.98 + this.or * 0.02 * (1 + Math.sin(time * 3) * 0.1);
-        moved = true;
-      } else {
-        // Even if particles are at rest, apply tiny vibration
+        // Reset radius gradually
+        this.cr = this.cr * 0.98 + this.or * 0.02;
         moved = true;
       }
 
@@ -208,12 +200,18 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
+    let hasMovement = false;
     particlesRef.current.forEach(p => {
-      p.move(interactionRadiusRef.current, hasPointerRef.current);
+      const moved = p.move(interactionRadiusRef.current, hasPointerRef.current);
+      if (moved) hasMovement = true;
     });
     
-    // Always continue animation for stable vibration
-    animationIdRef.current = requestAnimationFrame(animate);
+    // Continue animation if there's movement or pointer interaction
+    if (hasMovement || hasPointerRef.current) {
+      animationIdRef.current = requestAnimationFrame(animate);
+    } else {
+      animationIdRef.current = null;
+    }
   };
 
   const initialize = () => {
@@ -232,11 +230,6 @@ const ParticleTextEffect: React.FC<ParticleTextEffectProps> = ({
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     write();
-    
-    // Start continuous animation for stable vibration
-    if (!animationIdRef.current) {
-      animate();
-    }
   };
 
   useEffect(() => {
