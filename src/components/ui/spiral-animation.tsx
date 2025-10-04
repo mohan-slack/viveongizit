@@ -443,10 +443,11 @@ export function SpiralAnimation() {
     }, [dimensions])
     
     return (
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full bg-white">
             <canvas
                 ref={canvasRef}
                 className="absolute inset-0 w-full h-full"
+                style={{ backgroundColor: 'white' }}
             />
         </div>
     )

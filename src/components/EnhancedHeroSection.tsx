@@ -13,7 +13,7 @@ export default function EnhancedHeroSection() {
       min-h-[calc(100vh-40px)] overflow-hidden rounded-b-xl"
     >
       {/* Spiral Animation Background */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 bg-white">
         <SpiralAnimation />
       </div>
 
