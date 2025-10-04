@@ -3,16 +3,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { DecryptedText } from "./decrypted-text";
-import { HuxParticleText } from "../HuxParticleText";
+import { ParticleTextEffect } from "./interactive-text-particle";
 import { MeshGradient } from "@paper-design/shaders-react";
 import { useEffect, useState } from "react";
 
-export function BackgroundPaths({
-    title = "Background Paths",
-}: {
-    title?: string;
-}) {
-    const words = title.split(" ");
+export function BackgroundPaths() {
     const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
     const [mounted, setMounted] = useState(false);
 
@@ -56,38 +51,27 @@ export function BackgroundPaths({
                     transition={{ duration: 2 }}
                     className="max-w-4xl mx-auto"
                 >
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 tracking-tighter">
-                        {words.slice(0, -1).map((word, wordIndex) => (
-                            <span
-                                key={wordIndex}
-                                className="inline-block mr-4 last:mr-0"
-                            >
-                                {word.split("").map((letter, letterIndex) => (
-                                    <motion.span
-                                        key={`${wordIndex}-${letterIndex}`}
-                                        initial={{ y: 100, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{
-                                            delay:
-                                                wordIndex * 0.1 +
-                                                letterIndex * 0.03,
-                                            type: "spring",
-                                            stiffness: 150,
-                                            damping: 25,
-                                        }}
-                                        className="inline-block text-transparent bg-clip-text 
-                                        bg-gradient-to-r from-neutral-900 to-neutral-700/80 
-                                        dark:from-white dark:to-white/80"
-                                    >
-                                        {letter}
-                                    </motion.span>
-                                ))}
-                            </span>
-                        ))}
-                        <div className="inline-block text-5xl sm:text-7xl md:text-8xl h-24 sm:h-32 md:h-40 w-full max-w-md mx-auto">
-                            <HuxParticleText />
+                    <div className="mb-8 space-y-6">
+                        <div className="h-32 sm:h-40 md:h-48 w-full">
+                            <ParticleTextEffect
+                                text="INTRODUCING THE FUTURE OF TECH"
+                                className="w-full h-full"
+                                colors={['72b9bb', 'b5d9d9', 'ffd1bd', 'ffebe0', '8cc5b8', 'dbf4a4']}
+                                animationForce={40}
+                                particleDensity={1.5}
+                            />
                         </div>
-                    </h1>
+                        <motion.h1 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter text-transparent bg-clip-text 
+                            bg-gradient-to-r from-neutral-900 to-neutral-700/80 
+                            dark:from-white dark:to-white/80"
+                        >
+                            HUX<span className="text-white text-[0.25em] align-top leading-none">™</span>
+                        </motion.h1>
+                    </div>
 
                     <div
                         className="inline-block group relative bg-gradient-to-b from-black/10 to-white/10 
