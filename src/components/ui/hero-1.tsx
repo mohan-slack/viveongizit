@@ -38,12 +38,11 @@ export function Hero({
 
       {/* Radial Accent */}
       <div
-        className="absolute left-1/2 top-[calc(100%-90px)] lg:top-[calc(100%-150px)] 
-        h-[500px] w-[700px] md:h-[500px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
-        -translate-x-1/2 rounded-[100%] border-[#B48CDE] bg-white dark:bg-black 
-        bg-[radial-gradient(closest-side,#fff_82%,#000000)] 
-        dark:bg-[radial-gradient(closest-side,#000_82%,#ffffff)] 
-        animate-fade-up"
+        className="absolute left-1/2 bottom-0 
+        h-[400px] w-[1000px] md:h-[500px] md:w-[1400px] lg:h-[600px] lg:w-[180%] 
+        -translate-x-1/2 translate-y-1/2 rounded-[100%] 
+        bg-[radial-gradient(closest-side,#ffffff_0%,#e8e8e8_50%,#000000_100%)] 
+        dark:bg-[radial-gradient(closest-side,#000000_0%,#1a1a1a_50%,#ffffff_100%)]"
       />
 
       {/* Eyebrow */}
