@@ -61,15 +61,6 @@ export default function EnhancedHeroSection() {
         />
       </div>
 
-      {/* Subtitle */}
-      <p
-        className="animate-fade-in mb-10 text-balance 
-        text-lg tracking-tight text-gray-600 dark:text-gray-400 
-        opacity-0 md:text-xl max-w-3xl mx-auto"
-      >
-        Streamline your workflow and boost productivity with intuitive solutions. Security, speed, and simplicity—all in one platform.
-      </p>
-
       {/* CTA */}
       <div className="flex justify-center">
         <Button
