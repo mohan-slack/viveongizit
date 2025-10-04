@@ -193,38 +193,38 @@ function FeatureCard({ children, step, steps }: { children: React.ReactNode; ste
       style={{ "--x": useMotionTemplate`${mouseX}px`, "--y": useMotionTemplate`${mouseY}px` } as WrapperStyle}
     >
       <div className="relative w-full overflow-hidden rounded-3xl border border-border bg-card transition-colors duration-300">
-        <div className="m-6 md:m-8 min-h-[520px] md:min-h-[560px] lg:min-h-[600px] w-full">
+        <div className="m-6 md:m-8 min-h-[500px] md:min-h-[540px] lg:min-h-[580px] w-full relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
-              className="flex w-full flex-col gap-4 md:w-3/5"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-auto md:max-w-[55%] z-10 bg-background/95 backdrop-blur-sm rounded-2xl p-5 md:p-6 shadow-2xl border border-border"
+              initial={{ opacity: 0, scale: 0.85, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.85, y: 30 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
               <motion.div
-                className="text-sm font-semibold uppercase tracking-wider text-viveon-red"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.05, duration: 0.3, ease: [0.22, 1, 0.36, 1]}}
+                className="text-sm font-semibold uppercase tracking-wider text-viveon-red mb-2"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1]}}
               >
                   {steps[step].name}
               </motion.div>
               <motion.h2
-                className="text-2xl font-bold tracking-tight text-foreground md:text-3xl"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1, duration: 0.3, ease: [0.22, 1, 0.36, 1]}}
+                className="text-xl md:text-2xl font-bold tracking-tight text-foreground mb-3"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.4, ease: [0.22, 1, 0.36, 1]}}
               >
                 {steps[step].title}
               </motion.h2>
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.15, duration: 0.3, ease: [0.22, 1, 0.36, 1]}}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.4, ease: [0.22, 1, 0.36, 1]}}
               >
-                <p className="text-base leading-relaxed text-muted-foreground">
+                <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
                   {steps[step].description}
                 </p>
               </motion.div>
@@ -282,12 +282,12 @@ function StepsNav({ steps: stepItems, current, onChange }: { steps: readonly Ste
 
 const defaultClasses = {
   img: "rounded-xl border border-border shadow-2xl h-auto",
-  step1img1: "w-[48%] left-0 top-[18%]",
-  step1img2: "w-[56%] left-[44%] top-[42%]",
-  step2img1: "w-[50%] left-[2%] top-[22%]",
-  step2img2: "w-[46%] left-[52%] top-[46%]",
-  step3img: "w-[92%] left-[4%] top-[22%]",
-  step4img: "w-[92%] left-[4%] top-[22%]",
+  step1img1: "w-[48%] left-0 top-[8%]",
+  step1img2: "w-[56%] left-[44%] top-[32%]",
+  step2img1: "w-[50%] left-[2%] top-[12%]",
+  step2img2: "w-[46%] left-[52%] top-[36%]",
+  step3img: "w-[92%] left-[4%] top-[12%]",
+  step4img: "w-[92%] left-[4%] top-[12%]",
 } as const
 
 export function FeatureCarousel({
