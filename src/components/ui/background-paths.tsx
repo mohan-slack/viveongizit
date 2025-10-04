@@ -2,8 +2,9 @@
 
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
 import * as THREE from 'three';
+
 const TEXTUREMAP = {
   src: 'https://i.postimg.cc/XYwvXN8D/img-4.png'
 };
@@ -44,6 +45,93 @@ const ScanLine = () => {
     </mesh>;
 };
 
+// Sparking particles effect
+const SparkingParticles = () => {
+  const particlesRef = useRef<THREE.Points>(null);
+  
+  const [positions, colors, sizes] = useMemo(() => {
+    const count = 500;
+    const positions = new Float32Array(count * 3);
+    const colors = new Float32Array(count * 3);
+    const sizes = new Float32Array(count);
+    
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3;
+      // Random positions in 3D space
+      positions[i3] = (Math.random() - 0.5) * 10;
+      positions[i3 + 1] = (Math.random() - 0.5) * 8;
+      positions[i3 + 2] = (Math.random() - 0.5) * 5;
+      
+      // Red to white sparkles
+      const colorMix = Math.random();
+      colors[i3] = 1.0;
+      colors[i3 + 1] = colorMix * 0.3;
+      colors[i3 + 2] = colorMix * 0.3;
+      
+      // Random sizes
+      sizes[i] = Math.random() * 0.15 + 0.05;
+    }
+    
+    return [positions, colors, sizes];
+  }, []);
+  
+  useFrame(({ clock }) => {
+    if (particlesRef.current) {
+      const time = clock.getElapsedTime();
+      const posArray = particlesRef.current.geometry.attributes.position.array as Float32Array;
+      
+      for (let i = 0; i < posArray.length; i += 3) {
+        // Floating animation
+        posArray[i + 1] += Math.sin(time + i) * 0.002;
+        
+        // Reset particles that go too high
+        if (posArray[i + 1] > 4) {
+          posArray[i + 1] = -4;
+        }
+      }
+      
+      particlesRef.current.geometry.attributes.position.needsUpdate = true;
+      
+      // Slow rotation
+      particlesRef.current.rotation.y = time * 0.05;
+    }
+  });
+  
+  return (
+    <points ref={particlesRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={positions.length / 3}
+          array={positions}
+          itemSize={3}
+        />
+        <bufferAttribute
+          attach="attributes-color"
+          count={colors.length / 3}
+          array={colors}
+          itemSize={3}
+        />
+        <bufferAttribute
+          attach="attributes-size"
+          count={sizes.length}
+          array={sizes}
+          itemSize={1}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.1}
+        vertexColors
+        transparent
+        opacity={0.8}
+        sizeAttenuation
+        blending={THREE.AdditiveBlending}
+        depthWrite={false}
+      />
+    </points>
+  );
+};
+
 // Image with depth effect
 const ImageScene = () => {
   const [rawMap, depthMap] = useTexture([TEXTUREMAP.src, DEPTHMAP.src]);
@@ -71,6 +159,7 @@ const Scene = () => {
       <ambientLight intensity={0.5} />
       <RingMesh />
       <ScanLine />
+      <SparkingParticles />
       <ImageScene />
     </>;
 };
