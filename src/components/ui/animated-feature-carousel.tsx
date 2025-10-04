@@ -197,7 +197,7 @@ function FeatureCard({ children, step, steps }: { children: React.ReactNode; ste
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
-              className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-auto md:max-w-[55%] z-10 bg-background/95 backdrop-blur-sm rounded-2xl p-5 md:p-6 shadow-2xl border border-border"
+              className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-auto md:max-w-[55%] z-10 bg-white/10 dark:bg-black/10 backdrop-blur-xl rounded-2xl p-5 md:p-6 shadow-2xl border border-white/20 dark:border-white/10"
               initial={{ opacity: 0, scale: 0.85, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.85, y: 30 }}
