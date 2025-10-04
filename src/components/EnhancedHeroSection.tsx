@@ -2,7 +2,7 @@
 
 import { ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import huxLogo from "@/assets/hux-logo.png"
+import huxLogo from "@/assets/hux-logo-transparent.png"
 
 export default function EnhancedHeroSection() {
   return (
@@ -47,23 +47,23 @@ export default function EnhancedHeroSection() {
 
       {/* Small Title */}
       <div
-        className="animate-fade-in mt-8 opacity-0 text-sm md:text-base lg:text-lg font-bold tracking-wider text-gray-700 dark:text-gray-300 uppercase"
+        className="animate-fade-in mt-6 opacity-0 text-sm md:text-base lg:text-lg font-bold tracking-wider text-gray-700 dark:text-gray-300 uppercase"
       >
         Introducing the Future of Tech
       </div>
 
       {/* Large HUX Logo */}
-      <div className="animate-fade-in mt-6 mb-8 opacity-0 flex justify-center">
+      <div className="animate-fade-in mt-4 mb-6 opacity-0 flex justify-center">
         <img 
           src={huxLogo} 
           alt="HUX Logo" 
-          className="w-[300px] md:w-[500px] lg:w-[700px] h-auto"
+          className="w-[280px] md:w-[450px] lg:w-[600px] h-auto"
         />
       </div>
 
       {/* Subtitle */}
       <p
-        className="animate-fade-in mb-12 text-balance 
+        className="animate-fade-in mb-10 text-balance 
         text-lg tracking-tight text-gray-600 dark:text-gray-400 
         opacity-0 md:text-xl max-w-3xl mx-auto"
       >
