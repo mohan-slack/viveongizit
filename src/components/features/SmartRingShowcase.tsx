@@ -1,11 +1,11 @@
 
 import React from 'react';
-import SmartRingZoomShowcase from './SmartRingZoomShowcase';
+import SmartRingCarousel from './SmartRingCarousel';
 
 const SmartRingShowcase: React.FC = () => {
   return (
     <section id="feature-cards" className="relative">
-      <SmartRingZoomShowcase />
+      <SmartRingCarousel />
     </section>
   );
 };

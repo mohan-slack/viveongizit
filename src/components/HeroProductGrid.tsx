@@ -40,7 +40,7 @@ const HeroProductGrid: React.FC<HeroProductGridProps> = ({ className }) => {
         transition={{ duration: 0.8, delay: 0.2 }}
       >
         <Carousel
-          plugins={[autoplayPlugin.current]}
+          plugins={[autoplayPlugin.current] as any}
           className="w-full"
           onMouseEnter={() => autoplayPlugin.current.stop()}
           onMouseLeave={() => autoplayPlugin.current.reset()}
