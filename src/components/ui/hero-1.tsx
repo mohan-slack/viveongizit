@@ -40,7 +40,7 @@ export function Hero({
       <div
         className="absolute left-1/2 bottom-0 
         h-[400px] w-[1000px] md:h-[500px] md:w-[1400px] lg:h-[600px] lg:w-[180%] 
-        -translate-x-1/2 translate-y-1/2 rounded-[100%] 
+        -translate-x-1/2 translate-y-[70%] sm:translate-y-[65%] md:translate-y-[60%] lg:translate-y-[55%] rounded-[100%] 
         bg-[radial-gradient(closest-side,#ffffff_0%,#e8e8e8_50%,#000000_100%)] 
         dark:bg-[radial-gradient(closest-side,#000000_0%,#1a1a1a_50%,#ffffff_100%)]"
       />
