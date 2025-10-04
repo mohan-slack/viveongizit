@@ -2,7 +2,7 @@
 
 import { ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import huxLogo from "@/assets/hux-logo-transparent.png"
+import huxLogo from "@/assets/hux-logo.svg"
 import { SpiralAnimation } from "@/components/ui/spiral-animation"
 
 export default function EnhancedHeroSection() {
