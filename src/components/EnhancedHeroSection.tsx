@@ -1,14 +1,13 @@
+import { Hero } from "@/components/ui/hero-1";
 
-"use client";
-
-import React from "react";
-import { BackgroundPaths } from "@/components/ui/background-paths";
-
-export function HeroSection() {
+export default function EnhancedHeroSection() {
   return (
-    <BackgroundPaths />
+    <Hero 
+      title="Build smarter tools for modern teams"
+      subtitle="Streamline your workflow and boost productivity with intuitive solutions. Security, speed, and simplicity—all in one platform."
+      eyebrow="Next-Gen Productivity"
+      ctaLabel="Get Started"
+      ctaHref="#"
+    />
   );
 }
-
-const EnhancedHeroSection = HeroSection;
-export default EnhancedHeroSection;
