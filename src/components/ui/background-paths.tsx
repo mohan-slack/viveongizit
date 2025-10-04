@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { DecryptedText } from "./decrypted-text";
-import { HuxParticleText } from "../HuxParticleText";
+import { ParticleTextEffect } from "./interactive-text-particle";
 import { MeshGradient } from "@paper-design/shaders-react";
 import { useEffect, useState } from "react";
 
@@ -54,40 +54,19 @@ export function BackgroundPaths({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 2 }}
-                    className="max-w-4xl mx-auto"
+                    className="max-w-6xl mx-auto"
                 >
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 tracking-tighter">
-                        {words.slice(0, -1).map((word, wordIndex) => (
-                            <span
-                                key={wordIndex}
-                                className="inline-block mr-4 last:mr-0"
-                            >
-                                {word.split("").map((letter, letterIndex) => (
-                                    <motion.span
-                                        key={`${wordIndex}-${letterIndex}`}
-                                        initial={{ y: 100, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{
-                                            delay:
-                                                wordIndex * 0.1 +
-                                                letterIndex * 0.03,
-                                            type: "spring",
-                                            stiffness: 150,
-                                            damping: 25,
-                                        }}
-                                        className="inline-block text-transparent bg-clip-text 
-                                        bg-gradient-to-r from-neutral-900 to-neutral-700/80 
-                                        dark:from-white dark:to-white/80"
-                                    >
-                                        {letter}
-                                    </motion.span>
-                                ))}
-                            </span>
-                        ))}
-                        <div className="inline-block text-5xl sm:text-7xl md:text-8xl h-24 sm:h-32 md:h-40 w-full max-w-md mx-auto">
-                            <HuxParticleText />
-                        </div>
-                    </h1>
+                    <div className="w-full h-32 sm:h-40 md:h-48 mb-8">
+                        <ParticleTextEffect 
+                            text="INTRODUCING THE FUTURE OF TECH"
+                            colors={[
+                                'ffad70', 'f7d297', 'edb9a1', 'e697ac', 'b38dca',
+                                '9c76db', '705cb5', '43428e', '2c2142'
+                            ]}
+                            animationForce={80}
+                            particleDensity={3}
+                        />
+                    </div>
 
                     <div
                         className="inline-block group relative bg-gradient-to-b from-black/10 to-white/10 
