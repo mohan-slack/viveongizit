@@ -57,7 +57,7 @@ export default function EnhancedHeroSection() {
         <img 
           src={huxLogo} 
           alt="HUX Logo" 
-          className="w-[280px] md:w-[450px] lg:w-[600px] h-auto"
+          className="w-[350px] md:w-[550px] lg:w-[700px] h-auto"
         />
       </div>
 
