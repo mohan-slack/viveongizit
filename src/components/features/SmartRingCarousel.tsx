@@ -1,10 +1,10 @@
 import { FeatureCarousel, type ImageSet, type Step } from "@/components/ui/animated-feature-carousel";
-import ringSensorTech from '@/assets/ring-sensor-tech.png';
-import ringSleepMonitoring from '@/assets/ring-sleep-monitoring.png';
-import ringHeartMonitoring from '@/assets/ring-heart-monitoring.png';
-import ringHealthTracking from '@/assets/ring-health-tracking.png';
-import ringActivityTracking from '@/assets/ring-activity-tracking.png';
-import ringSleekDesign from '@/assets/ring-sleek-design.png';
+import carouselHealthSensor from '@/assets/carousel-health-sensor.jpg';
+import carouselHeartMonitor from '@/assets/carousel-heart-monitor.jpg';
+import carouselSleepTracking from '@/assets/carousel-sleep-tracking.jpg';
+import carouselSleepData from '@/assets/carousel-sleep-data.jpg';
+import carouselActivityFitness from '@/assets/carousel-activity-fitness.jpg';
+import carouselSmartFeatures from '@/assets/carousel-smart-features.jpg';
 
 const smartRingSteps: readonly Step[] = [
   {
@@ -36,12 +36,12 @@ const smartRingSteps: readonly Step[] = [
 export default function SmartRingCarousel() {
   const images: ImageSet = {
     alt: "HUX Smart Ring Features",
-    step1img1: ringSensorTech,
-    step1img2: ringHeartMonitoring,
-    step2img1: ringSleepMonitoring,
-    step2img2: ringHealthTracking,
-    step3img: ringActivityTracking,
-    step4img: ringSleekDesign,
+    step1img1: carouselHealthSensor,
+    step1img2: carouselHeartMonitor,
+    step2img1: carouselSleepTracking,
+    step2img2: carouselSleepData,
+    step3img: carouselActivityFitness,
+    step4img: carouselSmartFeatures,
   };
 
   return (
