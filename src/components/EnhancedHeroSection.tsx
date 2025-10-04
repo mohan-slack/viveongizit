@@ -31,15 +31,19 @@ export default function EnhancedHeroSection() {
           </span>
         </a>
 
-        {/* Title with Logo */}
-        <div className="animate-fade-in mt-6 mb-6 opacity-0 flex items-center justify-center gap-3 md:gap-4">
-          <div className="text-sm md:text-base lg:text-lg font-bold tracking-wider text-gray-700 dark:text-gray-300 uppercase">
-            Introducing the Future of Tech
-          </div>
+        {/* Small Title */}
+        <div
+          className="animate-fade-in mt-6 opacity-0 text-sm md:text-base lg:text-lg font-bold tracking-wider text-gray-700 dark:text-gray-300 uppercase"
+        >
+          Introducing the Future of Tech
+        </div>
+
+        {/* Large HUX Logo */}
+        <div className="animate-fade-in mt-4 mb-6 opacity-0 flex justify-center">
           <img 
             src={huxLogo} 
             alt="HUX Logo" 
-            className="w-[80px] md:w-[120px] lg:w-[150px] h-auto"
+            className="w-[350px] md:w-[550px] lg:w-[700px] h-auto"
           />
         </div>
 
