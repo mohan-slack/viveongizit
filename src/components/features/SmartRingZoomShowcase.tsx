@@ -58,8 +58,8 @@ export default function SmartRingZoomShowcase() {
 	];
 
 	return (
-		<main className="min-h-screen w-full bg-white">
-			<div className="relative flex h-[50vh] items-center justify-center bg-white">
+		<main className="w-full bg-white">
+			<div className="relative flex h-[30vh] items-center justify-center bg-white pt-12">
 				{/* Radial spotlight */}
 				<div
 					aria-hidden="true"
@@ -69,12 +69,11 @@ export default function SmartRingZoomShowcase() {
 						'blur-[30px]',
 					)}
 				/>
-				<h1 className="text-center text-4xl md:text-5xl font-bold gradient-text bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent px-4">
-					Scroll Down for Zoom Parallax
+				<h1 className="text-center text-4xl md:text-5xl lg:text-6xl font-bold gradient-text bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent px-4">
+					Smart Ring Features
 				</h1>
 			</div>
 			<ZoomParallax images={images} />
-			<div className="h-[50vh] bg-white" />
 		</main>
 	);
 }
