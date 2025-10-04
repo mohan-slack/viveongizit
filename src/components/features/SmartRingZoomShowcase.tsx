@@ -1,0 +1,80 @@
+import React from 'react';
+import { cn } from '@/lib/utils';
+import Lenis from '@studio-freight/lenis';
+import { ZoomParallax } from '@/components/ui/zoom-parallax';
+import ringSensorTech from '@/assets/ring-sensor-tech.png';
+import ringSleepMonitoring from '@/assets/ring-sleep-monitoring.png';
+import ringSleekDesign from '@/assets/ring-sleek-design.png';
+import ringHeartMonitoring from '@/assets/ring-heart-monitoring.png';
+import ringHealthTracking from '@/assets/ring-health-tracking.png';
+import ringActivityTracking from '@/assets/ring-activity-tracking.png';
+import ringFitnessMonitoring from '@/assets/ring-fitness-monitoring.png';
+
+export default function SmartRingZoomShowcase() {
+	React.useEffect(() => {
+		const lenis = new Lenis();
+
+		function raf(time: number) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+
+		requestAnimationFrame(raf);
+
+		return () => {
+			lenis.destroy();
+		};
+	}, []);
+
+	const images = [
+		{
+			src: ringSensorTech,
+			alt: 'Smart ring sensor technology',
+		},
+		{
+			src: ringSleepMonitoring,
+			alt: 'Sleep monitoring capabilities',
+		},
+		{
+			src: ringSleekDesign,
+			alt: 'Sleek modern ring design',
+		},
+		{
+			src: ringHeartMonitoring,
+			alt: 'Heart rate monitoring',
+		},
+		{
+			src: ringHealthTracking,
+			alt: 'Comprehensive health tracking',
+		},
+		{
+			src: ringActivityTracking,
+			alt: 'Activity and fitness tracking',
+		},
+		{
+			src: ringFitnessMonitoring,
+			alt: 'Advanced fitness monitoring',
+		},
+	];
+
+	return (
+		<main className="min-h-screen w-full">
+			<div className="relative flex h-[50vh] items-center justify-center">
+				{/* Radial spotlight */}
+				<div
+					aria-hidden="true"
+					className={cn(
+						'pointer-events-none absolute -top-1/2 left-1/2 h-[120vmin] w-[120vmin] -translate-x-1/2 rounded-full',
+						'bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/.1),transparent_50%)]',
+						'blur-[30px]',
+					)}
+				/>
+				<h1 className="text-center text-4xl md:text-5xl font-bold gradient-text bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">
+					Scroll Down for Zoom Parallax
+				</h1>
+			</div>
+			<ZoomParallax images={images} />
+			<div className="h-[50vh]" />
+		</main>
+	);
+}
