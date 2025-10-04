@@ -53,11 +53,11 @@ export default function EnhancedHeroSection() {
       </div>
 
       {/* Large HUX Logo */}
-      <div className="animate-fade-in mt-4 mb-6 opacity-0 flex justify-center">
+      <div className="animate-fade-in mt-8 mb-8 opacity-0 flex justify-center items-center px-4">
         <img 
           src={huxLogo} 
           alt="HUX Logo" 
-          className="w-[350px] md:w-[550px] lg:w-[700px] h-auto"
+          className="w-[280px] sm:w-[350px] md:w-[450px] lg:w-[550px] xl:w-[650px] h-auto object-contain"
         />
       </div>
 
