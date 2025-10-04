@@ -51,14 +51,10 @@ export default function SmartRingZoomShowcase() {
 			src: ringActivityTracking,
 			alt: 'Activity and fitness tracking',
 		},
-		{
-			src: ringFitnessMonitoring,
-			alt: 'Advanced fitness monitoring',
-		},
 	];
 
 	return (
-		<main className="w-full bg-white">
+		<main className="w-full">
 			<div className="relative flex h-[30vh] items-center justify-center bg-white pt-12">
 				{/* Radial spotlight */}
 				<div
@@ -74,6 +70,14 @@ export default function SmartRingZoomShowcase() {
 				</h1>
 			</div>
 			<ZoomParallax images={images} />
+			
+			{/* Background section with final image */}
+			<div 
+				className="relative min-h-screen w-full bg-cover bg-center bg-no-repeat flex items-center justify-center"
+				style={{ backgroundImage: `url(${ringFitnessMonitoring})` }}
+			>
+				<div className="absolute inset-0 bg-black/20"></div>
+			</div>
 		</main>
 	);
 }

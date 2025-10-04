@@ -28,12 +28,12 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 	const scaleFinal = useTransform(scrollYProgress, [0.7, 1], [1, 1.2]);
 	const opacityOthers = useTransform(scrollYProgress, [0.6, 0.75], [1, 0]);
 
-	const scales = [scale4, scale5, scale6, scale5, scale6, scale8];
+	const scales = [scale4, scale5, scale6, scale5, scale6, scale8, scale9];
 
 	return (
-		<div ref={container} className="relative h-[250vh] bg-white">
+		<div ref={container} className="relative h-[200vh] bg-white">
 			<div className="sticky top-0 h-screen overflow-hidden bg-white flex items-center justify-center">
-				{images.slice(0, 6).map(({ src, alt }, index) => {
+				{images.map(({ src, alt }, index) => {
 					const scale = scales[index % scales.length];
 
 					return (
@@ -52,22 +52,6 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 						</motion.div>
 					);
 				})}
-				
-				{/* Final centered image */}
-				{images[6] && (
-					<motion.div
-						style={{ scale: scaleFinal }}
-						className="absolute top-0 flex h-full w-full items-center justify-center"
-					>
-						<div className="relative w-[90vw] md:w-[70vw] lg:w-[60vw] h-[60vh] max-w-5xl">
-							<img
-								src={images[6].src || '/placeholder.svg'}
-								alt={images[6].alt || 'Final parallax image'}
-								className="h-full w-full object-contain rounded-lg"
-							/>
-						</div>
-					</motion.div>
-				)}
 			</div>
 		</div>
 	);
