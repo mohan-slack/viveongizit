@@ -264,6 +264,7 @@
   body {
     @apply bg-white text-foreground font-sans;
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='%23FF3A2F' stroke='white' stroke-width='1' opacity='0.8'/></svg>") 8 8, auto;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -440,6 +441,24 @@
   .animate-gradient-shimmer {
     background-size: 200% 200%;
     animation: gradient-shimmer 4s ease infinite;
+  }
+
+  /* Full-bleed hero section */
+  .hero-fullbleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 0;
+    position: relative;
+  }
+
+  .hero-fullbleed img,
+  .hero-fullbleed video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
   }
 
   /* Gradient Button Styles */

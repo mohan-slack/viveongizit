@@ -28,8 +28,8 @@ export default function EnhancedHeroSection() {
   return (
     <section
       id="hero"
-      className="relative w-screen h-[90vh] md:h-screen overflow-hidden -mx-[50vw] left-[50%] right-[50%]"
-      style={{ width: '100vw' }}
+      className="hero-fullbleed overflow-hidden h-[70vh] sm:h-[85vh] lg:h-screen"
+      style={{ minHeight: 'min(100vh, 90vh)' }}
     >
       {/* Full-Width Edge-to-Edge Carousel Background */}
       <div className="absolute inset-0 w-full h-full">
@@ -48,8 +48,7 @@ export default function EnhancedHeroSection() {
                   <img 
                     src={image.src} 
                     alt={image.alt} 
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                    style={{ minWidth: '100%', minHeight: '100%' }}
+                    className="w-full h-full object-cover object-center absolute inset-0 block"
                   />
                   {/* Subtle gradient overlay for text readability */}
                   <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/20"></div>
@@ -61,8 +60,8 @@ export default function EnhancedHeroSection() {
       </div>
 
       {/* Centered Content Overlay */}
-      <div className="relative z-20 w-full h-full flex flex-col items-center justify-center px-6 md:px-12">
-        <div className="max-w-5xl w-full mx-auto text-center space-y-4 md:space-y-6">
+      <div className="relative z-20 w-full h-full flex flex-col items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16">
+        <div className="max-w-5xl w-full mx-auto text-center space-y-3 sm:space-y-4 md:space-y-6">
           {/* Small Title */}
           <div
             className="animate-fade-in opacity-0 text-xs md:text-base lg:text-lg font-bold tracking-[0.2em] text-gray-800 uppercase"
