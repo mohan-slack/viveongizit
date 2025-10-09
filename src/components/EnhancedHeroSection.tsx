@@ -3,10 +3,10 @@
 import { ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import huxLogo from "@/assets/hux-logo.svg"
-import heroRingRoseGold from "@/assets/hero-ring-rose-gold.jpg"
-import heroRingBlack from "@/assets/hero-ring-black-premium.jpg"
-import heroRingSilver from "@/assets/hero-ring-silver-shine.jpg"
-import heroRingGraphite from "@/assets/hero-ring-graphite.jpg"
+import heroBlackGlossy from "@/assets/hero-black-glossy.jpg"
+import heroDualRings from "@/assets/hero-dual-rings.jpg"
+import heroFloatingGraphite from "@/assets/hero-floating-graphite.jpg"
+import heroLifestyleHand from "@/assets/hero-lifestyle-hand.jpg"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { useRef } from "react"
@@ -17,10 +17,10 @@ export default function EnhancedHeroSection() {
   )
 
   const heroImages = [
-    { src: heroRingRoseGold, alt: "HUX Smart Ring - Rose Gold Edition" },
-    { src: heroRingBlack, alt: "HUX Smart Ring - Matte Black Edition" },
-    { src: heroRingSilver, alt: "HUX Smart Ring - Polished Silver Edition" },
-    { src: heroRingGraphite, alt: "HUX Smart Ring - Graphite Edition" },
+    { src: heroBlackGlossy, alt: "HUX Smart Ring - Black Titanium on Glossy Surface" },
+    { src: heroDualRings, alt: "HUX Smart Ring - Rose Gold & Black Duo" },
+    { src: heroFloatingGraphite, alt: "HUX Smart Ring - Floating Graphite Edition" },
+    { src: heroLifestyleHand, alt: "HUX Smart Ring - Lifestyle Rose Gold" },
   ]
 
   return (
@@ -36,6 +36,7 @@ export default function EnhancedHeroSection() {
           opts={{
             loop: true,
             align: 'start',
+            duration: 40,
           }}
         >
           <CarouselContent className="h-full -ml-0 m-0">

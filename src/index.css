@@ -536,6 +536,16 @@ html, body {
     }
   }
 
+  /* Hero carousel fade transitions */
+  .hero .embla__slide {
+    opacity: 0;
+    transition: opacity 1000ms ease-in-out;
+  }
+
+  .hero .embla__slide.is-snapped {
+    opacity: 1;
+  }
+
   /* Gradient Button Styles */
   .gradient-button {
     @apply relative appearance-none cursor-pointer;
