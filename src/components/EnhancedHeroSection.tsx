@@ -3,11 +3,10 @@
 import { ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import huxLogo from "@/assets/hux-logo.svg"
-import heroRingStudio from "@/assets/hero-ring-studio.jpg"
-import heroRingFloating from "@/assets/hero-ring-floating.jpg"
-import heroRingLifestyle from "@/assets/hero-ring-lifestyle.jpg"
-import heroRingDual from "@/assets/hero-ring-dual.jpg"
-import heroRingGlow from "@/assets/hero-ring-glow.jpg"
+import heroRingRoseGold from "@/assets/hero-ring-rose-gold.jpg"
+import heroRingBlack from "@/assets/hero-ring-black-premium.jpg"
+import heroRingSilver from "@/assets/hero-ring-silver-shine.jpg"
+import heroRingGraphite from "@/assets/hero-ring-graphite.jpg"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { useRef } from "react"
@@ -18,17 +17,16 @@ export default function EnhancedHeroSection() {
   )
 
   const heroImages = [
-    { src: heroRingStudio, alt: "HUX Smart Ring Studio Shot" },
-    { src: heroRingFloating, alt: "HUX Smart Ring Floating Display" },
-    { src: heroRingLifestyle, alt: "HUX Smart Ring Lifestyle" },
-    { src: heroRingDual, alt: "HUX Smart Ring Dual Models" },
-    { src: heroRingGlow, alt: "HUX Smart Ring with Glow Effects" },
+    { src: heroRingRoseGold, alt: "HUX Smart Ring - Rose Gold Edition" },
+    { src: heroRingBlack, alt: "HUX Smart Ring - Matte Black Edition" },
+    { src: heroRingSilver, alt: "HUX Smart Ring - Polished Silver Edition" },
+    { src: heroRingGraphite, alt: "HUX Smart Ring - Graphite Edition" },
   ]
 
   return (
     <section
       id="hero"
-      className="hero hero-fullbleed h-[70vh] sm:h-[85vh] lg:h-screen"
+      className="hero hero-fullbleed h-[70vh] md:h-[80vh] lg:h-[92vh]"
     >
       {/* Full-Width Edge-to-Edge Carousel Background */}
       <div className="absolute inset-0 w-full h-full">
@@ -49,8 +47,8 @@ export default function EnhancedHeroSection() {
                     alt={image.alt} 
                     className="w-full h-full object-cover object-center absolute inset-0 block"
                   />
-                  {/* Subtle gradient overlay for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/20"></div>
+                  {/* Subtle gradient overlay for text readability and depth */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-white/10"></div>
                 </div>
               </CarouselItem>
             ))}
