@@ -57,7 +57,14 @@ export default function EnhancedHeroSection() {
       </div>
 
       <div className="relative z-20">
-        {/* Large HUX Logo - Moved to top */}
+        {/* Small Title - Moved to top */}
+        <div
+          className="animate-fade-in mb-4 opacity-0 text-xs md:text-sm lg:text-base font-bold tracking-wider text-white uppercase drop-shadow-lg"
+        >
+          Introducing the Future of Tech
+        </div>
+
+        {/* Large HUX Logo - Center */}
         <div className="animate-fade-in mb-4 opacity-0 flex justify-center">
           <img 
             src={huxLogo} 
@@ -66,14 +73,7 @@ export default function EnhancedHeroSection() {
           />
         </div>
 
-        {/* Small Title */}
-        <div
-          className="animate-fade-in mb-4 opacity-0 text-xs md:text-sm lg:text-base font-bold tracking-wider text-white uppercase drop-shadow-lg"
-        >
-          Introducing the Future of Tech
-        </div>
-
-        {/* Eyebrow */}
+        {/* Eyebrow - Moved to bottom */}
         <a href="#" className="group inline-block mb-6">
           <span
             className="text-xs text-white font-geist mx-auto px-4 py-2 
