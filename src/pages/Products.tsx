@@ -23,7 +23,6 @@ const Products = () => {
   
   return (
     <div className="min-h-screen relative">
-      <Navbar />
       <div className="pt-32 pb-12">
         <FeaturedProductsSection />
       </div>
