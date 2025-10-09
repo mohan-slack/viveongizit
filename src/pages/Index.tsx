@@ -1,7 +1,5 @@
 
 import React, { useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import EnhancedHeroSection from '@/components/EnhancedHeroSection';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
 import FuturisticFeaturesShowcase from '@/components/FuturisticFeaturesShowcase';
 import FeaturedSmartRingDemoSection from '@/components/FeaturedSmartRingDemoSection';
@@ -73,21 +71,17 @@ const Index = () => {
   }, []);
 
   return (
-    <>
-      <Navbar />
-      <EnhancedHeroSection />
-      <div className="min-h-screen relative">
-        <FeaturedProductsSection />
-        <FuturisticFeaturesShowcase />
-        <FeaturedSmartRingDemoSection />
-        <AboutSection />
-        <ContactSection />
-        <CallToAction />
-        <Footer />
-        {/* AI Assistant */}
-        {isMobile && <AIAssistant />}
-      </div>
-    </>
+    <div className="min-h-screen relative">
+      <FeaturedProductsSection />
+      <FuturisticFeaturesShowcase />
+      <FeaturedSmartRingDemoSection />
+      <AboutSection />
+      <ContactSection />
+      <CallToAction />
+      <Footer />
+      {/* AI Assistant */}
+      {isMobile && <AIAssistant />}
+    </div>
   );
 };
 

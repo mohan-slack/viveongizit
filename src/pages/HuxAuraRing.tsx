@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from '@/components/Navbar';
+
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -42,8 +42,6 @@ const HuxAuraRing = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      
       {/* Product Section */}
       <section className="pt-24 pb-12">
         <div className="container mx-auto px-4 lg:px-8">

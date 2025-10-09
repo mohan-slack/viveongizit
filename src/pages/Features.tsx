@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import Navbar from '@/components/Navbar';
+
 import Footer from '@/components/Footer';
 import InteractiveFeatureShowcase from '@/components/features/InteractiveFeatureShowcase';
 import { FeatureProps } from '@/components/features/FeatureTypes';
@@ -29,8 +29,6 @@ const Features = () => {
   
   return (
     <div className="min-h-screen relative">
-      <Navbar />
-      
       <div className="container mx-auto px-4 py-24">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gradient-text bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent">

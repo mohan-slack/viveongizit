@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import Navbar from '@/components/Navbar';
+
 import Footer from '@/components/Footer';
 import AboutSection from '@/components/AboutSection';
 import { useLocation } from 'react-router-dom';
@@ -23,7 +23,6 @@ const About = () => {
   
   return (
     <div className="min-h-screen relative">
-      <Navbar />
       <div className="pt-32 pb-12">
         <AboutSection />
       </div>

@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import Navbar from '@/components/Navbar';
+
 import Footer from '@/components/Footer';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
 import { useLocation } from 'react-router-dom';
