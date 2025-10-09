@@ -262,11 +262,15 @@
   }
 
   html {
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
   }
 
   body {
     @apply bg-white text-foreground font-sans;
+    margin: 0;
+    padding: 0;
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='%23FF3A2F' stroke='white' stroke-width='1' opacity='0.8'/></svg>") 8 8, auto;
     overflow-x: hidden;
   }
@@ -465,6 +469,40 @@
     object-fit: cover;
     object-position: center;
     display: block;
+  }
+
+  /* Global hero selectors for full-bleed */
+  section.hero,
+  .hero,
+  .hero-container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100vh !important;
+    overflow-x: hidden;
+  }
+
+  section.hero img,
+  .hero img,
+  .hero video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    section.hero,
+    .hero,
+    .hero-container {
+      height: 80vh !important;
+    }
   }
 
   /* Gradient Button Styles */

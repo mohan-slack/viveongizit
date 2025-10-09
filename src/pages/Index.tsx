@@ -73,20 +73,21 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen relative">
+    <>
       <Navbar />
       <EnhancedHeroSection />
-      <FeaturedProductsSection />
-      <FuturisticFeaturesShowcase />
-      <FeaturedSmartRingDemoSection />
-      <AboutSection />
-      <ContactSection />
-      <CallToAction />
-      <Footer />
-      
-      {/* AI Assistant */}
-      {isMobile && <AIAssistant />}
-    </div>
+      <div className="min-h-screen relative">
+        <FeaturedProductsSection />
+        <FuturisticFeaturesShowcase />
+        <FeaturedSmartRingDemoSection />
+        <AboutSection />
+        <ContactSection />
+        <CallToAction />
+        <Footer />
+        {/* AI Assistant */}
+        {isMobile && <AIAssistant />}
+      </div>
+    </>
   );
 };
 

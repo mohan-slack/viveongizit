@@ -28,7 +28,7 @@ export default function EnhancedHeroSection() {
   return (
     <section
       id="hero"
-      className="hero-fullbleed h-[70vh] sm:h-[85vh] lg:h-screen"
+      className="hero hero-fullbleed h-[70vh] sm:h-[85vh] lg:h-screen"
     >
       {/* Full-Width Edge-to-Edge Carousel Background */}
       <div className="absolute inset-0 w-full h-full">
