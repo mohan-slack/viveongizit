@@ -28,10 +28,9 @@ export default function EnhancedHeroSection() {
   return (
     <section
       id="hero"
-      className="relative mx-auto w-full pt-20 px-6 text-center md:px-8 
-      min-h-[60vh] overflow-hidden rounded-b-xl"
+      className="relative w-full h-screen overflow-hidden"
     >
-      {/* Carousel Background */}
+      {/* Full-Width Carousel Background */}
       <div className="absolute inset-0 z-0">
         <Carousel
           plugins={[plugin.current]}
@@ -40,15 +39,17 @@ export default function EnhancedHeroSection() {
             loop: true,
           }}
         >
-          <CarouselContent className="h-full m-0">
+          <CarouselContent className="h-full m-0 -ml-0">
             {heroImages.map((image, index) => (
-              <CarouselItem key={index} className="h-full p-0">
-                <div className="relative w-full h-full">
+              <CarouselItem key={index} className="h-screen p-0 pl-0 basis-full">
+                <div className="relative w-full h-full bg-white">
                   <img 
                     src={image.src} 
                     alt={image.alt} 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                   />
+                  {/* Subtle gradient overlay for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/30"></div>
                 </div>
               </CarouselItem>
             ))}
@@ -56,44 +57,60 @@ export default function EnhancedHeroSection() {
         </Carousel>
       </div>
 
-      <div className="relative z-20">
-        {/* Small Title - Moved to top */}
-        <div
-          className="animate-fade-in mb-4 opacity-0 text-xs md:text-sm lg:text-base font-bold tracking-wider text-white uppercase drop-shadow-lg"
-        >
-          Introducing the Future of Tech
-        </div>
-
-        {/* Large HUX Logo - Center */}
-        <div className="animate-fade-in mb-4 opacity-0 flex justify-center">
-          <img 
-            src={huxLogo} 
-            alt="HUX Logo" 
-            className="w-[250px] md:w-[350px] lg:w-[450px] h-auto drop-shadow-2xl"
-          />
-        </div>
-
-        {/* Eyebrow - Moved to bottom */}
-        <a href="#" className="group inline-block mb-6">
-          <span
-            className="text-xs text-white font-geist mx-auto px-4 py-2 
-            bg-white/20 backdrop-blur-md
-            border-[2px] border-white/40
-            rounded-3xl w-fit tracking-tight uppercase flex items-center justify-center shadow-lg"
+      {/* Centered Content Overlay */}
+      <div className="relative z-20 h-full flex flex-col items-center justify-center px-6 md:px-12">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          {/* Small Title - Moved to top */}
+          <div
+            className="animate-fade-in opacity-0 text-sm md:text-base lg:text-lg font-bold tracking-widest text-gray-800 uppercase"
+            style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
           >
-            Next-Gen Productivity
-            <ChevronRight className="inline w-3 h-3 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-          </span>
-        </a>
+            Introducing the Future of Tech
+          </div>
 
-        {/* CTA */}
-        <div className="flex justify-center mb-8">
-          <Button
-            asChild
-            className="w-fit md:w-48 z-20 font-geist tracking-tighter text-center text-base shadow-xl"
+          {/* Large HUX Logo - Center */}
+          <div 
+            className="animate-fade-in opacity-0 flex justify-center py-4"
+            style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
           >
-            <a href="#">Get Started</a>
-          </Button>
+            <img 
+              src={huxLogo} 
+              alt="HUX Logo" 
+              className="w-[280px] md:w-[400px] lg:w-[500px] h-auto drop-shadow-2xl"
+            />
+          </div>
+
+          {/* Eyebrow - Moved to bottom */}
+          <a 
+            href="#" 
+            className="group inline-block animate-fade-in opacity-0"
+            style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
+          >
+            <span
+              className="text-xs md:text-sm text-gray-700 font-geist mx-auto px-5 py-2.5 
+              bg-white/60 backdrop-blur-lg
+              border border-gray-300/50
+              rounded-full w-fit tracking-wide uppercase flex items-center justify-center 
+              shadow-lg hover:shadow-xl transition-all hover:bg-white/80"
+            >
+              Next-Gen Productivity
+              <ChevronRight className="inline w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
+          </a>
+
+          {/* CTA */}
+          <div 
+            className="flex justify-center pt-4 animate-fade-in opacity-0"
+            style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
+          >
+            <Button
+              asChild
+              className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-6 text-base md:text-lg 
+              font-medium tracking-wide shadow-2xl hover:shadow-3xl transition-all rounded-full"
+            >
+              <a href="#">Get Started</a>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
