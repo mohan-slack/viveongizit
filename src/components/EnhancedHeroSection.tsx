@@ -28,8 +28,7 @@ export default function EnhancedHeroSection() {
   return (
     <section
       id="hero"
-      className="hero-fullbleed overflow-hidden h-[70vh] sm:h-[85vh] lg:h-screen"
-      style={{ minHeight: 'min(100vh, 90vh)' }}
+      className="hero-fullbleed h-[70vh] sm:h-[85vh] lg:h-screen"
     >
       {/* Full-Width Edge-to-Edge Carousel Background */}
       <div className="absolute inset-0 w-full h-full">
