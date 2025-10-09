@@ -3,50 +3,59 @@
 import { ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import huxLogo from "@/assets/hux-logo.svg"
-import ringSleekDesign from "@/assets/ring-sleek-design.png"
-import ringHealthTracking from "@/assets/ring-health-tracking.png"
-import ringSleepMonitoring from "@/assets/ring-sleep-monitoring.png"
-import ringFitnessMonitoring from "@/assets/ring-fitness-monitoring.png"
+import heroRingStudio from "@/assets/hero-ring-studio.jpg"
+import heroRingFloating from "@/assets/hero-ring-floating.jpg"
+import heroRingLifestyle from "@/assets/hero-ring-lifestyle.jpg"
+import heroRingDual from "@/assets/hero-ring-dual.jpg"
+import heroRingGlow from "@/assets/hero-ring-glow.jpg"
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
+import { useRef } from "react"
 
 export default function EnhancedHeroSection() {
+  const plugin = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false })
+  )
+
+  const heroImages = [
+    { src: heroRingStudio, alt: "HUX Smart Ring Studio Shot" },
+    { src: heroRingFloating, alt: "HUX Smart Ring Floating Display" },
+    { src: heroRingLifestyle, alt: "HUX Smart Ring Lifestyle" },
+    { src: heroRingDual, alt: "HUX Smart Ring Dual Models" },
+    { src: heroRingGlow, alt: "HUX Smart Ring with Glow Effects" },
+  ]
+
   return (
     <section
       id="hero"
       className="relative mx-auto w-full pt-40 px-6 text-center md:px-8 
       min-h-[calc(100vh-40px)] overflow-hidden rounded-b-xl"
     >
-      {/* 4-Image Grid Background */}
-      <div className="absolute inset-0 z-0 grid grid-cols-2 grid-rows-2">
-        <div className="relative overflow-hidden">
-          <img 
-            src={ringSleekDesign} 
-            alt="Smart Ring Design" 
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-        <div className="relative overflow-hidden">
-          <img 
-            src={ringHealthTracking} 
-            alt="Health Tracking" 
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-        <div className="relative overflow-hidden">
-          <img 
-            src={ringSleepMonitoring} 
-            alt="Sleep Monitoring" 
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-        <div className="relative overflow-hidden">
-          <img 
-            src={ringFitnessMonitoring} 
-            alt="Fitness Monitoring" 
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
+      {/* Carousel Background */}
+      <div className="absolute inset-0 z-0">
+        <Carousel
+          plugins={[plugin.current]}
+          className="w-full h-full"
+          opts={{
+            loop: true,
+          }}
+        >
+          <CarouselContent className="h-full m-0">
+            {heroImages.map((image, index) => (
+              <CarouselItem key={index} className="h-full p-0">
+                <div className="relative w-full h-full">
+                  <img 
+                    src={image.src} 
+                    alt={image.alt} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
       <div className="relative z-10">
