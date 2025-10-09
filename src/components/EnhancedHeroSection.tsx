@@ -26,40 +26,38 @@ export default function EnhancedHeroSection() {
   return (
     <section
       id="hero"
-      className="hero hero-fullbleed h-[70vh] md:h-[80vh] lg:h-[92vh]"
+      className="hero hero-fullbleed h-[70vh] md:h-[80vh] lg:h-[92vh] relative overflow-hidden"
     >
       {/* Full-Width Edge-to-Edge Carousel Background */}
-      <div className="absolute inset-0 w-full h-full">
-        <Carousel
-          plugins={[plugin.current]}
-          className="w-full h-full"
-          opts={{
-            loop: true,
-            align: 'start',
-            duration: 40,
-          }}
-        >
-          <CarouselContent className="h-full -ml-0 m-0">
-            {heroImages.map((image, index) => (
-              <CarouselItem key={index} className="h-full p-0 pl-0 basis-full min-w-full">
-                <div className="relative w-full h-full">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
-                    className="w-full h-full object-cover object-center absolute inset-0 block"
-                  />
-                  {/* Subtle gradient overlay for text readability and depth */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-white/10"></div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
+      <Carousel
+        plugins={[plugin.current]}
+        className="absolute inset-0 w-full h-full"
+        opts={{
+          loop: true,
+          align: 'start',
+        }}
+      >
+        <CarouselContent className="h-full -ml-0" style={{ height: '100%' }}>
+          {heroImages.map((image, index) => (
+            <CarouselItem key={index} className="h-full pl-0 basis-full" style={{ height: '100%' }}>
+              <div className="relative w-full h-full">
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="w-full h-full object-cover object-center"
+                  style={{ minHeight: '100%' }}
+                />
+                {/* Subtle gradient overlay for text readability and depth */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20"></div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
 
       {/* Centered Content Overlay */}
-      <div className="relative z-20 w-full h-full flex flex-col items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16">
-        <div className="max-w-5xl w-full mx-auto text-center space-y-3 sm:space-y-4 md:space-y-6">
+      <div className="absolute inset-0 z-20 w-full h-full flex flex-col items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16 pointer-events-none">
+        <div className="max-w-5xl w-full mx-auto text-center space-y-3 sm:space-y-4 md:space-y-6 pointer-events-auto">
           {/* Small Title */}
           <div
             className="animate-fade-in opacity-0 text-xs md:text-base lg:text-lg font-bold tracking-[0.2em] text-gray-800 uppercase"

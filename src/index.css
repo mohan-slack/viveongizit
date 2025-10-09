@@ -536,14 +536,25 @@ html, body {
     }
   }
 
-  /* Hero carousel fade transitions */
-  .hero .embla__slide {
-    opacity: 0;
-    transition: opacity 1000ms ease-in-out;
+  /* Hero carousel full height and fade transitions */
+  .hero .embla {
+    height: 100%;
   }
 
-  .hero .embla__slide.is-snapped {
-    opacity: 1;
+  .hero .embla__viewport {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .hero .embla__container {
+    height: 100%;
+    display: flex;
+  }
+
+  .hero .embla__slide {
+    height: 100%;
+    flex: 0 0 100%;
+    min-width: 0;
   }
 
   /* Gradient Button Styles */
