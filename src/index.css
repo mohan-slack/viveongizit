@@ -558,6 +558,23 @@ html, body {
     z-index: 50 !important;
     padding: 0 1rem;
   }
+  
+  .hero-tagline {
+    font-size: clamp(1.2rem, 2vw, 2.4rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    color: #000;
+    text-align: center;
+  }
+  
+  .hux-logo {
+    width: clamp(180px, 25vw, 300px);
+    margin: 0 auto 1.5rem auto;
+    display: block;
+  }
+  
   .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -580,24 +597,21 @@ html, body {
   /* Desktop (≥1024px) */
   @media (min-width: 1024px) {
     .hero { height: 92vh !important; }
-    .hero-overlay h1 { font-size: 2.5rem; }
-    .hux-logo { width: 260px; margin: 0.5rem 0; }
+    .hero-tagline { font-size: 2.4rem; }
   }
 
   /* Tablet (768px–1023px) */
   @media (min-width: 768px) and (max-width: 1023px) {
     .hero { height: 85vh !important; }
     .hero-overlay { padding-top: 5vh; }
-    .hero-overlay h1 { font-size: 2rem; }
-    .hux-logo { width: 220px; margin: 0.4rem 0; }
+    .hero-tagline { font-size: 1.8rem; }
   }
 
   /* Mobile (≤767px) */
   @media (max-width: 767px) {
     .hero { height: 75vh !important; }
     .hero-overlay { padding-top: 10vh; }
-    .hero-overlay h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .hux-logo { width: 180px; margin: 0.3rem 0; }
+    .hero-tagline { font-size: 1.2rem; margin-bottom: 0.8rem; }
     .hero-buttons { flex-direction: column; gap: 0.8rem; }
   }
 
