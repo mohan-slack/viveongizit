@@ -57,7 +57,7 @@ export default function EnhancedHeroSection() {
       <div className="hero-overlay">
         <h1 className="hero-title">INTRODUCING THE FUTURE OF TECH</h1>
         <img src={huxLogo} alt="HUX" className="hux-logo" />
-        <button className="primary" style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>Next-Gen Productivity</button>
+        <button className="primary">Next-Gen Productivity</button>
       </div>
     </section>
   );
