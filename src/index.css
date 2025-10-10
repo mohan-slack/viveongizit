@@ -555,9 +555,11 @@ html, body {
     justify-content: center;
     text-align: center;
     color: #000;
-    z-index: 50 !important;
+    z-index: 20 !important; /* under navbar, above images */
     padding: 0 1rem;
+    pointer-events: none;
   }
+  .hero-overlay > * { pointer-events: auto; }
   
   .hero-tagline {
     font-size: clamp(1.2rem, 2vw, 2.4rem);
@@ -567,13 +569,20 @@ html, body {
     margin-bottom: 1rem;
     color: #000;
     text-align: center;
+    position: relative;
+    z-index: 30;
   }
   
   .hux-logo {
     width: clamp(180px, 25vw, 300px);
     margin: 0 auto 1.5rem auto;
     display: block;
+    position: relative;
+    z-index: 30;
   }
+  
+  /* Ensure navbar stays above */
+  nav, .navbar { position: relative; z-index: 1000; }
   
   .hero-buttons {
     display: flex;
