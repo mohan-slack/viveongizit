@@ -56,11 +56,11 @@ export default function EnhancedHeroSection() {
       </Carousel>
 
       {/* Centered Content Overlay */}
-      <div className="absolute inset-0 z-20 w-full h-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pointer-events-none py-8 md:py-0">
-        <div className="max-w-5xl w-full mx-auto text-center space-y-2 sm:space-y-3 md:space-y-5 lg:space-y-6 pointer-events-auto flex flex-col items-center justify-center">
+      <div className="hero-overlay">
+        <div className="max-w-5xl w-full mx-auto space-y-2 sm:space-y-3 md:space-y-5 lg:space-y-6 flex flex-col items-center justify-center">
           {/* Small Title */}
           <div
-            className="animate-fade-in opacity-0 text-[10px] sm:text-xs md:text-sm lg:text-base font-bold tracking-[0.2em] text-gray-800 uppercase"
+            className="hero-title animate-fade-in opacity-0 font-bold tracking-[0.2em] text-gray-800 uppercase"
             style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
           >
             Introducing the Future of Tech
@@ -74,7 +74,7 @@ export default function EnhancedHeroSection() {
             <img 
               src={huxLogo} 
               alt="HUX Logo" 
-              className="w-[200px] sm:w-[280px] md:w-[380px] lg:w-[480px] h-auto drop-shadow-2xl"
+              className="hero-logo h-auto drop-shadow-2xl"
             />
           </div>
 
@@ -85,7 +85,7 @@ export default function EnhancedHeroSection() {
             style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
           >
             <span
-              className="text-[10px] sm:text-xs md:text-sm text-gray-700 font-medium mx-auto px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 
+              className="hero-badge text-gray-700 font-medium mx-auto
               bg-white/70 backdrop-blur-xl
               border border-gray-300/60
               rounded-full w-fit tracking-wider uppercase inline-flex items-center justify-center 
@@ -103,7 +103,7 @@ export default function EnhancedHeroSection() {
           >
             <Button
               asChild
-              className="bg-gray-900 hover:bg-gray-800 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-4 md:py-5 lg:py-6 text-xs sm:text-sm md:text-base lg:text-lg 
+              className="hero-cta bg-gray-900 hover:bg-gray-800 text-white
               font-semibold tracking-wide shadow-2xl hover:shadow-3xl transition-all rounded-full hover:scale-105"
             >
               <a href="#">Get Started</a>

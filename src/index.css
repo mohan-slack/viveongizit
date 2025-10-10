@@ -557,6 +557,106 @@ html, body {
     min-width: 0;
   }
 
+  /* Hero Overlay Explicit Positioning */
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 30 !important;
+    pointer-events: none;
+  }
+
+  .hero-overlay > * {
+    pointer-events: auto;
+  }
+
+  /* Desktop (≥1024px) */
+  @media (min-width: 1024px) {
+    .hero {
+      height: 92vh !important;
+    }
+    .hero-overlay .hero-logo {
+      width: 480px;
+    }
+    .hero-overlay .hero-title {
+      font-size: clamp(0.875rem, 1vw, 1rem);
+    }
+    .hero-overlay .hero-badge {
+      font-size: clamp(0.75rem, 0.9vw, 0.875rem);
+      padding: 0.75rem 1.5rem;
+    }
+    .hero-overlay .hero-cta {
+      transform: scale(1.1);
+      font-size: clamp(1rem, 1.1vw, 1.125rem);
+      padding: 1.5rem 2.5rem;
+    }
+  }
+
+  /* Tablet (768px–1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .hero {
+      height: 85vh !important;
+    }
+    .hero-overlay {
+      padding-top: 5vh;
+    }
+    .hero-overlay .hero-logo {
+      width: 380px;
+    }
+    .hero-overlay .hero-title {
+      font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    }
+    .hero-overlay .hero-badge {
+      font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+      padding: 0.625rem 1.25rem;
+    }
+    .hero-overlay .hero-cta {
+      transform: scale(0.95);
+      font-size: clamp(0.875rem, 1.2vw, 1rem);
+      padding: 1.25rem 2rem;
+    }
+  }
+
+  /* Mobile (≤767px) */
+  @media (max-width: 767px) {
+    .hero {
+      height: 75vh !important;
+    }
+    .hero-overlay {
+      padding-top: 10vh;
+    }
+    .hero-overlay .hero-logo {
+      width: 200px;
+    }
+    .hero-overlay .hero-title {
+      font-size: clamp(0.625rem, 2.5vw, 0.75rem);
+    }
+    .hero-overlay .hero-badge {
+      font-size: clamp(0.625rem, 2vw, 0.7rem);
+      padding: 0.5rem 1rem;
+    }
+    .hero-overlay .hero-cta {
+      transform: scale(0.9);
+      font-size: clamp(0.75rem, 2.5vw, 0.875rem);
+      padding: 1rem 1.5rem;
+    }
+    .hero-overlay .hero-cta + .hero-cta {
+      margin-top: 0.8rem;
+    }
+  }
+
+  /* Prevent horizontal overflow */
+  html, body {
+    overflow-x: hidden;
+  }
+
   /* Gradient Button Styles */
   .gradient-button {
     @apply relative appearance-none cursor-pointer;
