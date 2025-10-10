@@ -550,77 +550,64 @@ html, body {
     width: 100%;
     height: 100%;
     display: flex !important;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    color: #000;
-    z-index: 20 !important; /* under navbar, above images */
+    flex-direction: column;
+    z-index: 50 !important; /* under navbar, above images */
     padding: 0 1rem;
     pointer-events: none;
   }
   .hero-overlay > * { pointer-events: auto; }
-  
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 60 !important;
+    transform: translateY(0);
+  }
+
   .hero-tagline {
-    font-size: clamp(1.2rem, 2vw, 2.4rem);
+    order: 1;
+    margin-bottom: 1rem;
     font-weight: 600;
+    font-size: clamp(1.2rem, 2vw, 2.4rem);
+    color: #000;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 1rem;
-    color: #000;
-    text-align: center;
-    position: relative;
-    z-index: 30;
   }
-  
+
   .hux-logo {
-    width: clamp(180px, 25vw, 300px);
-    margin: 0 auto 1.5rem auto;
-    display: block;
-    position: relative;
-    z-index: 30;
+    order: 2;
+    width: clamp(200px, 25vw, 320px);
+    margin-bottom: 1.2rem;
   }
-  
-  /* Ensure navbar stays above */
-  nav, .navbar { position: relative; z-index: 1000; }
-  
+
   .hero-buttons {
+    order: 3;
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 1.5rem;
+    gap: 1rem;
   }
-  .hero-overlay button {
-    background: #000;
-    color: #fff;
-    border-radius: 50px;
-    padding: 0.8rem 1.6rem;
-    font-size: 1rem;
-    cursor: pointer;
-    border: none;
-    transition: transform 200ms ease;
-  }
-  .hero-overlay button:hover { transform: scale(1.03); }
 
   /* Desktop (≥1024px) */
   @media (min-width: 1024px) {
     .hero { height: 92vh !important; }
-    .hero-tagline { font-size: 2.4rem; }
   }
 
   /* Tablet (768px–1023px) */
   @media (min-width: 768px) and (max-width: 1023px) {
     .hero { height: 85vh !important; }
     .hero-overlay { padding-top: 5vh; }
-    .hero-tagline { font-size: 1.8rem; }
   }
 
   /* Mobile (≤767px) */
   @media (max-width: 767px) {
     .hero { height: 75vh !important; }
     .hero-overlay { padding-top: 10vh; }
-    .hero-tagline { font-size: 1.2rem; margin-bottom: 0.8rem; }
     .hero-buttons { flex-direction: column; gap: 0.8rem; }
   }
 

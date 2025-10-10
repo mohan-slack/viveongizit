@@ -55,10 +55,12 @@ export default function EnhancedHeroSection() {
 
       {/* Centered Content Overlay */}
       <div className="hero-overlay">
-        <h1 className="hero-tagline">INTRODUCING THE FUTURE OF TECH</h1>
-        <img src={huxLogo} alt="HUX" className="hux-logo" />
-        <div className="hero-buttons">
-          <button className="primary">Next-Gen Productivity</button>
+        <div className="hero-content">
+          <h1 className="hero-tagline">INTRODUCING THE FUTURE OF TECH</h1>
+          <img src={huxLogo} alt="HUX" className="hux-logo" />
+          <div className="hero-buttons">
+            <button className="primary">Next-Gen Productivity</button>
+          </div>
         </div>
       </div>
     </section>
