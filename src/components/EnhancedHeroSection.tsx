@@ -58,9 +58,6 @@ export default function EnhancedHeroSection() {
         <h1 className="hero-title">INTRODUCING THE FUTURE OF TECH</h1>
         <img src={huxLogo} alt="HUX" className="hux-logo" />
         <button className="primary" style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>Next-Gen Productivity</button>
-        <div className="hero-buttons">
-          <button className="secondary">Get Started</button>
-        </div>
       </div>
     </section>
   );
