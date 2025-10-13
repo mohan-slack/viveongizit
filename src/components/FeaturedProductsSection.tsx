@@ -36,7 +36,7 @@ CPU: Ultra Low Power Bluetooth
 Sensors: HR, SpO₂, Temp, G-sensor
 Vibration: Precision motor
 Outer Material: Stainless Steel
-Inner Material: Medical-grade Steel
+Inner Material: Premium Steel
 Dimensions: 7.5mm × 2.5mm
 Battery Life: 4–6 days
 Sizes: 6–13
@@ -59,7 +59,7 @@ Compatibility: iOS & Android
         >
           <div className="relative bg-neutral-50 rounded-3xl shadow-xl p-10 flex justify-center items-center mb-10 hover:shadow-2xl transition-all duration-300">
             <img
-              src="/lovable-uploads/f4500f10-1a88-4387-8751-e15bcb29a6db.png"
+              src="/lovable-uploads/Dark-theme.png"
               alt="HUX AURA Smart Ring"
               className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
             />
