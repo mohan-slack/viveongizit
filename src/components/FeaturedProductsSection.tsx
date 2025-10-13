@@ -1,146 +1,169 @@
-import React, { useState } from 'react';
-import ProductCard from './ProductCard';
-import { Button } from './ui/button';
-import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+"use client";
 
-const FeaturedProductsSection: React.FC = () => {
-  const navigate = useNavigate();
-  
-  const smartRings = [
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, X } from "lucide-react";
+import { Button } from "./ui/button";
+
+const ProductShowcaseHuxAura: React.FC = () => {
+  const [openSection, setOpenSection] = useState<string | null>(null);
+
+  const toggleSection = (section: string) => {
+    setOpenSection(openSection === section ? null : section);
+  };
+
+  const techSpecs = [
     {
-      id: 2,
-      name: "HUX AURA RING",
-      category: "SMART RING",
-      imagePath: "/lovable-uploads/f4500f10-1a88-4387-8751-e15bcb29a6db.png",
-      secondaryImagePath: "src/assets/calling-vibration.jpg",
-      tertiaryImagePath: "/lovable-uploads/34f15844-10cc-451f-805f-c54ce21e93fb.png",
-      color: "blue" as const,
+      id: "design",
+      title: "Sleek Concave Design for Lightweight Comfort",
+      content: `The HUX AURA smart ring introduces an innovative concave design, making it 20% lighter than previous models. This refined structure ensures a comfortable, barely-there feel, perfect for all-day wear without compromising style or function.`,
+    },
+    {
+      id: "health",
+      title: "Advanced Health Tracking with Temperature Monitoring",
+      content: `Equipped with a new temperature sensor, the AURA goes beyond traditional health tracking to monitor your body temperature. Stay aware of changes in your wellness with real-time, precise temperature readings, adding a new layer of insight to your health routine.`,
+    },
+    {
+      id: "integration",
+      title: "Effortless Integration for Everyday Wear",
+      content: `Compact yet powerful, the HUX AURA smart ring seamlessly integrates into your lifestyle, delivering key health insights without the bulk. It's an ideal choice for those seeking advanced wellness tracking in a minimal, stylish form.`,
+    },
+    {
+      id: "specs",
+      title: "Technical Specifications",
+      content: `
+CPU: Ultra Low Power Bluetooth
+Sensors: HR, SpO₂, Temp, G-sensor
+Vibration: Precision motor
+Outer Material: Stainless Steel
+Inner Material: Medical-grade Steel
+Dimensions: 7.5mm × 2.5mm
+Battery Life: 4–6 days
+Sizes: 6–13
+Water Resistance: 5ATM (50m)
+Compatibility: iOS & Android
+      `,
     },
   ];
 
   return (
-    <div className="relative bg-gradient-to-br from-background via-background to-muted py-12 lg:py-16 w-full overflow-hidden">
-      {/* Background grid pattern */}
-      <div className="absolute inset-0 bg-grid-lines opacity-5" />
-      
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-viveon-red/5 via-transparent to-viveon-neon-blue/5" />
-      
-      {/* Floating accent elements */}
-      <motion.div 
-        className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-viveon-red/10 to-viveon-neon-purple/10 rounded-full filter blur-3xl"
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.6, 0.3] 
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-      <motion.div 
-        className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-viveon-neon-blue/10 to-viveon-neon-purple/10 rounded-full filter blur-3xl"
-        animate={{ 
-          scale: [1.2, 1, 1.2],
-          opacity: [0.6, 0.3, 0.6] 
-        }}
-        transition={{ duration: 8, repeat: Infinity, delay: 2 }}
-      />
+    <section className="w-full bg-white py-16 lg:py-24 text-gray-900 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Left: Product Image */}
+        <motion.div
+          className="relative flex justify-center items-center"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="relative bg-neutral-100 rounded-2xl shadow-2xl p-8 md:p-10 lg:p-12 flex justify-center items-center w-full max-w-md">
+            <img
+              src="/lovable-uploads/f4500f10-1a88-4387-8751-e15bcb29a6db.png"
+              alt="HUX AURA Smart Ring"
+              className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        </motion.div>
 
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-16">
-        <div id="rings" className="mb-12">
-          <motion.div 
-            className="flex justify-between items-end mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div>
-              <motion.h2 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <span className="text-gray-400">HUX</span>{' '}
-                <span className="bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue bg-clip-text text-transparent animate-gradient-shimmer">
-                  Smart Rings
-                </span>
-              </motion.h2>
-              <motion.p 
-                className="text-xl text-muted-foreground font-light"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                Technology at your fingertips • Premium Edition
-              </motion.p>
+        {/* Right: Product Info */}
+        <motion.div
+          className="flex flex-col gap-6"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight">
+              HUX AURA Smart Ring
+            </h2>
+            <p className="text-lg text-gray-600 font-light mb-4">
+              Advanced health monitoring in a sleek, comfortable design
+            </p>
+            <div className="flex items-center gap-4 mb-3">
+              <span className="text-3xl font-semibold">₹12,999</span>
+              <span className="text-gray-400 line-through text-lg">
+                ₹16,999
+              </span>
+              <span className="text-green-600 font-medium">Save 24%</span>
             </div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+            <div className="text-sm text-gray-700 mb-6">
+              <p>
+                <strong>Color:</strong> Black
+              </p>
+              <p>
+                <strong>Ring size:</strong> Select your size
+              </p>
+            </div>
+
+            {/* Key Features */}
+            <div className="space-y-2 mb-6">
+              <h3 className="text-xl font-semibold mb-3">Key Features</h3>
+              <ul className="space-y-1 text-gray-700">
+                <li>✓ 5ATM Waterproof - Swim & shower friendly</li>
+                <li>✓ 4–6 Days Battery Life - Charges in 2 hours</li>
+                <li>✓ 24/7 Health Tracking - Heart rate, SpO₂, temperature</li>
+                <li>✓ iOS & Android Compatible</li>
+                <li>✓ Medical-grade Materials - Premium & safe</li>
+              </ul>
+            </div>
+
+            {/* CTA */}
+            <Button
+              variant="default"
+              className="rounded-full px-8 py-4 text-lg bg-gradient-to-r from-black via-gray-800 to-gray-900 text-white shadow-lg hover:opacity-90 transition-all duration-300 w-fit"
             >
-              <Button 
-                variant="ghost" 
-                className="group relative px-8 py-4 text-lg font-semibold rounded-2xl border border-border/50 hover:border-viveon-red/30 transition-all duration-300 hover:bg-viveon-red/5"
-              >
-                <span className="bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent group-hover:from-viveon-red group-hover:to-viveon-neon-purple transition-all duration-300">
-                  View Collection
-                </span>
-                <ArrowRight className="ml-3 w-5 h-5 text-muted-foreground group-hover:text-viveon-red group-hover:translate-x-1 transition-all duration-300" />
-                
-                {/* Subtle glow effect on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-viveon-red/0 to-viveon-neon-blue/0 group-hover:from-viveon-red/10 group-hover:to-viveon-neon-blue/10 transition-all duration-300 -z-10" />
-              </Button>
-            </motion.div>
-          </motion.div>
-          
-          <motion.div 
-            className="grid grid-cols-1 gap-12 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            {smartRings.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: 0.4 + (index * 0.2),
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                whileHover={{ 
-                  y: -8, 
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-                className="transform-gpu"
-              >
-                <ProductCard 
-                  name={product.name}
-                  category={product.category}
-                  imagePath={product.imagePath}
-                  secondaryImagePath={product.secondaryImagePath}
-                  tertiaryImagePath={product.tertiaryImagePath}
-                  color={product.color}
-                  onClick={product.name === "HUX AURA RING" ? () => navigate('/products/hux-aura-ring') : undefined}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+              Coming Soon
+            </Button>
+          </div>
+
+          {/* Tech Specs Accordion */}
+          <div className="mt-10 border-t border-gray-200 pt-6">
+            <h3 className="text-2xl font-semibold mb-4 tracking-tight">
+              Technical Details
+            </h3>
+            <div className="space-y-4">
+              {techSpecs.map((spec) => (
+                <div
+                  key={spec.id}
+                  className="border-b border-gray-200 pb-4 transition-all duration-300"
+                >
+                  <button
+                    onClick={() => toggleSection(spec.id)}
+                    className="w-full flex justify-between items-center text-left"
+                  >
+                    <span className="text-lg font-medium text-gray-800">
+                      {spec.title}
+                    </span>
+                    {openSection === spec.id ? (
+                      <X className="w-5 h-5 text-gray-600 rotate-90 transition-transform duration-300" />
+                    ) : (
+                      <Plus className="w-5 h-5 text-gray-600 transition-transform duration-300" />
+                    )}
+                  </button>
+
+                  <AnimatePresence>
+                    {openSection === spec.id && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="mt-3 text-gray-600 whitespace-pre-line text-sm leading-relaxed"
+                      >
+                        {spec.content}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default FeaturedProductsSection;
+export default ProductShowcaseHuxAura;
