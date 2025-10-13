@@ -131,10 +131,10 @@ Compatibility: iOS & Android
 
             <div className="flex items-center gap-4 mb-3">
               <span className="text-3xl font-semibold">₹XXXX</span>
-              <span className="text-gray-400 line-through text-lg">
+              {/* <span className="text-gray-400 line-through text-lg">
                 ₹XXXX
               </span>
-              <span className="text-green-600 font-medium">Save XX%</span>
+              <span className="text-green-600 font-medium">Save XX%</span> */}
             </div>
 
             <div className="text-sm text-gray-700 mb-6">
