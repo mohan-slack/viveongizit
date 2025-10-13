@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from './ui/button';
 import AboutFounders from './AboutFounders';
 import { Link } from 'react-router-dom';
+import aboutSmartRing from '@/assets/about-smart-ring.jpg';
 
 const AboutSection: React.FC = () => {
   return <div id="about" className="bg-white py-12 lg:py-16 w-full">
@@ -13,7 +14,7 @@ const AboutSection: React.FC = () => {
               <div className="absolute -inset-3 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur-xl opacity-60 animate-pulse"></div>
               <div className="absolute -inset-2 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur-lg opacity-40"></div>
               <div className="relative bg-gray-100 rounded-2xl overflow-hidden shadow-2xl">
-                <img src="/lovable-uploads/ad606094-c16f-4418-9c42-8d147e72ee26.png" alt="HUX Smart Rings by Viveon" className="w-full h-auto" />
+                <img src={aboutSmartRing} alt="HUX Smart Ring Technology" className="w-full h-auto" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="w-16 h-8 relative">
@@ -44,7 +45,7 @@ const AboutSection: React.FC = () => {
             </p>
             
             <p className="text-gray-700 mb-6 sm:mb-8 font-light tracking-wide text-sm sm:text-base">
-              From our state-of-the-art HUX QUANTUM earbuds that deliver unparalleled sound quality to our HUX NEXUS smart rings that put the power of technology at your fingertips, every product is crafted with precision, innovation, and attention to detail.
+              From our state-of-the-art HUX QUANTUM earbuds that deliver unparalleled sound quality to our HUX AURA smart rings that put the power of technology at your fingertips, every product is crafted with precision, innovation, and attention to detail.
             </p>
             
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">

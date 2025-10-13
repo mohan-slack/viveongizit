@@ -10,15 +10,6 @@ const FeaturedProductsSection: React.FC = () => {
   
   const smartRings = [
     {
-      id: 1,
-      name: "HUX NEXUS RING",
-      category: "SMART RING",
-      imagePath: "/lovable-uploads/8ff34480-1523-4e10-a35f-a8b2e6060aae.png",
-      secondaryImagePath: "/lovable-uploads/c81b7a9e-d4b0-4903-8b12-0dd8947f7d31.png",
-      tertiaryImagePath: "/lovable-uploads/079821f2-8a8b-4705-856a-29d19cdc60f6.png",
-      color: "red" as const,
-    },
-    {
       id: 2,
       name: "HUX AURA RING",
       category: "SMART RING",
@@ -110,7 +101,7 @@ const FeaturedProductsSection: React.FC = () => {
           </motion.div>
           
           <motion.div 
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto"
+            className="grid grid-cols-1 gap-12 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
