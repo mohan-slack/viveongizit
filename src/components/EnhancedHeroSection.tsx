@@ -1,51 +1,75 @@
-"use client"
+"use client";
 
-import huxLogo from "@/assets/hux-logo.svg"
-import heroBlackTitanium from "@/assets/hero-ring-black-titanium.jpg"
-import heroRoseGold from "@/assets/hero-ring-rose-gold-premium.jpg"
-import heroSilver from "@/assets/hero-ring-silver-premium.jpg"
-import heroGraphite from "@/assets/hero-ring-graphite-premium.jpg"
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
-import { useRef } from "react"
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+
+import huxLogo from "@/assets/hux-logo.svg";
+import heroBlackGlossy from "@/assets/hero-black-glossy.jpg";
+import heroDualRings from "@/assets/hero-dual-rings.jpg";
+import heroFloatingGraphite from "@/assets/hero-floating-graphite.jpg";
+import heroLifestyleHand from "@/assets/hero-lifestyle-hand.jpg";
+
+/**
+ * Enhanced Hero Section with carousel fade transitions,
+ * responsive height (92vh desktop / 85vh tablet / 75vh mobile),
+ * and centered overlay content.
+ */
 
 export default function EnhancedHeroSection() {
-  const plugin = useRef(
+  const autoplayPlugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: false })
-  )
+  );
 
   const heroImages = [
-    { src: heroBlackTitanium, alt: "HUX Smart Ring - Premium Black Titanium Edition" },
-    { src: heroRoseGold, alt: "HUX Smart Ring - Elegant Rose Gold Finish" },
-    { src: heroSilver, alt: "HUX Smart Ring - Polished Silver Premium" },
-    { src: heroGraphite, alt: "HUX Smart Ring - Sophisticated Graphite Grey" },
-  ]
+    {
+      src: heroBlackGlossy,
+      alt: "HUX Smart Ring – Black Titanium on Glossy Surface",
+    },
+    {
+      src: heroDualRings,
+      alt: "HUX Smart Ring – Rose Gold & Black Duo",
+    },
+    {
+      src: heroFloatingGraphite,
+      alt: "HUX Smart Ring – Floating Graphite Edition",
+    },
+    {
+      src: heroLifestyleHand,
+      alt: "HUX Smart Ring – Lifestyle Rose Gold Edition",
+    },
+  ];
 
   return (
     <section
       id="hero"
-      className="hero hero-fullbleed h-[75vh] md:h-[85vh] lg:h-[92vh] relative overflow-hidden"
+      className="hero hero-fullbleed relative h-[75vh] md:h-[85vh] lg:h-[92vh] overflow-hidden"
     >
-      {/* Full-Width Edge-to-Edge Carousel Background */}
+      {/* ---------- Background Carousel ---------- */}
       <Carousel
-        plugins={[plugin.current]}
+        plugins={[autoplayPlugin.current]}
+        opts={{ loop: true, align: "start" }}
         className="absolute inset-0 w-full h-full"
-        opts={{
-          loop: true,
-          align: 'start',
-        }}
       >
-        <CarouselContent className="h-full -ml-0" style={{ height: '100%' }}>
+        <CarouselContent className="h-full -ml-0">
           {heroImages.map((image, index) => (
-            <CarouselItem key={index} className="h-full pl-0 basis-full" style={{ height: '100%' }}>
-              <div className="relative z-0 w-full h-full">
-                <img 
-                  src={image.src} 
-                  alt={image.alt} 
+            <CarouselItem
+              key={index}
+              className="relative h-full w-full pl-0 basis-full"
+            >
+              {/* Background Image */}
+              <div className="relative w-full h-full z-0">
+                <img
+                  src={image.src}
+                  alt={image.alt}
                   className="w-full h-full object-cover object-center"
-                  style={{ minHeight: '100%' }}
+                  loading="lazy"
                 />
-                {/* Subtle gradient overlay for text readability and depth */}
+                {/* Subtle gradient for readability */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20"></div>
               </div>
             </CarouselItem>
@@ -53,12 +77,14 @@ export default function EnhancedHeroSection() {
         </CarouselContent>
       </Carousel>
 
-      {/* Centered Content Overlay */}
+      {/* ---------- Centered Overlay Content ---------- */}
       <div className="hero-overlay">
         <div className="hero-content">
-          <h1 className="hero-tagline">INTRODUCING THE FUTURE OF TECH</h1>
-          <img src={huxLogo} alt="HUX" className="hux-logo" />
-          <div className="hero-buttons">
+          <h1 className="hero-tagline fade-in">INTRODUCING THE FUTURE OF TECH</h1>
+
+          <img src={huxLogo} alt="HUX Logo" className="hux-logo fade-in" />
+
+          <div className="hero-buttons fade-in-subtitle">
             <button className="primary">Next-Gen Productivity</button>
           </div>
         </div>
