@@ -59,7 +59,7 @@ Compatibility: iOS & Android
         >
           <div className="relative bg-neutral-100 rounded-2xl shadow-2xl p-8 md:p-10 lg:p-12 flex justify-center items-center w-full max-w-md">
             <img
-              src="/lovable-uploads/f4500f10-1a88-4387-8751-e15bcb29a6db.png"
+              src="/lovable-uploads/Dark-theme.png"
               alt="HUX AURA Smart Ring"
               className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
             />
