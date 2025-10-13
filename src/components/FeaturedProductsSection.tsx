@@ -130,11 +130,11 @@ Compatibility: iOS & Android
             </p>
 
             <div className="flex items-center gap-4 mb-3">
-              <span className="text-3xl font-semibold">₹12,999</span>
+              <span className="text-3xl font-semibold">₹XXXX</span>
               <span className="text-gray-400 line-through text-lg">
-                ₹16,999
+                ₹XXXX
               </span>
-              <span className="text-green-600 font-medium">Save 24%</span>
+              <span className="text-green-600 font-medium">Save XX%</span>
             </div>
 
             <div className="text-sm text-gray-700 mb-6">
