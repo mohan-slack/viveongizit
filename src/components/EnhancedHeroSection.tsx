@@ -1,10 +1,10 @@
 "use client"
 
 import huxLogo from "@/assets/hux-logo.svg"
-import heroBlackGlossy from "@/assets/hero-black-glossy.jpg"
-import heroDualRings from "@/assets/hero-dual-rings.jpg"
-import heroFloatingGraphite from "@/assets/hero-floating-graphite.jpg"
-import heroLifestyleHand from "@/assets/hero-lifestyle-hand.jpg"
+import heroBlackTitanium from "@/assets/hero-ring-black-titanium.jpg"
+import heroRoseGold from "@/assets/hero-ring-rose-gold-premium.jpg"
+import heroSilver from "@/assets/hero-ring-silver-premium.jpg"
+import heroGraphite from "@/assets/hero-ring-graphite-premium.jpg"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { useRef } from "react"
@@ -15,10 +15,10 @@ export default function EnhancedHeroSection() {
   )
 
   const heroImages = [
-    { src: heroBlackGlossy, alt: "HUX Smart Ring - Black Titanium on Glossy Surface" },
-    { src: heroDualRings, alt: "HUX Smart Ring - Rose Gold & Black Duo" },
-    { src: heroFloatingGraphite, alt: "HUX Smart Ring - Floating Graphite Edition" },
-    { src: heroLifestyleHand, alt: "HUX Smart Ring - Lifestyle Rose Gold" },
+    { src: heroBlackTitanium, alt: "HUX Smart Ring - Premium Black Titanium Edition" },
+    { src: heroRoseGold, alt: "HUX Smart Ring - Elegant Rose Gold Finish" },
+    { src: heroSilver, alt: "HUX Smart Ring - Polished Silver Premium" },
+    { src: heroGraphite, alt: "HUX Smart Ring - Sophisticated Graphite Grey" },
   ]
 
   return (

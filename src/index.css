@@ -544,7 +544,7 @@ html, body {
     flex: 0 0 100%;
     min-width: 0;
     opacity: 0;
-    transition: opacity 800ms ease-in-out;
+    transition: opacity 1000ms ease-in-out;
   }
   .hero [aria-roledescription="slide"][aria-hidden="false"] { opacity: 1; }
 
