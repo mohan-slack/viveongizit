@@ -583,7 +583,9 @@ html, body {
   .hux-logo {
     order: 2;
     width: clamp(200px, 25vw, 320px);
+    height: auto;
     margin-bottom: 1.2rem;
+    display: block;
   }
 
   .hero-buttons {
