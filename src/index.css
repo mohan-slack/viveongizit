@@ -536,12 +536,17 @@ html, body {
     }
   }
 
-  /* Hero carousel full height, layering, and fade transitions */
-  .hero .embla { height: 100%; z-index: 0; }
-  .hero .embla__viewport { height: 100%; overflow: hidden; z-index: 0; }
-  .hero .embla__container { height: 100%; display: flex; z-index: 0; }
-  .hero .embla__slide { height: 100%; flex: 0 0 100%; min-width: 0; opacity: 0; transition: opacity 1000ms ease-in-out; }
-  .hero .embla__slide.is-snapped, .hero .embla__slide[aria-hidden="false"] { opacity: 1; }
+  /* Hero carousel full height + fade transitions for shadcn carousel */
+  .hero .overflow-hidden { height: 100%; z-index: 0; }
+  .hero .overflow-hidden > div { height: 100%; display: flex; }
+  .hero [aria-roledescription="slide"] {
+    height: 100%;
+    flex: 0 0 100%;
+    min-width: 0;
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+  }
+  .hero [aria-roledescription="slide"][aria-hidden="false"] { opacity: 1; }
 
   /* Persistent Overlay Above Slides */
   .hero-overlay {
@@ -572,7 +577,7 @@ html, body {
 
   .hero-tagline {
     order: 1;
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0.5rem, 1.8vh, 1rem);
     font-weight: 600;
     font-size: clamp(1.2rem, 2vw, 2.4rem);
     color: #000;
@@ -584,7 +589,7 @@ html, body {
     order: 2;
     width: clamp(200px, 25vw, 320px);
     height: auto;
-    margin-bottom: 1.2rem;
+    margin-bottom: clamp(0.75rem, 2.2vh, 1.5rem);
     display: block;
   }
 
@@ -592,7 +597,7 @@ html, body {
     order: 3;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: clamp(0.6rem, 1.6vh, 1rem);
   }
 
   /* Desktop (≥1024px) */
@@ -603,14 +608,12 @@ html, body {
   /* Tablet (768px–1023px) */
   @media (min-width: 768px) and (max-width: 1023px) {
     .hero { height: 85vh !important; }
-    .hero-overlay { padding-top: 5vh; }
   }
 
   /* Mobile (≤767px) */
   @media (max-width: 767px) {
     .hero { height: 75vh !important; }
-    .hero-overlay { padding-top: 10vh; }
-    .hero-buttons { flex-direction: column; gap: 0.8rem; }
+    .hero-buttons { flex-direction: column; gap: clamp(0.6rem, 1.6vh, 1rem); }
   }
 
   /* Prevent horizontal overflow */
