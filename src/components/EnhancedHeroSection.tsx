@@ -47,7 +47,7 @@ export default function EnhancedHeroSection() {
   return (
     <section
       id="hero"
-      className="hero hero-fullbleed relative h-[75vh] md:h-[85vh] lg:h-[92vh] overflow-hidden"
+      className="hero hero-fullbleed relative h-[90vh] min-h-[600px] md:h-[85vh] lg:h-[92vh] overflow-hidden"
     >
       {/* ---------- Background Carousel ---------- */}
       <Carousel

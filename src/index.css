@@ -142,7 +142,15 @@ html, body {
   .hero { height: 85vh; }
 }
 @media (max-width: 767px) {
-  .hero { height: 75vh; }
+  .hero { 
+    height: 90vh;
+    min-height: 600px;
+  }
+  .hero img,
+  .hero video {
+    object-fit: cover;
+    object-position: center center;
+  }
   .hero-buttons {
     flex-direction: column;
     gap: 0.8rem;
