@@ -10,7 +10,7 @@ const ContactSection: React.FC = () => {
           <div className="text-center mb-8 sm:mb-12">
             <div className="relative inline-block mb-4 sm:mb-6">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold relative z-10">
-                <span className="relative inline-block px-6 sm:px-8 py-3 sm:py-4 text-white font-sans font-bold rounded-[11px] gradient-button gradient-button-variant hover:scale-105 transition-transform duration-300 cursor-pointer text-sm sm:text-base">
+                <span className="relative inline-block px-6 sm:px-8 py-3 sm:py-4 text-white font-sans font-bold rounded-[11px] gradient-button hover:scale-105 transition-transform duration-300 cursor-pointer text-sm sm:text-base">
                   Connect With Us
                 </span>
               </h2>

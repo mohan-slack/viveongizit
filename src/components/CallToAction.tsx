@@ -34,7 +34,7 @@ const CallToAction: React.FC = () => {
               <GradientButton className="px-6 sm:px-8 py-3 sm:py-4 font-medium text-sm sm:text-base">
                 SHOP NOW
               </GradientButton>
-              <GradientButton variant="variant" className="px-6 sm:px-8 py-3 sm:py-4 font-medium text-sm sm:text-base group">
+              <GradientButton className="px-6 sm:px-8 py-3 sm:py-4 font-medium text-sm sm:text-base group">
                 EXPLORE COLLECTION
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </GradientButton>
