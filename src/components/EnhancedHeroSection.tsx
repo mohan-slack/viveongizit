@@ -1,18 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import Autoplay from "embla-carousel-autoplay";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-
+import Spline from '@splinetool/react-spline';
 import huxLogo from "@/assets/hux-logo.svg";
-import heroBlackGlossy from "@/assets/hero-black-glossy.jpg";
-import heroDualRings from "@/assets/hero-dual-rings.jpg";
-import heroFloatingGraphite from "@/assets/hero-floating-graphite.jpg";
-import heroLifestyleHand from "@/assets/hero-lifestyle-hand.jpg";
 
 /**
  * Enhanced Hero Section with carousel fade transitions,
@@ -21,61 +10,21 @@ import heroLifestyleHand from "@/assets/hero-lifestyle-hand.jpg";
  */
 
 export default function EnhancedHeroSection() {
-  const autoplayPlugin = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: false })
-  );
-
-  const heroImages = [
-    {
-      src: heroBlackGlossy,
-      alt: "HUX Smart Ring – Black Titanium on Glossy Surface",
-    },
-    {
-      src: heroDualRings,
-      alt: "HUX Smart Ring – Rose Gold & Black Duo",
-    },
-    {
-      src: heroFloatingGraphite,
-      alt: "HUX Smart Ring – Floating Graphite Edition",
-    },
-    {
-      src: heroLifestyleHand,
-      alt: "HUX Smart Ring – Lifestyle Rose Gold Edition",
-    },
-  ];
 
   return (
     <section
       id="hero"
       className="hero hero-fullbleed relative h-[90vh] min-h-[600px] md:h-[85vh] lg:h-[92vh] overflow-hidden"
     >
-      {/* ---------- Background Carousel ---------- */}
-      <Carousel
-        plugins={[autoplayPlugin.current]}
-        opts={{ loop: true, align: "start" }}
-        className="absolute inset-0 w-full h-full"
-      >
-        <CarouselContent className="h-full -ml-0">
-          {heroImages.map((image, index) => (
-            <CarouselItem
-              key={index}
-              className="relative h-full w-full pl-0 basis-full"
-            >
-              {/* Background Image */}
-              <div className="relative w-full h-full z-0">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-                {/* Subtle gradient for readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20"></div>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+      {/* ---------- 3D Spline Background ---------- */}
+      <div className="absolute inset-0 w-full h-full">
+        <Spline
+          scene="https://prod.spline.design/RCVKAoUYNPilq6bJ/scene.splinecode"
+          className="w-full h-full"
+        />
+        {/* Subtle gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none"></div>
+      </div>
 
       {/* ---------- Centered Overlay Content ---------- */}
       <div className="hero-overlay">
