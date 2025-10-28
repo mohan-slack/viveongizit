@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import Logo from './Logo';
@@ -23,7 +22,7 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-[1000] transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 glass-3d",
         isScrolled 
           ? "bg-black/20 backdrop-blur-xl py-1 shadow-lg shadow-viveon-red/10 border-b border-viveon-red/20" 
           : "bg-gradient-to-b from-black/40 to-transparent py-4"
@@ -55,10 +54,10 @@ const Navbar: React.FC = () => {
         <DesktopActions />
 
         <button
-          className="md:hidden text-white"
+          className="md:hidden text-white icon-3d"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={24} className="icon-3d" /> : <Menu size={24} className="icon-3d" />}
         </button>
       </div>
 

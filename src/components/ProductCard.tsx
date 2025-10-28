@@ -72,7 +72,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div 
       className={cn(
-        "group relative bg-black/60 backdrop-blur-md p-6 rounded-2xl transition-all duration-500 hover:translate-y-[-15px] perspective-1000",
+        "card-3d group relative bg-black/60 backdrop-blur-md p-6 rounded-2xl transition-all duration-500 hover:translate-y-[-15px] perspective-1000",
         "before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:opacity-0 before:transition-opacity before:duration-500 before:z-[-1] group-hover:before:opacity-100",
         colorMap[color].border,
         colorMap[color].glow,
@@ -98,8 +98,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
       )} />
 
       <div className="absolute top-4 right-4 z-10">
-        <Button variant="ghost" size="icon" className="rounded-full text-gray-400 hover:text-white transition-colors">
-          <Heart size={18} />
+        <Button variant="ghost" size="icon" className="icon-3d rounded-full text-gray-400 hover:text-white transition-colors">
+          <Heart size={18} className="icon-3d" />
         </Button>
       </div>
       
@@ -155,7 +155,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <h3 className="text-white text-xl font-bold mt-1 mb-4 group-hover:text-glow transition-all duration-300">{name}</h3>
         <div className="flex justify-center">
           <GradientButton className="px-6 py-3 font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl backdrop-blur-sm">
-            <Clock size={16} className="mr-2" />
+            <Clock size={16} className="mr-2 icon-3d" />
             Coming Soon
           </GradientButton>
         </div>

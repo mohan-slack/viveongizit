@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 
 const gradientButtonVariants = cva(
   [
-    "gradient-button",
+    "gradient-button button-3d",
     "inline-flex items-center justify-center",
     "rounded-[11px] min-w-[132px] px-9 py-4",
     "text-base leading-[19px] font-[500] text-white",

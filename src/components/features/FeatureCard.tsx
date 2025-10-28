@@ -68,9 +68,9 @@ const FeatureCard = ({
       <HoverCardTrigger asChild>
         <motion.div
           className={cn(
-            "relative overflow-hidden backdrop-blur-[10px] rounded-2xl transform-gpu cursor-pointer",
+            "card-3d relative overflow-hidden backdrop-blur-[10px] rounded-2xl transform-gpu cursor-pointer",
             "border border-opacity-20 transition-all duration-300",
-            "aspect-[4/3] w-full", // Changed to 4:3 aspect ratio to better match image dimensions
+            "aspect-[4/3] w-full",
             selected 
               ? `${color} border-opacity-80` 
               : `${color} hover:border-opacity-60`,
