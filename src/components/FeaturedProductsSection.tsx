@@ -72,6 +72,48 @@ Compatibility: iOS & Android
             />
           </div>
 
+          {/* Product Info */}
+          <div className="w-full mb-8">
+            <p className="text-lg text-gray-600 font-light mb-4">
+              Advanced health monitoring in a sleek, comfortable design
+            </p>
+
+            <div className="flex items-center gap-4 mb-3">
+              <span className="text-3xl font-semibold">₹XXXX</span>
+            </div>
+
+            <div className="text-sm text-gray-700 mb-6">
+              <p>
+                <strong>Color:</strong> Black
+              </p>
+              <p>
+                <strong>Ring size:</strong> Select your size
+              </p>
+            </div>
+
+            {/* Key Features */}
+            <div className="space-y-2">
+              <h3 className="text-xl font-semibold mb-3">Key Features</h3>
+              <ul className="space-y-2 text-gray-800">
+                {[
+                  "5ATM Waterproof",
+                  "4–6 Days Battery Life",
+                  "24/7 Health Tracking – Heart rate, SpO₂, temperature",
+                  "iOS & Android Compatible",
+                  "Premium Materials",
+                ].map((feature, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-2"
+                  >
+                    <span className="text-blue-600 font-semibold">✓</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
           {/* Technical Details Accordion */}
           <div className="w-full mt-4">
             <h3 className="text-2xl font-semibold mb-4 tracking-tight text-gray-800 border-l-4 border-gray-800 pl-3">
@@ -117,73 +159,20 @@ Compatibility: iOS & Android
           </div>
         </motion.div>
 
-        {/* RIGHT: Product info */}
+        {/* RIGHT: Coming Soon Button */}
         <motion.div
-          className="flex flex-col gap-6 lg:w-1/2"
+          className="flex flex-col gap-6 lg:w-1/2 justify-center items-center"
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div>
-            <p className="text-lg text-gray-600 font-light mb-4">
-              Advanced health monitoring in a sleek, comfortable design
-            </p>
-
-            <div className="flex items-center gap-4 mb-3">
-              <span className="text-3xl font-semibold">₹XXXX</span>
-              {/* <span className="text-gray-400 line-through text-lg">
-                ₹XXXX
-              </span>
-              <span className="text-green-600 font-medium">Save XX%</span> */}
-            </div>
-
-            <div className="text-sm text-gray-700 mb-6">
-              <p>
-                <strong>Color:</strong> Black
-              </p>
-              <p>
-                <strong>Ring size:</strong> Select your size
-              </p>
-            </div>
-
-            {/* Key Features with Motion */}
-            <motion.div
-              className="space-y-2 mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-xl font-semibold mb-3">Key Features</h3>
-              <ul className="space-y-2 text-gray-800">
-                {[
-                  "5ATM Waterproof",
-                  "4–6 Days Battery Life",
-                  "24/7 Health Tracking – Heart rate, SpO₂, temperature",
-                  "iOS & Android Compatible",
-                  "Premium Materials",
-                ].map((feature, index) => (
-                  <motion.li
-                    key={index}
-                    className="flex items-center gap-2 hover:translate-x-2 transition-transform duration-300"
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <span className="text-blue-600 font-semibold">✓</span>
-                    {feature}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Coming Soon Button */}
-            <Button
-              variant="default"
-              className="rounded-full px-8 py-4 text-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-lg hover:opacity-90 transition-all duration-300 w-fit"
-            >
-              Coming Soon
-            </Button>
-          </div>
+          <Button
+            variant="default"
+            className="rounded-full px-8 py-4 text-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-lg hover:opacity-90 transition-all duration-300 w-fit"
+          >
+            Coming Soon
+          </Button>
         </motion.div>
       </div>
     </section>
