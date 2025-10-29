@@ -57,6 +57,13 @@ Compatibility: iOS & Android
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-center">
+            <span className="text-gray-800">HUX</span>{" "}
+            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
+              AURA Smart Ring
+            </span>
+          </h2>
+          
           <div className="relative bg-neutral-50 rounded-3xl shadow-xl p-10 flex justify-center items-center mb-10 hover:shadow-2xl transition-all duration-300">
             <img
               src="/lovable-uploads/Dark-theme.png"
@@ -119,12 +126,6 @@ Compatibility: iOS & Android
           transition={{ duration: 0.8 }}
         >
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight">
-              <span className="text-gray-800">HUX</span>{" "}
-              <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
-                AURA Smart Ring
-              </span>
-            </h2>
             <p className="text-lg text-gray-600 font-light mb-4">
               Advanced health monitoring in a sleek, comfortable design
             </p>
