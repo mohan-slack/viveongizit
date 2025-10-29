@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import FeaturedProductsSection from '@/components/FeaturedProductsSection';
 import FuturisticFeaturesShowcase from '@/components/FuturisticFeaturesShowcase';
+import SmartRingOrbitalSection from '@/components/SmartRingOrbitalSection';
 import FeaturedSmartRingDemoSection from '@/components/FeaturedSmartRingDemoSection';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
@@ -74,6 +75,7 @@ const Index = () => {
     <div className="min-h-screen relative">
       <FeaturedProductsSection />
       <FuturisticFeaturesShowcase />
+      <SmartRingOrbitalSection />
       <FeaturedSmartRingDemoSection />
       <AboutSection />
       <ContactSection />
