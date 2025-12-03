@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import aboutSmartRing from '@/assets/about-smart-ring.jpg';
 
 const AboutSection: React.FC = () => {
-  return <div id="about" className="bg-white py-12 lg:py-16 w-full">
+  return <div id="about" className="bg-white py-10 lg:py-12 w-full">
       <div className="w-full px-6 md:px-12 lg:px-16">
         <div className="flex flex-col lg:flex-row gap-16 items-center max-w-6xl mx-auto">
           <div className="lg:w-1/2">

@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 const CallToAction: React.FC = () => {
   return (
-    <div className="bg-white py-20 w-full">
+    <div className="bg-white py-10 w-full">
       <div className="w-full px-6 md:px-12 lg:px-16">
         <div className="relative bg-gradient-to-r from-gray-100 to-gray-50 overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 max-w-6xl mx-auto">
           {/* Background effects */}

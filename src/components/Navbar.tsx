@@ -22,17 +22,15 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 glass-3d",
+        "fixed top-0 left-0 right-0 z-[1000] transition-all duration-300",
         isScrolled 
-          ? "bg-black/20 backdrop-blur-xl py-1 shadow-lg shadow-viveon-red/10 border-b border-viveon-red/20" 
-          : "bg-gradient-to-b from-black/40 to-transparent py-4"
+          ? "bg-white/95 backdrop-blur-md py-2 shadow-md border-b border-slate-200/50" 
+          : "bg-white/80 backdrop-blur-sm py-3"
       )}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center relative"
+      <div className="container mx-auto px-4 flex justify-between items-center"
         style={{
-          background: isScrolled 
-            ? 'linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.1), transparent)' 
-            : 'transparent'
+          background: 'transparent'
         }}
       >
         <Link to="/" onClick={() => {
@@ -54,10 +52,10 @@ const Navbar: React.FC = () => {
         <DesktopActions />
 
         <button
-          className="md:hidden text-white icon-3d"
+          className="md:hidden text-slate-700 p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={24} className="icon-3d" /> : <Menu size={24} className="icon-3d" />}
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
