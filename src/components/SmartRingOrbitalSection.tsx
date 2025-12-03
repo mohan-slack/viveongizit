@@ -86,7 +86,7 @@ const SmartRingOrbitalSection: React.FC = () => {
   ];
 
   return (
-    <div className="w-full bg-gradient-to-b from-gray-900 to-black py-12 md:py-16">
+    <div className="w-full bg-gradient-to-b from-gray-900 to-black py-10 md:py-12">
       <RadialOrbitalTimeline timelineData={timelineData} centerImage={ringCenterImage} />
     </div>
   );

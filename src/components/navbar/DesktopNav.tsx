@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { NavItem } from './nav-items';
@@ -16,7 +15,7 @@ const DesktopNav: React.FC<DesktopNavProps> = ({
   const [activeTab, setActiveTab] = useState(navigationItems[0]?.label || 'Home');
 
   return (
-    <div className="hidden md:flex items-center gap-3 bg-white/5 border border-white/20 backdrop-blur-lg py-1 px-1 rounded-full">
+    <div className="hidden md:flex items-center gap-1 bg-slate-100 border border-slate-200 py-1 px-1 rounded-full">
       {navigationItems.map((item) => {
         const isActive = activeTab === item.label;
 
@@ -29,29 +28,23 @@ const DesktopNav: React.FC<DesktopNavProps> = ({
                 handleNavClick(item.href, item.isExternal, e);
               }}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-                "text-white/80 hover:text-viveon-red",
-                isActive && "bg-white/10 text-viveon-red"
+                "relative cursor-pointer text-sm font-medium px-5 py-2 rounded-full transition-all duration-200",
+                "text-slate-600 hover:text-slate-900",
+                isActive && "bg-white text-slate-900 shadow-sm"
               )}
             >
               {item.label}
               {isActive && (
                 <motion.div
-                  layoutId="lamp"
-                  className="absolute inset-0 w-full bg-viveon-red/5 rounded-full -z-10"
+                  layoutId="nav-indicator"
+                  className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-pink-500 rounded-full"
                   initial={false}
                   transition={{
                     type: "spring",
-                    stiffness: 300,
+                    stiffness: 400,
                     damping: 30,
                   }}
-                >
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-viveon-red rounded-t-full">
-                    <div className="absolute w-12 h-6 bg-viveon-red/20 rounded-full blur-md -top-2 -left-2" />
-                    <div className="absolute w-8 h-6 bg-viveon-red/20 rounded-full blur-md -top-1" />
-                    <div className="absolute w-4 h-4 bg-viveon-red/20 rounded-full blur-sm top-0 left-2" />
-                  </div>
-                </motion.div>
+                />
               )}
             </a>
           </div>

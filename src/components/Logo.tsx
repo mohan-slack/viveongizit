@@ -19,12 +19,12 @@ const Logo: React.FC<LogoProps> = ({
   const location = useLocation();
   const isMobile = useIsMobile();
   
-  // Adjust size classes for better mobile display
+  // Compact size classes for navbar
   const sizeClasses = {
-    small: isMobile ? "h-20" : "h-28", // Smaller on mobile
-    medium: isMobile ? "h-24" : "h-36", // Smaller on mobile
-    large: isMobile ? "h-40" : "h-56", // Smaller on mobile
-    xlarge: isMobile ? "h-64" : "h-144", // Smaller on mobile
+    small: isMobile ? "h-10" : "h-12",
+    medium: isMobile ? "h-12" : "h-14",
+    large: isMobile ? "h-16" : "h-20",
+    xlarge: isMobile ? "h-24" : "h-32",
   };
 
   const handleLogoClick = () => {

@@ -47,7 +47,7 @@ Compatibility: iOS & Android
   ];
 
   return (
-    <section className="w-full bg-white py-16 lg:py-24 text-gray-900 overflow-hidden">
+    <section className="w-full bg-white py-12 lg:py-16 text-gray-900 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row gap-16 items-start">
         {/* LEFT: Product image + Tech details */}
         <motion.div

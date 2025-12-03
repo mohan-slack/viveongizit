@@ -134,26 +134,18 @@ export default function EnhancedHeroSection({
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-xl">
             {/* Tagline */}
-            <p className="text-slate-500 text-sm md:text-base lg:text-lg font-medium tracking-wide mb-4 fade-in">
+            <p className="text-slate-500 text-sm md:text-base lg:text-lg font-medium tracking-wide mb-3 fade-in">
               Fashion Health Smart Ring
             </p>
             
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight mb-8 fade-in" style={{ animationDelay: '0.2s' }}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1] mb-6 fade-in" style={{ animationDelay: '0.2s' }}>
               Smart Life at<br />
               Your Fingertips
             </h1>
 
-            {/* Logo */}
-            <img
-              alt="HUX Logo"
-              className="h-12 md:h-16 lg:h-20 object-contain fade-in mb-8"
-              src="/lovable-uploads/f866d3b7-d8bf-4fa5-a6de-96bab5fedc3f.png"
-              style={{ animationDelay: '0.4s' }}
-            />
-
             {/* CTA Button */}
-            <div className="fade-in" style={{ animationDelay: '0.6s' }}>
+            <div className="fade-in" style={{ animationDelay: '0.4s' }}>
               <button className="px-8 py-4 bg-slate-900 text-white font-semibold rounded-full hover:bg-slate-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
                 Explore Collection
               </button>
