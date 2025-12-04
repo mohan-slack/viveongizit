@@ -1,6 +1,5 @@
 
 import React, { useEffect } from 'react';
-import EnhancedHeroSection from '@/components/EnhancedHeroSection';
 import FeaturedProductsSectionWrapper from '@/components/FeaturedProductsSectionWrapper';
 import FuturisticFeaturesShowcase from '@/components/FuturisticFeaturesShowcase';
 import FeaturedSmartRingDemoSection from '@/components/FeaturedSmartRingDemoSection';
@@ -73,7 +72,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative">
-      <EnhancedHeroSection />
       <FeaturedProductsSectionWrapper />
       <FuturisticFeaturesShowcase />
       <FeaturedSmartRingDemoSection />
