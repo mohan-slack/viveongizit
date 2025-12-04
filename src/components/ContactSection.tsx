@@ -1,13 +1,13 @@
-
 import React from 'react';
 import { MapPin, Phone, Mail } from 'lucide-react';
+import { ScrollReveal } from './ui/scroll-reveal';
 
 const ContactSection: React.FC = () => {
   return (
     <div id="contact" className="bg-white py-10 lg:py-12 w-full">
       <div className="w-full px-6 md:px-12 lg:px-16">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12">
+          <ScrollReveal className="text-center mb-8 sm:mb-12">
             <div className="relative inline-block mb-4 sm:mb-6">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold relative z-10">
                 <span className="relative inline-block px-6 sm:px-8 py-3 sm:py-4 text-white font-sans font-bold rounded-[11px] gradient-button hover:scale-105 transition-transform duration-300 cursor-pointer text-sm sm:text-base">
@@ -18,9 +18,10 @@ const ContactSection: React.FC = () => {
             <p className="text-gray-600 max-w-2xl mx-auto px-4 text-sm sm:text-base">
               Have questions about our HUX products or interested in collaboration? Reach out to us through any of the following channels.
             </p>
-          </div>
+          </ScrollReveal>
           
-          <div className="bg-gray-50 backdrop-blur-lg rounded-2xl p-8 border border-gray-200">
+          <ScrollReveal delay={0.2}>
+            <div className="bg-gray-50 backdrop-blur-lg rounded-2xl p-8 border border-gray-200">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Location */}
               <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-200 hover:border-red-300 transition-all group hover:shadow-lg">
@@ -93,7 +94,8 @@ const ContactSection: React.FC = () => {
                 HUX™ is a registered trademark of Viveon Gizit Private Limited. All rights reserved.
               </p>
             </div>
-          </div>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </div>

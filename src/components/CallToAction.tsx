@@ -2,12 +2,14 @@
 import React from 'react';
 import { GradientButton } from './ui/gradient-button';
 import { ArrowRight } from 'lucide-react';
+import { ScrollReveal } from './ui/scroll-reveal';
 
 const CallToAction: React.FC = () => {
   return (
     <div className="bg-white py-10 w-full">
       <div className="w-full px-6 md:px-12 lg:px-16">
-        <div className="relative bg-gradient-to-r from-gray-100 to-gray-50 overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 max-w-6xl mx-auto">
+        <ScrollReveal>
+          <div className="relative bg-gradient-to-r from-gray-100 to-gray-50 overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 max-w-6xl mx-auto">
           {/* Background effects */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
             <div className="absolute top-0 left-1/4 w-32 h-32 sm:w-64 sm:h-64 bg-red-100 rounded-full filter blur-3xl"></div>
@@ -40,7 +42,8 @@ const CallToAction: React.FC = () => {
               </GradientButton>
             </div>
           </div>
-        </div>
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   );
