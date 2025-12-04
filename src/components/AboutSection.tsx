@@ -1,15 +1,15 @@
+
 import React from 'react';
 import { Button } from './ui/button';
 import AboutFounders from './AboutFounders';
 import { Link } from 'react-router-dom';
 import aboutSmartRing from '@/assets/about-smart-ring.jpg';
-import { ScrollReveal } from './ui/scroll-reveal';
 
 const AboutSection: React.FC = () => {
   return <div id="about" className="bg-white py-10 lg:py-12 w-full">
       <div className="w-full px-6 md:px-12 lg:px-16">
         <div className="flex flex-col lg:flex-row gap-16 items-center max-w-6xl mx-auto">
-          <ScrollReveal direction="left" className="lg:w-1/2">
+          <div className="lg:w-1/2">
             <div className="relative">
               <div className="absolute -inset-3 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur-xl opacity-60 animate-pulse"></div>
               <div className="absolute -inset-2 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur-lg opacity-40"></div>
@@ -26,9 +26,9 @@ const AboutSection: React.FC = () => {
                 </div>
               </div>
             </div>
-          </ScrollReveal>
+          </div>
           
-          <ScrollReveal direction="right" delay={0.2} className="lg:w-1/2">
+          <div className="lg:w-1/2">
             <div className="relative inline-block mb-4 sm:mb-6">
               <span className="relative inline-block px-6 sm:px-8 py-3 sm:py-4 text-white font-sans font-bold rounded-[11px] gradient-button hover:scale-105 transition-transform duration-300 cursor-pointer text-sm sm:text-base">
                 ABOUT US
@@ -79,12 +79,10 @@ const AboutSection: React.FC = () => {
                 </div>
               </div>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
         
-        <ScrollReveal delay={0.3}>
-          <AboutFounders />
-        </ScrollReveal>
+        <AboutFounders />
       </div>
     </div>;
 };

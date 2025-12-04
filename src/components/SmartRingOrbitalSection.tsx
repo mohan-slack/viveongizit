@@ -2,7 +2,6 @@ import React from 'react';
 import { Activity, Heart, Moon, Thermometer, Wind, Smartphone } from 'lucide-react';
 import RadialOrbitalTimeline from './ui/radial-orbital-timeline';
 import ringCenterImage from '@/assets/ring-center-orbital.png';
-import { ScrollReveal } from './ui/scroll-reveal';
 
 interface TimelineItem {
   id: number;
@@ -88,9 +87,7 @@ const SmartRingOrbitalSection: React.FC = () => {
 
   return (
     <div className="w-full bg-gradient-to-b from-gray-900 to-black py-10 md:py-12">
-      <ScrollReveal>
-        <RadialOrbitalTimeline timelineData={timelineData} centerImage={ringCenterImage} />
-      </ScrollReveal>
+      <RadialOrbitalTimeline timelineData={timelineData} centerImage={ringCenterImage} />
     </div>
   );
 };
