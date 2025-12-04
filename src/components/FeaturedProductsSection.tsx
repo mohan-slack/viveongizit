@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, X } from "lucide-react";
 import { Button } from "./ui/button";
+import { ScrollReveal } from "./ui/scroll-reveal";
 
 const ProductShowcaseHuxAura: React.FC = () => {
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -50,13 +51,7 @@ Compatibility: iOS & Android
     <section className="w-full bg-white py-12 lg:py-16 text-gray-900 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row gap-16 items-start">
         {/* LEFT: Product image + Tech details */}
-        <motion.div
-          className="flex flex-col items-center lg:w-1/2"
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+        <ScrollReveal direction="left" className="flex flex-col items-center lg:w-1/2">
           <div className="relative bg-neutral-50 rounded-3xl shadow-xl p-10 flex justify-center items-center mb-10 hover:shadow-2xl transition-all duration-300">
             <img
               src="/lovable-uploads/Dark-theme.png"
@@ -108,16 +103,10 @@ Compatibility: iOS & Android
               ))}
             </div>
           </div>
-        </motion.div>
+        </ScrollReveal>
 
-        {/* RIGHT: Title + Coming Soon Button + Orbital Timeline */}
-        <motion.div
-          className="flex flex-col gap-8 lg:w-1/2 justify-start items-center"
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+        {/* RIGHT: Title + Coming Soon Button */}
+        <ScrollReveal direction="right" delay={0.2} className="flex flex-col gap-8 lg:w-1/2 justify-start items-center">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-center">
             <span className="text-gray-800">HUX</span>{" "}
             <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
@@ -131,7 +120,7 @@ Compatibility: iOS & Android
           >
             Coming Soon
           </Button>
-        </motion.div>
+        </ScrollReveal>
       </div>
     </section>
   );
