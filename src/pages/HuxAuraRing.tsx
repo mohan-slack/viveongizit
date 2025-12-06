@@ -1,270 +1,366 @@
 import React, { useState } from 'react';
-
+import { motion } from 'framer-motion';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Zap, Heart, Activity, Moon, Thermometer, Waves } from 'lucide-react';
+
+interface ProductVariant {
+  id: string;
+  name: string;
+  color: string;
+  gradientFrom: string;
+  gradientTo: string;
+  glowColor: string;
+  accentColor: string;
+  image: string;
+  price: string;
+  originalPrice: string;
+}
+
+const variants: ProductVariant[] = [
+  {
+    id: 'sterling-gold',
+    name: 'Sterling Gold',
+    color: 'Gold',
+    gradientFrom: 'from-amber-400',
+    gradientTo: 'to-yellow-600',
+    glowColor: 'shadow-amber-500/50',
+    accentColor: 'text-amber-400',
+    image: '/lovable-uploads/7461b774-3563-44bc-9ba3-de5051ce67fb.png',
+    price: '₹12,999',
+    originalPrice: '₹16,999'
+  },
+  {
+    id: 'tarnish-grey',
+    name: 'Tarnish Grey',
+    color: 'Grey',
+    gradientFrom: 'from-slate-400',
+    gradientTo: 'to-zinc-600',
+    glowColor: 'shadow-slate-500/50',
+    accentColor: 'text-slate-300',
+    image: '/lovable-uploads/fe514457-06a6-4e0c-adbb-5f677bb8f4f7.png',
+    price: '₹12,999',
+    originalPrice: '₹16,999'
+  }
+];
+
+const features = [
+  { icon: Heart, label: 'Heart Rate', desc: '24/7 Monitoring' },
+  { icon: Activity, label: 'SpO₂', desc: 'Blood Oxygen' },
+  { icon: Moon, label: 'Sleep', desc: 'Deep Analysis' },
+  { icon: Thermometer, label: 'Temperature', desc: 'Body Temp' },
+  { icon: Waves, label: 'Waterproof', desc: '5ATM Rating' },
+  { icon: Zap, label: 'Battery', desc: '4-6 Days' }
+];
+
+const ElectricCard = ({ variant, isSelected, onSelect }: { 
+  variant: ProductVariant; 
+  isSelected: boolean;
+  onSelect: () => void;
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      whileHover={{ scale: 1.02, y: -8 }}
+      onClick={onSelect}
+      className={`relative cursor-pointer group`}
+    >
+      {/* Electric Border Effect */}
+      <div className={`absolute -inset-[2px] bg-gradient-to-r ${variant.gradientFrom} ${variant.gradientTo} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm`} />
+      
+      {/* Animated Electric Lines */}
+      <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{
+            x: ['-100%', '200%'],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+          className={`absolute top-0 left-0 w-1/3 h-[2px] bg-gradient-to-r from-transparent ${variant.gradientFrom} to-transparent`}
+        />
+        <motion.div
+          animate={{
+            x: ['200%', '-100%'],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: 'linear',
+            delay: 1.5,
+          }}
+          className={`absolute bottom-0 right-0 w-1/3 h-[2px] bg-gradient-to-r from-transparent ${variant.gradientFrom} to-transparent`}
+        />
+        <motion.div
+          animate={{
+            y: ['-100%', '200%'],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: 'linear',
+            delay: 0.75,
+          }}
+          className={`absolute top-0 right-0 w-[2px] h-1/3 bg-gradient-to-b from-transparent ${variant.gradientFrom} to-transparent`}
+        />
+        <motion.div
+          animate={{
+            y: ['200%', '-100%'],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: 'linear',
+            delay: 2.25,
+          }}
+          className={`absolute bottom-0 left-0 w-[2px] h-1/3 bg-gradient-to-b from-transparent ${variant.gradientFrom} to-transparent`}
+        />
+      </div>
+
+      {/* Card Content */}
+      <div className={`relative bg-slate-900/95 backdrop-blur-xl rounded-3xl p-8 border border-slate-800/50 transition-all duration-500 ${isSelected ? `ring-2 ring-offset-2 ring-offset-slate-950 ${variant.glowColor} shadow-2xl ${variant.glowColor}` : ''}`}>
+        
+        {/* Model Badge */}
+        <div className="flex items-center justify-between mb-6">
+          <span className={`text-xs font-bold tracking-widest ${variant.accentColor}`}>HUX01</span>
+          <motion.div
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r ${variant.gradientFrom} ${variant.gradientTo} text-black text-xs font-bold`}
+          >
+            <Zap className="w-3 h-3" />
+            ELECTRIC
+          </motion.div>
+        </div>
+
+        {/* Product Image */}
+        <div className="relative h-64 mb-6">
+          {/* Glow Effect Behind Image */}
+          <div className={`absolute inset-0 bg-gradient-to-r ${variant.gradientFrom} ${variant.gradientTo} opacity-20 blur-3xl rounded-full scale-75`} />
+          
+          {/* Floating Ring Image */}
+          <motion.img
+            src={variant.image}
+            alt={variant.name}
+            className="relative z-10 w-full h-full object-contain drop-shadow-2xl"
+            animate={{ 
+              y: [0, -10, 0],
+              rotateY: [0, 5, 0, -5, 0]
+            }}
+            transition={{ 
+              duration: 4, 
+              repeat: Infinity, 
+              ease: 'easeInOut' 
+            }}
+          />
+          
+          {/* Electric Particles */}
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className={`absolute w-1 h-1 rounded-full bg-gradient-to-r ${variant.gradientFrom} ${variant.gradientTo}`}
+              style={{
+                left: `${20 + Math.random() * 60}%`,
+                top: `${20 + Math.random() * 60}%`,
+              }}
+              animate={{
+                opacity: [0, 1, 0],
+                scale: [0, 1.5, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: i * 0.3,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Product Name */}
+        <h3 className={`text-2xl font-bold mb-2 bg-gradient-to-r ${variant.gradientFrom} ${variant.gradientTo} bg-clip-text text-transparent`}>
+          {variant.name}
+        </h3>
+        <p className="text-slate-400 text-sm mb-6">Premium Smart Ring • {variant.color} Edition</p>
+
+        {/* Price */}
+        <div className="flex items-baseline gap-3 mb-6">
+          <span className="text-3xl font-bold text-white">{variant.price}</span>
+          <span className="text-lg text-slate-500 line-through">{variant.originalPrice}</span>
+          <span className={`text-sm font-bold ${variant.accentColor}`}>24% OFF</span>
+        </div>
+
+        {/* Mini Features Grid */}
+        <div className="grid grid-cols-3 gap-2 mb-6">
+          {features.slice(0, 3).map((feat, idx) => (
+            <div key={idx} className="text-center p-2 rounded-xl bg-slate-800/50 border border-slate-700/30">
+              <feat.icon className={`w-4 h-4 mx-auto mb-1 ${variant.accentColor}`} />
+              <p className="text-[10px] text-slate-400">{feat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Button */}
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Button 
+            className={`w-full h-12 text-lg font-bold bg-gradient-to-r ${variant.gradientFrom} ${variant.gradientTo} text-black hover:opacity-90 transition-all duration-300 shadow-lg ${variant.glowColor}`}
+          >
+            Pre-Order Now
+          </Button>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
 
 const HuxAuraRing = () => {
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedColor, setSelectedColor] = useState('Black');
-  const [selectedSize, setSelectedSize] = useState('9');
-
-  const productImages = [
-    '/lovable-uploads/fe514457-06a6-4e0c-adbb-5f677bb8f4f7.png',
-    '/lovable-uploads/6eb376f4-57db-4739-8ddd-1ff2837821ff.png',
-    '/lovable-uploads/7461b774-3563-44bc-9ba3-de5051ce67fb.png',
-    '/lovable-uploads/ac364875-2d34-4643-a84d-bc85cdf5decd.png',
-  ];
-
-  const colors = [
-    { name: 'Black', class: 'bg-gray-900' },
-    { name: 'Gold', class: 'bg-yellow-600' },
-  ];
-
-  const sizes = ['6', '7', '8', '9', '10', '11', '12', '13'];
-
-  const features = [
-    {
-      title: 'Sleek Concave Design for Lightweight Comfort',
-      description: 'The HUX AURA smart ring introduces an innovative concave design, making it 20% lighter than previous models. This refined structure ensures a comfortable, barely-there feel, perfect for all-day wear without compromising style or function.'
-    },
-    {
-      title: 'Advanced Health Tracking with Temperature Monitoring',
-      description: 'Equipped with a new temperature sensor, the AURA goes beyond traditional health tracking to monitor your body temperature. Stay aware of changes in your wellness with real-time, precise temperature readings, adding a new layer of insight to your health routine.'
-    },
-    {
-      title: 'Effortless Integration for Everyday Wear',
-      description: 'Compact yet powerful, the HUX AURA smart ring seamlessly integrates into your lifestyle, delivering key health insights without the bulk. It\'s an ideal choice for those seeking advanced wellness tracking in a minimal, stylish form.'
-    }
-  ];
+  const [selectedVariant, setSelectedVariant] = useState<string>('sterling-gold');
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Product Section */}
-      <section className="pt-24 pb-12">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
-            
-            {/* Left: Image Gallery */}
-            <div className="space-y-4">
-              {/* Main Image */}
-              <div className="relative bg-muted rounded-2xl overflow-hidden aspect-square">
-                <motion.img
-                  key={selectedImage}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  src={productImages[selectedImage]}
-                  alt="HUX AURA Smart Ring"
-                  className="w-full h-full object-contain p-8"
-                />
-                
-                {/* Navigation Arrows */}
-                <button
-                  onClick={() => setSelectedImage(prev => prev === 0 ? productImages.length - 1 : prev - 1)}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background rounded-full p-2 shadow-lg"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button
-                  onClick={() => setSelectedImage(prev => prev === productImages.length - 1 ? 0 : prev + 1)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background rounded-full p-2 shadow-lg"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-                
-                {/* Image Counter */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/90 px-4 py-2 rounded-full text-sm">
-                  {selectedImage + 1} / {productImages.length}
-                </div>
-              </div>
-              
-              {/* Thumbnail Gallery */}
-              <div className="grid grid-cols-4 gap-3">
-                {productImages.map((img, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSelectedImage(idx)}
-                    className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                      selectedImage === idx ? 'border-primary' : 'border-border hover:border-primary/50'
-                    }`}
-                  >
-                    <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-contain p-2 bg-muted" />
-                  </button>
-                ))}
-              </div>
-            </div>
-            
-            {/* Right: Product Details */}
-            <div className="space-y-6">
-              <div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-3">
-                  HUX AURA Smart Ring
-                </h1>
-                <p className="text-muted-foreground text-lg">
-                  Advanced health monitoring in a sleek, comfortable design
-                </p>
-              </div>
-              
-              {/* Price */}
-              <div className="py-4 border-y border-border">
-                <div className="flex items-baseline gap-3">
-                  <span className="text-3xl font-bold">₹12,999</span>
-                  <span className="text-xl text-muted-foreground line-through">₹16,999</span>
-                  <Badge variant="destructive">Save 24%</Badge>
-                </div>
-              </div>
-              
-              {/* Color Selection */}
-              <div>
-                <label className="block text-sm font-medium mb-3">
-                  Color: <span className="font-bold">{selectedColor}</span>
-                </label>
-                <div className="flex gap-3">
-                  {colors.map((color) => (
-                    <button
-                      key={color.name}
-                      onClick={() => setSelectedColor(color.name)}
-                      className={`w-12 h-12 rounded-full border-2 transition-all ${
-                        selectedColor === color.name ? 'border-primary scale-110' : 'border-border'
-                      }`}
-                    >
-                      <div className={`w-full h-full rounded-full ${color.class}`} />
-                    </button>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Size Selection */}
-              <div>
-                <label className="block text-sm font-medium mb-3">Ring size</label>
-                <div className="grid grid-cols-4 gap-2">
-                  {sizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`py-3 rounded-lg border transition-all ${
-                        selectedSize === size
-                          ? 'bg-primary text-primary-foreground border-primary'
-                          : 'bg-background border-border hover:border-primary'
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Buy Button */}
-              <Button size="lg" className="w-full text-lg h-14">
-                Pre-Order Now
-              </Button>
-              
-              {/* Key Features */}
-              <div className="space-y-3 pt-4">
-                <h3 className="font-semibold text-lg mb-4">Key Features</h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>5ATM Waterproof - Swim & shower friendly</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>4-6 Days Battery Life - Charges in 2 hours</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>24/7 Health Tracking - Heart rate, SpO₂, temperature</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>iOS & Android Compatible</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>Medical-grade Materials - Premium & safe</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-slate-950 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        {/* Grid Pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }}
+        />
+        
+        {/* Gradient Orbs */}
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-slate-500/10 rounded-full blur-[120px]" />
+      </div>
 
-      {/* Feature Descriptions */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <div className="space-y-12">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="space-y-3"
-              >
-                <h2 className="text-2xl md:text-3xl font-bold">{feature.title}</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-16">
+        <div className="container mx-auto px-4 lg:px-8">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: 'spring' }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-slate-500/20 border border-amber-500/30 mb-6"
+            >
+              <Zap className="w-4 h-4 text-amber-400" />
+              <span className="text-sm font-medium text-amber-400">HUX01 Collection</span>
+            </motion.div>
+            
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4">
+              <span className="text-white">HUX AURA</span>
+              <br />
+              <span className="bg-gradient-to-r from-amber-400 via-yellow-500 to-slate-400 bg-clip-text text-transparent">
+                Smart Ring
+              </span>
+            </h1>
+            <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
+              Choose your signature style. Premium health monitoring meets luxury design.
+            </p>
+          </motion.div>
+
+          {/* Product Cards Grid */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
+            {variants.map((variant) => (
+              <ElectricCard
+                key={variant.id}
+                variant={variant}
+                isSelected={selectedVariant === variant.id}
+                onSelect={() => setSelectedVariant(variant.id)}
+              />
             ))}
           </div>
+
+          {/* All Features Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-10">
+              Packed with Advanced Features
+            </h2>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {features.map((feat, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  whileHover={{ y: -5, scale: 1.05 }}
+                  className="relative group"
+                >
+                  <div className="absolute -inset-[1px] bg-gradient-to-r from-amber-500/50 to-slate-500/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity blur-sm" />
+                  <div className="relative bg-slate-900/80 border border-slate-800/50 rounded-2xl p-4 text-center">
+                    <div className="w-10 h-10 mx-auto mb-3 rounded-xl bg-gradient-to-br from-amber-500/20 to-slate-500/20 flex items-center justify-center">
+                      <feat.icon className="w-5 h-5 text-amber-400" />
+                    </div>
+                    <h4 className="text-white font-semibold text-sm mb-1">{feat.label}</h4>
+                    <p className="text-slate-500 text-xs">{feat.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Specifications */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <h2 className="text-3xl font-bold mb-8">Technical Specifications</h2>
+      {/* Specs Section */}
+      <section className="relative py-20 bg-slate-900/50">
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Technical Specifications</h2>
+            <p className="text-slate-400">Built with precision, designed for performance</p>
+          </motion.div>
+
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div className="flex justify-between py-3 border-b">
-                <span className="font-medium">CPU</span>
-                <span className="text-muted-foreground text-right">Ultra Low Power Bluetooth</span>
-              </div>
-              <div className="flex justify-between py-3 border-b">
-                <span className="font-medium">Sensors</span>
-                <span className="text-muted-foreground text-right">HR, SpO₂, Temp, G-sensor</span>
-              </div>
-              <div className="flex justify-between py-3 border-b">
-                <span className="font-medium">Vibration</span>
-                <span className="text-muted-foreground text-right">Precision motor</span>
-              </div>
-              <div className="flex justify-between py-3 border-b">
-                <span className="font-medium">Outer Material</span>
-                <span className="text-muted-foreground text-right">Stainless Steel</span>
-              </div>
-              <div className="flex justify-between py-3 border-b">
-                <span className="font-medium">Inner Material</span>
-                <span className="text-muted-foreground text-right">Medical-grade Steel</span>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <div className="flex justify-between py-3 border-b">
-                <span className="font-medium">Dimensions</span>
-                <span className="text-muted-foreground text-right">7.5mm × 2.5mm</span>
-              </div>
-              <div className="flex justify-between py-3 border-b">
-                <span className="font-medium">Battery Life</span>
-                <span className="text-muted-foreground text-right">4-6 days</span>
-              </div>
-              <div className="flex justify-between py-3 border-b">
-                <span className="font-medium">Sizes</span>
-                <span className="text-muted-foreground text-right">6-13</span>
-              </div>
-              <div className="flex justify-between py-3 border-b">
-                <span className="font-medium">Water Resistance</span>
-                <span className="text-muted-foreground text-right">5ATM (50m)</span>
-              </div>
-              <div className="flex justify-between py-3 border-b">
-                <span className="font-medium">Compatibility</span>
-                <span className="text-muted-foreground text-right">iOS & Android</span>
-              </div>
-            </div>
+            {[
+              ['Material', 'Premium Stainless Steel'],
+              ['Inner Coating', 'Medical-grade Hypoallergenic'],
+              ['Weight', '4-6g (Size dependent)'],
+              ['Dimensions', '7.5mm × 2.5mm'],
+              ['Water Resistance', '5ATM (50m depth)'],
+              ['Battery Life', '4-6 days typical use'],
+              ['Charging Time', '~2 hours'],
+              ['Connectivity', 'Bluetooth 5.2 BLE'],
+              ['Sensors', 'PPG, Temperature, 3-axis Accelerometer'],
+              ['Compatibility', 'iOS 14+ & Android 9+'],
+            ].map(([label, value], idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                className="flex justify-between items-center py-4 border-b border-slate-800/50 group"
+              >
+                <span className="text-slate-400 group-hover:text-white transition-colors">{label}</span>
+                <span className="text-white font-medium text-right">{value}</span>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
