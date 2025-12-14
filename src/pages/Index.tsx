@@ -1,8 +1,11 @@
+
 import React, { useEffect } from 'react';
-import ProductHeroSection from '@/components/ProductHeroSection';
-import FeatureSections from '@/components/FeatureSections';
-import SpecificationsSection from '@/components/SpecificationsSection';
-import AppDownloadSection from '@/components/AppDownloadSection';
+import FeaturedProductsSectionWrapper from '@/components/FeaturedProductsSectionWrapper';
+import FuturisticFeaturesShowcase from '@/components/FuturisticFeaturesShowcase';
+import FeaturedSmartRingDemoSection from '@/components/FeaturedSmartRingDemoSection';
+import AboutSection from '@/components/AboutSection';
+import ContactSection from '@/components/ContactSection';
+import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 import AIAssistant from '@/components/AIAssistant/AIAssistant';
 import { useLocation } from 'react-router-dom';
@@ -69,10 +72,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative">
-      <ProductHeroSection />
-      <FeatureSections />
-      <SpecificationsSection />
-      <AppDownloadSection />
+      <FeaturedProductsSectionWrapper />
+      <FuturisticFeaturesShowcase />
+      <FeaturedSmartRingDemoSection />
+      <AboutSection />
+      <ContactSection />
+      <CallToAction />
       <Footer />
       {/* AI Assistant */}
       {isMobile && <AIAssistant />}
