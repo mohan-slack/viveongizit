@@ -1,7 +1,8 @@
-
 import React from 'react';
 import { NavItem } from './nav-items';
-import { GradientButton } from '@/components/ui/gradient-button';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 interface MobileNavProps {
   navigationItems: NavItem[];
@@ -17,25 +18,27 @@ const MobileNav: React.FC<MobileNavProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="md:hidden bg-viveon-dark/95 backdrop-blur-lg animate-fadeIn">
-      <ul className="py-4 px-4 flex flex-col">
+    <div className="md:hidden absolute top-full left-0 right-0 bg-background border-t border-border shadow-elevated animate-fade-in">
+      <div className="px-6 py-4 space-y-1">
         {navigationItems.map((item) => (
-          <li key={item.label} className="py-2 border-b border-gray-800">
-            <a 
-              href={item.href}
-              className="text-white hover:text-viveon-red transition-colors duration-300 block font-medium"
-              onClick={(e) => handleNavClick(item.href, item.isExternal, e)}
-            >
-              {item.label}
-            </a>
-          </li>
+          <a
+            key={item.label}
+            href={item.href}
+            onClick={(e) => handleNavClick(item.href, item.isExternal, e)}
+            className="block py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-xl px-4 transition-colors"
+          >
+            {item.label}
+          </a>
         ))}
-        <li className="py-4 flex justify-center">
-          <GradientButton className="w-full font-medium">
-            SHOP NOW
-          </GradientButton>
-        </li>
-      </ul>
+        
+        <div className="pt-4 pb-2">
+          <Link to="/products/hux-aura-ring" className="block">
+            <Button className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-full py-3 text-base font-medium">
+              Get HUX Ring
+            </Button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

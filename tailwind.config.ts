@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,10 +19,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
-      },
-      height: {
-        '128': '32rem', // 512px, which is 4x of h-32 (128px)
+        sans: ['Inter', 'SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -31,15 +27,6 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        viveon: {
-          red: "#FF3A2F",
-          dark: "#0D0F12",
-          darker: "#090A0C",
-          neon: {
-            blue: "#00FFFF",
-            purple: "#9B30FF",
-          },
-        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -78,11 +65,24 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Curve-inspired colors
+        curve: {
+          red: "hsl(0, 85%, 55%)",
+          sky: "hsl(200, 60%, 92%)",
+          skyDark: "hsl(200, 40%, 88%)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "2xl": "1.5rem",
+        "3xl": "2rem",
+      },
+      boxShadow: {
+        'soft': '0 4px 24px -4px rgba(0, 0, 0, 0.08)',
+        'elevated': '0 12px 40px -8px rgba(0, 0, 0, 0.12)',
+        'card': '0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.06)',
       },
       keyframes: {
         "accordion-down": {
@@ -95,55 +95,33 @@ export default {
         },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
-        pulse: {
-          "0%, 100%": { opacity: 1 },
-          "50%": { opacity: 0.5 },
-        },
-        glow: {
-          "0%, 100%": { boxShadow: "0 0 5px #00FFFF, 0 0 10px #00FFFF" },
-          "50%": { boxShadow: "0 0 20px #00FFFF, 0 0 30px #00FFFF" },
-        },
-        cityMove: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+          "50%": { transform: "translateY(-10px)" },
         },
         fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "fade-in": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(20px)"
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)"
-          }
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "fade-up": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(40px)"
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)"
-          }
+          "0%": { opacity: "0", transform: "translateY(40px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideIn: {
+          "0%": { opacity: "0", transform: "translateX(-20px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        float: "float 6s ease-in-out infinite",
-        pulse: "pulse 3s ease-in-out infinite",
-        glow: "glow 2s ease-in-out infinite",
-        cityMove: "cityMove 60s linear infinite",
-        fadeIn: "fadeIn 0.5s ease-in-out",
-        "fade-in": "fade-in 0.3s ease-out forwards",
-        "fade-up": "fade-up 0.5s ease-out forwards",
+        float: "float 4s ease-in-out infinite",
+        fadeIn: "fadeIn 0.6s ease-out forwards",
+        "fade-in": "fade-in 0.6s ease-out forwards",
+        "fade-up": "fade-up 0.6s ease-out forwards",
+        slideIn: "slideIn 0.5s ease-out forwards",
       },
     },
   },

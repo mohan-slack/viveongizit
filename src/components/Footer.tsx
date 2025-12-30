@@ -1,3 +1,4 @@
+"use client";
 
 import React from 'react';
 import Logo from './Logo';
@@ -15,15 +16,12 @@ const Footer: React.FC = () => {
   const handleNavClick = (href: string, e: React.MouseEvent) => {
     e.preventDefault();
     
-    // Handle contact section specifically
     if (href === '#contact') {
       const isHomePage = location.pathname === '/';
       
       if (!isHomePage) {
-        // If we're not on the home page, navigate programmatically
         navigate('/', { state: { scrollToSection: 'contact' } });
       } else {
-        // We're already on home page, just scroll
         const element = document.getElementById('contact');
         if (element) {
           window.scrollTo({
@@ -33,154 +31,121 @@ const Footer: React.FC = () => {
         }
       }
     } else if (href.startsWith('/')) {
-      // For regular route navigation - need to scroll to top
       if (location.pathname === href) {
-        // If already on the same page, just scroll to top
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        // Navigate to the new page and scroll to top when it loads
         navigate(href, { state: { scrollToTop: true } });
       }
     }
   };
   
+  const footerLinks = {
+    quickLinks: [
+      { label: 'Home', href: '/' },
+      { label: 'Products', href: '/products' },
+      { label: 'Features', href: '/features' },
+      { label: 'About Us', href: '/about' },
+      { label: 'Contact', href: '#contact' }
+    ],
+    support: [
+      { label: 'FAQs', href: '#' },
+      { label: 'Privacy Policy', href: '#' },
+      { label: 'Terms of Service', href: '#' },
+      { label: 'Shipping & Returns', href: '#' }
+    ]
+  };
+
   return (
-    <footer className="bg-white py-16 w-full">
-      <div className="w-full px-6 md:px-12 lg:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto">
-          {/* First column */}
+    <footer className="bg-foreground text-background py-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <div className="mb-6">
+              <span className="text-2xl font-bold text-background">HUX</span>
+              <span className="text-accent text-xl">™</span>
+            </div>
+            <p className="text-background/60 text-sm mb-6">
+              Experience the next generation of wearable technology with our cutting-edge smart rings.
+            </p>
+            <div className="flex gap-3">
+              <Button variant="ghost" size="icon" className="text-background/60 hover:text-background hover:bg-background/10 rounded-full">
+                <Facebook size={18} />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-background/60 hover:text-background hover:bg-background/10 rounded-full">
+                <Twitter size={18} />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-background/60 hover:text-background hover:bg-background/10 rounded-full">
+                <Instagram size={18} />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-background/60 hover:text-background hover:bg-background/10 rounded-full">
+                <Youtube size={18} />
+              </Button>
+            </div>
+          </div>
+          
+          {/* Quick Links */}
           <div>
-            <h3 className="text-black text-lg font-bold mb-6 tracking-tight">Quick Links</h3>
+            <h3 className="text-background font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              <li>
-                <a 
-                  href="/" 
-                  onClick={(e) => handleNavClick('/', e)}
-                  className="text-gray-600 hover:text-red-500 transition-colors"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/products" 
-                  onClick={(e) => handleNavClick('/products', e)}
-                  className="text-gray-600 hover:text-red-500 transition-colors"
-                >
-                  Products
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/features" 
-                  onClick={(e) => handleNavClick('/features', e)}
-                  className="text-gray-600 hover:text-red-500 transition-colors"
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/about" 
-                  onClick={(e) => handleNavClick('/about', e)}
-                  className="text-gray-600 hover:text-red-500 transition-colors"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="#contact" 
-                  onClick={(e) => handleNavClick('#contact', e)} 
-                  className="text-gray-600 hover:text-red-500 transition-colors cursor-pointer"
-                >
-                  Contact
-                </a>
-              </li>
+              {footerLinks.quickLinks.map((link) => (
+                <li key={link.label}>
+                  <a 
+                    href={link.href}
+                    onClick={(e) => handleNavClick(link.href, e)}
+                    className="text-background/60 hover:text-background transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           
-          {/* Second column */}
+          {/* Support */}
           <div>
-            <h3 className="text-black text-lg font-bold mb-6 tracking-tight">Support</h3>
+            <h3 className="text-background font-semibold mb-6">Support</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-600 hover:text-red-500 transition-colors">FAQs</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-red-500 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-red-500 transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-red-500 transition-colors">Shipping & Returns</a></li>
-              <li>
-                <a 
-                  href="#contact" 
-                  onClick={(e) => handleNavClick('#contact', e)} 
-                  className="text-gray-600 hover:text-red-500 transition-colors cursor-pointer"
-                >
-                  Contact Support
-                </a>
-              </li>
+              {footerLinks.support.map((link) => (
+                <li key={link.label}>
+                  <a 
+                    href={link.href}
+                    className="text-background/60 hover:text-background transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           
-          {/* Third column */}
+          {/* Newsletter */}
           <div>
-            <h3 className="text-black text-lg font-bold mb-6 tracking-tight">Newsletter</h3>
-            <p className="text-gray-600 mb-4 font-light">Subscribe to get special offers, free giveaways, and product launches.</p>
-            <div className="flex mb-4">
+            <h3 className="text-background font-semibold mb-6">Stay Updated</h3>
+            <p className="text-background/60 text-sm mb-4">
+              Subscribe for product updates and exclusive offers.
+            </p>
+            <div className="flex gap-2">
               <Input 
                 type="email" 
                 placeholder="Your email" 
-                className="bg-gray-50 border-gray-300 text-black focus:border-red-500"
+                className="bg-background/10 border-background/20 text-background placeholder:text-background/40 focus:border-background/40 rounded-full"
               />
-              <Button className="ml-2 bg-red-500 hover:bg-red-600">
-                <ArrowRight size={16} />
-              </Button>
-            </div>
-            <p className="text-gray-500 text-sm">By subscribing, you agree to our Privacy Policy</p>
-          </div>
-          
-          {/* Fourth column */}
-          <div>
-            <h3 className="text-black text-lg font-bold mb-6 tracking-tight">Social Media</h3>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="ghost" size="icon" className="text-gray-600 hover:text-red-500">
-                <Facebook size={20} />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-600 hover:text-red-500">
-                <Twitter size={20} />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-600 hover:text-red-500">
-                <Instagram size={20} />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-600 hover:text-red-500">
-                <Youtube size={20} />
+              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-4">
+                <ArrowRight size={18} />
               </Button>
             </div>
           </div>
         </div>
         
-        {/* Logo and tagline bottom section */}
-        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row items-center justify-center gap-6">
-          <a 
-            href="/" 
-            onClick={(e) => handleNavClick('/', e)} 
-            className="mb-4 md:mb-0"
-          >
-            <Logo 
-              className={isMobile ? "scale-75" : ""} 
-              size={isMobile ? "medium" : "large"} 
-              showSoundWaves={false} 
-            />
-          </a>
-          <p className="text-gray-600 font-light tracking-wide text-center md:text-left max-w-xl">
-            Experience the next generation of wearable technology with our cutting-edge earbuds and smart rings.
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-background/40 text-sm">
+            © {new Date().getFullYear()} Viveon Gizit Pvt. Ltd. All rights reserved.
           </p>
-        </div>
-        
-        {/* Copyright notice */}
-        <div className="mt-8 text-center">
-          <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} VIVEON. All rights reserved.</p>
+          <p className="text-background/40 text-sm">
+            HUX™ is a registered trademark
+          </p>
         </div>
       </div>
     </footer>

@@ -1,19 +1,17 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart, User } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const DesktopActions: React.FC = () => {
   return (
-    <div className="hidden md:flex items-center space-x-3">
-      <Button variant="ghost" size="icon" className="text-slate-600 hover:text-slate-900 hover:bg-slate-100">
-        <User size={20} />
-      </Button>
-      <Button variant="ghost" size="icon" className="text-slate-600 hover:text-slate-900 hover:bg-slate-100">
-        <ShoppingCart size={20} />
-      </Button>
-      <Button className="bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 rounded-full">
-        SHOP NOW
-      </Button>
+    <div className="hidden md:flex items-center">
+      <Link to="/products/hux-aura-ring">
+        <Button 
+          className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-2 text-sm font-medium shadow-sm transition-all duration-200 hover:shadow-md"
+        >
+          Get HUX Ring
+        </Button>
+      </Link>
     </div>
   );
 };
