@@ -1,89 +1,98 @@
+"use client";
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Button } from './ui/button';
-import AboutFounders from './AboutFounders';
 import { Link } from 'react-router-dom';
 import aboutSmartRing from '@/assets/about-smart-ring.jpg';
+import AboutFounders from './AboutFounders';
 
 const AboutSection: React.FC = () => {
-  return <div id="about" className="bg-white py-10 lg:py-12 w-full">
-      <div className="w-full px-6 md:px-12 lg:px-16">
-        <div className="flex flex-col lg:flex-row gap-16 items-center max-w-6xl mx-auto">
-          <div className="lg:w-1/2">
+  const stats = [
+    { value: "15+", label: "Engineers", sublabel: "Dedicated experts" },
+    { value: "04", label: "Patents", sublabel: "Innovative technology" },
+    { value: "24/7", label: "Support", sublabel: "Always available" }
+  ];
+
+  return (
+    <section id="about" className="py-20 lg:py-28 bg-background">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="relative">
-              <div className="absolute -inset-3 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur-xl opacity-60 animate-pulse"></div>
-              <div className="absolute -inset-2 bg-gradient-to-r from-viveon-red via-viveon-neon-purple to-viveon-neon-blue rounded-2xl blur-lg opacity-40"></div>
-              <div className="relative bg-gray-100 rounded-2xl overflow-hidden shadow-2xl">
-                <img src={aboutSmartRing} alt="HUX Smart Ring Technology" className="w-full h-auto" />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="w-16 h-8 relative">
-                    <span className="text-red-500 font-bold tracking-wider text-lg">
-                      HUX<span className="text-white text-[0.5em] align-top leading-none">™</span>
-                    </span>
-                  </div>
-                  <h3 className="tracking-tight text-zinc-50 font-normal text-base">By Viveon Gizit Pvt. Ltd.</h3>
+              <div className="relative bg-secondary rounded-3xl overflow-hidden shadow-elevated">
+                <img 
+                  src={aboutSmartRing} 
+                  alt="HUX Smart Ring Technology" 
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+                <div className="absolute bottom-6 left-6">
+                  <span className="text-accent font-bold text-2xl">HUX</span>
+                  <span className="text-background text-xs align-top">™</span>
+                  <p className="text-background/80 text-sm mt-1">By Viveon Gizit Pvt. Ltd.</p>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
           
-          <div className="lg:w-1/2">
-            <div className="relative inline-block mb-4 sm:mb-6">
-              <span className="relative inline-block px-6 sm:px-8 py-3 sm:py-4 text-white font-sans font-bold rounded-[11px] gradient-button hover:scale-105 transition-transform duration-300 cursor-pointer text-sm sm:text-base">
-                ABOUT US
-              </span>
+          {/* Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <span className="inline-block px-4 py-2 bg-secondary text-foreground text-sm font-medium rounded-full mb-6">
+              About Us
+            </span>
+            
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight leading-tight">
+              Pioneering the next generation of{' '}
+              <span className="text-accent">wearable tech</span>
+            </h2>
+            
+            <p className="text-muted-foreground mb-4 text-lg">
+              At Viveon Gizit Private Limited, we believe that technology should not only be powerful but also seamlessly integrated into your lifestyle.
+            </p>
+            
+            <p className="text-muted-foreground mb-8">
+              Founded in 2025, our team of engineers, designers, and health experts work tirelessly to create products that combine cutting-edge technology with sleek, minimalist design.
+            </p>
+            
+            {/* Stats */}
+            <div className="flex flex-wrap gap-8 mb-8">
+              {stats.map((stat, index) => (
+                <div key={stat.label} className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-secondary rounded-2xl flex items-center justify-center">
+                    <span className="text-accent font-bold text-xl">{stat.value}</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">{stat.label}</p>
+                    <p className="text-sm text-muted-foreground">{stat.sublabel}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mt-2 mb-4 sm:mb-6 tracking-tight">Pioneering the Next Generation of <span className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Wearable Tech</span></h2>
             
-            <p className="text-gray-700 mb-4 sm:mb-6 font-light tracking-wide text-sm sm:text-base">
-              At Viveon Gizit Private Limited, we believe that technology should not only be powerful but also seamlessly integrated into your lifestyle. Our flagship brand HUX™ represents our commitment to innovation and excellence in wearable technology.
-            </p>
-            
-            <p className="text-gray-700 mb-4 sm:mb-6 font-light tracking-wide text-sm sm:text-base">
-              Founded in 2025, our team of engineers, designers, and audio experts work tirelessly to create products that combine cutting-edge technology with sleek, minimalist design. The HUX™ line embodies our vision of developing devices that enhance your daily life without getting in the way.
-            </p>
-            
-            <p className="text-gray-700 mb-6 sm:mb-8 font-light tracking-wide text-sm sm:text-base">
-              From our state-of-the-art HUX QUANTUM earbuds that deliver unparalleled sound quality to our HUX AURA smart rings that put the power of technology at your fingertips, every product is crafted with precision, innovation, and attention to detail.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
-              <div className="flex items-center">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-50 flex items-center justify-center mr-3 sm:mr-4">
-                  <span className="text-red-500 font-bold text-lg sm:text-2xl">15+</span>
-                </div>
-                <div>
-                  <p className="text-black font-bold text-sm sm:text-base">Engineers</p>
-                  <p className="text-gray-600 text-xs sm:text-sm">Dedicated experts</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-50 flex items-center justify-center mr-3 sm:mr-4">
-                  <span className="text-blue-500 font-bold text-lg sm:text-2xl">04</span>
-                </div>
-                <div>
-                  <p className="text-black font-bold text-sm sm:text-base">Patents</p>
-                  <p className="text-gray-600 text-xs sm:text-sm">Innovative technology</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-purple-50 flex items-center justify-center mr-3 sm:mr-4">
-                  <span className="text-purple-500 font-bold text-lg sm:text-2xl">24/7</span>
-                </div>
-                <div>
-                  <p className="text-black font-bold text-sm sm:text-base">Support</p>
-                  <p className="text-gray-600 text-xs sm:text-sm">Always available</p>
-                </div>
-              </div>
-            </div>
-          </div>
+            <Link to="/about">
+              <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-3">
+                Learn More About Us
+              </Button>
+            </Link>
+          </motion.div>
         </div>
         
         <AboutFounders />
       </div>
-    </div>;
+    </section>
+  );
 };
+
 export default AboutSection;

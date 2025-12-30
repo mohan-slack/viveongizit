@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 
 // Desktop images (16:9)
@@ -79,7 +80,14 @@ export default function EnhancedHeroSection({
   const showCarousel = !useVideo || videoError || !videoLoaded;
 
   return (
-    <section id="hero" className="hero hero-fullbleed relative h-[100dvh] w-full overflow-hidden bg-gradient-to-b from-slate-100 to-slate-200">
+    <section id="hero" className="relative h-[100dvh] w-full overflow-hidden bg-sky-gradient cloud-bg">
+      {/* Cloud overlay effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[15%] left-[5%] w-[300px] h-[150px] bg-white/40 rounded-full blur-3xl opacity-60" />
+        <div className="absolute top-[10%] right-[10%] w-[400px] h-[200px] bg-white/50 rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-[25%] left-[40%] w-[250px] h-[120px] bg-white/30 rounded-full blur-3xl opacity-40" />
+      </div>
+
       {/* ---------- Video Background ---------- */}
       {showVideo && (
         <div className={`absolute inset-0 w-full h-full z-0 transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}>
@@ -97,61 +105,67 @@ export default function EnhancedHeroSection({
             <source src={videoSrc} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20"></div>
         </div>
       )}
 
-      {/* ---------- Background Carousel ---------- */}
-      {showCarousel && (
-        <Carousel
-          opts={{ loop: true, align: "start" }}
-          setApi={setApi}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${showVideo && videoLoaded ? 'opacity-0' : 'opacity-100'}`}
+      {/* ---------- Overlay Content - Centered Like Curve ---------- */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6">
+        <motion.div
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <CarouselContent className="h-full -ml-0">
-            {heroImages.map((image, index) => (
-              <CarouselItem key={index} className="relative h-full w-full pl-0 basis-full">
-                <div className="relative w-full h-full z-0">
-                  <picture className="w-full h-full">
-                    <source media="(max-width: 767px)" srcSet={image.mobileSrc} />
-                    <source media="(min-width: 768px)" srcSet={image.src} />
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover object-center block"
-                      loading={index === 0 ? "eager" : "lazy"}
-                    />
-                  </picture>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      )}
+          {/* Main Headline */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 tracking-tight">
+            All your health, one smart
+            <br />
+            ring - <span className="text-accent">HUX Ring</span>
+          </h1>
 
-      {/* ---------- Overlay Content - Left Aligned Like Reference ---------- */}
-      <div className="absolute inset-0 z-10 flex items-center">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
-          <div className="max-w-xl">
-            {/* Tagline */}
-            <p className="text-slate-500 text-sm md:text-base lg:text-lg font-medium tracking-wide mb-3 fade-in">
-              Fashion Health Smart Ring
-            </p>
+          {/* Subtitle */}
+          <motion.p 
+            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
+            Track your wellness, sleep better
+            <br className="hidden sm:block" />
+            and live smarter.
+          </motion.p>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
+            <button className="px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-foreground/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]">
+              Discover HUX Ring
+            </button>
+          </motion.div>
+        </motion.div>
+
+        {/* Floating Product Image */}
+        <motion.div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md md:max-w-lg lg:max-w-xl"
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+        >
+          <div className="relative">
+            {/* Shadow beneath the image */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-black/10 rounded-full blur-xl" />
             
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1] mb-6 fade-in" style={{ animationDelay: '0.2s' }}>
-              Smart Life at<br />
-              Your Fingertips
-            </h1>
-
-            {/* CTA Button */}
-            <div className="fade-in" style={{ animationDelay: '0.4s' }}>
-              <button className="px-8 py-4 bg-slate-900 text-white font-semibold rounded-full hover:bg-slate-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
-                Explore Collection
-              </button>
-            </div>
+            {/* Product Image */}
+            <img
+              src={heroRingPremiumDual}
+              alt="HUX Smart Ring"
+              className="w-full h-auto object-contain float"
+            />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -24,15 +24,11 @@ const Navbar: React.FC = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-[1000] transition-all duration-300",
         isScrolled 
-          ? "bg-white/95 backdrop-blur-md py-2 shadow-md border-b border-slate-200/50" 
-          : "bg-white/80 backdrop-blur-sm py-3"
+          ? "bg-white shadow-sm py-3" 
+          : "bg-transparent py-4"
       )}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center"
-        style={{
-          background: 'transparent'
-        }}
-      >
+      <div className="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center">
         <Link to="/" onClick={() => {
           setIsMobileMenuOpen(false);
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -40,7 +36,7 @@ const Navbar: React.FC = () => {
           <Logo 
             size={isScrolled ? "small" : "medium"} 
             showSoundWaves={false} 
-            className={isMobile ? "ml-0 -my-2" : ""}
+            className={isMobile ? "ml-0" : ""}
           />
         </Link>
 
@@ -52,7 +48,7 @@ const Navbar: React.FC = () => {
         <DesktopActions />
 
         <button
-          className="md:hidden text-slate-700 p-2"
+          className="md:hidden text-foreground p-2 hover:bg-secondary rounded-full transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
